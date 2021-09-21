@@ -1,50 +1,88 @@
 \documentclass{article}
 
-%Symbols
+% Symbols
+%\usepackage[dvipsnames]{xcolor}
+%\usepackage{xcolor}
 \usepackage{recycle}
 \usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{cancel}
+%\usepackage{tcolorbox}
+\usepackage{amssymb, latexsym, amsmath}
 
-%Margins
+% Graphics
+\usepackage{graphicx}
+
+% Color a letras.
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} 
+
+% Tikz
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+% Margins
 \addtolength{\voffset}{-1cm}
 \addtolength{\hoffset}{-1.5cm}
 \addtolength{\textwidth}{3cm}
 \addtolength{\textheight}{2cm}
 
+% Reseteo
+%\usepackage{etoolbox} 
+%\AtBeginEnvironment{eqnarray}{\setcounter{equation}{0}}
+
 %Header-Footer
 \usepackage{fancyhdr}
 %Header Info
-\lhead{Profesor: C\'esar Hern\'andez Cruz \\
-       Ayudante: Mauricio Carrasco Ruiz}
-\rhead{Gr\'aficas y Juegos 2022-1}
+%\lhead{Profesor: C\'esar Hern\'andez Cruz \\
+%       Ayudante: Mauricio Carrasco Ruiz}
+% \rhead{Gr\'aficas y Juegos 2021-2}
 %Footer Info
-\rfoot{\recycle}
-\cfoot{\vspace{-0.8cm}?`Realmente necesitas imprimir esta hoja?}
-\lfoot{\recycle}
-\pagenumbering{gobble}
-\footskip = 50pt
+%% \rfoot{\recycle}
+%% \cfoot{\vspace{-0.8cm}?`Realmente necesitas imprimir esta hoja?}
+%% \lfoot{\recycle}
 \renewcommand{\headrulewidth}{1pt}
 
 \newcommand{\set}[1]{%
 \left\{ #1 \right\}%
 }
 
+\pagenumbering{gobble}
+\footskip = 50pt
+\renewcommand{\headrulewidth}{1pt}
+
 \pagestyle{fancyplain}
 
 \begin{document}
+\title{UNIVERSIDAD AUTÓNOMA DE MÉXICO\\ Facultad de Ciencias}
+\author{Autores:  Fernanda Villafán Flores
+  \\ Fernando Alvarado
+  \\ Adrián Aguilera Moreno}
+\date{}
+\maketitle
+\begin{center}
+\includegraphics[scale=0.20]{./Imagen/Portada.jpg}\\[0.4cm]
+\Large
+\bf{Gráficas y Juegos}
+\normalsize
+\end{center}
+\newpage
+\fancyhead[r]{ Gr\'aficas y Juegos 2021-2 }
 \section*{\LARGE{Tarea 1}}
 
 \begin{enumerate}
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Sea $n$ un entero, $n \ge 3$.   Demuestre que existe un \'unico
     $n$-ciclo, salvo isomorfismo.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item De un ejemplo de tres gr\'aficas del mismo orden, mismo tama\~no y misma
     sucesi\'on de grados tales que cualesquiera dos de dichas gr\'aficas no sean
     isomorfas, al menos una de ellas sea conexa, y al menos una sea inconexa.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Sea $D$ una digr\'afica.   Demuestre que
     $$\sum_{v \in V_D} d^+(v) = \sum_{v \in V_D} d^-(v) = |A_D|.$$
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item  Sea $n$ un entero positivo. Definimos a la {\em Ret\'icula Booleana},
     $BL_n$, como la gr\'afica cuyo conjunto de vértices es el conjunto de todos
     los posibles subconjuntos de $\set{1, \cdots, n}$, donde dos subconjuntos
@@ -59,7 +97,7 @@
         \mathbb{Z}^+$.
     \end{enumerate}
 
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Sea $G[X, Y]$ una gr\'afica bipartita.
     \begin{enumerate}
       \item Demuestre que $\sum_{v \in X} d(v) = \sum_{v \in Y} d(v)$.
@@ -70,6 +108,7 @@
 
 \end{enumerate}
 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Puntos Extra}
 
 \begin{enumerate}
