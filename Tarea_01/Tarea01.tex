@@ -1,0 +1,88 @@
+\documentclass{article}
+
+%Symbols
+\usepackage{recycle}
+\usepackage{amsfonts}
+
+%Margins
+\addtolength{\voffset}{-1cm}
+\addtolength{\hoffset}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\textheight}{2cm}
+
+%Header-Footer
+\usepackage{fancyhdr}
+%Header Info
+\lhead{Profesor: C\'esar Hern\'andez Cruz \\
+       Ayudante: Mauricio Carrasco Ruiz}
+\rhead{Gr\'aficas y Juegos 2022-1}
+%Footer Info
+\rfoot{\recycle}
+\cfoot{\vspace{-0.8cm}?`Realmente necesitas imprimir esta hoja?}
+\lfoot{\recycle}
+\pagenumbering{gobble}
+\footskip = 50pt
+\renewcommand{\headrulewidth}{1pt}
+
+\newcommand{\set}[1]{%
+\left\{ #1 \right\}%
+}
+
+\pagestyle{fancyplain}
+
+\begin{document}
+\section*{\LARGE{Tarea 1}}
+
+\begin{enumerate}
+
+  \item Sea $n$ un entero, $n \ge 3$.   Demuestre que existe un \'unico
+    $n$-ciclo, salvo isomorfismo.
+
+  \item De un ejemplo de tres gr\'aficas del mismo orden, mismo tama\~no y misma
+    sucesi\'on de grados tales que cualesquiera dos de dichas gr\'aficas no sean
+    isomorfas, al menos una de ellas sea conexa, y al menos una sea inconexa.
+
+  \item Sea $D$ una digr\'afica.   Demuestre que
+    $$\sum_{v \in V_D} d^+(v) = \sum_{v \in V_D} d^-(v) = |A_D|.$$
+
+  \item  Sea $n$ un entero positivo. Definimos a la {\em Ret\'icula Booleana},
+    $BL_n$, como la gr\'afica cuyo conjunto de vértices es el conjunto de todos
+    los posibles subconjuntos de $\set{1, \cdots, n}$, donde dos subconjuntos
+    $X$ y $Y$ son adyacentes si y s\'olo si su diferencia sim\'etrica tiene
+    exactamente un elemento.
+    \begin{enumerate}
+      \item Dibuje $BL_1, BL_2, BL_3$ y $BL_4$.
+
+      \item Determine $|V_{BL_n}|$ y $|E_{BL_n}|$. (Justifique su respuesta.)
+
+      \item Demuestre que $BL_n$ es bipartita para cualquier $n \in
+        \mathbb{Z}^+$.
+    \end{enumerate}
+
+
+  \item Sea $G[X, Y]$ una gr\'afica bipartita.
+    \begin{enumerate}
+      \item Demuestre que $\sum_{v \in X} d(v) = \sum_{v \in Y} d(v)$.
+
+      \item Demuestre que si $G$ es $k$-regular, con $k \ge 1$, entonces $|X| =
+        |Y|$.
+    \end{enumerate}
+
+\end{enumerate}
+
+\subsection*{Puntos Extra}
+
+\begin{enumerate}
+  \item Sea $G = [X, Y]$ una gr\'afica bipartita con $|X| = r$ y $|Y| = s$.
+    \begin{enumerate}
+      \item Demuestre que $|E| \le rs$.
+
+      \item Deduzca que $|E| \le \frac{|V|^2}{4}$.
+
+      \item Describa a las gr\'aficas bipartitas que cumplen la igualdad en el
+        inciso anterior. Justifique su respuesta.
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
