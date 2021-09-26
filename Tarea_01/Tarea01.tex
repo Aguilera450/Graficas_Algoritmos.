@@ -397,10 +397,6 @@
     \hfill $\square$
 
     %-------------------------- inciso (b) ---------------------
-    %% Aquí
-    %% Faltan
-    %% Algunas
-    %% Correcciones:
   \item Determine $|V_{BL_n}|$ y $|E_{BL_n}|$. (Justifique su respuesta).
     
     Veamos que la cantidad de vértices es igual a la
@@ -436,30 +432,35 @@
       4 \cdot 8 &= 4 \cdot 2^{4-1} =& 32
     \end{eqnarray*}
     Podemos deducir $\abs{E_{BL_n}} = n \cdot 2^{n-1}$.
-    Ahora mostramos que esto funciona para
-    $n \in \mathbb{Z}^{+}$. En la tabla anterior, se
-    tendrían los casos base para mostrar esta propiedad.
-    Supongamos que esto funciona para $n = k -1$,
-    \textit{i.e.}, cuando $n = k-1$ el número de aristas
-    en la gráfica será:
-    \[
-    (k -1) \cdot 2^{k -2}
-    \]
-    Ahora veamos que sucede con $n = k$, tendríamos:
-    \begin{eqnarray*}
-      (k -1) \cdot 2^{k -2} + (k +1) \cdot 2^{k -2} &=&
-      2^{n -2} \cdot [(k -1) + (k +1)]\\
-      &=& 2^{k -2} \cdot [2k -1 +1]\\
-      &=& 2k \cdot 2^{k -2}\\
-      &=& k \cdot 2^{k -2 + 1}\\
-      &=& k \cdot 2^{k -1}
-    \end{eqnarray*}
-    Luego, como $n = k$ tenemos:
-    \[
-    (k -1) \cdot 2^{k -2} + (k +1) \cdot 2^{k -2} =
-    k \cdot 2^{k -1} = n \cdot 2^{n -1}
-    \]
     
+    \begin{center}
+      \fbox{
+        \begin{minipage}[b][1\height]%
+          [t]{0.867\textwidth}
+          En general las retículas booleanas son $n$-regulares,
+          pues para un $x \in V_{BL_{n - 1}}$ con $BL_{n - 1}$
+          siendo $n$-regular, el  $BL_n$ tendrá a $x$ relacionado
+          con al menos $n -1$ elementos (son con los que ya se
+          relacionaba en $BL_{n - 1}$) y $x$ se relacionará con
+          el conjunto de tamaño $|x| + 1$ (el cuál sólo es uno,
+          pues este es $x \cup \{n\}$) y concluimos que $BL_n$
+          es $n$-regular, pues cada $x$ se relaciona con
+          $(n - 1) + 1$ elemento.
+      \end{minipage}}
+    \end{center}
+    
+    Luego hay $n$ aristas por cada vértice (los cuáles son
+    $2^n$, como ya vimos) y por el inciso ($c$) tenemos que
+    $BL_n$ es bipartita, esto aunado al hecho de que es
+    $n$-regular, nos da partes en $BL_n$ de igual
+    cardinalidad. De lo anterior hay una cantidad de aristas
+    igual a $n$ por cada una de las partes, \textit{i.e.},
+    \begin{eqnarray*}
+      |E_{BL_n}| &=& n \cdot \frac{2^n}{2}\\
+      &=& n \cdot 2^{n - 1}
+    \end{eqnarray*}
+
+        
     \hspace*{4 cm} $\therefore\ \ \ \ \ \abs{V_{BL_n}} = 2^n
     \text{ y } |E_{BL_n}| = n \cdot 2^{n -1}$
     \hfill $\square$
