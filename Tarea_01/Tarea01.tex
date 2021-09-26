@@ -13,14 +13,43 @@
 
 % Graphics
 \usepackage{graphicx}
+\usepackage{pgf}
 
 % Color a letras.
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} 
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} 
 
 % Tikz
-\usepackage{pgf}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+\usetikzlibrary{shapes,calc}
+\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt,
+  >=stealth, line width=1.1pt]
+\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt,
+  >=stealth, line width=1.5pt, blue]
+\tikzstyle{blackV}=[circle, fill=black,
+  minimum size=6pt,
+  inner sep=0pt, outer sep=0pt]
+\tikzstyle{blueV}=[circle, fill=blue, draw,
+  minimum size=6pt, line width=0.75pt,
+  inner sep=0pt, outer sep=0pt]
+\tikzstyle{redV}=[circle, fill=red, draw,
+  minimum size=6pt, line width=0.75pt,
+  inner sep=0pt, outer sep=0pt]
+\tikzstyle{redSV}=[semicircle, fill=red, minimum
+  size=3pt, inner sep=0pt, outer sep=0pt,
+  rotate=225]
+\tikzstyle{blueSV}=[semicircle, fill=blue, minimum
+  size=3pt, inner sep=0pt, outer sep=0pt,
+  rotate=225]
+\tikzstyle{blackSV}=[semicircle, fill=black, minimum
+  size=3pt, inner sep=0pt, outer sep=0pt,
+  rotate=225]
+\tikzstyle{vertex}=[circle, draw, minimum size=6pt,
+  line width=0.75pt, inner sep=0pt,
+  outer sep=0pt]
 
 % Margins
 \addtolength{\voffset}{-1cm}
@@ -33,7 +62,7 @@
 \renewcommand{\headrulewidth}{1pt}
 
 \newcommand{\set}[1]{%
-\left\{ #1 \right\}%
+  \left\{ #1 \right\}%
 }
 
 \pagenumbering{gobble}
@@ -50,10 +79,10 @@
 \date{}
 \maketitle
 \begin{center}
-\includegraphics[scale=0.20]{./Imagen/Portada.jpg}\\[0.4cm]
-\Large
-\bf{Gráficas y Juegos}
-\normalsize
+  \includegraphics[scale=0.20]{./Imagen/Portada.jpg}\\[0.4cm]
+  \Large
+  \bf{Gráficas y Juegos}
+  \normalsize
 \end{center}
 \newpage
 \fancyhead[r]{ Gr\'aficas y Juegos 2021-2 }
@@ -61,18 +90,99 @@
 
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Sea $n$ un entero, $n \ge 3$.   Demuestre que existe un \'unico
-    $n$-ciclo, salvo isomorfismo.
+\item Sea $n$ un entero, $n \ge 3$.   Demuestre que existe un \'unico
+  $n$-ciclo, salvo isomorfismo.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item De un ejemplo de tres gr\'aficas del mismo orden, mismo tama\~no y misma
-    sucesi\'on de grados tales que cualesquiera dos de dichas gr\'aficas no sean
-    isomorfas, al menos una de ellas sea conexa, y al menos una sea inconexa.
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Sea $D$ una digr\'afica.   Demuestre que
-    $$\sum_{v \in V_D} d^+(v) = \sum_{v \in V_D} d^-(v) = |A_D|.$$
-    
-    \renewcommand\qedsymbol{QED}
-    \begin{proof}
+\item De un ejemplo de tres gr\'aficas del mismo orden, mismo tama\~no y misma
+  sucesi\'on de grados tales que cualesquiera dos de dichas gr\'aficas no sean
+  isomorfas, al menos una de ellas sea conexa, y al menos una sea inconexa.
+  
+  A continuación se muestran las gráficas: $G_1, G_2$ y $G_3$:
+  
+  \begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}
+      %%%%%  Componente izquierda  %%%%%
+      \node (0) [vertex,label=180:] at (0,1){};
+      \node (1) [vertex,label=90:]  at (2,1){};
+      \node (2) [vertex,label=90:]  at (4,1){};
+      \node (3) [vertex,label=90:]  at (0,-1){};
+      \node (4) [vertex,label=90:]  at (2,-1){};
+      \node (5) [vertex,label=90:]  at (4,-1){};
+      \node (6) [vertex,label=90:]  at (0,-3){};
+      \node (7) [vertex,label=90:]  at (2,-3){};
+      \node (8) [vertex,label=90:]  at (4,-3){};
+
+      \draw [edge] (0) to (3);
+      \draw [edge] (0) to (4);
+      \draw [edge] (1) to (4);
+      \draw [edge] (1) to (2);
+      \draw [edge] (4) to (5);
+      \draw [edge] (5) to (8);
+      \draw [edge] (6) to (7);
+      \draw [edge] (7) to (8);
+
+      \node (L) at (-0.5,1){$G_1$};
+
+      %%%%% Componente derecha  %%%%%
+      \begin{scope}[xshift=6cm]
+        \node (9) [vertex,label=180:] at (0,1){};
+        \node (10) [vertex,label=90:]  at (2,1){};
+        \node (11) [vertex,label=90:]  at (4,1){};
+        \node (12) [vertex,label=90:]  at (0,-1){};
+        \node (13) [vertex,label=90:]  at (2,-1){};
+        \node (14) [vertex,label=90:]  at (4,-1){};
+        \node (15) [vertex,label=90:]  at (0,-3){};
+        \node (16) [vertex,label=90:]  at (2,-3){};
+        \node (17) [vertex,label=90:]  at (4,-3){};
+
+        \draw [edge] (9)  to (10);
+        \draw [edge] (11) to (14);
+        \draw [edge] (12) to (16);
+        \draw [edge] (12) to (15);
+        \draw [edge] (13) to (14);
+        \draw [edge] (13) to (16);
+        \draw [edge] (14) to (17);
+        \path(11)edge[bend left]node{}(17);
+        \node (L) at (-0.5,1){$G_2$};
+      \end{scope}
+    \end{tikzpicture}
+  \end{figure}
+
+  \begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}
+      %%%%% Componente debajo  %%%%%
+      \node (0) [vertex,label=180:] at (0,1){};
+      \node (1) [vertex,label=90:]  at (2,1){};
+      \node (2) [vertex,label=90:]  at (4,1){};
+      \node (3) [vertex,label=90:]  at (0,-1){};
+      \node (4) [vertex,label=90:]  at (2,-1){};
+      \node (5) [vertex,label=90:]  at (4,-1){};
+      \node (6) [vertex,label=90:]  at (0,-3){};
+      \node (7) [vertex,label=90:]  at (2,-3){};
+      \node (8) [vertex,label=90:]  at (4,-3){};
+
+      \draw [edge] (0) to (1);
+      \draw [edge] (1) to (2);
+      \draw [edge] (2) to (5);
+      \draw [edge] (3) to (6);
+      \draw [edge] (3) to (7);
+      \draw [edge] (4) to (5);
+      \draw [edge] (4) to (7);
+      \draw [edge] (5) to (8);
+
+      \node (L) at (-0.5,1){$G_3$};
+    \end{tikzpicture}
+  \end{figure}
+  
+  con sucesiones orden $9$, tamaño $8$ y sucesión de grados $(1,1,2,2,2,2,2,3)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Sea $D$ una digr\'afica.   Demuestre que
+  $$\sum_{v \in V_D} d^+(v) = \sum_{v \in V_D} d^-(v) = |A_D|.$$
+  
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
     La demostración se dividirá en dos incisos:  
     \begin{itemize}
     \item[$\cdot$)] $\displaystyle \sum_{v \in V_{D}} d^{+}(v) = \abs{A_{D}}$ 
@@ -146,317 +256,320 @@
     \[
     \displaystyle \sum_{v \in V_D} d^+(v) = \sum_{v \in V_D} d^-(v) = |A_D|
     \]
-    \end{proof}
+  \end{proof}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item  Sea $n$ un entero positivo. Definimos a la {\em Ret\'icula Booleana},
-    $BL_n$, como la gr\'afica cuyo conjunto de vértices es el conjunto de todos
-    los posibles subconjuntos de $\set{1, \cdots, n}$, donde dos subconjuntos
-    $X$ y $Y$ son adyacentes si y s\'olo si su diferencia sim\'etrica tiene
-    exactamente un elemento.
+\item  Sea $n$ un entero positivo. Definimos a la {\em Ret\'icula Booleana},
+  $BL_n$, como la gr\'afica cuyo conjunto de vértices es el conjunto de todos
+  los posibles subconjuntos de $\set{1, \cdots, n}$, donde dos subconjuntos
+  $X$ y $Y$ son adyacentes si y s\'olo si su diferencia sim\'etrica tiene
+  exactamente un elemento.
+  
+  \begin{enumerate}
+  \item Dibuje $BL_1, BL_2, BL_3$ y $BL_4$.
     
-    \begin{enumerate}
-    \item Dibuje $BL_1, BL_2, BL_3$ y $BL_4$.
-      
-      %------------------------------------- inciso (a) --------------------------------
-      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_1
-      Gráfica representativa de $BL_1$:
-      \begin{center}
-        \begin{tikzpicture}
-          \tikzstyle{vertex} = [circle, fill = black!10]
-          \tikzstyle{edge}   = [-, thick]
-          
-          \node[vertex](v1)  at (0,0)  {$\{1\}$};
-          \node[vertex](v2)  at (4,0)  {$\varnothing$};
-          %%------------ Aristas ---------
-          \draw[edge](v1)--(v2);
-        \end{tikzpicture}
-      \end{center}
-      
-      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_2
-      Gráfica representativa de $BL_2$:
-      \begin{center}
-        \begin{tikzpicture}
-          \tikzstyle{vertex} = [circle, fill = black!10]
-          \tikzstyle{edge}   = [-, thick]
-          
-          \node[vertex](v1)  at (0,2)  {$\{1\}$};
-          \node[vertex](v2)  at (4,2)  {$\{2\}$};
-          \node[vertex](v3)  at (2,0)  {$\{1,2\}$};
-          \node[vertex](v4)  at (2,4)  {$\varnothing$};
-          
-          %%------------ Aristas ---------
-          \draw[edge](v1)--(v3);
-          \draw[edge](v1)--(v4); 
-          \draw[edge](v2)--(v3);
-          \draw[edge](v2)--(v4);
-        \end{tikzpicture}
-      \end{center}
-      
-      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_3
-      Gráfica representativa de $BL_3$:
-      \begin{center}
-        \begin{tikzpicture}
-          \tikzstyle{vertex} = [circle, fill = black!10]
-          \tikzstyle{edge}   = [-, thick]
-          
-          \node[vertex](v1)  at (0,1)  {$\{3\}$};
-          \node[vertex](v2)  at (0,5)  {$\{2\}$};
-          \node[vertex](v3)  at (3,0)  {$\{2,3\}$};
-          \node[vertex](v4)  at (3,2)  {$\{1,3\}$};
-          \node[vertex](v5)  at (3,4)  {$\{1,2\}$};
-          \node[vertex](v6)  at (3,6)  {$\varnothing$};
-          \node[vertex](v7)  at (6,1)  {$\{1,2,3\}$};
-          \node[vertex](v8)  at (6,5)  {$\{1\}$};
-          
-          %%------------ Aristas ---------
-          \draw[edge](v1)--(v3);
-          \draw[edge](v1)--(v4);
-          \draw[edge](v1)--(v6);
-          \draw[edge](v2)--(v3);
-          \draw[edge](v2)--(v5);
-          \draw[edge](v2)--(v6);
-          \draw[edge](v8)--(v4);
-          \draw[edge](v8)--(v5);
-          \draw[edge](v8)--(v6);
-          \draw[edge](v7)--(v3);
-          \draw[edge](v7)--(v4);
-          \draw[edge](v7)--(v5);
-        \end{tikzpicture}
-      \end{center}
-      
-      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_4
-      Gráfica representativa de $BL_4$:
-      \begin{center}
-        \begin{tikzpicture}
-          \tikzstyle{vertex} = [circle, fill = black!10]
-          \tikzstyle{edge}   = [-, thick]
-          
-          \node[vertex](v1)   at (0,6)    {$\varnothing$};
-          \node[vertex](v2)   at (1,0)    {$\{1\}$};
-          \node[vertex](v3)   at (1,4)    {$\{2\}$};
-          \node[vertex](v4)   at (1,8)    {$\{3\}$};
-          \node[vertex](v5)   at (1,12)   {$\{4\}$};
-          \node[vertex](v6)   at (4,1)    {$\{1,2\}$};
-          \node[vertex](v7)   at (4,3)    {$\{1,3\}$};
-          \node[vertex](v8)   at (4,5)    {$\{1,4\}$};
-          \node[vertex](v9)   at (4,7)    {$\{2,3\}$};
-          \node[vertex](v10)  at (4,9)    {$\{2,4\}$};
-          \node[vertex](v11)  at (4,11)   {$\{3,4\}$};
-          \node[vertex](v12)  at (8,12)   {$\{1,2,3\}$};
-          \node[vertex](v13)  at (8,8)    {$\{1,2,4\}$};
-          \node[vertex](v14)  at (8,4)    {$\{1,3,4\}$};
-          \node[vertex](v15)  at (8,0)    {$\{2,3,4\}$};
-          \node[vertex](v16)  at (12,6)   {$\{1,2,3,4\}$};
-          
-          %%------------ Aristas ---------
-          \draw[edge](v1)--(v2);
-          \draw[edge](v1)--(v3);
-          \draw[edge](v1)--(v4);
-          \draw[edge](v1)--(v5);
-          \draw[edge](v2)--(v6);
-          \draw[edge](v2)--(v7);
-          \draw[edge](v2)--(v8);
-          \draw[edge](v3)--(v6);
-          \draw[edge](v4)--(v9);
-          \draw[edge](v3)--(v9);
-          \draw[edge](v4)--(v7);
-          \draw[edge](v5)--(v8); 
-          \draw[edge](v3)--(v10);
-          \draw[edge](v4)--(v11);
-          \draw[edge](v5)--(v11);
-          \draw[edge](v5)--(v10);
-          \draw[edge](v12)--(v6);
-          \draw[edge](v12)--(v7);
-          \draw[edge](v12)--(v9);
-          \draw[edge](v13)--(v6);
-          \draw[edge](v13)--(v8);
-          \draw[edge](v14)--(v7);
-          \draw[edge](v14)--(v8);
-          \draw[edge](v15)--(v9);
-          \draw[edge](v14)--(v11);
-          \draw[edge](v13)--(v10);
-          \draw[edge](v15)--(v11);
-          \draw[edge](v15)--(v10);
-          \draw[edge](v16)--(v12);
-          \draw[edge](v16)--(v13);
-          \draw[edge](v16)--(v14);
-          \draw[edge](v16)--(v15);
-        \end{tikzpicture}
-      \end{center}
-      \hfill $\square$
-      %------------------------------------- inciso (b) --------------------------------
-    \item Determine $|V_{BL_n}|$ y $|E_{BL_n}|$. (Justifique su respuesta).
+    %-------------------------- inciso (a) ---------------------
+    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_1
+    Gráfica representativa de $BL_1$:
+    \begin{center}
+      \begin{tikzpicture}
+        \tikzstyle{vertex} = [circle, fill = black!10]
+        \tikzstyle{edge}   = [-, thick]
+        
+        \node[vertex](v1)  at (0,0)  {$\{1\}$};
+        \node[vertex](v2)  at (4,0)  {$\varnothing$};
+        %%------------ Aristas ---------
+        \draw[edge](v1)--(v2);
+      \end{tikzpicture}
+    \end{center}
+    
+    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_2
+    Gráfica representativa de $BL_2$:
+    \begin{center}
+      \begin{tikzpicture}
+        \tikzstyle{vertex} = [circle, fill = black!10]
+        \tikzstyle{edge}   = [-, thick]
+        
+        \node[vertex](v1)  at (0,2)  {$\{1\}$};
+        \node[vertex](v2)  at (4,2)  {$\{2\}$};
+        \node[vertex](v3)  at (2,0)  {$\{1,2\}$};
+        \node[vertex](v4)  at (2,4)  {$\varnothing$};
+        
+        %%------------ Aristas ---------
+        \draw[edge](v1)--(v3);
+        \draw[edge](v1)--(v4); 
+        \draw[edge](v2)--(v3);
+        \draw[edge](v2)--(v4);
+      \end{tikzpicture}
+    \end{center}
+    
+    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_3
+    Gráfica representativa de $BL_3$:
+    \begin{center}
+      \begin{tikzpicture}
+        \tikzstyle{vertex} = [circle, fill = black!10]
+        \tikzstyle{edge}   = [-, thick]
+        
+        \node[vertex](v1)  at (0,1)  {$\{3\}$};
+        \node[vertex](v2)  at (0,5)  {$\{2\}$};
+        \node[vertex](v3)  at (3,0)  {$\{2,3\}$};
+        \node[vertex](v4)  at (3,2)  {$\{1,3\}$};
+        \node[vertex](v5)  at (3,4)  {$\{1,2\}$};
+        \node[vertex](v6)  at (3,6)  {$\varnothing$};
+        \node[vertex](v7)  at (6,1)  {$\{1,2,3\}$};
+        \node[vertex](v8)  at (6,5)  {$\{1\}$};
+        
+        %%------------ Aristas ---------
+        \draw[edge](v1)--(v3);
+        \draw[edge](v1)--(v4);
+        \draw[edge](v1)--(v6);
+        \draw[edge](v2)--(v3);
+        \draw[edge](v2)--(v5);
+        \draw[edge](v2)--(v6);
+        \draw[edge](v8)--(v4);
+        \draw[edge](v8)--(v5);
+        \draw[edge](v8)--(v6);
+        \draw[edge](v7)--(v3);
+        \draw[edge](v7)--(v4);
+        \draw[edge](v7)--(v5);
+      \end{tikzpicture}
+    \end{center}
+    
+    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_4
+    Gráfica representativa de $BL_4$:
+    \begin{center}
+      \begin{tikzpicture}
+        \tikzstyle{vertex} = [circle, fill = black!10]
+        \tikzstyle{edge}   = [-, thick]
+        
+        \node[vertex](v1)   at (0,6)    {$\varnothing$};
+        \node[vertex](v2)   at (1,0)    {$\{1\}$};
+        \node[vertex](v3)   at (1,4)    {$\{2\}$};
+        \node[vertex](v4)   at (1,8)    {$\{3\}$};
+        \node[vertex](v5)   at (1,12)   {$\{4\}$};
+        \node[vertex](v6)   at (4,1)    {$\{1,2\}$};
+        \node[vertex](v7)   at (4,3)    {$\{1,3\}$};
+        \node[vertex](v8)   at (4,5)    {$\{1,4\}$};
+        \node[vertex](v9)   at (4,7)    {$\{2,3\}$};
+        \node[vertex](v10)  at (4,9)    {$\{2,4\}$};
+        \node[vertex](v11)  at (4,11)   {$\{3,4\}$};
+        \node[vertex](v12)  at (8,12)   {$\{1,2,3\}$};
+        \node[vertex](v13)  at (8,8)    {$\{1,2,4\}$};
+        \node[vertex](v14)  at (8,4)    {$\{1,3,4\}$};
+        \node[vertex](v15)  at (8,0)    {$\{2,3,4\}$};
+        \node[vertex](v16)  at (12,6)   {$\{1,2,3,4\}$};
+        
+        %%------------ Aristas ---------
+        \draw[edge](v1)--(v2);
+        \draw[edge](v1)--(v3);
+        \draw[edge](v1)--(v4);
+        \draw[edge](v1)--(v5);
+        \draw[edge](v2)--(v6);
+        \draw[edge](v2)--(v7);
+        \draw[edge](v2)--(v8);
+        \draw[edge](v3)--(v6);
+        \draw[edge](v4)--(v9);
+        \draw[edge](v3)--(v9);
+        \draw[edge](v4)--(v7);
+        \draw[edge](v5)--(v8); 
+        \draw[edge](v3)--(v10);
+        \draw[edge](v4)--(v11);
+        \draw[edge](v5)--(v11);
+        \draw[edge](v5)--(v10);
+        \draw[edge](v12)--(v6);
+        \draw[edge](v12)--(v7);
+        \draw[edge](v12)--(v9);
+        \draw[edge](v13)--(v6);
+        \draw[edge](v13)--(v8);
+        \draw[edge](v14)--(v7);
+        \draw[edge](v14)--(v8);
+        \draw[edge](v15)--(v9);
+        \draw[edge](v14)--(v11);
+        \draw[edge](v13)--(v10);
+        \draw[edge](v15)--(v11);
+        \draw[edge](v15)--(v10);
+        \draw[edge](v16)--(v12);
+        \draw[edge](v16)--(v13);
+        \draw[edge](v16)--(v14);
+        \draw[edge](v16)--(v15);
+      \end{tikzpicture}
+    \end{center}
+    \hfill $\square$
 
-      Veamos que la cantidad de vértices es igual a la
-      cantidad de subconjuntos que se pueden formar de
-      la retícula $BL_n$, esto es el conjunto potencia
-      de $\{1, \dotsm, n\}$. Por lo que:
-      \begin{center}
-        $\abs{V_{BL_n}} = \abs{P \left(\{1, \dotsm, n\}\right)} = 2^{n}$
-      \end{center}
-      Mientras que es un tanto más empírica la forma en
-      la que se obtiene la cardinalidad de $E_{BL_n}$,
-      veamos la siguiente tabla con las primeras retículas:
-      \begin{center}
-        \begin{tabular}{|c|c|}
-          \hline
-          Valor de $n$ & $\#$ de aristas \\
-          \hline
-          $n = 1 \Rightarrow$ & $1$ arista \\
-          \hline
-          $n = 2 \Rightarrow$ & $4$ arista \\
-          \hline
-          $n = 3 \Rightarrow$ & $12$ arista \\
-          \hline
-          $n = 4 \Rightarrow$ & $32$ arista \\
-          \hline
-        \end{tabular}
-      \end{center}
-      Nótese que:
-      \begin{eqnarray*}
-        1 \cdot 1 &= 1 \cdot 2^{1-1} =& 1\\
-        2 \cdot 2 &= 2 \cdot 2^{2-1} =& 4\\
-        3 \cdot 4 &= 3 \cdot 2^{3-1} =& 12\\
-        4 \cdot 8 &= 4 \cdot 2^{4-1} =& 32
-      \end{eqnarray*}
-      Podemos deducir $\abs{E_{BL_n}} = n \cdot 2^{n-1}$.
-      Ahora mostramos que esto funciona para
-      $n \in \mathbb{Z}^{+}$. En la tabla anterior, se
-      tendrían los casos base para mostrar esta propiedad.
-      Supongamos que esto funciona para $n = k -1$,
-      \textit{i.e.}, cuando $n = k-1$ el número de aristas
-      en la gráfica será:
-      \[
-      (k -1) \cdot 2^{k -2}
-      \]
-      Ahora veamos que sucede con $n = k$, tendríamos:
-      \begin{eqnarray*}
-        (k -1) \cdot 2^{k -2} + (k +1) \cdot 2^{k -2} &=&
-        2^{n -2} \cdot [(k -1) + (k +1)]\\
-        &=& 2^{k -2} \cdot [2k -1 +1]\\
-        &=& 2k \cdot 2^{k -2}\\
-        &=& k \cdot 2^{k -2 + 1}\\
-        &=& k \cdot 2^{k -1}
-      \end{eqnarray*}
-      Luego, como $n = k$ tenemos:
-      \[
-      (k -1) \cdot 2^{k -2} + (k +1) \cdot 2^{k -2} =
-      k \cdot 2^{k -1} = n \cdot 2^{n -1}
-      \]
-      
-      \hspace*{4 cm} $\therefore\ \ \ \ \ \abs{V_{BL_n}} = 2^n
-      \text{ y } |E_{BL_n}| = n \cdot 2^{n -1}$
-      \hfill $\square$
-      
-      %------------------------------------- inciso (c) --------------------------------
-      %% Aquí
-      %% Faltan
-      %% Algunas
-      %% Correcciones:
-    \item Demuestre que $BL_n$ es bipartita para cualquier $n \in \mathbb{Z}^+$. 
-      
-      \begin{proof}
-        
-        Sea $A = \{1, \dotsm,n\}$ conjunto con $n \in \mathbb{Z}^+$.     
-        Veamos que podemos particionar nuestra $BL_n$ en los conjuntos
-        $X$ y $Y$ de tal forma que $X$ contenga los subconjuntos de
-        $BL_n$ tales que su cardinalidad es $2k$, donde $2k \in A$  y
-        $Y$ tal que contenga los subconjuntos de $BL_n$ de cardinalidad
-        $2k -1$, donde $2k -1 \in A$.
-        
-        Veamos que pasa cuando dos subconjuntos en $BL_n$ se relacionan,
-        es decir, son adyacentes en $BL_n$.
-        \begin{itemize}
-        \item[-] Su diferencia simétrica es $1$.
-        \end{itemize}
-        Dados dos subconjuntos en $BL_n$, uno de ellos debe tener cardinalidad
-        $n+1$ o $n-1$ y el otro de cardinalidad $n$ tal que se cumple que uno
-        de ellos es subconjunto del otro.
-        
-        Notemos que en $X$ están todos los subconjuntos de cardinalidad par.
-        Por tanto, la diferencia simétrica entre cualesquiera 2 subconjuntos
-        distintos en $X$ es:
-        \begin{itemize}
-        \item[-] A lo menos un conjunto de cardinalidad $2$.
-        \end{itemize}
-        De lo anterior, tenemos que ningún subconjunto en
-        $X$ cumple ser adyacente mediante la definición de $BL_n$.
-        
-        Ahora notemos que, en $Y$ están todos los subconjuntos de
-        $BL_n$  que tienen cardinalidad impar. Por lo tanto, la
-        diferencia simétrica en cualesquiera dos subconjuntos
-        distintos en $Y$ es:
-        \begin{itemize}
-        \item[-] Al menos un conjunto de cardinalidad $2$.
-        \end{itemize}
-        Entonces tenemos que: $2k + 1 - (2k -1) = 2$ y como $Y$
-        es un conjunto, no se tiene dos conjuntos iguales a los
-        cuales relacionar. Por lo anterior y por la definición de
-        diferencia simétrica, no existen dos conjuntos adyacentes
-        en $Y$.
-        
-        \hspace*{3cm}  $\therefore$ \ \ \ $BL_n$ es bipartita en $X$ y $Y$, \textit{i.e.} $BL_n[X,Y]$
-      \end{proof}
-    \end{enumerate}
+    %-------------------------- inciso (b) ---------------------
+    %% Aquí
+    %% Faltan
+    %% Algunas
+    %% Correcciones:
+  \item Determine $|V_{BL_n}|$ y $|E_{BL_n}|$. (Justifique su respuesta).
     
+    Veamos que la cantidad de vértices es igual a la
+    cantidad de subconjuntos que se pueden formar de
+    la retícula $BL_n$, esto es el conjunto potencia
+    de $\{1, \dotsm, n\}$. Por lo que:
+    \begin{center}
+      $\abs{V_{BL_n}} = \abs{P \left(\{1, \dotsm, n\}\right)} = 2^{n}$
+    \end{center}
+    Mientras que es un tanto más empírica la forma en
+    la que se obtiene la cardinalidad de $E_{BL_n}$,
+    veamos la siguiente tabla con las primeras retículas:
+    \begin{center}
+      \begin{tabular}{|c|c|}
+        \hline
+        Valor de $n$ & $\#$ de aristas \\
+        \hline
+        $n = 1 \Rightarrow$ & $1$ arista \\
+        \hline
+        $n = 2 \Rightarrow$ & $4$ arista \\
+        \hline
+        $n = 3 \Rightarrow$ & $12$ arista \\
+        \hline
+        $n = 4 \Rightarrow$ & $32$ arista \\
+        \hline
+      \end{tabular}
+    \end{center}
+    Nótese que:
+    \begin{eqnarray*}
+      1 \cdot 1 &= 1 \cdot 2^{1-1} =& 1\\
+      2 \cdot 2 &= 2 \cdot 2^{2-1} =& 4\\
+      3 \cdot 4 &= 3 \cdot 2^{3-1} =& 12\\
+      4 \cdot 8 &= 4 \cdot 2^{4-1} =& 32
+    \end{eqnarray*}
+    Podemos deducir $\abs{E_{BL_n}} = n \cdot 2^{n-1}$.
+    Ahora mostramos que esto funciona para
+    $n \in \mathbb{Z}^{+}$. En la tabla anterior, se
+    tendrían los casos base para mostrar esta propiedad.
+    Supongamos que esto funciona para $n = k -1$,
+    \textit{i.e.}, cuando $n = k-1$ el número de aristas
+    en la gráfica será:
+    \[
+    (k -1) \cdot 2^{k -2}
+    \]
+    Ahora veamos que sucede con $n = k$, tendríamos:
+    \begin{eqnarray*}
+      (k -1) \cdot 2^{k -2} + (k +1) \cdot 2^{k -2} &=&
+      2^{n -2} \cdot [(k -1) + (k +1)]\\
+      &=& 2^{k -2} \cdot [2k -1 +1]\\
+      &=& 2k \cdot 2^{k -2}\\
+      &=& k \cdot 2^{k -2 + 1}\\
+      &=& k \cdot 2^{k -1}
+    \end{eqnarray*}
+    Luego, como $n = k$ tenemos:
+    \[
+    (k -1) \cdot 2^{k -2} + (k +1) \cdot 2^{k -2} =
+    k \cdot 2^{k -1} = n \cdot 2^{n -1}
+    \]
+    
+    \hspace*{4 cm} $\therefore\ \ \ \ \ \abs{V_{BL_n}} = 2^n
+    \text{ y } |E_{BL_n}| = n \cdot 2^{n -1}$
+    \hfill $\square$
+    
+    %-------------------------- inciso (c) ---------------------
+    
+  \item Demuestre que $BL_n$ es bipartita para cualquier $n \in \mathbb{Z}^+$. 
+    
+    \begin{proof}
+      
+      Sea $A = \{1, \dotsm,n\}$ conjunto con $n \in \mathbb{Z}^+$.     
+      Veamos que podemos particionar nuestra $BL_n$ en los conjuntos
+      $X$ y $Y$ de tal forma que $X$ contenga los subconjuntos de
+      $BL_n$ tales que su cardinalidad es $2k$, donde $2k \in A$  y
+      $Y$ tal que contenga los subconjuntos de $BL_n$ de cardinalidad
+      $2k -1$, donde $2k -1 \in A$.
+      
+      Veamos que pasa cuando dos subconjuntos en $BL_n$ se relacionan,
+      es decir, son adyacentes en $BL_n$.
+      \begin{itemize}
+      \item[-] Su diferencia simétrica es $1$.
+      \end{itemize}
+      Dados dos subconjuntos en $BL_n$, uno de ellos debe tener cardinalidad
+      $n+1$ o $n-1$ y el otro de cardinalidad $n$ tal que se cumple que uno
+      de ellos es subconjunto del otro.
+      
+      Notemos que en $X$ están todos los subconjuntos de cardinalidad par.
+      Por tanto, la diferencia simétrica entre cualesquiera 2 subconjuntos
+      distintos en $X$ es:
+      \begin{itemize}
+      \item[-] A lo menos un conjunto de cardinalidad $2$.
+      \end{itemize}
+      De lo anterior, tenemos que ningún subconjunto en
+      $X$ cumple ser adyacente mediante la definición de $BL_n$.
+      
+      Ahora notemos que, en $Y$ están todos los subconjuntos de
+      $BL_n$  que tienen cardinalidad impar. Por lo tanto, la
+      diferencia simétrica en cualesquiera dos subconjuntos
+      distintos en $Y$ es:
+      \begin{itemize}
+      \item[-] Al menos un conjunto de cardinalidad $2$.
+      \end{itemize}
+      Entonces tenemos que: $2k + 1 - (2k -1) = 2$ y como $Y$
+      es un conjunto, no se tiene dos conjuntos iguales a los
+      cuales relacionar. Por lo anterior y por la definición de
+      diferencia simétrica, no existen dos conjuntos adyacentes
+      en $Y$.
+      
+      \hspace*{3cm}  $\therefore$ \ \ \ $BL_n$ es bipartita en $X$ y $Y$, \textit{i.e.} $BL_n[X,Y]$
+    \end{proof}
+  \end{enumerate}
+  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Sea $G[X, Y]$ una gr\'afica bipartita.
-    \begin{enumerate}
-      %------------------------------------- inciso (a) --------------------------------
-      \item Demuestre que $\sum_{v \in X} d(v) = \sum_{v \in Y} d(v)$.
-        \begin{proof}
-          
-        \end{proof}
-        
-      %------------------------------------- inciso (b) --------------------------------
-      \item Demuestre que si $G$ es $k$-regular, con $k \ge 1$, entonces
-        $|X| = |Y|$.
-        \begin{proof}
-          Dada $G$ una gráfica $k$-regular $G[X,Y]$ bipartita. 
-          Sabemos que por ser bipartita y $k$-regular, se cumple que:
-          \begin{itemize}
-          \item[-] Al menos $|V_G|=2$, pues una gráfica tiene como mínimo
-            un elemento y por ser bipartita está debe relacionarse con al
-            menos un elemento en la partición ajena a ella misma. 
-            
-          \item[-] Todos los vértices tienen grado $k$.
-          \end{itemize}
-          Tenemos que en el caso mínimo, $|V_G| = 2$  hay una relación entre
-          dos vértices (cada uno de ellos pertenecientes a su respectiva
-          partición). Por lo tanto, al ser $k$-regular, tenemos que el grado
-          de estos vértices es al menos $1$. Entonces, $k \geq 1$.
-          
-          Ahora usemos un resultado ya conocido. Sabemos que:
-          \[
-          \sum_{v \in X} d(v) = \sum_{v \in Y} d(v)
-          \]
-          Como cada vértice tiene grado $k$. podemos decir que:
-          \[
-          \abs{X} = \frac{\displaystyle \sum_{v \in X} d(v)}{k} \text{\hspace{0.3cm}
-            y \hspace{0.3cm}} \abs{Y} = \frac{\displaystyle \sum_{v \in Y} d(v)}{k}
-          \]
-          De lo anterior, se deduce que:
+\item Sea $G[X, Y]$ una gr\'afica bipartita.
+  \begin{enumerate}
 
-          \hspace*{5.6cm} $\therefore\ \ \ \ |X| = |Y|$
-        \end{proof}
-    \end{enumerate}
+    %-------------------------- inciso (a) ---------------------
+  \item Demuestre que $\sum_{v \in X} d(v) = \sum_{v \in Y} d(v)$.
+    \begin{proof}
+      
+    \end{proof}
     
+    %-------------------------- inciso (b) ---------------------
+  \item Demuestre que si $G$ es $k$-regular, con $k \ge 1$, entonces
+    $|X| = |Y|$.
+    \begin{proof}
+      Dada $G$ una gráfica $k$-regular $G[X,Y]$ bipartita. 
+      Sabemos que por ser bipartita y $k$-regular, se cumple que:
+      \begin{itemize}
+      \item[-] Al menos $|V_G|=2$, pues una gráfica tiene como mínimo
+        un elemento y por ser bipartita está debe relacionarse con al
+        menos un elemento en la partición ajena a ella misma. 
+        
+      \item[-] Todos los vértices tienen grado $k$.
+      \end{itemize}
+      Tenemos que en el caso mínimo, $|V_G| = 2$  hay una relación entre
+      dos vértices (cada uno de ellos pertenecientes a su respectiva
+      partición). Por lo tanto, al ser $k$-regular, tenemos que el grado
+      de estos vértices es al menos $1$. Entonces, $k \geq 1$.
+      
+      Ahora usemos un resultado ya conocido. Sabemos que:
+      \[
+      \sum_{v \in X} d(v) = \sum_{v \in Y} d(v)
+      \]
+      Como cada vértice tiene grado $k$. podemos decir que:
+      \[
+      \abs{X} = \frac{\displaystyle \sum_{v \in X} d(v)}{k} \text{\hspace{0.3cm}
+        y \hspace{0.3cm}} \abs{Y} = \frac{\displaystyle \sum_{v \in Y} d(v)}{k}
+      \]
+      De lo anterior, se deduce que:
+
+      \hspace*{5.6cm} $\therefore\ \ \ \ |X| = |Y|$
+    \end{proof}
+  \end{enumerate}
+  
 \end{enumerate}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Puntos Extra}
 
 \begin{enumerate}
-  \item Sea $G = [X, Y]$ una gr\'afica bipartita con $|X| = r$ y $|Y| = s$.
-    \begin{enumerate}
-      \item Demuestre que $|E| \le rs$.
+\item Sea $G = [X, Y]$ una gr\'afica bipartita con $|X| = r$ y $|Y| = s$.
+  \begin{enumerate}
+  \item Demuestre que $|E| \le rs$.
 
-      \item Deduzca que $|E| \le \frac{|V|^2}{4}$.
+  \item Deduzca que $|E| \le \frac{|V|^2}{4}$.
 
-      \item Describa a las gr\'aficas bipartitas que cumplen la igualdad en el
-        inciso anterior. Justifique su respuesta.
-    \end{enumerate}
+  \item Describa a las gr\'aficas bipartitas que cumplen la igualdad en el
+    inciso anterior. Justifique su respuesta.
+  \end{enumerate}
 
 \end{enumerate}
 
