@@ -4,5 +4,5 @@ en la materia de Gráficas y Juegos con grupo 4267 y a cargo del Dr. César Hern
 Cruz que se imparte en la Facultad de Ciencias de la UNAM.
 ## Integrantes:
 * María Fernanda Villafán Flores.
-* Fernando (Fernando, completa tú nombre porfa).
+* Fernando Alvarado Palacios.
 * Adrián Aguilera Moreno.
