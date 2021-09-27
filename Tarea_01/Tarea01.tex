@@ -141,14 +141,14 @@
     \begin{tikzpicture}
       %%%%%  Componente izquierda  %%%%%
       \node (0) [vertex,label=180:] at (0,1){};
-      \node (1) [vertex,label=90:]  at (2,1){};
-      \node (2) [vertex,label=90:]  at (4,1){};
-      \node (3) [vertex,label=90:]  at (0,-1){};
-      \node (4) [vertex,label=90:]  at (2,-1){};
-      \node (5) [vertex,label=90:]  at (4,-1){};
-      \node (6) [vertex,label=90:]  at (0,-3){};
-      \node (7) [vertex,label=90:]  at (2,-3){};
-      \node (8) [vertex,label=90:]  at (4,-3){};
+      \node (1) [vertex,label=90:]  at (1,1){};
+      \node (2) [vertex,label=90:]  at (2,1){};
+      \node (3) [vertex,label=90:]  at (0,0){};
+      \node (4) [vertex,label=90:]  at (1,0){};
+      \node (5) [vertex,label=90:]  at (2,0){};
+      \node (6) [vertex,label=90:]  at (0,-1){};
+      \node (7) [vertex,label=90:]  at (1,-1){};
+      \node (8) [vertex,label=90:]  at (2,-1){};
 
       \draw [edge] (0) to (3);
       \draw [edge] (0) to (4);
@@ -162,16 +162,16 @@
       \node (L) at (-0.5,1){$G_1$};
 
       %%%%% Componente derecha  %%%%%
-      \begin{scope}[xshift=6cm]
-        \node (9) [vertex,label=180:] at (0,1){};
-        \node (10) [vertex,label=90:]  at (2,1){};
-        \node (11) [vertex,label=90:]  at (4,1){};
-        \node (12) [vertex,label=90:]  at (0,-1){};
-        \node (13) [vertex,label=90:]  at (2,-1){};
-        \node (14) [vertex,label=90:]  at (4,-1){};
-        \node (15) [vertex,label=90:]  at (0,-3){};
-        \node (16) [vertex,label=90:]  at (2,-3){};
-        \node (17) [vertex,label=90:]  at (4,-3){};
+      \begin{scope}[xshift=4cm]
+        \node (9) [vertex,label=180:]  at (0,1){};
+        \node (10) [vertex,label=90:]  at (1,1){};
+        \node (11) [vertex,label=90:]  at (2,1){};
+        \node (12) [vertex,label=90:]  at (0,0){};
+        \node (13) [vertex,label=90:]  at (1,0){};
+        \node (14) [vertex,label=90:]  at (2,0){};
+        \node (15) [vertex,label=90:]  at (0,-1){};
+        \node (16) [vertex,label=90:]  at (1,-1){};
+        \node (17) [vertex,label=90:]  at (2,-1){};
 
         \draw [edge] (9)  to (10);
         \draw [edge] (11) to (14);
@@ -183,36 +183,60 @@
         \path(11)edge[bend left]node{}(17);
         \node (L) at (-0.5,1){$G_2$};
       \end{scope}
+      
+      %%%%% Componente debajo  %%%%%%
+      \begin{scope}[xshift=8cm]
+        \node (0) [vertex,label=180:] at (0,1){};
+        \node (1) [vertex,label=90:]  at (1,1){};
+        \node (2) [vertex,label=90:]  at (2,1){};
+        \node (3) [vertex,label=90:]  at (0,0){};
+        \node (4) [vertex,label=90:]  at (1,0){};
+        \node (5) [vertex,label=90:]  at (2,0){};
+        \node (6) [vertex,label=90:]  at (0,-1){};
+        \node (7) [vertex,label=90:]  at (1,-1){};
+        \node (8) [vertex,label=90:]  at (2,-1){};
+        
+        \draw [edge] (0) to (1);
+        \draw [edge] (1) to (2);
+        \draw [edge] (2) to (5);
+        \draw [edge] (3) to (6);
+        \draw [edge] (3) to (7);
+        \draw [edge] (4) to (5);
+        \draw [edge] (4) to (7);
+        \draw [edge] (5) to (8);
+        
+        \node (L) at (-0.5,1){$G_3$};
+      \end{scope}
     \end{tikzpicture}
   \end{figure}
 
-  \begin{figure}[ht!]
-    \centering
-    \begin{tikzpicture}
-      %%%%% Componente debajo  %%%%%
-      \node (0) [vertex,label=180:] at (0,1){};
-      \node (1) [vertex,label=90:]  at (2,1){};
-      \node (2) [vertex,label=90:]  at (4,1){};
-      \node (3) [vertex,label=90:]  at (0,-1){};
-      \node (4) [vertex,label=90:]  at (2,-1){};
-      \node (5) [vertex,label=90:]  at (4,-1){};
-      \node (6) [vertex,label=90:]  at (0,-3){};
-      \node (7) [vertex,label=90:]  at (2,-3){};
-      \node (8) [vertex,label=90:]  at (4,-3){};
+%  \begin{figure}[ht!]
+%    \centering
+%    \begin{tikzpicture}
+%    
+%      \node (0) [vertex,label=180:] at (0,1){};
+%      \node (1) [vertex,label=90:]  at (1,1){};
+%      \node (2) [vertex,label=90:]  at (2,1){};
+%      \node (3) [vertex,label=90:]  at (0,0){};
+%      \node (4) [vertex,label=90:]  at (1,0){};
+%      \node (5) [vertex,label=90:]  at (2,0){};
+%      \node (6) [vertex,label=90:]  at (0,-1){};
+%      \node (7) [vertex,label=90:]  at (1,-1){};
+%      \node (8) [vertex,label=90:]  at (2,-1){};
+%
+%      \draw [edge] (0) to (1);
+%      \draw [edge] (1) to (2);
+%      \draw [edge] (2) to (5);
+%      \draw [edge] (3) to (6);
+%      \draw [edge] (3) to (7);
+%      \draw [edge] (4) to (5);
+%      \draw [edge] (4) to (7);
+%      \draw [edge] (5) to (8);
+%
+%      \node (L) at (-0.5,1){$G_3$};
+%    \end{tikzpicture}
+%  \end{figure}
 
-      \draw [edge] (0) to (1);
-      \draw [edge] (1) to (2);
-      \draw [edge] (2) to (5);
-      \draw [edge] (3) to (6);
-      \draw [edge] (3) to (7);
-      \draw [edge] (4) to (5);
-      \draw [edge] (4) to (7);
-      \draw [edge] (5) to (8);
-
-      \node (L) at (-0.5,1){$G_3$};
-    \end{tikzpicture}
-  \end{figure}
-  
   con sucesiones orden $9$, tamaño $8$ y sucesión de grados $(1,1,1,2,2,2,2,2,3)$.
   \hfill $\square$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -562,14 +586,24 @@
     
     Sea G una gráfica tal que $G[X,Y]$ y sea r cualquier Entero tal que $|X|=r$
     
-    Paso base (n=1): Sea G[X,Y$_1$] donde $|X|=r$ y $|Y|=1 \Longrightarrow $ como G es bipartita, todo vértice de X se relaciona con el único elmento de Y, por lo que $\sum_{v \in X}d(v) = r $ y el grado del único vertice en Y, será igual a r, por lo tanto $\sum_{v \in X}d(v) = r = \sum_{v \in Y_1}d(v) $
+    Paso base (n=1): Sea G[X,Y$_1$] donde $|X|=r$ y $|Y|=1 \Longrightarrow $
+    como G es bipartita, todo vértice de X se relaciona con el único elmento
+    de Y, por lo que $\sum_{v \in X}d(v) = r $ y el grado del único vertice
+    en Y, será igual a r, por lo tanto $\sum_{v \in X}d(v) = r = \sum_{v \in Y_1}d(v)$
     
-    Hipótesis de Inducción (n=k): Supongamos que G$[X, Y_k]$ es una gráfica bipartita y que $\sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v) $ 
+    Hipótesis de Inducción (n=k): Supongamos que G$[X, Y_k]$ es una gráfica
+    bipartita y que $\sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v) $ 
     
-    Paso inductivo (n=k+1): Sea G[X,Y$_{k+1}$] función bipartita Pd)  
-    $ \sum_{v \in X} d(v) =  \sum_{v \in Y_{k+1}}d(v) $ 
+    Paso inductivo $(n=k+1):$ Sea $G[X,Y_{k+1}]$ función bipartita Pd)
+    $\sum_{v \in X} d(v) = \sum_{v \in Y_{k+1}}d(v)$ 
     
-    Demostración: Por hipotesis de inducción si  G[X,Y$_k$] $\Longrightarrow \sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v) \Longrightarrow$ si agregamos un vértice a Y$_k$, donde $|Y_{k+1}|= |Y_k| +1 \Longrightarrow$ por defición de gráfica bipartica existirán vértices de X que serán adyacentes con el nuevo vértice en Y $\Longrightarrow$ sea q el número de nuevas relaciones entre X y el nuevo vértice en Y, vemos que el grado del nuevo vértice en Y será igual a q $\Longrightarrow \sum_{v \in X} d(v) = \sum_{v \in Y_k}d(v) + q =  \sum_{v \in Y_{k+1}}d(v) $ 
+    Demostración: Por hipotesis de inducción si  G[X,Y$_k$]
+    $\Longrightarrow \sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v) \Longrightarrow$
+    si agregamos un vértice a Y$_k$, donde $|Y_{k+1}|= |Y_k| +1 \Longrightarrow$
+    por defición de gráfica bipartica existirán vértices de X que serán adyacentes
+    con el nuevo vértice en Y $\Longrightarrow$ sea q el número de nuevas relaciones
+    entre X y el nuevo vértice en Y, vemos que el grado del nuevo vértice en Y será
+    igual a q $\Longrightarrow \sum_{v \in X} d(v) = \sum_{v \in Y_k}d(v) + q =  \sum_{v \in Y_{k+1}}d(v) $ 
     
     Por lo tanto para toda g tenemos que  $\sum_{v \in X}d(v) = \sum_{v \in Y}d(v) $ 
     \end{proof}
