@@ -518,8 +518,21 @@
 
     %-------------------------- inciso (a) ---------------------
   \item Demuestre que $\sum_{v \in X} d(v) = \sum_{v \in Y} d(v)$.
-    \begin{proof}
-      
+  \begin{proof}
+    (Inducción sobre ${|Y|}$)
+    
+    Sea G una gráfica tal que $G[X,Y]$ y sea r cualquier Entero tal que $|X|=r$
+    
+    Paso base (n=1): Sea G[X,Y$_1$] donde $|X|=r$ y $|Y|=1 \Longrightarrow $ como G es bipartita, todo vértice de X se relaciona con el único elmento de Y, por lo que $\sum_{v \in X}d(v) = r $ y el grado del único vertice en Y, será igual a r, por lo tanto $\sum_{v \in X}d(v) = r = \sum_{v \in Y_1}d(v) $
+    
+    Hipótesis de Inducción (n=k): Supongamos que G$[X, Y_k]$ es una gráfica bipartita y que $\sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v) $ 
+    
+    Paso inductivo (n=k+1): Sea G[X,Y$_{k+1}$] función bipartita Pd)  
+    $ \sum_{v \in X} d(v) =  \sum_{v \in Y_{k+1}}d(v) $ 
+    
+    Demostración: Por hipotesis de inducción si  G[X,Y$_k$] $\Longrightarrow \sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v) \Longrightarrow$ si agregamos un vértice a Y$_k$, donde $|Y_{k+1}|= |Y_k| +1 \Longrightarrow$ por defición de gráfica bipartica existirán vértices de X que serán adyacentes con el nuevo vértice en Y $\Longrightarrow$ sea q el número de nuevas relaciones entre X y el nuevo vértice en Y, vemos que el grado del nuevo vértice en Y será igual a q $\Longrightarrow \sum_{v \in X} d(v) = \sum_{v \in Y_k}d(v) + q =  \sum_{v \in Y_{k+1}}d(v) $ 
+    
+    Por lo tanto para toda g tenemos que  $\sum_{v \in X}d(v) = \sum_{v \in Y}d(v) $ 
     \end{proof}
     
     %-------------------------- inciso (b) ---------------------
@@ -564,11 +577,80 @@
 \item Sea $G = [X, Y]$ una gr\'afica bipartita con $|X| = r$ y $|Y| = s$.
   \begin{enumerate}
   \item Demuestre que $|E| \le rs$.
-
+%---------------------------------------------------------------------------------------------
+\begin{proof}
+  (Inducción sobre $|Y|$) 
+  
+  Sea r cualquier Entero tal que $|X|=r$
+  
+  Paso base $(n = 1)$: Sea G($V_1$,$E_1$): $G[X,Y]$ donde $|Y|=1\Longrightarrow$  se sigue por vacuidad que MAX$\{|E_1|\}$=r (ya que todo elemento de X solo se puede relacionar al unico vértice  en Y). 
+  
+  Hipótesis de inducción($ n = k$): Supongamos que existe G(V$_k$, E$_k$): G[X,Y] tal que $|X|=r$ y $|Y|= k$ $\Longrightarrow$ MAX$\{|E_k|\} = rk$
+  
+  Pd) (para n=k+1): G(V$_{(k+1)}$,E$_{(k+1)}$): G[X,Y] tal que $|X|=r$ y $|Y|=k+1 \Longrightarrow$ 
+  MAX$\{|E_{(k+1)}|\} = r(k+1)$
+  
+  Dem
+  
+  Por Hipótesis de inducción si G(V$_k$,E$_k$): G(X,Y) tal que $|X|=r$ y $|Y|=k$ por lo que 
+  el MAX$\{|Ek|\}=rk $ agregando un vertice a Y $\Longrightarrow$ definimos $|V(k+1)|$ = 1 + $|Vk|$ por lo que el MAX$\{|E(k+1)|\}$ = MAX$\{|Ek|\} + $ k (donde k son las nuevas relaciones entre el vertice que se agrego y todos los vertices de X) $\Longrightarrow$ MAX$\{|Ek|\} + $ k $= rk +r = r(k+1)$
+  
+  por lo tanto el MAX$\{|E(k+1)|\} = r(k+1)$.
+  
+  Por lo tanto, para toda G(V,E) si G[X,Y]: $|X|=r$ y $|Y|=s \Longrightarrow$ MAX$\{|E|\} =$ rs
+  \end{proof}
+%---------------------------------------------------------------------------------------------
   \item Deduzca que $|E| \le \frac{|V|^2}{4}$.
+%-----------------------------------------------------------------------------------------------
+\begin{proof}
+  PD. rs $ \leqslant (|V|^2)/4$
+  
+  Sabemos que para toda gráfica G$=[X,Y]: |X|=r$ y $|Y|=s \Longrightarrow$ (por teo. cálculo $x^2 > 0$) sean cualesquiera r,s que pertenecen a los Enteros  $\Longrightarrow  0 \leqslant (r-s)^2  \Longrightarrow 0   \leqslant r^2 + s^2 -2rs \Longrightarrow 2rs \leqslant r^2 + s^2 \Longrightarrow 4rs \leqslant r^2 + s^2 + 2rs \Longrightarrow 4rs \leqslant (r+s)^2 \Longrightarrow rs \leqslant ((r+s)^2)/4 $ y $r+s = |X|+|Y|$ por lo que por definición de particion $|X| + |Y| = |V|  \Longrightarrow (|V|^2)/4$ por inciso $(a)$ tenemos que:  $|E|\leqslant rs \leqslant (|V|^2)/4$
+   por lo tanto $ |E|\leqslant (|V|^2)/4 $ 
+  
+  \end{proof}
+%-----------------------------------------------------------------------------------------------
 
   \item Describa a las gr\'aficas bipartitas que cumplen la igualdad en el
     inciso anterior. Justifique su respuesta.
+%------------------------
+SOLUCION
+
+Debemos ver donde se cumple la igualdad $|E|= (|V|^2)/4$
+
+Sea $|V|= |X| + |Y| = r+s \Longrightarrow$ por la demostración del inciso del inciso $(b)$ y $(a)$ tenemos que si $0\leqslant(r-s)^2 \Longrightarrow |E|\leqslant rs \leqslant (|V|^2)/4 \Longrightarrow$ si $0=(r-s)^2 \Longrightarrow 0=r-s \Longrightarrow s=r \Longrightarrow rs=(|V|^2)/4 $ y si G es una gráfica bipartita completa $\Longrightarrow |E|=rs=(|V|^2)/4$ por lo tanto, si las particiones de la gráfica tienen el mismo número de elementos y tambien la gráfica es bipartita completa se cumple la desigualdad $|E|= (|V|^2)/4$
+\newpage
+Ejemplo:
+%\end{itemize}
+\begin{figure}[ht!]                                                             
+    \centering                                              
+        \begin{tikzpicture} 
+            \node (0) [vertex,label=180:] at (0,0){};
+            \node (1) [vertex,label=180:] at (0,-1){};   
+            \node (2) [vertex,label=180:] at (0,-2){};   
+            \node (3) [vertex,label=180:] at (2,0){};   
+            \node (4) [vertex,label=180:] at (2,-1){};   
+            \node (5) [vertex,label=180:] at (2,-2){};
+            
+         \draw [edge] (0) to (3); 
+         \draw [edge] (0) to (4); 
+         \draw [edge] (0) to (5); 
+         \draw [edge] (1) to (3); 
+         \draw [edge] (1) to (4); 
+         \draw [edge] (1) to (5); 
+         \draw [edge] (2) to (3); 
+         \draw [edge] (2) to (4); 
+         \draw [edge] (2) to (5); 
+                                                                 
+      \node (L) at (-0.5,1){$G_1$}; %nobre de la grafica 
+    \end{tikzpicture}
+\end{figure}
+$rs=9$
+
+$|E|=9$
+
+$|V|= 9 \Longrightarrow |V|^2/4 = 36/4 = 9$
+%------------------------
   \end{enumerate}
 
 \end{enumerate}
