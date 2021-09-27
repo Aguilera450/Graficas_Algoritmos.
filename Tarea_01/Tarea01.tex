@@ -92,6 +92,43 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Sea $n$ un entero, $n \ge 3$.   Demuestre que existe un \'unico
   $n$-ciclo, salvo isomorfismo.
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
+    Sean $G$ y $H$ ciclos de orden $n$.
+
+    Tomamos $V_{G} = (v_{1}, \dotsm, v_{n}, v_{1})$ y
+    $V_{H} = (v_{1}, \dotsm, v_{n}, v_{1})$.
+    
+    Como $G$ y $H$ son ciclos, sabemos que son $2$-regular.
+    Es decir, podemos suponer que un vértice $v_{i}$ de $G$
+    con $i \in  \{1, \dotsm, n\}$ es adyacente a dos vértices
+    (digamos $v_{i - 1}$ y $v_{i + 1}$). Análogamente para $H$.
+    
+    Ahora, como $G$ y $H$ son de orden $n$, definimos una
+    función $\phi: V_{G} \rightarrow V_{H}$ dada por
+    $\phi(v_{i}) = u_{i}$ para cada $i \in  \{1, \dotsm, n\}$.
+
+    Claramente $\phi$ es una biyección.
+
+    Demostraremos que $\phi$ es un isomorfismo:
+    \begin{itemize} %% Fer le modifique tantito.
+    \item[$\Rightarrow$)] Si $v_{i} v_{j} \in E_{G}$, entonces
+      podemos suponer, sin pérdida de generalidad, que $j = i + 1$.
+
+      Por definición de $\phi$, tenemos que $\phi(v_{i}) = u_{i}$
+      y $\phi(v_{j}) = u_{j} = u_{i + 1}$.
+
+      Como $u_{i}u_{j} = u_{i}u_{i + 1} \in E_{H}$, concluimos que
+      $\phi(v_{i})\phi(v_{j}) \in E_{H}$.
+    \item[$\Leftarrow$)] Reciprocamente, si $v_{i} v_{j} \notin E_{G}$,
+      entonces $j \neq i+1$.
+      
+      Se sigue que $\phi (v_{i}) \phi (v_{j}) = u_{i} u_{j} \notin E_{H}$.
+    \end{itemize}
+    
+    Por lo tanto, demostramos que existe un único $n$-ciclo
+    (salvo isomorfismo).
+  \end{proof}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item De un ejemplo de tres gr\'aficas del mismo orden, mismo tama\~no y misma
   sucesi\'on de grados tales que cualesquiera dos de dichas gr\'aficas no sean
