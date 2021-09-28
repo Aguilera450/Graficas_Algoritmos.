@@ -692,37 +692,37 @@ SOLUCION
 Debemos ver donde se cumple la igualdad $|E|= (|V|^2)/4$
 
 Sea $|V|= |X| + |Y| = r+s \Longrightarrow$ por la demostración del inciso del inciso $(b)$ y $(a)$ tenemos que si $0\leqslant(r-s)^2 \Longrightarrow |E|\leqslant rs \leqslant (|V|^2)/4 \Longrightarrow$ si $0=(r-s)^2 \Longrightarrow 0=r-s \Longrightarrow s=r \Longrightarrow rs=(|V|^2)/4 $ y si G es una gráfica bipartita completa $\Longrightarrow |E|=rs=(|V|^2)/4$ por lo tanto, si las particiones de la gráfica tienen el mismo número de elementos y tambien la gráfica es bipartita completa se cumple la desigualdad $|E|= (|V|^2)/4$
-\newpage
+
+
 Ejemplo:
 %\end{itemize}
+%\begin{center}
 \begin{figure}[ht!]                                                             
-    \centering                                              
-        \begin{tikzpicture} 
-            \node (0) [vertex,label=180:] at (0,0){};
-            \node (1) [vertex,label=180:] at (0,-1){};   
-            \node (2) [vertex,label=180:] at (0,-2){};   
-            \node (3) [vertex,label=180:] at (2,0){};   
-            \node (4) [vertex,label=180:] at (2,-1){};   
-            \node (5) [vertex,label=180:] at (2,-2){};
-            
-         \draw [edge] (0) to (3); 
-         \draw [edge] (0) to (4); 
-         \draw [edge] (0) to (5); 
-         \draw [edge] (1) to (3); 
-         \draw [edge] (1) to (4); 
-         \draw [edge] (1) to (5); 
-         \draw [edge] (2) to (3); 
-         \draw [edge] (2) to (4); 
-         \draw [edge] (2) to (5); 
-                                                                 
-      \node (L) at (-0.5,1){$G_1$}; %nobre de la grafica 
-    \end{tikzpicture}
+  \centering
+  \begin{tikzpicture} 
+    \node (0) [vertex,label=180:] at (0,0){};
+    \node (1) [vertex,label=180:] at (0,-1){};   
+    \node (2) [vertex,label=180:] at (0,-2){};   
+    \node (3) [vertex,label=180:] at (2,0){};   
+    \node (4) [vertex,label=180:] at (2,-1){};   
+    \node (5) [vertex,label=180:] at (2,-2){};
+    
+    \draw [edge] (0) to (3); 
+    \draw [edge] (0) to (4); 
+    \draw [edge] (0) to (5); 
+    \draw [edge] (1) to (3); 
+    \draw [edge] (1) to (4); 
+    \draw [edge] (1) to (5); 
+    \draw [edge] (2) to (3); 
+    \draw [edge] (2) to (4); 
+    \draw [edge] (2) to (5); 
+    
+    \node (L) at (-0.5,1){$G_1$}; %nobre de la grafica 
+  \end{tikzpicture}
 \end{figure}
-$rs=9$
+%\end{center}
 
-$|E|=9$
-
-$|V|= 9 \Longrightarrow |V|^2/4 = 36/4 = 9$
+Obsérvese que $rs=9$, $|E|=9$, y $|V| = 9$ implica que $|V|^2/4 = 36/4 = 9$.
 %------------------------
   \end{enumerate}
 
