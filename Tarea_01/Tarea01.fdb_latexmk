@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1632792084 "Tarea01.tex" "Tarea01.pdf" "Tarea01" 1632792086
+["pdflatex"] 1632795063 "Tarea01.tex" "Tarea01.pdf" "Tarea01" 1632795200
   "../Imagen/Portada.jpg" 1632789223 167372 46bc0be31169496ccdde2e76c59cedb2 ""
   "/etc/texmf/web2c/texmf.cnf" 1632638498 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -145,6 +145,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty" 1480098820 2431 fe3078ec12fc30287f568596f8e0b948 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1480098821 19821 310da678527a7dfe2a02c88af38079b7 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty" 1480098821 2854 d9a09e80ec53a1710adc74c0e8300370 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd" 1480098821 2256 80ce1168fb4ce6a85583a9cf8972c013 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1480098821 8292 e897c12e1e886ce77fe26afc5d470886 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd" 1480098821 2020 d5c6fbbe41610194529ecfc3e463c559 ""
   "/usr/share/texlive/texmf-dist/tex/latex/cancel/cancel.sty" 1480098823 7592 dd751af313a16a0308545d5bfd7aaaa2 ""
@@ -183,8 +184,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1632720860 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1632720893 4126752 85730c773d2d6b68c139b2f64c7ef8a6 ""
-  "Tarea01.aux" 1632792086 8 a94a2480d3289e625eea47cd1b285758 ""
-  "Tarea01.tex" 1632792084 30132 f2b408c68ac82b6885246eb60134eec9 ""
+  "Tarea01.aux" 1632795065 8 a94a2480d3289e625eea47cd1b285758 ""
+  "Tarea01.tex" 1632795199 30489 94985b8bd0f26576208f3a93ba1db4a3 ""
   (generated)
   "Tarea01.pdf"
   "Tarea01.aux"

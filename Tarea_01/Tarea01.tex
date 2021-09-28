@@ -586,60 +586,70 @@
       \begin{proof}
         (Inducción sobre ${|Y|}$)
 
-        Sea G una gráfica tal que $G[X,Y]$ y sea r cualquier Entero tal que $|X|=r$
+        Sea $G$ una gr\'afica bipartita $G[X,Y]$ y sea $r$ cualquier Entero tal que $|X|=r$.
+        \begin{itemize}
+          \item PASO BASE: ($n=1$)
 
-        Paso base (n=1): Sea G[X,Y$_1$] donde $|X|=r$ y $|Y|=1 \Longrightarrow $
-        como G es bipartita, todo vértice de X se relaciona con el único elmento
-        de Y, por lo que $\sum_{v \in X}d(v) = r $ y el grado del único vertice
-        en Y, será igual a r, por lo tanto $\sum_{v \in X}d(v) = r = \sum_{v \in Y_1}d(v)$
+            As\'i, tenemos $G[X,Y_{1}]$ donde $|X|=r$ y $|Y|=1$. \\
+            Como $G$ es bipartita, todo v\'ertice de $X$ se relaciona con el \'unico elmento
+            de $Y$. \\
+            Por lo que $\sum_{v \in X}d(v) = r$ y el grado del \'unico v\'ertice
+            en $Y$ es igual a $r$. \\
+            Por lo tanto, $\sum_{v \in X}d(v) = r = \sum_{v \in Y_1}d(v)$. \\
 
-        Hipótesis de Inducción (n=k): Supongamos que G$[X, Y_k]$ es una gráfica
-        bipartita y que $\sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v) $
+          \item Hip\'otesis de Inducci\'on: ($n=k$)
 
-        Paso inductivo $(n=k+1):$ Sea $G[X,Y_{k+1}]$ función bipartita Pd)
-        $\sum_{v \in X} d(v) = \sum_{v \in Y_{k+1}}d(v)$
+            Supongamos que $G[X, Y_k]$ es una gr\'afica
+            bipartita y $\sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v)$. \\
 
-        Demostración: Por hipotesis de inducción si  G[X,Y$_k$]
-        $\Longrightarrow \sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v) \Longrightarrow$
-        si agregamos un vértice a Y$_k$, donde $|Y_{k+1}|= |Y_k| +1 \Longrightarrow$
-        por defición de gráfica bipartica existirán vértices de X que serán adyacentes
-        con el nuevo vértice en Y $\Longrightarrow$ sea q el número de nuevas relaciones
-        entre X y el nuevo vértice en Y, vemos que el grado del nuevo vértice en Y será
-        igual a q $\Longrightarrow \sum_{v \in X} d(v) = \sum_{v \in Y_k}d(v) + q =  \sum_{v \in Y_{k+1}}d(v) $
+          \item PASO INDUCTIVO: $(n=k+1)$
 
-        Por lo tanto para toda g tenemos que  $\sum_{v \in X}d(v) = \sum_{v \in Y}d(v) $
+            Sea $G[X,Y_{k+1}]$ funci\'on bipartita. \\
+            Demostraremos que $\sum_{v \in X} d(v) = \sum_{v \in Y_{k+1}}d(v)$.
+
+            Por hip\'otesis de inducci\'on, tenemos que $\sum_{v \in X}d(v) = \sum_{v \in Y_k}d(v)$. Luego, si agregamos un v\'ertice a Y$_k$, tenemos que $|Y_k|+1 = |Y_{k+1}|$. \\
+            Por defici\'on de gr\'afica bipartita, existir\'an v\'ertices de $X$ que son adyacentes
+            con el nuevo v\'ertice en $Y$. \\
+            Sea $q$ el número de nuevas relaciones entre $X$ y el nuevo v\'ertice en $Y$. \\
+            Vemos que el grado del nuevo v\'ertice en $Y$ es igual a $q$. Entonces:
+            $$\sum_{v \in X} d(v) = \sum_{v \in Y_k}d(v) + q =  \sum_{v \in Y_{k+1}}d(v)$$
+        \end{itemize}
+
+        Por lo tanto, para toda $G$ tenemos que $\sum_{v \in X}d(v) = \sum_{v \in Y}d(v)$.
         \end{proof}
 
       %-------------------------- inciso (b) ---------------------
       \item Demuestre que si $G$ es $k$-regular, con $k \ge 1$, entonces
         $|X| = |Y|$.
+
         \begin{proof}
-          Dada $G$ una gráfica $k$-regular $G[X,Y]$ bipartita.
+          Dada $G$ una gr\'afica $k$-regular $G[X,Y]$ bipartita. \\
           Sabemos que por ser bipartita y $k$-regular, se cumple que:
+
           \begin{itemize}
-          \item[-] Al menos $|V_G|=2$, pues una gráfica tiene como mínimo
-            un elemento y por ser bipartita está debe relacionarse con al
-            menos un elemento en la partición ajena a ella misma.
+            \item[-] Al menos $|V_G|=2$, pues una gr\'afica tiene como m\'inimo
+            un elemento. Adem\'as, por ser bipartita debe relacionarse con al
+            menos un elemento en la partici\'on ajena a ella misma.
 
-          \item[-] Todos los vértices tienen grado $k$.
+            \item[-] Todos los v\'ertices tienen grado $k$.
           \end{itemize}
-          Tenemos que en el caso mínimo, $|V_G| = 2$  hay una relación entre
-          dos vértices (cada uno de ellos pertenecientes a su respectiva
-          parte). Por lo tanto, al ser $k$-regular, tenemos que el grado
-          de estos vértices es al menos $1$. Entonces, $k \geq 1$.
 
-          Ahora usemos el resultado de $5$ ($a$). Sabemos que:
-          \[
-          \sum_{v \in X} d(v) = \sum_{v \in Y} d(v)
-          \]
-          Como cada vértice tiene grado $k$. podemos decir que:
-          \[
-          \abs{X} = \frac{\displaystyle \sum_{v \in X} d(v)}{k} \text{\hspace{0.3cm}
-            y \hspace{0.3cm}} \abs{Y} = \frac{\displaystyle \sum_{v \in Y} d(v)}{k}
-          \]
-          De lo anterior, se deduce que:
+          En el caso mínimo $|V_G| = 2$, hay una relaci\'on entre
+          dos v\'ertices (cada uno de ellos pertenecientes a su respectiva
+          parte). \\
+          Entonces, al ser $k$-regular, tenemos que el grado
+          de estos v\'ertices es al menos $1$. \\
+          Por lo tanto, $k \geq 1$.
 
-          \hspace*{5.6cm} $\therefore\ \ \ \ |X| = |Y|$
+          Ahora usando el resultado de $5$($a$), sabemos que:
+          $$\sum_{v \in X} d(v) = \sum_{v \in Y} d(v)$$
+
+          Como cada v\'ertice tiene grado $k$, podemos hacer lo siguiente:
+          $$\abs{X} = \frac{\displaystyle \sum_{v \in X} d(v)}{k} \text{\hspace{0.3cm}
+            \text{y} \hspace{0.3cm}} \abs{Y} = \frac{\displaystyle \sum_{v \in Y} d(v)}{k}$$
+
+          As\'i, concluimos que:
+          $$|X| = |Y|$$
         \end{proof}
     \end{enumerate}
 \end{enumerate}
@@ -656,31 +666,41 @@
         \begin{proof}
           (Inducción sobre $|Y|$)
 
-          Sea r cualquier Entero tal que $|X|=r$
+          Sea $r$ cualquier Entero tal que $|X|=r$.
+          \begin{itemize}
+            \item PASO BASE: $(n = 1)$
 
-          Paso base $(n = 1)$: Sea G($V_1$,$E_1$): $G[X,Y]$ donde $|Y|=1\Longrightarrow$  se sigue por vacuidad que MAX$\{|E_1|\}$=r (ya que todo elemento de X solo se puede relacionar al unico vértice  en Y).
+              Sea $G(V_1, E_1)$ tal que $G[X,Y]$, con $|Y|=1$. \\
+              Se sigue por vacuidad que, MAX$\{|E_1|\}=r$ (pues todo elemento de $X$ solo se puede relacionar al \'unico v\'ertice en $Y$). \\
 
-          Hipótesis de inducción($ n = k$): Supongamos que existe G(V$_k$, E$_k$): G[X,Y] tal que $|X|=r$ y $|Y|= k$ $\Longrightarrow$ MAX$\{|E_k|\} = rk$
+            \item Hip\'otesis de inducci\'on: ($n = k$)
 
-          Pd) (para n=k+1): G(V$_{(k+1)}$,E$_{(k+1)}$): G[X,Y] tal que $|X|=r$ y $|Y|=k+1 \Longrightarrow$
-          MAX$\{|E_{(k+1)}|\} = r(k+1)$
+              Supongamos que existe $G(V_k, E_k)$ tal que $G[X,Y]$, con $|X|=r$ y $|Y|= k$. \\ Entonces: $MAX\{|E_k|\} = rk$. \\
 
-          Dem
+            \item PASO INDUCTIVO: ($n=k+1$)
 
-          Por Hipótesis de inducción si G(V$_k$,E$_k$): G(X,Y) tal que $|X|=r$ y $|Y|=k$ por lo que
-          el MAX$\{|Ek|\}=rk $ agregando un vertice a Y $\Longrightarrow$ definimos $|V(k+1)|$ = 1 + $|Vk|$ por lo que el MAX$\{|E(k+1)|\}$ = MAX$\{|Ek|\} + $ k (donde k son las nuevas relaciones entre el vertice que se agrego y todos los vertices de X) $\Longrightarrow$ MAX$\{|Ek|\} + $ k $= rk +r = r(k+1)$
+              Sea $G(V_{(k+1)}, E_{(k+1)})$ tal que $G[X,Y]$, con $|X|=r$ y $|Y|=k+1$. \\
+              Entonces: MAX$\{|E_{(k+1)}|\} = r(k+1)$. \\
 
-          por lo tanto el MAX$\{|E(k+1)|\} = r(k+1)$.
+              Por Hip\'otesis de inducci\'on, $G(V_k, E_k)$ tal que $G[X,Y]$, con $|X|=r$ y $|Y|=k$,
+              por lo que MAX$\{|Ek|\}=rk$. Agregando un v\'ertice a $Y$, tenemos que $|V(k+1)|$ = 1 + $|Vk|$. As\'i, se tiene que MAX$\{|E(k+1)|\}$ = MAX$\{|Ek|\} + k$ (donde $k$ son las nuevas relaciones entre el v\'ertice que se agreg\'o y todos los v\'ertices de $X$). \\
+              Entonces:
+              $$\text{MAX}\{|Ek|\} + k = rk + r = r(k+1)$$
 
-          Por lo tanto, para toda G(V,E) si G[X,Y]: $|X|=r$ y $|Y|=s \Longrightarrow$ MAX$\{|E|\} =$ rs
+              Por lo anterior, tenemos que MAX$\{|E(k+1)|\} = r(k+1)$.
+          \end{itemize}
+
+          Por lo tanto, para toda $G(V, E)$ si $G[X,Y]$ con $|X|=r$ y $|Y|=s$, MAX$\{|E|\} = rs$.
         \end{proof}
+
       %---------------------------------------------------------------------------------------------
       \item Deduzca que $|E| \le \frac{|V|^2}{4}$.
         %-----------------------------------------------------------------------------------------------
         \begin{proof}
-          PD. rs $ \leqslant (|V|^2)/4$
+          Demostraremos que $rs \leqslant (|V|^2)/4$. \\
 
-          Sabemos que para toda gráfica G$=[X,Y]: |X|=r$ y $|Y|=s \Longrightarrow$ (por teo. cálculo $x^2 > 0$) sean cualesquiera r,s que pertenecen a los Enteros  $\Longrightarrow  0 \leqslant (r-s)^2  \Longrightarrow 0   \leqslant r^2 + s^2 -2rs \Longrightarrow 2rs \leqslant r^2 + s^2 \Longrightarrow 4rs \leqslant r^2 + s^2 + 2rs \Longrightarrow 4rs \leqslant (r+s)^2 \Longrightarrow rs \leqslant ((r+s)^2)/4 $ y $r+s = |X|+|Y|$ por lo que por definición de particion $|X| + |Y| = |V|  \Longrightarrow (|V|^2)/4$ por inciso $(a)$ tenemos que:  $|E|\leqslant rs \leqslant (|V|^2)/4$
+          Sabemos que para toda gr\'afica $G[X,Y]$, $|X|=r$ y $|Y|=s$ con $r,s$ que pertenecen a los Enteros. \\
+          Por un Teorema de C\'alculo ($x^2 > 0$), $0 \leqslant (r-s)^2  \Longrightarrow 0   \leqslant r^2 + s^2 -2rs \Longrightarrow 2rs \leqslant r^2 + s^2 \Longrightarrow 4rs \leqslant r^2 + s^2 + 2rs \Longrightarrow 4rs \leqslant (r+s)^2 \Longrightarrow rs \leqslant ((r+s)^2)/4 $ y $r+s = |X|+|Y|$ por lo que por definición de particion $|X| + |Y| = |V|  \Longrightarrow (|V|^2)/4$ por inciso $(a)$ tenemos que:  $|E|\leqslant rs \leqslant (|V|^2)/4$
            por lo tanto $ |E|\leqslant (|V|^2)/4 $
 
         \end{proof}
