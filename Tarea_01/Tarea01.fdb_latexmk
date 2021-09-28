@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1632795063 "Tarea01.tex" "Tarea01.pdf" "Tarea01" 1632795200
+["pdflatex"] 1632796210 "Tarea01.tex" "Tarea01.pdf" "Tarea01" 1632796212
   "../Imagen/Portada.jpg" 1632789223 167372 46bc0be31169496ccdde2e76c59cedb2 ""
   "/etc/texmf/web2c/texmf.cnf" 1632638498 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -184,8 +184,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1632720860 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1632720893 4126752 85730c773d2d6b68c139b2f64c7ef8a6 ""
-  "Tarea01.aux" 1632795065 8 a94a2480d3289e625eea47cd1b285758 ""
-  "Tarea01.tex" 1632795199 30489 94985b8bd0f26576208f3a93ba1db4a3 ""
+  "Tarea01.aux" 1632796211 8 a94a2480d3289e625eea47cd1b285758 ""
+  "Tarea01.tex" 1632796210 30569 29c6eccfd65f3ba8746276ac7a7bd0e3 ""
   (generated)
   "Tarea01.pdf"
   "Tarea01.aux"

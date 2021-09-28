@@ -72,25 +72,26 @@
 \pagestyle{fancyplain}
 
 \begin{document}
-\title{UNIVERSIDAD AUTÓNOMA DE MÉXICO\\ Facultad de Ciencias}
-\author{Autores:  Fernanda Villafán Flores
+\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+\author{Autores:
+  \\ Fernanda Villaf\'an Flores
   \\ Fernando Alvarado Palacios
-  \\ Adrián Aguilera Moreno}
+  \\ Adri\'an Aguilera Moreno}
 \date{}
 \maketitle
 \begin{center}
   \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
   \Large
-  \bf{Gráficas y Juegos}
+  \bf{Gr\'aficas y Juegos}
   \normalsize
 \end{center}
 \newpage
-\fancyhead[r]{ Gr\'aficas y Juegos 2021-2 }
+\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
 \section*{\LARGE{Tarea 1}}
 
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Sea $n$ un entero, $n \ge 3$.   Demuestre que existe un \'unico
+  \item Sea $n$ un entero, $n \ge 3$. Demuestre que existe un \'unico
     $n$-ciclo, salvo isomorfismo.
     \renewcommand\qedsymbol{QED}
     \begin{proof}
@@ -248,7 +249,7 @@
 
     \renewcommand\qedsymbol{QED}
     \begin{proof}
-      La demostración se dividirá en dos incisos:
+      La demostraci\'on se dividir\'a en dos incisos:
       \begin{itemize}
         \item[$\cdot$)] $\displaystyle \sum_{v \in V_{D}} d^{+}(v) = \abs{A_{D}}$
 
@@ -265,11 +266,11 @@
             \right.$
           \end{center}
           Ahora, supongamos que $V = \{v_{1}, \dotsm, v_{n}\}$ donde $v_{i}$
-          corresponde al \textit{i-ésimo} renglón de $M_{1}$.
+          corresponde al \textit{i-\'esimo} rengl\'on de $M_{1}$.
 
           Sabemos que las entradas de cada columna de $M_{1}$ son igual a 1,
-          que son las flechas $e_{j}$ con un vértice llamado \textit{cola de la flecha}.
-          Por otro lado, las entradas del \textit{i-ésimo} renglón de $M_{1}$
+          que son las flechas $e_{j}$ con un v\'ertice llamado \textit{cola de la flecha}.
+          Por otro lado, las entradas del \textit{i-\'esimo} rengl\'on de $M_{1}$
           suman $d^{+}(v_{i})$, ya que las entradas corresponden a todas las
           flechas de las cuales $v_{i}$ es cola de dicha flecha.
 
@@ -282,7 +283,7 @@
               & = \sum_{v \in V} d^{+}(v)
             \end{split}
           \end{equation*}
-          De forma análoga se realiza el otro inciso.
+          De forma an\'aloga se realiza el otro inciso.
 
         \item[$\cdot\cdot$)] $\displaystyle \sum_{v \in V_{D}} d^{-}(v) = \abs{A_{D}}$
 
@@ -299,11 +300,11 @@
             \right.$
           \end{center}
           Ahora, supongamos que $V = \{v_{1}, \cdots, v_{n}\}$ donde $v_{i}$
-          corresponde al \textit{i-ésimo} renglón de $M_{1}$.
+          corresponde al \textit{i-\'esimo} rengl\'on de $M_{1}$.
 
           Sabemos que las entradas de cada columna de $M_{1}$ son igual a 1,
-          que son las flechas $e_{j}$ con un vértice llamado \textit{cabeza de la flecha}.
-          Por otro lado, las entradas del \textit{i-ésimo} renglón de $M_{1}$
+          que son las flechas $e_{j}$ con un v\'ertice llamado \textit{cabeza de la flecha}.
+          Por otro lado, las entradas del \textit{i-ésimo} rengl\'on de $M_{1}$
           suman $d^{-}(v_{i})$, ya que las entradas corresponden a todas las
           flechas de las cuales $v_{i}$ es cabeza de dicha flecha.
 
@@ -335,7 +336,7 @@
 
         %-------------------------- inciso (a) ---------------------
         %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_1
-        Gráfica representativa de $BL_1$:
+        Gr\'afica representativa de $BL_1$:
         \begin{center}
           \begin{tikzpicture}
             \tikzstyle{vertex} = [circle, fill = black!10]
@@ -349,7 +350,7 @@
         \end{center}
 
         %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_2
-        Gráfica representativa de $BL_2$:
+        Gr\'afica representativa de $BL_2$:
         \begin{center}
           \begin{tikzpicture}
             \tikzstyle{vertex} = [circle, fill = black!10]
@@ -369,7 +370,7 @@
         \end{center}
 
         %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_3
-        Gráfica representativa de $BL_3$:
+        Gr\'afica representativa de $BL_3$:
         \begin{center}
           \begin{tikzpicture}
             \tikzstyle{vertex} = [circle, fill = black!10]
@@ -401,7 +402,7 @@
         \end{center}
 
         %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BL_4
-        Gráfica representativa de $BL_4$:
+        Gr\'afica representativa de $BL_4$:
         \begin{center}
           \begin{tikzpicture}
             \tikzstyle{vertex} = [circle, fill = black!10]
@@ -464,16 +465,16 @@
       %-------------------------- inciso (b) ---------------------
       \item Determine $|V_{BL_n}|$ y $|E_{BL_n}|$. (Justifique su respuesta).
 
-        Veamos que la cantidad de vértices es igual a la
+        Veamos que la cantidad de v\'ertices es igual a la
         cantidad de subconjuntos que se pueden formar de
-        la retícula $BL_n$, esto es el conjunto potencia
+        la ret\'icula $BL_n$, esto es el conjunto potencia
         de $\{1, \dotsm, n\}$. Por lo que:
         \begin{center}
           $\abs{V_{BL_n}} = \abs{P \left(\{1, \dotsm, n\}\right)} = 2^{n}$
         \end{center}
-        Mientras que es un tanto más empírica la forma en
+        Mientras que es un tanto m\'as emp\'irica la forma en
         la que se obtiene la cardinalidad de $E_{BL_n}$,
-        veamos la siguiente tabla con las primeras retículas:
+        veamos la siguiente tabla con las primeras ret\'iculas:
         \begin{center}
           \begin{tabular}{|c|c|}
             \hline
@@ -489,37 +490,37 @@
             \hline
           \end{tabular}
         \end{center}
-        Nótese que:
+        N\'otese que:
         \begin{eqnarray*}
           1 \cdot 1 &= 1 \cdot 2^{1-1} =& 1\\
           2 \cdot 2 &= 2 \cdot 2^{2-1} =& 4\\
           3 \cdot 4 &= 3 \cdot 2^{3-1} =& 12\\
           4 \cdot 8 &= 4 \cdot 2^{4-1} =& 32
         \end{eqnarray*}
-        Podemos deducir $\abs{E_{BL_n}} = n \cdot 2^{n-1}$.
+        Podemos deducir que $\abs{E_{BL_n}} = n \cdot 2^{n-1}$.
 
         \begin{center}
           \fbox{
             \begin{minipage}[b][1\height]%
               [t]{0.867\textwidth}
-              En general las retículas booleanas son $n$-regulares,
+              En general, las ret\'iculas booleanas son $n$-regulares,
               pues para un $x \in V_{BL_{n - 1}}$ con $BL_{n - 1}$
-              siendo $n$-regular, el  $BL_n$ tendrá a $x$ relacionado
+              siendo $n$-regular, el  $BL_n$ tendr\'a a $x$ relacionado
               con al menos $n -1$ elementos (son con los que ya se
-              relacionaba en $BL_{n - 1}$) y $x$ se relacionará con
-              el conjunto de tamaño $|x| + 1$ (el cuál sólo es uno,
+              relacionaba en $BL_{n - 1}$) y $x$ se relacionar\'a con
+              el conjunto de tamaño $|x| + 1$ (el cu\'al s\'olo es uno,
               pues este es $x \cup \{n\}$) y concluimos que $BL_n$
               es $n$-regular, pues cada $x$ se relaciona con
               $(n - 1) + 1$ elemento.
           \end{minipage}}
         \end{center}
 
-        Luego hay $n$ aristas por cada vértice (los cuáles son
+        Luego hay $n$ aristas por cada v\'ertice (los cu\'ales son
         $2^n$, como ya vimos) y por el inciso ($c$) tenemos que
-        $BL_n$ es bipartita, esto aunado al hecho de que es
+        $BL_n$ es bipartita. Esto aunado al hecho de que es
         $n$-regular, nos da partes en $BL_n$ de igual
         cardinalidad. De lo anterior hay una cantidad de aristas
-        igual a $n$ por cada una de las partes, \textit{i.e.},
+        igual a $n$ por cada una de las partes. Es decir:
         \begin{eqnarray*}
           |E_{BL_n}| &=& n \cdot \frac{2^n}{2}\\
           &=& n \cdot 2^{n - 1}
@@ -535,43 +536,46 @@
 
       \begin{proof}
 
-        Sea $A = \{1, \dotsm,n\}$ conjunto con $n \in \mathbb{Z}^+$.
+        Sea $A = \{1, \dotsm,n\}$ conjunto con $n \in \mathbb{Z}^+$. \\
         Veamos que podemos particionar nuestra $BL_n$ en los conjuntos
         $X$ y $Y$ de tal forma que $X$ contenga los subconjuntos de
         $BL_n$ tales que su cardinalidad es $2k$, donde $2k \in A$  y
         $Y$ tal que contenga los subconjuntos de $BL_n$ de cardinalidad
-        $2k -1$, donde $2k -1 \in A$.
+        $2k -1$, donde $2k -1 \in A$. \\
 
-        Veamos que pasa cuando dos subconjuntos en $BL_n$ se relacionan,
+        Veamos qu\'e pasa cuando dos subconjuntos en $BL_n$ se relacionan,
         es decir, son adyacentes en $BL_n$.
+
         \begin{itemize}
-        \item[-] Su diferencia simétrica es $1$.
+          \item[-] Su diferencia sim\'etrica es $1$.
         \end{itemize}
+
         Dados dos subconjuntos en $BL_n$, uno de ellos debe tener cardinalidad
         $n+1$ o $n-1$ y el otro de cardinalidad $n$ tal que se cumple que uno
-        de ellos es subconjunto del otro.
+        de ellos es subconjunto del otro. \\
 
-        Notemos que en $X$ están todos los subconjuntos de cardinalidad par.
-        Por tanto, la diferencia simétrica entre cualesquiera 2 subconjuntos
+        Notemos que en $X$ est\'an todos los subconjuntos de cardinalidad par. \\
+        Por tanto, la diferencia sim\'etrica entre cualesquiera 2 subconjuntos
         distintos en $X$ es:
         \begin{itemize}
         \item[-] A lo menos un conjunto de cardinalidad $2$.
         \end{itemize}
-        De lo anterior, tenemos que ningún subconjunto en
-        $X$ cumple ser adyacente mediante la definición de $BL_n$.
+        De lo anterior, tenemos que ning\'un subconjunto en
+        $X$ cumple ser adyacente mediante la definici\'on de $BL_n$.
 
-        Ahora notemos que, en $Y$ están todos los subconjuntos de
-        $BL_n$  que tienen cardinalidad impar. Por lo tanto, la
-        diferencia simétrica en cualesquiera dos subconjuntos
+        Ahora notemos que, en $Y$ est\'an todos los subconjuntos de
+        $BL_n$  que tienen cardinalidad impar. \\
+        Por lo tanto, la diferencia sim\'etrica en cualesquiera dos subconjuntos
         distintos en $Y$ es:
+
         \begin{itemize}
-        \item[-] Al menos un conjunto de cardinalidad $2$.
+          \item[-] Al menos un conjunto de cardinalidad $2$.
         \end{itemize}
+
         Entonces tenemos que: $2k + 1 - (2k -1) = 2$ y como $Y$
         es un conjunto, no se tiene dos conjuntos iguales a los
-        cuales relacionar. Por lo anterior y por la definición de
-        diferencia simétrica, no existen dos conjuntos adyacentes
-        en $Y$.
+        cuales relacionar. \\
+        Por lo anterior y por la definici\'on de diferencia sim\'etrica, no existen dos conjuntos adyacentes en $Y$.
 
         \hspace*{3cm}  $\therefore$ \ \ \ $BL_n$ es bipartita en $X$ y $Y$, \textit{i.e.} $BL_n[X,Y]$
       \end{proof}
@@ -591,7 +595,7 @@
           \item PASO BASE: ($n=1$)
 
             As\'i, tenemos $G[X,Y_{1}]$ donde $|X|=r$ y $|Y|=1$. \\
-            Como $G$ es bipartita, todo v\'ertice de $X$ se relaciona con el \'unico elmento
+            Como $G$ es bipartita, todo v\'ertice de $X$ se relaciona con el \'unico elemento
             de $Y$. \\
             Por lo que $\sum_{v \in X}d(v) = r$ y el grado del \'unico v\'ertice
             en $Y$ es igual a $r$. \\
@@ -611,7 +615,8 @@
             Por defici\'on de gr\'afica bipartita, existir\'an v\'ertices de $X$ que son adyacentes
             con el nuevo v\'ertice en $Y$. \\
             Sea $q$ el número de nuevas relaciones entre $X$ y el nuevo v\'ertice en $Y$. \\
-            Vemos que el grado del nuevo v\'ertice en $Y$ es igual a $q$. Entonces:
+            Vemos que el grado del nuevo v\'ertice en $Y$ es igual a $q$. \\
+            Entonces:
             $$\sum_{v \in X} d(v) = \sum_{v \in Y_k}d(v) + q =  \sum_{v \in Y_{k+1}}d(v)$$
         \end{itemize}
 
