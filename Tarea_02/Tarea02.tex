@@ -90,35 +90,54 @@
 \fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
 \section*{\LARGE{Tarea 2}}
 
-
 \begin{enumerate}
-\item Demuestre que toda flecha en un camino dirigido cerrado en una
-  digr\'afica pertenece a alg\'un ciclo dirigido.
-
+  \small
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Demuestre que toda flecha en un camino dirigido cerrado en una  digr\'afica
+  pertenece a alg\'un ciclo dirigido.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $G$ es simple y $\delta \ge 2$, entonces $G$ contiene
   un ciclo de longitud al menos $\delta + 1$.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Sea $G$ una gr\'afica conexa.   Demuestre que si $G$ no es completa,
   entonces contiente a $P_3$ como subgr\'afica inducida.
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
+    Procedamos por reducción al absurdo.
 
+    Sea $G$ una gráfica completa, entonces $P_{3}$ es subgráfica de $G$. Para este
+    ejercicio necesitamos de una condición, $V_G \ge 4$, para las gráficas que no
+    cumplan esto se tendrá la demostración por vacuidad.
+
+    Tomemos a $x_{i - 1}, x_{i}, x_{i + 1}, x_{i + 2}$ en $V_{G}$ ($2 \ge i \ge
+    |V_{G}| - 2$), como $G$ es completa se tiene que la distancia entre cualesquiera
+    $2$ v\'ertices es $1$, luego tenemos que hay ${4 \choose 2}$ aristas!! y esto es
+    claramente mayor que $3$, como los vértices que tomamos son arbitrarios, podemos
+    concluir que $P_{3} \nsubseteq G$.
+    
+    Como la anterior contradicción resulta de suponer a $G$ completa, podemos
+    asegurar que si $G$ no es completa, entonces $P_3 \subseteq G$.
+  \end{proof}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que cualesquiera dos trayectorias de longitud m\'axima en una
   gr\'afica conexa tienen un vértice en común.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Caracterice a las gr\'aficas $k$-regulares para $k \in \{ 0, 1, 2 \}$.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $|E| \ge |V|$, entonces $G$ contiene un ciclo.
 \end{enumerate}
 
 \section*{Puntos extra}
 
 \begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Sea $G$ una gr\'afica.   Demuestre que $G$ es $k$-partita completa si y
   s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
   inducidas.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $G$ es una gr\'afica con $|V| \ge 4$ y $|E| > n^2/4$,
   entonces $G$ contiene un ciclo impar.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Sea $d = (d_1, \dots, d_n)$ una sucesi\'on no creciente de enteros no
   negativos. Sea $d' = (d_2-1, \dots, d_{d_1+1}-1, d_{d_1+2}, \dots, d_n)$.
   \begin{enumerate}
