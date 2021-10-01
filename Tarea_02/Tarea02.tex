@@ -106,16 +106,16 @@
     Procedamos por reducción al absurdo.
 
     Sea $G$ una gráfica completa, entonces $P_{3}$ es subgráfica de $G$. Para este
-    ejercicio necesitamos de una condición, $V_G \ge 4$, para las gráficas que no
+    ejercicio necesitamos de una condición, $V_G \ge 3$, para las gráficas que no
     cumplan esto se tendrá la demostración por vacuidad.
 
-    Tomemos a $x_{i - 1}, x_{i}, x_{i + 1}, x_{i + 2}$ en $V_{G}$ ($2 \ge i \ge
-    |V_{G}| - 2$), como $G$ es completa se tiene que la distancia entre cualesquiera
-    $2$ v\'ertices es $1$, luego tenemos que hay ${4 \choose 2}$ aristas!! y esto es
-    claramente mayor que $3$, como los vértices que tomamos son arbitrarios, podemos
-    concluir que $P_{3} \nsubseteq G$.
+    Tomemos a $x_{i - 1}, x_{i}, x_{i + 1}$ en $V_{G}$ ($2 \ge i \ge
+    |V_{G}| - 1$), como $G$ es completa se tiene que la distancia entre cualesquiera
+    $2$ v\'ertices es $1$, luego tenemos que hay ${3 \choose 2}$ aristas!! y esto es
+    claramente mayor que $2$ ($|E_{P_3}|$), como los v\'ertices que tomamos son arbitrarios,
+    podemos concluir que $P_{3} \nsubseteq G$.
     
-    Como la anterior contradicción resulta de suponer a $G$ completa, podemos
+    Como la anterior contradicci\'on resulta de suponer a $G$ completa, podemos
     asegurar que si $G$ no es completa, entonces $P_3 \subseteq G$.
   \end{proof}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,6 +123,22 @@
   gr\'afica conexa tienen un vértice en común.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Caracterice a las gr\'aficas $k$-regulares para $k \in \{ 0, 1, 2 \}$.
+  
+  \textit{\textbf{Soluci\'on:}}
+  \begin{itemize}
+  \item[$k = 0$)] Son todas las gráficas que no tienen aristas, a estas se les conoce
+    como g\'aficas vac\'ias.
+  \item[$k = 1$)] Estas son gr\'aficas con una cantidad de v\'ertices par y son tantas
+    uniones de $P_2$ como $\frac{|V_G|}{2}$. Las gráficas con $|V_G|$ impar no entran
+    aqu\'i porque siempre habr\'a $(|V_G| - 1) P_2$ y alg\'un v\'ertice (aislado) será
+    de grado igual a $0$!! (o, pensando en lazos, de grado igual a 2), lo que contradice
+    el ser $1-$regular.
+  \item[$k = 2$)] Son gr\'aficas que contienen ciclos o son combinaciones de ciclos.
+    Todos los ciclos son $2-$regulares, esto no implica que todas las gr\'aficas
+    $2-$regulares sean un ciclo pero si que los contengan o que sean combinaciones
+    de estos.
+  \end{itemize}
+  Con los $3$ puntos anteriores concluimos la caracterización. \hfill $\square$
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $|E| \ge |V|$, entonces $G$ contiene un ciclo.
 \end{enumerate}
