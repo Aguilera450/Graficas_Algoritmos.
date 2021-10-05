@@ -73,224 +73,280 @@
 \pagestyle{fancyplain}
 
 \begin{document}
-\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
-\author{Autores:
-  \\ Fernanda Villaf\'an Flores
-  \\ Fernando Alvarado Palacios
-  \\ Adri\'an Aguilera Moreno}
-\date{}
-\maketitle
-\begin{center}
-  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
-  \Large
-  \bf{Gr\'aficas y Juegos}
-  \normalsize
-\end{center}
-\newpage
-\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
-\section*{\LARGE{Tarea 2}}
+  \title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+  \author{Autores:
+    \\ Fernanda Villaf\'an Flores
+    \\ Fernando Alvarado Palacios
+    \\ Adri\'an Aguilera Moreno}
+  \date{}
+  \maketitle
+  \begin{center}
+    \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+    \Large
+    \bf{Gr\'aficas y Juegos}
+    \normalsize
+  \end{center}
+  \newpage
+  \fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+  \section*{\LARGE{Tarea 2}}
 
-\begin{enumerate}
-  \small
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Demuestre que toda flecha en un camino dirigido cerrado en una digr\'afica
-  pertenece a alg\'un ciclo dirigido.
+  \begin{enumerate}
+    \small
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Demuestre que toda flecha en un camino dirigido cerrado en una digr\'afica
+      pertenece a alg\'un ciclo dirigido.
 
-  \begin{proof}
-    Sea $C$ un camino dirigido cerrado tal que $C = (v_{0}, v_{1}, \dots, v_{i},
-    \dots, v_{0})$.
+      \begin{proof}
+        Sea $C$ un camino dirigido cerrado tal que $C = (v_{0}, v_{1}, \dots, v_{i},
+        \dots, v_{0})$.
 
-    Procedamos por inducción sobre el número de veces que se repite un vértice
-    distinto a $v_{0}$.
-
-    \begin{itemize}
-      \item \textbf{Paso Base:} $i = 0$.
-
-        En este caso tenemos que el vértice $v_{i}$ no se repite ninguna vez, por
-        lo que ya tenemos el ciclo dirigido buscado.
-
-      \item \textbf{Hipótesis de Inducción:} Supongamos que $i > 0$ tal que haya un ciclo dirigido.
-
-      \item \textbf{Paso Inductivo:} Demostraremos que si el vértice $v_{i}$ se
-      repite al menos una vez, hay un ciclo dirigido.
-
-        Como el vértice $v_{i}$ se repite, podemos dividir a $C$ de la siguiente forma:
-
-        Sea $C'$ un camino dirigido cerrado de $C$. \\
-        Tenemos que:
-        $$C' = (v_{i}, \dots, v_{i})$$
-        Entonces, si $C'$ no repite vértices, ya tenemos el ciclo dirigido buscado. \\
-        En caso contrario, aplicamos el mismo proceso:
-
-        Sea $C''$ un camino dirigido cerrado de $C'$. \\
-        Tenemos que:
-        $$C'' = (v_{0}, \dots, v_{i}, v_{j}, \dots, v_{0}) \text{ , con $i < j$}$$
-        , donde $v_{0}$ es un vértice particular cualquiera en el camino dirigido $C$, el cuál tomamos
-        como vértice inicial para el camino $C''$.
-
-        Luego, este proceso lo realizamos hasta obtener un camino dirigido cerrado
-        sin vértices repetidos.
-    \end{itemize}
-    Así, podemos concluir que toda flecha en un camino dirigido cerrado en una digráfica
-    pertenece a algún ciclo dirigido.
-  \end{proof}
-
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Demuestre que si $G$ es simple y $\delta \ge 2$, entonces $G$ contiene
-  un ciclo de longitud al menos $\delta + 1$.
-
-  \begin{proof}
-    Procedemos por reducción a lo absurdo.
-
-    Sea $P$ una trayectoria de longitud máxima en $G$ tal que $P = (v_{0}, \dots, v_{n})$.
-    Por una \textbf{Proposición} anterior, sabemos que $G$ contiene un ciclo (digamos $C$). \\
-    Supongamos que $C$ es de longitud máxima a lo más $\delta$, es decir, no existe un ciclo $C$
-    que sea de longitud $\delta + 1$. \\
-    Si tomamos un vértice $v_{i}$ en $C$, sabemos que tiene $\delta$ vecinos. Ahora, si $v_{i}$ es
-    adyacente a otro vértice $w$ fuera del ciclo, tenemos dos casos:
-    \begin{itemize}
-      \item El vértice $v_{i-1}$ también es adyacente a $w$.
-
-        En este caso, ya tendríamos un ciclo de grado $\delta + 1$ !!! .
-
-      \item El vértice $v_{i-1}$ no es adyacente a $w$.
-
-        En este caso, $v_{i-1}$ continuaría su adyacencia por otros vértices. Si tomamos a $G$
-        una gráfica conexa, en algún vértice $v_{j}$, llegaríamos a que $v_{j}$ es adyacentea $w$. \\
-        Por lo tanto, ya tendríamos un ciclo de longitud mayor a $\delta$ (al menos $\delta + 1$)!!! .
-    \end{itemize}
-
-    La contradicción surge de suponer que la longitud máxima de un ciclo $C$ es a lo más $\delta$. \\
-    Por lo tanto, su longitud máxima es de al menos $\delta + 1$.
-
-  \end{proof}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Sea $G$ una gr\'afica conexa.   Demuestre que si $G$ no es completa,
-  entonces contiente a $P_3$ como subgr\'afica inducida.
-  \renewcommand\qedsymbol{QED}
-  \begin{proof}
-    Procedamos por reducción al absurdo.
-
-    Sea $G$ una gráfica completa, entonces $P_{3}$ es subgráfica de $G$. Para este
-    ejercicio necesitamos de una condición, $V_G \ge 3$, para las gráficas que no
-    cumplan esto se tendrá la demostración por vacuidad.
-
-    Tomemos a $x_{i - 1}, x_{i}, x_{i + 1}$ en $V_{G}$ ($2 \ge i \ge
-    |V_{G}| - 1$), como $G$ es completa se tiene que la distancia entre cualesquiera
-    $2$ v\'ertices es $1$, luego tenemos que hay ${3 \choose 2}$ aristas!! y esto es
-    claramente mayor que $2$ ($|E_{P_3}|$), como los v\'ertices que tomamos son arbitrarios,
-    podemos concluir que $P_{3} \nsubseteq G$.
-
-    Como la anterior contradicci\'on resulta de suponer a $G$ completa, podemos
-    asegurar que si $G$ no es completa, entonces $P_3 \subseteq G$.
-  \end{proof}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Demuestre que cualesquiera dos trayectorias de longitud m\'axima en una
-  gr\'afica conexa tienen un vértice en común.
-
-  \begin{proof}
-      Veamos los siguientes casos:
-
-      \begin{itemize}
-        \item Si $G$ no tiene vértices de corte.
-
-          Como $c(G) = 1$, entonces hay una trayectoria que pasa por todos los vértices
-          y a su vez es de longitud máxima. \\
-          Por tanto, ya terminamos.
-
-        \item Si $G$ tiene vértices de corte.
-
-          Analicemos el caso extremo, que engloba a todos los posibles casos con al menos
-          un vértice de corte. \\
-          Sean $T_{1} = uv$-trayectoria y $T_{2} = xy$-trayectoria, ambas de longitud
-          máxima y a su vez, ajenas por aristas entre sí. Luego, como $G$ es conexa existe
-          un $ux$-camino $C$ ($uy, vx, vy$ caminos) y como parte de él hay un vértice $a$
-          tal que es el vértice más próximo a $x$ que esta en $T_{1}$ ( y es el único con esta
-          propiedad). \\
-          Si $a$ forma parte de $T_{2}$, ya terminamos. \\
-          En caso contrario, entonces $a$ puede ser de corte o no. Así:
+        Procedamos por inducción sobre el número de veces que se repite un vértice
+        distinto a $v_{0}$.
 
           \begin{itemize}
-            \item Si $a$ es de corte, entonces de $xCa$ será el mínimo camino donde $b$ es el
-              vértice más cercano a $u$ que se encuentra en $T_{2}$ y es el único con esta propiedad. \\
-              Por lo que hay una $bx$-trayectoria y $by$-trayectoria que si las comparamos y tomamos la más
-              longeva (llamémosla $T_{3}$), de tener la misma longitud es indiferente cuál tomemos. \\
-              Así, tomamos un $ab$-camino sin ciclos, \textit{i.e.} $ab$-trayectoria. \\
-              Luego, llamamos $T_{4}$ a la trayectoria que resulte de mayor longitud entre $au$-trayectoria
-              y $av$-trayectoria. Si son iguales, nuevamente es indiferente cuál tomemos. \\
-              De lo anterior, nótese que:
-              \begin{eqnarray*}
-                \mathcal{L}(T_3) &\geq& \frac{\mathcal{L}(T_1)}{2} = \frac{\mathcal{L}(T_2)}{2}\\
-                \mathcal{L}(T_4) &\geq& \frac{\mathcal{L}(T_2)}{2} = \frac{\mathcal{L}(T_1)}{2}\\
-                \mathcal{L}(ab) &\geq& 1
-              \end{eqnarray*}
-              Así, hay una trayectoria $T_{5} = T_{3} ab T_{4}: \mathcal{L}(T_{5}) > \mathcal{L}(T_{1})$. \\
-              Por lo que se contradice que $T_{1}$ y $T_{2}$ fueran de longitud máxima. La contradicción surge de
-              suponer que $a$ es de corte y si esta en $T_{1}$ no esta en $T_{2}$. \\
-              Por lo tanto, concluimos que $a$ no es de corte y no forma parte de $T_{2}$.
+            \item \textbf{Paso Base:} $i = 0$.
 
-            \item Si $a$ no es de corte, entonces es parte de un extremo de $T_{1}$. \\
-              Como $a$ esta en $C$, tenemos que $T_{1}$ más la arista que tiene como vértice $a$ y
-              no es parte de $T_{1}$ es una trayectoria más larga que $T_{1}$ y $T_{2}$. De aquí una tenemos una
-              contradicción al suponer que $a$ no es de corte y además no está en $T_{2}$.
+            En este caso tenemos que el vértice $v_{i}$ no se repite ninguna vez, por
+            lo que ya tenemos el ciclo dirigido buscado.
+
+            \item \textbf{Hipótesis de Inducción:} Supongamos que $i > 0$ tal que haya un ciclo dirigido.
+
+            \item \textbf{Paso Inductivo:} Demostraremos que si el vértice $v_{i}$ se
+              repite al menos una vez, hay un ciclo dirigido.
+
+              Como el vértice $v_{i}$ se repite, podemos dividir a $C$ de la siguiente forma:
+
+              Sea $C'$ un camino dirigido cerrado de $C$. \\
+              Tenemos que:
+              $$C' = (v_{i}, \dots, v_{i})$$
+              Entonces, si $C'$ no repite vértices, ya tenemos el ciclo dirigido buscado. \\
+              En caso contrario, aplicamos el mismo proceso:
+
+              Sea $C''$ un camino dirigido cerrado de $C'$. \\
+              Tenemos que:
+              $$C'' = (v_{0}, \dots, v_{i}, v_{j}, \dots, v_{0}) \text{ , con $i < j$}$$
+              , donde $v_{0}$ es un vértice particular cualquiera en el camino dirigido $C$, el cuál tomamos
+              como vértice inicial para el camino $C''$.
+
+              Luego, este proceso lo realizamos hasta obtener un camino dirigido cerrado
+              sin vértices repetidos.
           \end{itemize}
+        Así, podemos concluir que toda flecha en un camino dirigido cerrado en una digráfica
+        pertenece a algún ciclo dirigido.
+      \end{proof}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Demuestre que si $G$ es simple y $\delta \ge 2$, entonces $G$ contiene
+    un ciclo de longitud al menos $\delta + 1$.
+
+      \begin{proof}
+        Procedemos por reducción a lo absurdo.
+
+        Sea $P$ una trayectoria de longitud máxima en $G$ tal que $P = (v_{0}, \dots, v_{n})$.
+        Por una \textbf{Proposición} anterior, sabemos que $G$ contiene un ciclo (digamos $C$). \\
+        Supongamos que $C$ es de longitud máxima a lo más $\delta$, es decir, no existe un ciclo $C$
+        que sea de longitud $\delta + 1$. \\
+        Si tomamos un vértice $v_{i}$ en $C$, sabemos que tiene $\delta$ vecinos. Ahora, si $v_{i}$ es
+        adyacente a otro vértice $w$ fuera del ciclo, tenemos dos casos:
+        \begin{itemize}
+          \item El vértice $v_{i-1}$ también es adyacente a $w$.
+
+            En este caso, ya tendríamos un ciclo de grado $\delta + 1$ !!! .
+
+          \item El vértice $v_{i-1}$ no es adyacente a $w$.
+
+            En este caso, $v_{i-1}$ continuaría su adyacencia por otros vértices. Si tomamos a $G$
+            una gráfica conexa, en algún vértice $v_{j}$, llegaríamos a que $v_{j}$ es adyacentea $w$. \\
+            Por lo tanto, ya tendríamos un ciclo de longitud mayor a $\delta$ (al menos $\delta + 1$)!!! .
+        \end{itemize}
+
+        La contradicción surge de suponer que la longitud máxima de un ciclo $C$ es a lo más $\delta$. \\
+        Por lo tanto, su longitud máxima es de al menos $\delta + 1$.
+      \end{proof}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Sea $G$ una gr\'afica conexa.   Demuestre que si $G$ no es completa,
+      entonces contiente a $P_3$ como subgr\'afica inducida.
+      \renewcommand\qedsymbol{QED}
+      \begin{proof}
+        Procedamos por reducción al absurdo.
+
+        Sea $G$ una gráfica completa, entonces $P_{3}$ es subgráfica de $G$. Para este
+        ejercicio necesitamos de una condición, $V_G \ge 3$, para las gráficas que no
+        cumplan esto se tendrá la demostración por vacuidad.
+
+        Tomemos a $x_{i - 1}, x_{i}, x_{i + 1}$ en $V_{G}$ ($2 \ge i \ge
+        |V_{G}| - 1$), como $G$ es completa se tiene que la distancia entre cualesquiera
+        $2$ v\'ertices es $1$, luego tenemos que hay ${3 \choose 2}$ aristas!! y esto es
+        claramente mayor que $2$ ($|E_{P_3}|$), como los v\'ertices que tomamos son arbitrarios,
+        podemos concluir que $P_{3} \nsubseteq G$.
+
+        Como la anterior contradicci\'on resulta de suponer a $G$ completa, podemos
+        asegurar que si $G$ no es completa, entonces $P_3 \subseteq G$.
+      \end{proof}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Demuestre que cualesquiera dos trayectorias de longitud m\'axima en una
+      gr\'afica conexa tienen un vértice en común.
+
+      \begin{proof}
+        Veamos los siguientes casos:
+
+        \begin{itemize}
+          \item Si $G$ no tiene vértices de corte.
+
+            Como $c(G) = 1$, entonces hay una trayectoria que pasa por todos los vértices
+            y a su vez es de longitud máxima. \\
+            Por tanto, ya terminamos.
+
+          \item Si $G$ tiene vértices de corte.
+
+            Analicemos el caso extremo, que engloba a todos los posibles casos con al menos
+            un vértice de corte. \\
+            Sean $T_{1} = uv$-trayectoria y $T_{2} = xy$-trayectoria, ambas de longitud
+            máxima y a su vez, ajenas por aristas entre sí. Luego, como $G$ es conexa existe
+            un $ux$-camino $C$ ($uy, vx, vy$ caminos) y como parte de él hay un vértice $a$
+            tal que es el vértice más próximo a $x$ que esta en $T_{1}$ ( y es el único con esta
+            propiedad). \\
+            Si $a$ forma parte de $T_{2}$, ya terminamos. \\
+            En caso contrario, entonces $a$ puede ser de corte o no. Así:
+
+            \begin{itemize}
+              \item Si $a$ es de corte, entonces de $xCa$ será el mínimo camino donde $b$ es el
+                vértice más cercano a $u$ que se encuentra en $T_{2}$ y es el único con esta propiedad. \\
+                Por lo que hay una $bx$-trayectoria y $by$-trayectoria que si las comparamos y tomamos la más
+                longeva (llamémosla $T_{3}$), de tener la misma longitud es indiferente cuál tomemos. \\
+                Así, tomamos un $ab$-camino sin ciclos, \textit{i.e.} $ab$-trayectoria. \\
+                Luego, llamamos $T_{4}$ a la trayectoria que resulte de mayor longitud entre $au$-trayectoria
+                y $av$-trayectoria. Si son iguales, nuevamente es indiferente cuál tomemos. \\
+                De lo anterior, nótese que:
+                \begin{eqnarray*}
+                  \mathcal{L}(T_3) &\geq& \frac{\mathcal{L}(T_1)}{2} = \frac{\mathcal{L}(T_2)}{2}\\
+                  \mathcal{L}(T_4) &\geq& \frac{\mathcal{L}(T_2)}{2} = \frac{\mathcal{L}(T_1)}{2}\\
+                  \mathcal{L}(ab) &\geq& 1
+                \end{eqnarray*}
+                Así, hay una trayectoria $T_{5} = T_{3} ab T_{4}: \mathcal{L}(T_{5}) > \mathcal{L}(T_{1})$. \\
+                Por lo que se contradice que $T_{1}$ y $T_{2}$ fueran de longitud máxima. La contradicción surge de
+                suponer que $a$ es de corte y si esta en $T_{1}$ no esta en $T_{2}$. \\
+                Por lo tanto, concluimos que $a$ no es de corte y no forma parte de $T_{2}$.
+
+              \item Si $a$ no es de corte, entonces es parte de un extremo de $T_{1}$. \\
+                Como $a$ esta en $C$, tenemos que $T_{1}$ más la arista que tiene como vértice $a$ y
+                no es parte de $T_{1}$ es una trayectoria más larga que $T_{1}$ y $T_{2}$. De aquí una tenemos una
+                contradicción al suponer que $a$ no es de corte y además no está en $T_{2}$.
+            \end{itemize}
+        \end{itemize}
+        Después del análisis anterior, observemos que llegamos a contradicciones que son resultado
+        de suponer que: \\
+        Si $a$ está en $T_{1}$, entonces no esta en $T_{2}$.
+
+        Por lo tanto, se sigue que si $a$ esta en $T_{1}$ entonces está en $T_{2}$.
+      \end{proof}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Caracterice a las gr\'aficas $k$-regulares para $k \in \{ 0, 1, 2 \}$.
+
+      \textit{\textbf{Soluci\'on:}}
+      \begin{itemize}
+        \item[$k = 0$)] Son todas las gráficas que no tienen aristas, a estas se les conoce
+          como g\'aficas vac\'ias.
+
+        \item[$k = 1$)] Estas son gr\'aficas con una cantidad de v\'ertices par y son tantas
+          uniones de $P_2$ como $\frac{|V_G|}{2}$. Las gráficas con $|V_G|$ impar no entran
+          aqu\'i porque siempre habr\'a $(|V_G| - 1) P_2$ y alg\'un v\'ertice (aislado) será
+          de grado igual a $0$!! (o, pensando en lazos, de grado igual a 2), lo que contradice
+          el ser $1-$regular.
+
+        \item[$k = 2$)] Son gr\'aficas que contienen ciclos o son combinaciones de ciclos.
+          Todos los ciclos son $2-$regulares, esto no implica que todas las gr\'aficas
+          $2-$regulares sean un ciclo pero si que los contengan o que sean combinaciones
+          de estos.
       \end{itemize}
-      Después del análisis anterior, observemos que llegamos a contradicciones que son resultado
-      de suponer que: \\
-      Si $a$ está en $T_{1}$, entonces no esta en $T_{2}$.
+      Con los $3$ puntos anteriores concluimos la caracterización. \hfill $\square$
 
-      Por lo tanto, se sigue que si $a$ esta en $T_{1}$ entonces está en $T_{2}$.
-  \end{proof}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Demuestre que si $|E| \ge |V|$, entonces $G$ contiene un ciclo.
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Caracterice a las gr\'aficas $k$-regulares para $k \in \{ 0, 1, 2 \}$.
+      \begin{proof} (Por contradicción)
 
-  \textit{\textbf{Soluci\'on:}}
-  \begin{itemize}
-  \item[$k = 0$)] Son todas las gráficas que no tienen aristas, a estas se les conoce
-    como g\'aficas vac\'ias.
-  \item[$k = 1$)] Estas son gr\'aficas con una cantidad de v\'ertices par y son tantas
-    uniones de $P_2$ como $\frac{|V_G|}{2}$. Las gráficas con $|V_G|$ impar no entran
-    aqu\'i porque siempre habr\'a $(|V_G| - 1) P_2$ y alg\'un v\'ertice (aislado) será
-    de grado igual a $0$!! (o, pensando en lazos, de grado igual a 2), lo que contradice
-    el ser $1-$regular.
-  \item[$k = 2$)] Son gr\'aficas que contienen ciclos o son combinaciones de ciclos.
-    Todos los ciclos son $2-$regulares, esto no implica que todas las gr\'aficas
-    $2-$regulares sean un ciclo pero si que los contengan o que sean combinaciones
-    de estos.
-  \end{itemize}
-  Con los $3$ puntos anteriores concluimos la caracterización. \hfill $\square$
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Demuestre que si $|E| \ge |V|$, entonces $G$ contiene un ciclo.
+        Supongamos que G es una gráfica tal que $|E|\geq|V|$ y G no contiene ningun ciclo $\Longrightarrow$ el número máximo de vétices de este tipo de gráficas será igual a $|V|-1$ (Ya que todo vértice se podria relacionar con algun otro vertice sin repetir con los vértices anteriores, pero el último no se podra relacionar con algun otro vertice ya que si lo hiciera formaría un ciclo) $\Longrightarrow$ $|E|\leq|V|-1 < |V|$ (!lo que es una contradiccón ya que contradice nuestra hipótesis de que $|E|\geq|V|$). Por lo tanto la gráfica G debe tener al menos un ciclo.
 
-\begin{proof} (Por contradicción)
-
-  Supongamos que G es una gráfica tal que $|E|\geq|V|$ y G no contiene ningun ciclo $\Longrightarrow$ el número máximo de vétices de este tipo de gráficas será igual a $|V|-1$ (Ya que todo vértice se podria relacionar con algun otro vertice sin repetir con los vértices anteriores, pero el último no se podra relacionar con algun otro vertice ya que si lo hiciera formaría un ciclo) $\Longrightarrow$ $|E|\leq|V|-1 < |V|$ (!lo que es una contradiccón ya que contradice nuestra hipótesis de que $|E|\geq|V|$). Por lo tanto la gráfica G debe tener al menos un ciclo.
-
-  \end{proof}
-\end{enumerate}
-
-\section*{Puntos extra}
-
-\begin{enumerate}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Sea $G$ una gr\'afica.   Demuestre que $G$ es $k$-partita completa si y
-  s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
-  inducidas.
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Demuestre que si $G$ es una gr\'afica con $|V| \ge 4$ y $|E| > n^2/4$,
-  entonces $G$ contiene un ciclo impar.
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Sea $d = (d_1, \dots, d_n)$ una sucesi\'on no creciente de enteros no
-  negativos. Sea $d' = (d_2-1, \dots, d_{d_1+1}-1, d_{d_1+2}, \dots, d_n)$.
-  \begin{enumerate}
-  \item Demuestre que $d$ es gr\'afica si y s\'olo si $d'$ es gr\'afica.
-
-  \item Usando el primer inciso, describa un algoritmo que acepte como
-    entrada una sucesi\'on no creciente de enteros no negativos $d$ y
-    devuelva una gr\'afica simple con sucesi\'on de grados $d$, un
-    certificado de que $d$ no es gr\'afica.
+        \end{proof}
   \end{enumerate}
-\end{enumerate}
 
+  \section*{Puntos extra}
+
+  \begin{enumerate}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Sea $G$ una gr\'afica. Demuestre que $G$ es $k$-partita completa si y
+      s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
+      inducidas.
+
+      \renewcommand\qedsymbol{QED}
+      \begin{proof}
+        En este ejercicio analizaremos 2 casos posibles:
+
+        \begin{itemize}
+        \item[$\Rightarrow$)] Procedamos por contrapositiva.
+
+          \begin{itemize}
+          \item[$\cdot$)] Si $\overline{P_3} \subseteq G$, por definición
+            de $k$-partita completa $\overline{P_3}$ no esta en la misma
+            parte (pues, en caso de estarlo hay una adyacencia en $2$ vértices
+            de la misma parte), luego $\overline{P_3}$ esta en $2$ o $3$
+            partes distintas y habrá un $x \in \overline{P_3}$ que no se
+            relacionará con al menos $1$ vértice en algunas de las partes
+            y por tanto $G$ no es $k$-partita completa (lo que no cumple es
+            ser completa bajo el supuesto tomado).
+
+          \item[$\cdot$)] Si $K_{k + 1} \subseteq G$, entonces hay $1$ vértice
+            de $K_{k + 1}$ en cada una de las partes (lo que suma $k$ v\'ertices) y un
+            $x \in K_{k + 1}$ en alguna parte tal que se relaciona con exactamente
+            un v\'ertice en esa parte y por tanto $G$ no es $k$-partita completa
+            (no cumple el ser $k$-partita).
+          \end{itemize}
+        \item[$\Leftarrow$)] Procedamos reducción al absurdo .
+
+          \begin{itemize}
+          \item[$\cdot$)] Supongamos que $\overline{P_3} \subseteq G$, por
+            definición de $k$-partita completa $\overline{P_3}$ no esta en
+            la misma parte (pues, en caso de estarlo hay una adyacencia en
+            $2$ vértices de la misma parte), luego $\overline{P_3}$ esta en
+            $2$ o $3$ partes distintas y habrá un $x \in \overline{P_3}$ que
+            no se relacionará con al menos $1$ vértice en algunas de las partes
+            y por tanto $G$ no es $k$-partita completa !!(lo que no cumple es
+            ser completa bajo el supuesto tomado) y he aquí una contradicción
+            de suponer que $\overline{P_3} \subseteq G$. Por tanto concluimos
+            que $\overline{P_3} \nsubseteq G$.
+
+          \item[$\cdot$)] Supongamos que $K_{k + 1} \subseteq G$, entonces hay $1$ vértice
+            de $K_{k + 1}$ en cada una de las partes (lo que suma $k$ v\'ertices)
+            y un $x \in K_{k + 1}$ en alguna parte tal que se relaciona con
+            exactamente un v\'ertice en esa parte y por tanto $G$ no es $k$-partita
+            completa!! (no cumple el ser $k$-partita) y he aquí una contradicción
+            de suponer $K_{k + 1} \subseteq G$. Por tanto concluimos que
+            $K_{k + 1} \nsubseteq G$
+          \end{itemize}
+        \end{itemize}
+        De los casos anterior concluimos que $G$ es $k$-partita completa si y
+      s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
+      inducidas.
+      \end{proof}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Demuestre que si $G$ es una gr\'afica con $|V| \ge 4$ y $|E| > n^2/4$,
+      entonces $G$ contiene un ciclo impar.
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Sea $d = (d_1, \dots, d_n)$ una sucesi\'on no creciente de enteros no
+      negativos. Sea $d' = (d_2-1, \dots, d_{d_1+1}-1, d_{d_1+2}, \dots, d_n)$.
+      \begin{enumerate}
+        \item Demuestre que $d$ es gr\'afica si y s\'olo si $d'$ es gr\'afica.
+
+        \item Usando el primer inciso, describa un algoritmo que acepte como
+          entrada una sucesi\'on no creciente de enteros no negativos $d$ y
+          devuelva una gr\'afica simple con sucesi\'on de grados $d$, un
+          certificado de que $d$ no es gr\'afica.
+      \end{enumerate}
+  \end{enumerate}
 \end{document}
