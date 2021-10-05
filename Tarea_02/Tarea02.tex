@@ -96,6 +96,7 @@
     \item Demuestre que toda flecha en un camino dirigido cerrado en una digr\'afica
       pertenece a alg\'un ciclo dirigido.
 
+      \renewcommand\qedsymbol{QED}
       \begin{proof}
         Sea $C$ un camino dirigido cerrado tal que $C = (v_{0}, v_{1}, \dots, v_{i},
         \dots, v_{0})$.
@@ -139,14 +140,16 @@
     \item Demuestre que si $G$ es simple y $\delta \ge 2$, entonces $G$ contiene
     un ciclo de longitud al menos $\delta + 1$.
 
+      \renewcommand\qedsymbol{QED}
       \begin{proof}
         Procedemos por reducción a lo absurdo.
 
-        Sea $P$ una trayectoria de longitud máxima en $G$ tal que $P = (v_{0}, \dots, v_{n})$.
-        Por una \textbf{Proposición} anterior, sabemos que $G$ contiene un ciclo (digamos $C$). \\
+        Sea $P$ una trayectoria de longitud máxima en $G$ tal que $P = (v_{0}, \dots, v_{n})$. \\
+        Por una \textbf{Proposición} vista en clase, sabemos que $G$ contiene un ciclo (digamos $C$). \\
         Supongamos que $C$ es de longitud máxima a lo más $\delta$, es decir, no existe un ciclo $C$
-        que sea de longitud $\delta + 1$. \\
-        Si tomamos un vértice $v_{i}$ en $C$, sabemos que tiene $\delta$ vecinos. Ahora, si $v_{i}$ es
+        que sea de longitud $\delta + 1$ o mayor. \\
+        Si tomamos un vértice $v_{i}$ en $C$, sabemos que tiene al menos $\delta$ vecinos (de los cuales
+        $\delta - 1$ vecinos pueden estar en $C$). Ahora, si $v_{i}$ es
         adyacente a otro vértice $w$ fuera del ciclo, tenemos dos casos:
         \begin{itemize}
           \item El vértice $v_{i-1}$ también es adyacente a $w$.
@@ -156,7 +159,7 @@
           \item El vértice $v_{i-1}$ no es adyacente a $w$.
 
             En este caso, $v_{i-1}$ continuaría su adyacencia por otros vértices. Si tomamos a $G$
-            una gráfica conexa, en algún vértice $v_{j}$, llegaríamos a que $v_{j}$ es adyacentea $w$. \\
+            una gráfica conexa, en algún vértice $v_{j}$, llegaríamos a que $v_{j}$ es adyacente a $w$. \\
             Por lo tanto, ya tendríamos un ciclo de longitud mayor a $\delta$ (al menos $\delta + 1$)!!! .
         \end{itemize}
 
@@ -165,20 +168,21 @@
       \end{proof}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \item Sea $G$ una gr\'afica conexa.   Demuestre que si $G$ no es completa,
+    \item Sea $G$ una gr\'afica conexa. Demuestre que si $G$ no es completa,
       entonces contiente a $P_3$ como subgr\'afica inducida.
+
       \renewcommand\qedsymbol{QED}
       \begin{proof}
         Procedamos por reducción al absurdo.
 
-        Sea $G$ una gráfica completa, entonces $P_{3}$ es subgráfica de $G$. Para este
-        ejercicio necesitamos de una condición, $V_G \ge 3$, para las gráficas que no
+        Sea $G$ una gráfica completa, entonces $P_{3}$ es subgráfica de $G$. \\
+        Para este ejercicio necesitamos de una condición, $V_G \ge 3$, para las gráficas que no
         cumplan esto se tendrá la demostración por vacuidad.
 
         Tomemos a $x_{i - 1}, x_{i}, x_{i + 1}$ en $V_{G}$ ($2 \ge i \ge
-        |V_{G}| - 1$), como $G$ es completa se tiene que la distancia entre cualesquiera
-        $2$ v\'ertices es $1$, luego tenemos que hay ${3 \choose 2}$ aristas!! y esto es
-        claramente mayor que $2$ ($|E_{P_3}|$), como los v\'ertices que tomamos son arbitrarios,
+        |V_{G}| - 1$). Como $G$ es completa, se tiene que la distancia entre cualesquiera
+        $2$ v\'ertices es $1$. Luego, tenemos que hay ${3 \choose 2}$ aristas!! y esto es
+        claramente mayor que $2$ ($|E_{P_3}|$). Como los v\'ertices que tomamos son arbitrarios,
         podemos concluir que $P_{3} \nsubseteq G$.
 
         Como la anterior contradicci\'on resulta de suponer a $G$ completa, podemos
@@ -189,6 +193,7 @@
     \item Demuestre que cualesquiera dos trayectorias de longitud m\'axima en una
       gr\'afica conexa tienen un vértice en común.
 
+      \renewcommand\qedsymbol{QED}
       \begin{proof}
         Veamos los siguientes casos:
 
@@ -206,10 +211,11 @@
             Sean $T_{1} = uv$-trayectoria y $T_{2} = xy$-trayectoria, ambas de longitud
             máxima y a su vez, ajenas por aristas entre sí. Luego, como $G$ es conexa existe
             un $ux$-camino $C$ ($uy, vx, vy$ caminos) y como parte de él hay un vértice $a$
-            tal que es el vértice más próximo a $x$ que esta en $T_{1}$ ( y es el único con esta
+            tal que es el vértice más próximo a $x$ que está en $T_{1}$ (y es el único con esta
             propiedad). \\
             Si $a$ forma parte de $T_{2}$, ya terminamos. \\
-            En caso contrario, entonces $a$ puede ser de corte o no. Así:
+            En caso contrario, entonces $a$ puede ser de corte o no. \\
+            Así:
 
             \begin{itemize}
               \item Si $a$ es de corte, entonces de $xCa$ será el mínimo camino donde $b$ es el
@@ -227,11 +233,11 @@
                 \end{eqnarray*}
                 Así, hay una trayectoria $T_{5} = T_{3} ab T_{4}: \mathcal{L}(T_{5}) > \mathcal{L}(T_{1})$. \\
                 Por lo que se contradice que $T_{1}$ y $T_{2}$ fueran de longitud máxima. La contradicción surge de
-                suponer que $a$ es de corte y si esta en $T_{1}$ no esta en $T_{2}$. \\
+                suponer que $a$ es de corte y si está en $T_{1}$ no está en $T_{2}$. \\
                 Por lo tanto, concluimos que $a$ no es de corte y no forma parte de $T_{2}$.
 
               \item Si $a$ no es de corte, entonces es parte de un extremo de $T_{1}$. \\
-                Como $a$ esta en $C$, tenemos que $T_{1}$ más la arista que tiene como vértice $a$ y
+                Como $a$ está en $C$, tenemos que $T_{1}$ más la arista que tiene como vértice $a$ y
                 no es parte de $T_{1}$ es una trayectoria más larga que $T_{1}$ y $T_{2}$. De aquí una tenemos una
                 contradicción al suponer que $a$ no es de corte y además no está en $T_{2}$.
             \end{itemize}
@@ -249,17 +255,17 @@
       \textit{\textbf{Soluci\'on:}}
       \begin{itemize}
         \item[$k = 0$)] Son todas las gráficas que no tienen aristas, a estas se les conoce
-          como g\'aficas vac\'ias.
+          como gr\'aficas vac\'ias.
 
         \item[$k = 1$)] Estas son gr\'aficas con una cantidad de v\'ertices par y son tantas
           uniones de $P_2$ como $\frac{|V_G|}{2}$. Las gráficas con $|V_G|$ impar no entran
           aqu\'i porque siempre habr\'a $(|V_G| - 1) P_2$ y alg\'un v\'ertice (aislado) será
-          de grado igual a $0$!! (o, pensando en lazos, de grado igual a 2), lo que contradice
+          de grado igual a $0$!! (pensando en lazos, de grado igual a 2). Esto contradice
           el ser $1-$regular.
 
         \item[$k = 2$)] Son gr\'aficas que contienen ciclos o son combinaciones de ciclos.
-          Todos los ciclos son $2-$regulares, esto no implica que todas las gr\'aficas
-          $2-$regulares sean un ciclo pero si que los contengan o que sean combinaciones
+          Todos los ciclos son $2-$regulares y esto no implica que todas las gr\'aficas
+          $2-$regulares sean un ciclo, pero si que los contengan o que sean combinaciones
           de estos.
       \end{itemize}
       Con los $3$ puntos anteriores concluimos la caracterización. \hfill $\square$
@@ -267,10 +273,18 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Demuestre que si $|E| \ge |V|$, entonces $G$ contiene un ciclo.
 
+      \renewcommand\qedsymbol{QED}
       \begin{proof} (Por contradicción)
 
-        Supongamos que G es una gráfica tal que $|E|\geq|V|$ y G no contiene ningun ciclo $\Longrightarrow$ el número máximo de vétices de este tipo de gráficas será igual a $|V|-1$ (Ya que todo vértice se podria relacionar con algun otro vertice sin repetir con los vértices anteriores, pero el último no se podra relacionar con algun otro vertice ya que si lo hiciera formaría un ciclo) $\Longrightarrow$ $|E|\leq|V|-1 < |V|$ (!lo que es una contradiccón ya que contradice nuestra hipótesis de que $|E|\geq|V|$). Por lo tanto la gráfica G debe tener al menos un ciclo.
+        Supongamos que $G$ es una gráfica tal que $|E|\geq|V|$ y $G$ no contiene ningún ciclo. \\
+        Entonces, el número máximo de vértices de este tipo de gráficas será igual a $|V|-1$, ya que
+        todo vértice se podría relacionar con algún otro vértice sin repetir con los vértices anteriores.
+        Pero el último no se podrá relacionar con algún otro vértice ya que si lo hiciera, formaría
+        un ciclo. \\
+        Por lo que, $|E|\leq|V|-1 < |V|$ !!! (lo que es una contradicción, pues contradice nuestra hipótesis
+        de que $|E|\geq|V|$).
 
+        Por lo tanto, la gráfica $G$ debe tener al menos un ciclo.
         \end{proof}
   \end{enumerate}
 
@@ -290,47 +304,47 @@
         \item[$\Rightarrow$)] Procedamos por contrapositiva.
 
           \begin{itemize}
-          \item[$\cdot$)] Si $\overline{P_3} \subseteq G$, por definición
-            de $k$-partita completa $\overline{P_3}$ no esta en la misma
-            parte (pues, en caso de estarlo hay una adyacencia en $2$ vértices
-            de la misma parte), luego $\overline{P_3}$ esta en $2$ o $3$
-            partes distintas y habrá un $x \in \overline{P_3}$ que no se
-            relacionará con al menos $1$ vértice en algunas de las partes
-            y por tanto $G$ no es $k$-partita completa (lo que no cumple es
-            ser completa bajo el supuesto tomado).
+            \item[$\cdot$)] Si $\overline{P_3} \subseteq G$, por definición
+              de $k$-partita completa $\overline{P_3}$ no está en la misma
+              parte (ya que en caso de estarlo, hay una adyacencia en $2$ vértices
+              de la misma parte). Luego, $\overline{P_3}$ está en $2$ o $3$
+              partes distintas y habrá un $x \in \overline{P_3}$ que no se
+              relacionará con al menos $1$ vértice en algunas de las partes
+              y por tanto, $G$ no es $k$-partita completa (lo que no cumple es
+              ser completa bajo el supuesto tomado).
 
-          \item[$\cdot$)] Si $K_{k + 1} \subseteq G$, entonces hay $1$ vértice
-            de $K_{k + 1}$ en cada una de las partes (lo que suma $k$ v\'ertices) y un
-            $x \in K_{k + 1}$ en alguna parte tal que se relaciona con exactamente
-            un v\'ertice en esa parte y por tanto $G$ no es $k$-partita completa
-            (no cumple el ser $k$-partita).
+            \item[$\cdot$)] Si $K_{k + 1} \subseteq G$, entonces hay $1$ vértice
+              de $K_{k + 1}$ en cada una de las partes (lo que suma $k$ v\'ertices) y un
+              $x \in K_{k + 1}$ en alguna parte tal que se relaciona con exactamente
+              un v\'ertice en esa parte y por tanto, $G$ no es $k$-partita completa
+              (no cumple el ser $k$-partita).
           \end{itemize}
         \item[$\Leftarrow$)] Procedamos reducción al absurdo .
 
           \begin{itemize}
-          \item[$\cdot$)] Supongamos que $\overline{P_3} \subseteq G$, por
-            definición de $k$-partita completa $\overline{P_3}$ no esta en
-            la misma parte (pues, en caso de estarlo hay una adyacencia en
-            $2$ vértices de la misma parte), luego $\overline{P_3}$ esta en
-            $2$ o $3$ partes distintas y habrá un $x \in \overline{P_3}$ que
-            no se relacionará con al menos $1$ vértice en algunas de las partes
-            y por tanto $G$ no es $k$-partita completa !!(lo que no cumple es
-            ser completa bajo el supuesto tomado) y he aquí una contradicción
-            de suponer que $\overline{P_3} \subseteq G$. Por tanto concluimos
-            que $\overline{P_3} \nsubseteq G$.
+            \item[$\cdot$)] Supongamos que $\overline{P_3} \subseteq G$, por
+              definición de $k$-partita completa $\overline{P_3}$ no está en
+              la misma parte (pues, en caso de estarlo hay una adyacencia en
+              $2$ vértices de la misma parte). Luego $\overline{P_3}$ está en
+              $2$ o $3$ partes distintas y habrá un $x \in \overline{P_3}$ que
+              no se relacionará con al menos $1$ vértice en algunas de las partes
+              y por tanto, $G$ no es $k$-partita completa!! (lo que no cumple es
+              ser completa bajo el supuesto tomado) y he aquí una contradicción
+              de suponer que $\overline{P_3} \subseteq G$. \\
+              Por lo tanto, concluimos que $\overline{P_3} \nsubseteq G$.
 
-          \item[$\cdot$)] Supongamos que $K_{k + 1} \subseteq G$, entonces hay $1$ vértice
-            de $K_{k + 1}$ en cada una de las partes (lo que suma $k$ v\'ertices)
-            y un $x \in K_{k + 1}$ en alguna parte tal que se relaciona con
-            exactamente un v\'ertice en esa parte y por tanto $G$ no es $k$-partita
-            completa!! (no cumple el ser $k$-partita) y he aquí una contradicción
-            de suponer $K_{k + 1} \subseteq G$. Por tanto concluimos que
-            $K_{k + 1} \nsubseteq G$
+            \item[$\cdot$)] Supongamos que $K_{k + 1} \subseteq G$, entonces hay $1$ vértice
+              de $K_{k + 1}$ en cada una de las partes (lo que suma $k$ v\'ertices)
+              y un $x \in K_{k + 1}$ en alguna parte tal que se relaciona con
+              exactamente un v\'ertice en esa parte y por tanto, $G$ no es $k$-partita
+              completa!! (no cumple el ser $k$-partita) y he aquí una contradicción
+              de suponer $K_{k + 1} \subseteq G$. \\
+              Por lo tanto, concluimos que $K_{k + 1} \nsubseteq G$.
           \end{itemize}
         \end{itemize}
         De los casos anterior concluimos que $G$ es $k$-partita completa si y
-      s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
-      inducidas.
+        s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
+        inducidas.
       \end{proof}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
