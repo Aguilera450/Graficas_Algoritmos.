@@ -95,11 +95,11 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que toda flecha en un camino dirigido cerrado en una digr\'afica
   pertenece a alg\'un ciclo dirigido.
-
+  \renewcommand\qedsymbol{QED}
   \begin{proof}
     Sea $C$ un camino dirigido cerrado tal que $C = (v_{0}, v_{1}, \dots, v_{i},
     \dots, v_{0})$.
-
+    
     Procedamos por inducción sobre el número de veces que se repite un vértice
     distinto a $v_{0}$.
 
@@ -136,7 +136,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $G$ es simple y $\delta \ge 2$, entonces $G$ contiene
   un ciclo de longitud al menos $\delta + 1$.
-
+  \renewcommand\qedsymbol{QED}
   \begin{proof}
     Sea $P$ una trayectoria de longitud máxima en $G$. \\
     Si $P = (v_{0}, \dots, v_{n})$, notemos que $v_{n}$ tiene un vecino distinto
@@ -188,10 +188,17 @@
   Con los $3$ puntos anteriores concluimos la caracterización. \hfill $\square$
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $|E| \ge |V|$, entonces $G$ contiene un ciclo.
+  \renewcommand\qedsymbol{QED}
+  \begin{proof} (Por contradicción)
 
-\begin{proof} (Por contradicción)
-
-  Supongamos que G es una gráfica tal que $|E|\geq|V|$ y G no contiene ningun ciclo $\Longrightarrow$ el número máximo de vétices de este tipo de gráficas será igual a $|V|-1$ (Ya que todo vértice se podria relacionar con algun otro vertice sin repetir con los vértices anteriores, pero el último no se podra relacionar con algun otro vertice ya que si lo hiciera formaría un ciclo) $\Longrightarrow$ $|E|\leq|V|-1 < |V|$ (!lo que es una contradiccón ya que contradice nuestra hipótesis de que $|E|\geq|V|$). Por lo tanto la gráfica G debe tener al menos un ciclo.
+    Supongamos que G es una gráfica tal que $|E|\geq|V|$ y G no contiene
+    ningun ciclo $\Longrightarrow$ el número máximo de vétices de este
+    tipo de gráficas será igual a $|V|-1$ (Ya que todo vértice se podria
+    relacionar con algun otro vertice sin repetir con los vértices anteriores,
+    pero el último no se podra relacionar con algun otro vertice ya que
+    si lo hiciera formaría un ciclo) $\Longrightarrow$ $|E|\leq|V|-1 < |V|$
+    (!lo que es una contradiccón ya que contradice nuestra hipótesis de que
+    $|E|\geq|V|$). Por lo tanto la gráfica G debe tener al menos un ciclo.
 
   \end{proof}
 \end{enumerate}
@@ -203,7 +210,7 @@
 \item Sea $G$ una gr\'afica.   Demuestre que $G$ es $k$-partita completa si y
   s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
   inducidas.
-  
+  \renewcommand\qedsymbol{QED}
   \begin{proof}
     En este ejercicio analizaremos 2 casos posibles:
     
