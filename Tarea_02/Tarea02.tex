@@ -203,6 +203,56 @@
 \item Sea $G$ una gr\'afica.   Demuestre que $G$ es $k$-partita completa si y
   s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
   inducidas.
+  
+  \begin{proof}
+    En este ejercicio analizaremos 2 casos posibles:
+    
+    \begin{itemize}
+    \item[$\Rightarrow$)] Procedamos por contrapositiva.
+
+      \begin{itemize}
+      \item[$\cdot$)] Si $\overline{P_3} \subseteq G$, por definición
+        de $k$-partita completa $\overline{P_3}$ no esta en la misma
+        parte (pues, en caso de estarlo hay una adyacencia en $2$ vértices
+        de la misma parte), luego $\overline{P_3}$ esta en $2$ o $3$
+        partes distintas y habrá un $x \in \overline{P_3}$ que no se
+        relacionará con al menos $1$ vértice en algunas de las partes
+        y por tanto $G$ no es $k$-partita completa (lo que no cumple es
+        ser completa bajo el supuesto tomado).
+        
+      \item[$\cdot$)] Si $K_{k + 1} \subseteq G$, entonces hay $1$ vértice
+        de $K_{k + 1}$ en cada una de las partes (lo que suma $k$ v\'ertices) y un
+        $x \in K_{k + 1}$ en alguna parte tal que se relaciona con exactamente
+        un v\'ertice en esa parte y por tanto $G$ no es $k$-partita completa
+        (no cumple el ser $k$-partita).
+      \end{itemize}
+    \item[$\Leftarrow$)] Procedamos reducción al absurdo .
+      
+      \begin{itemize}
+      \item[$\cdot$)] Supongamos que $\overline{P_3} \subseteq G$, por
+        definición de $k$-partita completa $\overline{P_3}$ no esta en
+        la misma parte (pues, en caso de estarlo hay una adyacencia en
+        $2$ vértices de la misma parte), luego $\overline{P_3}$ esta en
+        $2$ o $3$ partes distintas y habrá un $x \in \overline{P_3}$ que
+        no se relacionará con al menos $1$ vértice en algunas de las partes
+        y por tanto $G$ no es $k$-partita completa !!(lo que no cumple es
+        ser completa bajo el supuesto tomado) y he aquí una contradicción
+        de suponer que $\overline{P_3} \subseteq G$. Por tanto concluimos
+        que $\overline{P_3} \nsubseteq G$.
+        
+      \item[$\cdot$)] Supongamos que $K_{k + 1} \subseteq G$, entonces hay $1$ vértice
+        de $K_{k + 1}$ en cada una de las partes (lo que suma $k$ v\'ertices)
+        y un $x \in K_{k + 1}$ en alguna parte tal que se relaciona con
+        exactamente un v\'ertice en esa parte y por tanto $G$ no es $k$-partita
+        completa!! (no cumple el ser $k$-partita) y he aquí una contradicción
+        de suponer $K_{k + 1} \subseteq G$. Por tanto concluimos que
+        $K_{k + 1} \nsubseteq G$
+      \end{itemize}
+    \end{itemize}
+    De los casos anterior concluimos que $G$ es $k$-partita completa si y
+  s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
+  inducidas.
+  \end{proof}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $G$ es una gr\'afica con $|V| \ge 4$ y $|E| > n^2/4$,
   entonces $G$ contiene un ciclo impar.
