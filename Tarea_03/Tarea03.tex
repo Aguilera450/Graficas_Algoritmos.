@@ -1,0 +1,134 @@
+\documentclass{article}
+
+% Symbols
+%\usepackage{recycle}
+\usepackage{amsfonts, amsthm}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{amssymb, latexsym, amsmath}
+
+% Proof
+\renewcommand*{\proofname}{\textbf{Demostraci\'on:}}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{pgf}
+
+% Color a letras.
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Tikz
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+\usetikzlibrary{shapes,calc}
+\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt,
+  >=stealth, line width=1.1pt]
+\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt,
+  >=stealth, line width=1.5pt, blue]
+\tikzstyle{blackV}=[circle, fill=black,
+  minimum size=6pt,
+  inner sep=0pt, outer sep=0pt]
+\tikzstyle{blueV}=[circle, fill=blue, draw,
+  minimum size=6pt, line width=0.75pt,
+  inner sep=0pt, outer sep=0pt]
+\tikzstyle{redV}=[circle, fill=red, draw,
+  minimum size=6pt, line width=0.75pt,
+  inner sep=0pt, outer sep=0pt]
+\tikzstyle{redSV}=[semicircle, fill=red, minimum
+  size=3pt, inner sep=0pt, outer sep=0pt,
+  rotate=225]
+\tikzstyle{blueSV}=[semicircle, fill=blue, minimum
+  size=3pt, inner sep=0pt, outer sep=0pt,
+  rotate=225]
+\tikzstyle{blackSV}=[semicircle, fill=black, minimum
+  size=3pt, inner sep=0pt, outer sep=0pt,
+  rotate=225]
+\tikzstyle{vertex}=[circle, draw, minimum size=6pt,
+  line width=0.75pt, inner sep=0pt,
+  outer sep=0pt]
+
+% Margins
+%Margins
+\addtolength{\voffset}{-1cm}
+\addtolength{\hoffset}{-1cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\textheight}{2cm}
+%Header-Footer
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{1pt}
+
+\newcommand{\set}[1]{%
+  \left\{ #1 \right\}%
+}
+
+%\pagenumbering{gobble} -- Este comando
+%                       -- quita el número de página.
+\footskip = 50pt
+\renewcommand{\headrulewidth}{1pt}
+
+\pagestyle{fancyplain}
+
+\begin{document}
+\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+\author{Autores:
+  \\ Fernanda Villaf\'an Flores
+  \\ Fernando Alvarado Palacios
+  \\ Adri\'an Aguilera Moreno}
+\date{}
+\maketitle
+\begin{center}
+  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+  \Large
+  \bf{Gr\'aficas y Juegos}
+  \normalsize
+\end{center}
+\newpage
+\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+\section*{\LARGE{Tarea 3}}
+
+
+\begin{enumerate}
+	\item Demuestre que si $e \in E$, entonces $c(G) \le c(G-e) \le c(G) + 1$.
+
+	\item Una gr\'afica es \textit{escindible completa} si su conjunto de
+    v\'ertices admite una partici\'on $(S,K)$ de tal forma que $S$ es un
+    conjunto independiente, $K$ es un clan, y cada v\'ertice en $S$ es adyacente
+    a cada v\'ertice en $K$.   Demuestre que una gr\'afica es escindible
+    completa si y s\'olo si no contiene a $C_4$ ni a $\overline{P_3}$ como
+    subgr\'afica inducida.
+
+	\item \begin{enumerate}
+			\item Demuestre que si $|E| > {|V|-1 \choose 2}$, entonces $G$ es conexa.
+
+			\item Para $|V| > 1$ encuentre una gr\'afica inconexa con $|E| = {|V|-1
+        \choose 2}$.
+		\end{enumerate}
+
+	\item \begin{enumerate}
+			\item Demuestre que si $\delta > \lfloor \frac{|V|}{2} \rfloor - 1$,
+        entonces $G$ es conexa.
+
+			\item Para $|V|$ par encuentre una gr\'afica $(\lfloor \frac{|V|}{2}
+        \rfloor -1)$-regular e inconexa.
+		\end{enumerate}
+
+	\item Demuestre que si $D$ no tiene lazos y $\delta^+ \ge 1$, entonces $D$
+	 contiene un ciclo dirigido de longitud al menos $\delta^+ + 1$.
+\end{enumerate}
+
+\section*{Puntos Extra}
+\begin{enumerate}
+	\item Demuestre que el n\'umero de $v_i v_j$-caminos de longitud $k$ en $G$ es
+    $(A^k)_{ij}$ donde $A$ es la matriz de adyacencia de $G$.
+
+	\item Sea $G$ una gr\'afica bipartita de grado m\'aximo $k$.   Demuestre que
+    existe una gr\'afica bipartita $k$-regular, $H$, que contiene a $G$ como
+    subgr\'afica inducida.
+\end{enumerate}
+
+
+\end{document}
