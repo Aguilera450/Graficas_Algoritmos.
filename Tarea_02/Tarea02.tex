@@ -93,11 +93,58 @@
 \begin{enumerate}
   \small
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Demuestre que toda flecha en un camino dirigido cerrado en una  digr\'afica
+\item Demuestre que toda flecha en un camino dirigido cerrado en una digr\'afica
   pertenece a alg\'un ciclo dirigido.
+
+  \begin{proof}
+    Sea $C$ un camino dirigido cerrado tal que $C = (v_{0}, v_{1}, \dots, v_{i},
+    \dots, v_{0})$.
+
+    Procedamos por inducción sobre el número de veces que se repite un vértice
+    distinto a $v_{0}$.
+
+    \begin{itemize}
+      \item \textbf{Paso Base:} $i = 0$.
+
+        En este caso tenemos que el vértice $v_{i}$ no se repite ninguna vez, por
+        lo que ya tenemos el ciclo dirigido buscado.
+
+      \item \textbf{Hipótesis de Inducción:} Supongamos que $i > 0$.
+
+      \item \textbf{Paso Inductivo:} Demostraremos que si el vértice $v_{i}$ se
+      repite al menos una vez, hay un ciclo dirigido.
+
+        Como el vértice $v_{i}$ se repite, podemos dividir a $C$ de la siguiente forma:
+
+        Sea $C'$ un camino dirigido cerrado de $C$. \\
+        Tenemos que:
+        $$C' = (v_{i}, \dots, v_{i})$$
+        Entonces, si $C'$ no repite vértices, ya tenemos el ciclo dirigido buscado. \\
+        En caso contrario, aplicamos el mismo proceso:
+
+        Sea $C''$ un camino dirigido cerrado de $C'$. \\
+        Tenemos que:
+        $$C'' = (v_{0}, \dots, v_{i}, v_{j}, \dots, v_{0}) \text{ , con $i < j$}$$
+
+        Luego, este proceso lo realizamos hasta obtener un camino dirigido cerrado
+        sin vértices repetidos.
+    \end{itemize}
+    Así, podemos concluir que toda flecha en un camino dirigido cerradoen una digráfica
+    pertenece a algún ciclo dirigido.
+  \end{proof}
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $G$ es simple y $\delta \ge 2$, entonces $G$ contiene
   un ciclo de longitud al menos $\delta + 1$.
+
+  \begin{proof}
+    Sea $P$ una trayectoria de longitud máxima en $G$. \\
+    Si $P = (v_{0}, \dots, v_{n})$, notemos que $v_{n}$ tiene un vecino distinto
+    a $v_{n-1}$. \\
+    Entonces, como $P$ es de longitud máxima, el otro vértice de $v_{n}$ debe ser
+    un vértice en $P$ (digamos $v_{i}$ con $i < n-1$). \\
+    Entonces $v_{i} P v_{n} v_{i}$ es un ciclo.
+  \end{proof}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Sea $G$ una gr\'afica conexa.   Demuestre que si $G$ no es completa,
   entonces contiente a $P_3$ como subgr\'afica inducida.
@@ -114,7 +161,7 @@
     $2$ v\'ertices es $1$, luego tenemos que hay ${3 \choose 2}$ aristas!! y esto es
     claramente mayor que $2$ ($|E_{P_3}|$), como los v\'ertices que tomamos son arbitrarios,
     podemos concluir que $P_{3} \nsubseteq G$.
-    
+
     Como la anterior contradicci\'on resulta de suponer a $G$ completa, podemos
     asegurar que si $G$ no es completa, entonces $P_3 \subseteq G$.
   \end{proof}
@@ -123,7 +170,7 @@
   gr\'afica conexa tienen un vértice en común.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Caracterice a las gr\'aficas $k$-regulares para $k \in \{ 0, 1, 2 \}$.
-  
+
   \textit{\textbf{Soluci\'on:}}
   \begin{itemize}
   \item[$k = 0$)] Son todas las gráficas que no tienen aristas, a estas se les conoce
@@ -145,7 +192,7 @@
 \begin{proof} (Por contradicción)
 
   Supongamos que G es una gráfica tal que $|E|\geq|V|$ y G no contiene ningun ciclo $\Longrightarrow$ el número máximo de vétices de este tipo de gráficas será igual a $|V|-1$ (Ya que todo vértice se podria relacionar con algun otro vertice sin repetir con los vértices anteriores, pero el último no se podra relacionar con algun otro vertice ya que si lo hiciera formaría un ciclo) $\Longrightarrow$ $|E|\leq|V|-1 < |V|$ (!lo que es una contradiccón ya que contradice nuestra hipótesis de que $|E|\geq|V|$). Por lo tanto la gráfica G debe tener al menos un ciclo.
-  
+
   \end{proof}
 \end{enumerate}
 
