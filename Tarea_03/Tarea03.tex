@@ -146,7 +146,7 @@
           c(G) \le c(G-e) \le c(G) + 1
           \]
         \end{itemize}
-        De lo anterior, concluimos que $c(G) \le c(G-e) \le c(G) + 1$. \\
+        De lo anterior, concluimos que $c(G) \le c(G-e) \le c(G) + 1$. 
       \end{proof}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -647,6 +647,7 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 01 EXTRA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Demuestre que el n\'umero de $v_i v_j$-caminos de longitud $k$ en $G$ es
       $(A^k)_{ij}$ donde $A$ es la matriz de adyacencia de $G$.
+      \renewcommand\qedsymbol{QED}
       \begin{proof} Inducción
 
         Paso base $(n=1)$ 
@@ -684,8 +685,7 @@
         
          $\Longrightarrow  \sum_{r=1} t_{ir}a_{rj}$ independientemente de si $a_{rj}=0$ o $a_{rj}=1$
          nos dará el número de caminos de longitud $n+1$ que existen entre $V_i V_j$ 
-        
-        \end{proof}
+      \end{proof}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 01 EXTRA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Sea $G$ una gr\'afica bipartita de grado m\'aximo $k$.   Demuestre que
       existe una gr\'afica bipartita $k$-regular, $H$, que contiene a $G$ como
