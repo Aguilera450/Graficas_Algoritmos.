@@ -151,9 +151,256 @@
 \item Una gr\'afica es \textit{escindible completa} si su conjunto de
   v\'ertices admite una partici\'on $(S,K)$ de tal forma que $S$ es un
   conjunto independiente, $K$ es un clan, y cada v\'ertice en $S$ es adyacente
-  a cada v\'ertice en $K$.   Demuestre que una gr\'afica es escindible
+  a cada v\'ertice en $K$. Demuestre que una gr\'afica es escindible
   completa si y s\'olo si no contiene a $C_4$ ni a $\overline{P_3}$ como
   subgr\'afica inducida.
+  
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
+    Sea $C_4 = (x_0, x_1, x_2, x_3, x_0)$ y $\overline{P_3} = \{y_0, y_1, y_2\}$,
+    tal que $y_0 y_2 \in E_G$ e $y_0 y_1, y_1 y_2 \notin E_G$ \footnote{Esto sin
+    perder generalidad.}, con $x_i, y_j \in V_G$ ($0 \leq i \leq 3$, $0 \leq j \leq 2$).
+    N\'otese que los $x_i$'s e $y_j$'s no pueden estar contenidos en una misma parte,
+    esto es, $C_4$ y $\overline{P_3}$ no est\'an contenidos en $S$, pues ning\'un
+    v\'ertice en $S$ es adyacente, y de igual manera no est\'an contenidos en $K$, pues
+    para cualesquiera $3$ o $4$ v\'ertices en $K$ se tiene a $K_3$ o $K_4$.
+    
+    Para este ejercicio analizaremos dos posibles casos:
+    \begin{itemize}
+    \item[$\Rightarrow$)] Procedamos por reducción al absurdo.
+      \begin{itemize}
+      \item[$\cdot$)] Si $G$ es \textit{escendible completa}, entonces $C_4$ es
+        subgr\'afica inducida de $G$.
+        Supongamos, sin p\'erdida de generalidad, que $x_0 \in S$ y $x_1 \in K$
+        (caso contrario, $x_1 \in S$ y $x_0$ no ser\'ia adyacente a $x_1$!!),
+        luego, si $x_2 \in S$ entonces $x_3 \in K$ (caso contrario, $x_3 \in S$
+        y $x_2$ no ser\'ia adyacente a $x_3$!!), as\'i $x_1 x_3 \in E_G$!! (pues
+        $x_1, x_3 \in K$) por definici\'on de $K$ (clan). Si $x_2 \in K$, entonces
+        $x_3 \in S$ (caso contrario, $x_3 \in K$ y $x_1 x_3 \in E_G$!!), pero $x_0$
+        no es adyacente a $x_3$!! ($x_0, x_3 \in S$) y he aqu\'i una contradicci\'on
+        de suponer a $C_4$ como subgr\'afica inducida de $G$. Por tanto, se concluye
+        que $C_4$ no est\'a contenida como subgr\'afica inducida en $G$.
+        
+      \item[$\cdot\cdot$)] Si $G$ es \textit{escendible completa}, entonces
+        $\overline{P_3}$ es subgr\'afica inducida de $G$.
+        Supongamos, sin pérdida de generalidad, que $y_0 \in S$ entonces $y_1 \in S$
+        ($y_0 y_1 \notin E_G$), luego $y_2 \in S$!! ($y_1 y_2 \notin E_G$), pero
+        no todos los $y_i$'s pueden estar en $S$. Si $y_0 \in K$, entonces
+        $y_1 \in S$ o $y_1 \in K$ implican que $y_0$ es adyacente a $y_1$!! pero
+        $y_0 y_1 \notin E_G$ y he aqu\'i una contradicci\'on de suponer a $\overline{P_3}$
+        como subgr\'afica inducida de $G$.  Por tanto, se concluye que $\overline{P_3}$
+        no est\'a contenida como subgr\'afica inducida en $G$.
+        
+        
+      \end{itemize}
+    \item[$\Leftarrow$)] Para este caso analicemos a todas las gr\'aficas no isomorfas
+      que no son $\overline{P_3}$ con $3$ v\'ertices y no son $C_4$ con $4$ v\'ertices.
+      
+      \textbf{Con 3 v\'ertices:}
+      
+      \begin{figure}[ht!]
+        \centering
+        \begin{tikzpicture}
+          %%%%%  Componente izquierda  %%%%%
+          \node (0) [vertex,label=180:] at (0,1){};
+          \node (1) [vertex,label=90:]  at (1,1){};
+          \node (2) [vertex,label=90:]  at (2,1){};
+          
+          \draw [edge] (0) to (1);
+          \draw [edge] (1) to (2);
+          
+          \node (L) at (-0.5,1){$G_1$};
+
+          %%%%% Componente centro  %%%%%%%
+          \begin{scope}[xshift=4cm]
+            \node (9) [vertex,label=180:]  at (0,1){};
+            \node (10) [vertex,label=90:]  at (1,1){};
+            \node (11) [vertex,label=90:]  at (2,1){};
+            
+            \node (L) at (-0.5,1){$G_2$};
+          \end{scope}
+
+          %%%%% Componente derecha  %%%%%%
+          \begin{scope}[xshift=8cm]
+            \node (0) [vertex,label=180:] at (0,1){};
+            \node (1) [vertex,label=90:]  at (1,1){};
+            \node (2) [vertex,label=90:]  at (2,1){};
+            
+            \draw [edge] (0) to (1);
+            \draw [edge] (1) to (2);
+            \path(0)edge[bend left]node{}(2);
+            
+            \node (L) at (-0.5,1){$G_3$};
+          \end{scope}
+        \end{tikzpicture}
+      \end{figure}
+      
+      
+      \textbf{Con 4 vértices:}
+
+      \begin{figure}[ht!]
+        \centering
+        \begin{tikzpicture}
+          %%%%%  Componente izquierda  %%%%%
+          \node (0) [vertex,label=180:] at (0,1){};
+          \node (1) [vertex,label=90:]  at (1,1){};
+          \node (2) [vertex,label=90:]  at (0,0){};
+          \node (3) [vertex,label=90:]  at (1,0){};
+          
+          \node (L) at (-0.5,1){$H_1$};
+
+          %%%%% Componente centro 1  %%%%%%%
+          \begin{scope}[xshift=3cm]
+            \node (4) [vertex,label=180:] at (0,1){};
+            \node (5) [vertex,label=90:]  at (1,1){};
+            \node (6) [vertex,label=90:]  at (0,0){};
+            \node (7) [vertex,label=90:]  at (1,0){};
+            
+            \draw [edge] (4) to (7);            
+            \node (L) at (-0.5,1){$H_2$};
+          \end{scope}
+
+          %%%%% Componente centro 2  %%%%%%
+          \begin{scope}[xshift=6cm]
+            \node (8)  [vertex,label=180:] at (0,1){};
+            \node (9)  [vertex,label=90:]  at (1,1){};
+            \node (10) [vertex,label=90:]  at (0,0){};
+            \node (11) [vertex,label=90:]  at (1,0){};
+            
+            \draw [edge] (8) to (10);
+            \draw [edge] (9) to (11);
+            \node (L) at (-0.5,1){$H_3$};
+          \end{scope}
+
+          %%%%% Componente derecha  %%%%%%
+          \begin{scope}[xshift=9cm]
+            \node (12)  [vertex,label=180:] at (0,1){};
+            \node (13)  [vertex,label=90:]  at (1,1){};
+            \node (14) [vertex,label=90:]   at (0,0){};
+            \node (15) [vertex,label=90:]   at (1,0){};
+            
+            \draw [edge] (12) to (14);
+            \draw [edge] (14) to (15);
+            \node (L) at (-0.5,1){$H_4$};
+          \end{scope}
+        \end{tikzpicture}
+      \end{figure}
+
+      \begin{figure}[ht!]
+        \centering
+        \begin{tikzpicture}
+          %%%%%  Componente izquierda  %%%%%
+          \node (0) [vertex,label=180:] at (0,1){};
+          \node (1) [vertex,label=90:]  at (1,1){};
+          \node (2) [vertex,label=90:]  at (0,0){};
+          \node (3) [vertex,label=90:]  at (1,0){};
+          
+          \draw [edge] (0) to (2);
+          \draw [edge] (0) to (3);
+          \draw [edge] (1) to (3);
+          \node (L) at (-0.5,1){$H_5$};
+          
+          %%%%% Componente centro 1 %%%%%%%
+          \begin{scope}[xshift=3cm]
+            \node (4) [vertex,label=180:] at (0,1){};
+            \node (5) [vertex,label=90:]  at (1,1){};
+            \node (6) [vertex,label=90:]  at (0,0){};
+            \node (7) [vertex,label=90:]  at (1,0){};
+            
+            \draw [edge] (5) to (6);
+            \draw [edge] (5) to (7);
+            \draw [edge] (6) to (7);
+            \node (L) at (-0.5,1){$H_6$};
+          \end{scope}
+
+          %%%%% Componente centro 2  %%%%%%
+          \begin{scope}[xshift=6cm]
+            \node (8)  [vertex,label=180:] at (0,1){};
+            \node (9)  [vertex,label=90:]  at (1,1){};
+            \node (10) [vertex,label=90:]  at (0,0){};
+            \node (11) [vertex,label=90:]  at (1,0){};
+            
+            \draw [edge] (8) to (9);
+            \draw [edge] (8) to (10);
+            \draw [edge] (8) to (11);
+            \node (L) at (-0.5,1){$H_7$};
+          \end{scope}
+          
+          %%%%% Componente derecha  %%%%%%
+          \begin{scope}[xshift=9cm]
+            \node (12) [vertex,label=180:]  at (0,1){};
+            \node (13) [vertex,label=90:]   at (1,1){};
+            \node (14) [vertex,label=90:]   at (0,0){};
+            \node (15) [vertex,label=90:]   at (1,0){};
+            
+            \draw [edge] (12) to (13);
+            \draw [edge] (12) to (14);
+            \draw [edge] (13) to (14);
+            \draw [edge] (13) to (15);
+            \node (L) at (-0.5,1){$H_8$};
+          \end{scope}
+        \end{tikzpicture}
+      \end{figure}
+      
+      \begin{figure}[ht!]
+        \centering
+        \begin{tikzpicture}
+          %%%%%  Componente izquierda  %%%%%
+          \node (0) [vertex,label=180:] at (0,1){};
+          \node (1) [vertex,label=90:]  at (1,1){};
+          \node (2) [vertex,label=90:]  at (0,0){};
+          \node (3) [vertex,label=90:]  at (1,0){};
+          
+          \draw [edge] (0) to (1);
+          \draw [edge] (0) to (2);
+          \draw [edge] (1) to (2);
+          \draw [edge] (1) to (3);
+          \draw [edge] (2) to (3);
+          \node (L) at (-0.5,1){$H_9$};
+          
+          %%%%% Componente derecha %%%%%%%
+          \begin{scope}[xshift=3cm]
+            \node (4) [vertex,label=180:] at (0,1){};
+            \node (5) [vertex,label=90:]  at (1,1){};
+            \node (6) [vertex,label=90:]  at (0,0){};
+            \node (7) [vertex,label=90:]  at (1,0){};
+            
+            \draw [edge] (4) to (5);
+            \draw [edge] (4) to (6);
+            \draw [edge] (4) to (7);
+            \draw [edge] (5) to (6);
+            \draw [edge] (5) to (7);
+            \draw [edge] (6) to (7);
+            \node (L) at (-0.5,1){$H_{10}$};
+          \end{scope}
+        \end{tikzpicture}
+      \end{figure}
+      
+      Propongamos la partición $(S, K)$ en $G$.
+      
+      Notar que $H_2, H_3, H_4, H_5, H_6$, y $H_8$ contienen como subgr\'aficas inducidas a
+      $\overline{P_3}$, luego s\'olo $H_1, H_7, H_9$, y $H_{10}$ junto a $G_1, G_2$, y $G_3$
+      son subgr\'aficas inducidas de $G$ y podemos hacer el siguiente an\'alisis
+      \begin{itemize}
+      \item[$1$)] $G_2$ y $H_1$ est\'an contenidas como subgráficas inducidas en $S$.
+      \item[$2$)] $G_1$ tiene los $2$ v\'ertices de grado $1$ en $S$ y el \'unico
+        v\'ertice de grado $2$ est\'a en $K$.
+      \item[$3$)] $G_3$ y $H_{10}$ est\'an en $K$.
+      \item[$4$)] $H_7$ tiene a su \'unico v\'ertice de grado $3$ en $K$ y el resto de
+        sus v\'ertices est\'a en $S$.
+      \item[$5$)] $H_9$ tiene a sus $2$ v\'ertices de grado $2$ en $S$ y al resto en $K$.
+      \end{itemize}
+      
+      Con base a lo anterior podemos sugerir que $K$ es un clan y $S$ es independiente, y
+      ambos subconjuntos de $V_G$, con esto tenemos que $G$ es \textit{escindible}. Por
+      ($2$), ($4$) y ($5$) vemos que es necesario que haya aristas entre v\'ertices de $S$
+      y $K$, como ($1$) y ($3$) no restringen la condición anterior, entonces se puede
+      considerar a \textit{escindible completa}.
+    \end{itemize}
+    
+    De los casos anterior concluimos que una gr\'afica es escindible completa si y s\'olo si
+    no contiene a $C_4$ ni a $\overline{P_3}$ como subgr\'afica inducida.
+  \end{proof}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%% ---------- 03 (a)
