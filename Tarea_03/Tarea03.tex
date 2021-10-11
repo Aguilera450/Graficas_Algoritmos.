@@ -636,7 +636,35 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 01 EXTRA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Demuestre que el n\'umero de $v_i v_j$-caminos de longitud $k$ en $G$ es
       $(A^k)_{ij}$ donde $A$ es la matriz de adyacencia de $G$.
+      \begin{proof} Inducción
 
+        Paso base $(n=1)$ 
+        
+        Sea $V_i V_j$ adyacentes $\Longrightarrow A_{ij}=1$ y en caso de que no sean adyacentes $A_{ij}=0 \Longrightarrow$ lo que implica que el numero de caminos de longitud 1 entre $V_i V_j = A_{ij}= A^1_{ij} $
+        
+        Hipótesis de inducción $(n=k)$
+        
+        Supongamos que el número de  $V_i V_j -$caminos de longitud k en G es $(A^k)_{ij}$
+        
+        Paso inductivo $(n=k+1)$
+        
+        $Pd)$ El número de  $V_i V_j -$caminos de longitud $k+1$ en G es $(A^{(k+1)})_{ij}$
+        
+        Dem
+        
+        Sea $A^{(k+1)} = A^k * A \Longrightarrow$ por definición de multiplicacion de matrices sean "t" los elementos de la matriz $A^k$ y "a" lo elemntos de la matriz A $\Longrightarrow A^k * A = \sum_{r=1} t_{ir}a_{rj}$ paratoda $A_{ij}$ que pertenece a $A^{(k+1)} \Longrightarrow (A^{(k+1)})_(ij) = (A^k * A)_(ij) =  \sum_{r=1} t_{ir}a_{rj}$ (Esta suma en especifico  es la multiplicación de un renglón de $A^k$ y una columna de A)
+        
+        $\Longrightarrow$ si $a_{rj}=0 \Longrightarrow V_r$ y $V_j$ no son adyacentes y por hipótesis de inducción $t_{ir}$ son el número de caminos que existen de longitud k de $V_i$ a $V_r$
+        
+        Caso 1) $a_{rj}=0$
+        $\Longrightarrow$ ($t_{ir}*a_{rj}=0$) $\Longrightarrow$ existen 0 caminos de longitud  $n+1$
+         
+         Caso 2)  $a_{rj}=1$
+        $\Longrightarrow$  ($t_{ir}*a_{rj}=t_{ir}$) $\Longrightarrow$ existe 1 camino de longitud  $n+1$ que recorre de $V_i V_j$ 
+        
+         $\Longrightarrow  \sum_{r=1} t_{ir}a_{rj}$ independientemente de si $a_{rj}=0$ o $a_{rj}=1$ nos dará el número de caminos de longitud $n+1$ que existen entre $V_i V_j$ 
+        
+        \end{proof}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 01 EXTRA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Sea $G$ una gr\'afica bipartita de grado m\'aximo $k$.   Demuestre que
       existe una gr\'afica bipartita $k$-regular, $H$, que contiene a $G$ como
