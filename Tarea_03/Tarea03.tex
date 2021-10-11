@@ -155,15 +155,14 @@
     conjunto independiente, $K$ es un clan, y cada v\'ertice en $S$ es adyacente
     a cada v\'ertice en $K$. Demuestre que una gr\'afica es escindible
     completa si y s\'olo si no contiene a $C_4$ ni a $\overline{P_3}$ como
-    subgr\'afica inducida. \\
-
+    subgr\'afica inducida. 
+    
     \renewcommand\qedsymbol{QED}
     \begin{proof}
       Sea $C_4 = (x_0, x_1, x_2, x_3, x_0)$ y $\overline{P_3} = \{y_0, y_1, y_2\}$
-      tal que $y_0 y_2 \in E_G$, $y_0 y_1, y_1 y_2 \notin E_G$
-      \footnote{Sin pérdida de generalidad.}
-      , con $x_i, y_j \in V_G$ ($0 \leq i \leq 3$, $0 \leq j \leq 2$). \\
-      N\'otese que los $x_i$'s, $y_j$'s no pueden estar contenidos en una misma parte. \\
+      tal que $y_0 y_2 \in E_G$, $y_0 y_1, y_1 y_2 \notin E_G$ \footnote{Sin pérdida de generalidad.}
+      , con $x_i, y_j \in V_G$ ($0 \leq i \leq 3$, $0 \leq j \leq 2$). 
+      N\'otese que los $x_i$'s, $y_j$'s no pueden estar contenidos en una misma parte. 
       Es decir, $C_4$ y $\overline{P_3}$ no est\'an contenidos en $S$ (ya que ning\'un
       v\'ertice en $S$ es adyacente). De igual manera, no est\'an contenidos en $K$
       (ya que para cualesquiera $3$ o $4$ v\'ertices en $K$ se tiene a $K_3$ o $K_4$).
@@ -173,37 +172,37 @@
         \item[$\Rightarrow$)] Procedamos por reducción al absurdo.
           \begin{itemize}
             \item[$\cdot$)] Si $G$ es \textit{escendible completa}, entonces $C_4$ es
-              subgr\'afica inducida de $G$. \\
+              subgr\'afica inducida de $G$.
               Supongamos, sin p\'erdida de generalidad, que $x_0 \in S$ y $x_1 \in K$
-              (caso contrario, $x_1 \in S$ y $x_0$ no ser\'ia adyacente a $x_1$!!). \\
+              (caso contrario, $x_1 \in S$ y $x_0$ no ser\'ia adyacente a $x_1$!!).
               Luego, si $x_2 \in S$ entonces $x_3 \in K$ (caso contrario, $x_3 \in S$
-              y $x_2$ no ser\'ia adyacente a $x_3$!!). \\
+              y $x_2$ no ser\'ia adyacente a $x_3$!!). 
               As\'i por definici\'on de $K$ (clan), $x_1 x_3 \in E_G$!!
-              (ya que $x_1, x_3 \in K$). \\
+              (ya que $x_1, x_3 \in K$). 
               Si $x_2 \in K$, entonces $x_3 \in S$ (caso contrario, $x_3 \in K$ y
               $x_1 x_3 \in E_G$!!). Pero $x_0$ no es adyacente a $x_3$!! ($x_0, x_3
               \in S$). He aqu\'i una contradicci\'on de suponer a $C_4$ como subgr\'afica
-              inducida de $G$. \\
+              inducida de $G$.
               Por tanto, se concluye que $C_4$ no est\'a contenida como subgr\'afica
-              inducida en $G$. \\
+              inducida en $G$. 
 
             \item[$\cdot\cdot$)] Si $G$ es \textit{escendible completa}, entonces
-              $\overline{P_3}$ es subgr\'afica inducida de $G$. \\
-              Supongamos, sin pérdida de generalidad, que $y_0 \in S$. \\
-              Entonces: $y_1 \in S$ (pues $y_0 y_1 \notin E_G$). \\
+              $\overline{P_3}$ es subgr\'afica inducida de $G$. 
+              Supongamos, sin pérdida de generalidad, que $y_0 \in S$. 
+              Entonces: $y_1 \in S$ (pues $y_0 y_1 \notin E_G$).
               Luego, $y_2 \in S$!! (pues $y_1 y_2 \notin E_G$). Pero no todos los $y_i$'s
-              pueden estar en $S$. \\
+              pueden estar en $S$. 
               Si $y_0 \in K$, entonces $y_1 \in S$ o $y_1 \in K$ implican que $y_0$ es
-              adyacente a $y_1$!! \\
+              adyacente a $y_1$!! 
               Pero $y_0 y_1 \notin E_G$ y he aqu\'i una contradicci\'on de suponer a
               $\overline{P_3}$
-              como subgr\'afica inducida de $G$. \\
+              como subgr\'afica inducida de $G$.
               Por tanto, se concluye que $\overline{P_3}$ no est\'a contenida como
-              subgr\'afica inducida en $G$. \\
+              subgr\'afica inducida en $G$.
           \end{itemize}
 
         \item[$\Leftarrow$)] Para este caso, analicemos a todas las gr\'aficas no isomorfas
-          que no son $\overline{P_3}$ con $3$ v\'ertices y no son $C_4$ con $4$ v\'ertices. \\
+          que no son $\overline{P_3}$ con $3$ v\'ertices y no son $C_4$ con $4$ v\'ertices.
 
           \textbf{Con 3 v\'ertices:}
 
@@ -384,7 +383,8 @@
               \end{scope}
             \end{tikzpicture}
           \end{figure}
-
+          
+          
           Propongamos la partición $(S, K)$ en $G$.
 
           Notemos que $H_2, H_3, H_4, H_5, H_6$, y $H_8$ contienen como subgr\'aficas inducidas a
@@ -407,14 +407,15 @@
           \end{itemize}
 
           Con base a lo anterior, podemos sugerir que $K$ es un clan y $S$ es independiente y
-          ambos subconjuntos de $V_G$. Con esto tenemos que $G$ es \textit{escindible}. \\
+          ambos subconjuntos de $V_G$. Con esto tenemos que $G$ es \textit{escindible}.
+          
           Por ($2$), ($4$) y ($5$), vemos que es necesario que haya aristas entre v\'ertices de $S$
           y $K$. Como ($1$) y ($3$) no restringen la condición anterior, entonces se puede
           considerar a \textit{escindible completa}.
       \end{itemize}
 
       De los casos anteriores, concluimos que una gr\'afica es escindible completa si y s\'olo si
-      no contiene a $C_4$ ni a $\overline{P_3}$ como subgr\'afica inducida. \\
+      no contiene a $C_4$ ni a $\overline{P_3}$ como subgr\'afica inducida.
     \end{proof}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -458,9 +459,10 @@
             \begin{eqnarray*}
               {|V| \choose 2} > {|V| -1 \choose 2}
             \end{eqnarray*}
-            Así, se justifica que $e$ no sea ni lazo ni arista multiple. \\
+            Así, se justifica que $e$ no sea ni lazo ni arista multiple.
+            
             De lo anterior, se sigue que $G +e$ es una gráfica simple que además es conexa,
-            pues $G$ ya es conexa. \\
+            pues $G$ ya es conexa.
 
           \item[-] Si $G$ no es conexa, entonces existe un vértice aislado $x$, ya que:
             \begin{eqnarray*}
@@ -471,25 +473,27 @@
             \end{eqnarray*}
             Sabemos por resultados vistos en clases que hay ${|V_G| \choose 2}$ aristas en
             una gráfica completa y un vértice puede relacionarse a lo más con $|V_G| -1$ vértices
-            (pues estamos trabajando con gráficas simples). \\
-            Nótese que de lo anterior se infiere que $G - x$ es conexa
-            \footnote{Esto ya que $|E_{G -x}| = {|V_G| \choose 2}$.}
+            (pues estamos trabajando con gráficas simples).
+            
+            Nótese que de lo anterior se infiere que $G - \{x\}$ es conexa
+            \footnote{Esto ya que $|E_{G - \{x\}}| = {|V_G| \choose 2}$.}
             y así $G + e$ (con $e \in E_G$)
             \begin{eqnarray*}
               |E_{G +e}| &=& {|V| -1 \choose 2} +1\\
               &>& {|V| -1 \choose 2}
             \end{eqnarray*}
-            es conexa, pues no hay lazos y no hay aristas múltiples en $G$. \\
+            es conexa, pues no hay lazos y no hay aristas múltiples en $G$.
+
             Entonces, tenemos que la nueva arista está comprendida entre $x$ y algún otro
-            vértice en $V_{G -x}$. Por lo que habrá una $xy$-trayectoria para $y \in E_G$.
+            vértice en $V_{G - \{x\}}$. Por lo que habrá una $xy$-trayectoria para $y \in E_G$.
         \end{itemize}
         De lo anterior, concluimos que
-        $|E_G| > {|V| -1 \choose 2} \Rightarrow G \text{ es conexa.}$ \\
+        $|E_G| > {|V| -1 \choose 2} \Rightarrow G \text{ es conexa.}$ 
       \end{proof}
 
     %%%%%%%%%%%%%%%%%%%%% ---------- 03 (b)
     \item Para $|V| > 1$ encuentre una gr\'afica inconexa con $|E| = {|V|-1
-      \choose 2}$. \\
+      \choose 2}$.
 
       \textbf{\textit{Solución:}}
 
@@ -514,7 +518,7 @@
 
       Así, observemos que la gráfica anterior es inconexa.
 
-      \hfill $\square$ \\
+      \hfill $\square$
   \end{enumerate}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 04 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -537,15 +541,19 @@
           \end{tikzpicture}
         \end{figure}
 
-        donde $E_G = \varnothing$. \\
+        donde $E_G = \varnothing$.
+        
         Luego, supongamos como hipótesis inductiva que para una cantidad $n$ de
         vértices, el que se cumpla $\delta = \lfloor \frac{|V|}{2} \rfloor$ implica
-        que $G$ es conexa. \\
-        A continuación veamos qué pasa con $G + x$, donde $x \in V_{G +x}$.
-        Así, $G$ cumple con $\delta = \lfloor \frac{|V|}{2} \rfloor$. \\
+        que $G$ es conexa.
+        
+        A continuación veamos qué pasa con $G + \{x\}$, donde $x \in V_{G + \{x\}}$.
+        Así, $G$ cumple con $\delta = \lfloor \frac{|V|}{2} \rfloor$.
+        
         De lo anterior, se sigue que $x$ es vecino de al menos $\lfloor \frac{|V|}{2}
         \rfloor$ vértices en $G$ (notemos que $G$ es, de hecho, una subgráfica inducida
-        por vértices de $G +x$). Como $G$ es conexa, por hipótesis inductiva se sigue que $G +x$ es conexa. \\
+        por vértices de $G +\{x\}$). Como $G$ es conexa, por hipótesis inductiva se sigue
+        que $G + \{x\}$ es conexa. 
       \end{proof}
 
     %%%%%%%%%%%%%%%%%%%% ----------- 04 (b)
@@ -577,7 +585,7 @@
 
       Así, la gráfica es $1$-regular e inconexa.
 
-      \hfill $\square$ \\
+      \hfill $\square$
   \end{enumerate}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -586,7 +594,7 @@
 
     \renewcommand\qedsymbol{QED}
     \begin{proof}
-      Para este ejercicio procedamos por inducción en $V$. \\
+      Para este ejercicio procedamos por inducción en $V$.
       Así, cuando $\delta^+ = 1$ y $|V| = 2$ tendremos que:
 
       \begin{center}
@@ -604,30 +612,33 @@
 
       Ahora, supongamos que hay un ciclo $C$ de al menos longitud $\delta^+ +1$
       con $\delta^+ > 1$, para $n(n > 1)$ vértices en $D$ y además $D$ no
-      tiene lazos. \\
+      tiene lazos.
+      
       Luego, para $|V_D| = n +1$ donde llamaremos $x$ al vértice
-      extra. \\
+      extra.
+      
       Analicemos dos casos extremos:
 
       \begin{itemize}
         \item[-] Si $x$ tiene una sóla incidencia, entonces $\delta^+ = 1$ y como
-          $\mathcal{L}(C) > 1$, tenemos que existe un ciclo de al menos $\delta^+ +1$. \\
-          En este caso, tenemos que es estrictamente mayor. \\
-          De lo anterior, terminamos. \\
+          $\mathcal{L}(C) > 1$, tenemos que existe un ciclo de al menos $\delta^+ +1$.
+          En este caso, tenemos que es estrictamente mayor. 
+          De lo anterior, terminamos. 
 
         \item[-] Si para cada vértice $u_i(1 < i \geq |V_D| -1)$ en $G$ hay
           una arista que ``salga" de $u_i$ e incida en $x$, tenemos que $\delta^+$
-          no se modifica. \\
+          no se modifica.
+          
           Ahora notemos que, en partícular, hay al menos
           $u_i, u_{i +1}$ tales que existe una $u_i u_{i +1}$-trayectoria en $C$
-          (notemos que $u_i$ y $u_{i +1}$ son vecinos). \\
+          (notemos que $u_i$ y $u_{i +1}$ son vecinos). 
           Luego, como existe $e_1 = u_i x$ y $e_{2} = u_{i +1} x$, con $e_1$
           y $e_2$ en $E_D$, tenemos un nuevo ciclo que es de al menos
-          $\mathcal{L}(C) +1$ de longitud. \\
+          $\mathcal{L}(C) +1$ de longitud. 
           Así, como $\mathcal{L}(C) \geq \delta^+ +1$, tenemos que el nuevo ciclo es
           de al menos longitud $\delta^+ +1$.
       \end{itemize}
-      Del análisis anterior, concluimos que el enunciado se cumple. \\
+      Del análisis anterior, concluimos que el enunciado se cumple.
     \end{proof}
   \end{enumerate}
 
@@ -640,7 +651,9 @@
 
         Paso base $(n=1)$ 
         
-        Sea $V_i V_j$ adyacentes $\Longrightarrow A_{ij}=1$ y en caso de que no sean adyacentes $A_{ij}=0 \Longrightarrow$ lo que implica que el numero de caminos de longitud 1 entre $V_i V_j = A_{ij}= A^1_{ij} $
+        Sea $V_i V_j$ adyacentes $\Longrightarrow A_{ij}=1$ y en caso de que no sean
+        adyacentes $A_{ij}=0 \Longrightarrow$ lo que implica que el numero de caminos
+        de longitud 1 entre $V_i V_j = A_{ij}= A^1_{ij} $
         
         Hipótesis de inducción $(n=k)$
         
@@ -652,17 +665,25 @@
         
         Dem
         
-        Sea $A^{(k+1)} = A^k * A \Longrightarrow$ por definición de multiplicacion de matrices sean "t" los elementos de la matriz $A^k$ y "a" lo elemntos de la matriz A $\Longrightarrow A^k * A = \sum_{r=1} t_{ir}a_{rj}$ paratoda $A_{ij}$ que pertenece a $A^{(k+1)} \Longrightarrow (A^{(k+1)})_(ij) = (A^k * A)_(ij) =  \sum_{r=1} t_{ir}a_{rj}$ (Esta suma en especifico  es la multiplicación de un renglón de $A^k$ y una columna de A)
+        Sea $A^{(k+1)} = A^k * A \Longrightarrow$ por definición de multiplicacion de matrices sean
+        "t" los elementos de la matriz $A^k$ y "a" lo elemntos de la matriz A
+        $\Longrightarrow A^k * A = \sum_{r=1} t_{ir}a_{rj}$ paratoda $A_{ij}$ que pertenece a
+        $A^{(k+1)} \Longrightarrow (A^{(k+1)})_(ij) = (A^k * A)_(ij) =  \sum_{r=1} t_{ir}a_{rj}$
+        (Esta suma en especifico  es la multiplicación de un renglón de $A^k$ y una columna de A)
         
-        $\Longrightarrow$ si $a_{rj}=0 \Longrightarrow V_r$ y $V_j$ no son adyacentes y por hipótesis de inducción $t_{ir}$ son el número de caminos que existen de longitud k de $V_i$ a $V_r$
+        $\Longrightarrow$ si $a_{rj}=0 \Longrightarrow V_r$ y $V_j$ no son adyacentes y por
+        hipótesis de inducción $t_{ir}$ son el número de caminos que existen de longitud k
+        de $V_i$ a $V_r$
         
         Caso 1) $a_{rj}=0$
         $\Longrightarrow$ ($t_{ir}*a_{rj}=0$) $\Longrightarrow$ existen 0 caminos de longitud  $n+1$
          
          Caso 2)  $a_{rj}=1$
-        $\Longrightarrow$  ($t_{ir}*a_{rj}=t_{ir}$) $\Longrightarrow$ existe 1 camino de longitud  $n+1$ que recorre de $V_i V_j$ 
+         $\Longrightarrow$  ($t_{ir}*a_{rj}=t_{ir}$) $\Longrightarrow$ existe 1 camino de longitud
+         $n+1$ que recorre de $V_i V_j$ 
         
-         $\Longrightarrow  \sum_{r=1} t_{ir}a_{rj}$ independientemente de si $a_{rj}=0$ o $a_{rj}=1$ nos dará el número de caminos de longitud $n+1$ que existen entre $V_i V_j$ 
+         $\Longrightarrow  \sum_{r=1} t_{ir}a_{rj}$ independientemente de si $a_{rj}=0$ o $a_{rj}=1$
+         nos dará el número de caminos de longitud $n+1$ que existen entre $V_i V_j$ 
         
         \end{proof}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 01 EXTRA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
