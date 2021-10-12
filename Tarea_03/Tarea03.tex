@@ -670,14 +670,14 @@
 
         Sabemos que $A^{(k+1)} = A^k \cdot A$ (por definición de multiplicación de matrices).
 
-        Sean ``t" los elementos de la matriz $A^k$ y ``a" lo elementos de la matriz A.
+        Sean ``$t_{ij}$" los elementos de la matriz $A^k$ y ``$a_{ij}$" lo elementos de la matriz A.
 
-        Entonces: $A^k \cdot A = \displaystyle \sum_{r=1} t_{ir} a_{rj}$, para toda $A_{ij}$ que pertenece a
+        Entonces: $A^k \cdot A = \displaystyle \sum_{r=1}^{n} t_{pr} a_{rq}$, para toda $A_{pq}$ que pertenece a
         $A^{(k+1)}$.
 
-        Así, $(A^{(k+1)})_{ij} = (A^k \cdot A)_{ij} = \displaystyle \sum_{r=1} t_{ir}a_{rj}$.
+        Así, $(A^{(k+1)})_{ij} = (A^k \cdot A)_{ij} = \displaystyle \sum_{r=1}^{n} t_{ir}a_{rj}$.
 
-        Notemos que esta suma en espec\'ifico, es la multiplicación de un renglón de $A^k$ y una columna de $A$.
+        Notemos que $(A^{(k+1))_{ij}}$ es la multiplicación de un renglón $i$ de $A^k$ y una columna $j$ de $A$.
 
         Si $a_{rj} = 0$, entonces $v_r$ y $v_j$ no son adyacentes y, por
         \textbf{Hipótesis de Inducción}, $t_{ir}$ es el número de caminos que existen de longitud $k$
@@ -689,12 +689,12 @@
             Si $a_{rj} = 0$, entonces $(t_{ir} \cdot a_{rj} = 0)$ y por tanto, existen $0$ caminos de longitud $n+1$.
 
           \item \textbf{Caso 2)} $a_{rj} = 1$.
-          
+
             Si $a_{rj} = 1$, entonces $(t_{ir} \cdot a_{rj} = t_{ir})$ y por tanto, existe $1$ camino de longitud
             $n+1$ que recorre de $v_i v_j$.
 
             De lo anterior se sigue que (independientemente de si $a_{rj} = 0$ o $a_{rj} = 1$)
-            $\displaystyle \sum_{r=1} t_{ir} a_{rj}$ nos dará el número de caminos de longitud $n+1$
+            $\displaystyle \sum_{r=1}^{n} t_{ir} a_{rj}$ nos dará el número de caminos de longitud $n+1$
             que existen entre $v_i v_j$.
         \end{itemize}
       \end{proof}
