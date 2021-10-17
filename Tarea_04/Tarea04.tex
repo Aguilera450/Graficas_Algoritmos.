@@ -103,6 +103,24 @@
     %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 2 (a).
     \item Demuestre que cada \'arbol con grado m\'aximo
       $\Delta > 1$ tiene al menos $\Delta$ hojas.
+      \renewcommand\qedsymbol{QED}
+      \begin{proof}
+      Sea $G$ un \'arbol y sea $x \in V_G$ tal que $d(x) = \Delta$ (notar que $x$
+      no necesariamente es el \'unico que cumple tener grado igual a $\Delta$, por
+      lo que se tomar\'a alguno que cumpla esto), entonces $x$ tiene exactamente
+      $\Delta$ vecinos, por la caracterizaci\'on de \'arbol, sabemos que $G$ es
+      ac\'iclico y por tanto los caminos que parten desde $x$ (tienen a $x$
+      como v\'ertice inicial) hacia algunos de sus $\Delta$ vecinos, no tienen
+      v\'ertices en com\'un que sean distintos de $x$ (caso contrario, habr\'ia $2$
+      trayectorias que tienen inicio en $x$ a las que llamaremos $w_1$ y $w_2$, y
+      adem\'as tienen en com\'un al menos un v\'ertice $v$ y por tanto $w_1 w_2$ es
+      un ciclo!! que est\'a contenido en $G$), luego, como $x$ tiene $\Delta$ vecinos,
+      entonces podemos tomar al menos $\Delta$ trayectorias distintas entre ellas
+      tales que terminen en alg\'un v\'ertice $u_i$ ($1 \leq i \leq \Delta$) y por
+      tanto cada $u_i$ es una hoja de $G$, como hemos encontrado $\Delta$ hojas
+      podemos concluir que el \'arbol $G$ con grado m\'aximo $\Delta$ tiene al menos
+      $\Delta$ hojas.
+      \end{proof}
       %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 2 (c).
     \item Construya, para cada elecci\'on de $n$ y $\Delta$,
       con $2\le \Delta < n$, un \'arbol de orden $n$ con
