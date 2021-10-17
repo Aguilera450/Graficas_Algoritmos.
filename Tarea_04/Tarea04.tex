@@ -248,6 +248,8 @@
     d_n)$ de enteros positivos es la sucesi\'on de
     grados de un \'arbol si y s\'olo si
     $\sum_{i=1}^n d_i = 2(n-1)$.
+    
+    
 \end{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Puntos Extra}
@@ -277,13 +279,52 @@
   \item \begin{enumerate}
     \item Determine todos los arboles $T$ tales que
       $\overline T$ tambi\'en es un \'arbol.
-
+      
+      \textbf{\textit{Soluci\'on:}} 
+      \begin{itemize}
+      \item[$\cdot$)]  Si $|V_T| = 1$, entonces por vacuidad se cumple
+        el enunciado y terminamos.
+      \item[$\cdot \cdot$)] Si $|V_T| > 1$, entonces sabemos existen $|V_T| -1$
+        aristas para $T$ y que a lo más ${|V_T| \choose 2}$ si $T$ fuera
+        completa. Notar que $E_{\overline{T}} = {|V_T| \choose 2} - (|V_T| -1)$,
+        como queremos que $\overline{T}$ se un árbol, entonces se debe cumplir
+        la siguiente igualdad
+        \begin{eqnarray*}
+          |V_T| -1 &=& {|V_T| \choose 2} - (|V_T| -1)\\
+          \Leftrightarrow 2 \cdot (|V_T| -1) &=& {|V_T| \choose 2}\\
+          \Leftrightarrow 2 \cdot (|V_T| -1) &=& \frac{|V_T| \cdot (|V_T| -1)}{2}\\
+          \Leftrightarrow 4 \cdot \cancel{(|V_T| -1)} &=& |V_T| \cdot \cancel{(|V_T| -1)}\\
+          \Rightarrow |V_T| &=& 4
+        \end{eqnarray*}
+        
+        y del ejercicio $1$ de la tarea $1$ sabemos que hay $11$ gráficas
+        de orden $4$ no isomorfas entre sí y sólo $2$ de esas son árboles,
+        una es $P_4$ y la otra es el árbol tal que uno de sus vértices es
+        de grado $3$, pero en este último su complemento no es un árbol.
+        Luego  $T = P_4$ y este es la único  salvo isomorfismo.
+        \hfill $\square$
+        
+      \end{itemize}
+      
     \item Determine todas las gr\'aficas de orden al
       menos cuatro tales que la subgr\'afica inducida por
       cualesquiera tres de sus v\'ertices es un \'arbol.
+      
+      \textbf{\textit{Soluci\'on:}} 
+      Veamos que si $|V| > 4$, se cumple cualquiera de las siguientes condiciones:
+      \begin{itemize}
+      \item[$\cdot$)] Si la gráfica es incompleta existen al menos dos vértices
+        que no se conectan mediante una arista, si no existe trayectoria entre estos,
+        entonces existe una "elección" de $3$ vértices tales que son inducidos de
+        la gráfica original y no son un árbol.
+        
+      \item[$\cdot \cdot$)] Si la gráfica es completa, entonces hay $3$ vértices que
+        al inducirlos en la gráfica original forman un $3$-ciclo y por tanto no son un árbol.
+      \end{itemize}
+      De lo anterior la única gráfica que cumple con el enunciado es un $4$-ciclo
+      que no contenga como gráfica inducida un $3$-ciclo. \hfill $\square$
     \end{enumerate}
-    Justifique detalladamente sus respuestas.
-
+    
 \end{enumerate}
 
 \end{document}
