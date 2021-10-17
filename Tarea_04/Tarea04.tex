@@ -249,7 +249,27 @@
     grados de un \'arbol si y s\'olo si
     $\sum_{i=1}^n d_i = 2(n-1)$.
     
-    
+    \begin{proof}
+      Para este ejercicio analicemos $2$ posibles casos:
+      \begin{itemize}
+      \item[$\Rightarrow$)] Dada la sucesi\'on de grados $(d_1, \dots, d_n)$ de un \'arbol,
+        entonces $\sum_{i=1}^n d_i = 2(n-1)$.
+        
+        Sabemos que para cualquier gr\'afica pasa que
+        \[
+        \sum_{i=1}^n d_i = 2|E|
+        \]
+        Como en un \'arbol se cumple que $|E| = |V| - 1$\footnote{Prop. $2.2.5$ en las
+          notas de clase}, entonces $|E| = n - 1$ y por tanto
+        \[
+        \sum_{i=1}^n d_i = 2(n - 1)
+        \]
+        
+      \item[$\Leftarrow$)] Dada una gr\'afica $G$ donde se cumple que $\sum_{i=1}^n d_i = 2(n-1)$,
+        entonces $(d_1, \dots, d_n)$ es la sucesi\'on de grados en un arbol.
+        
+      \end{itemize}
+    \end{proof}
 \end{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Puntos Extra}
