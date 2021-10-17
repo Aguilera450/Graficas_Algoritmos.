@@ -252,8 +252,8 @@
     \begin{proof}
       Para este ejercicio analicemos $2$ posibles casos:
       \begin{itemize}
-      \item[$\Rightarrow$)] Dada la sucesi\'on de grados $(d_1, \dots, d_n)$ de un \'arbol,
-        entonces $\sum_{i=1}^n d_i = 2(n-1)$.
+      \item[$\Rightarrow$)] Dada la sucesi\'on de grados $(d_1, \dots, d_n)$ de un
+        \'arbol, entonces $\sum_{i=1}^n d_i = 2(n-1)$.
         
         Sabemos que para cualquier gr\'afica pasa que
         \[
@@ -265,10 +265,46 @@
         \sum_{i=1}^n d_i = 2(n - 1)
         \]
         
-      \item[$\Leftarrow$)] Dada una gr\'afica $G$ donde se cumple que $\sum_{i=1}^n d_i = 2(n-1)$,
-        entonces $(d_1, \dots, d_n)$ es la sucesi\'on de grados en un arbol.
+      \item[$\Leftarrow$)] Dada una gr\'afica $G$ donde se cumple que
+        $\sum_{i=1}^n d_i = 2(n-1)$, entonces $(d_1, \dots, d_n)$ es la
+        sucesi\'on de grados en un arbol.
         
+        Veamos que $G$ no tiene v\'ertices aislados, pues en caso de tenerlos
+        supongamos sin p\'erdida de generalidad que $x \in V_G$ es un
+        v\'ertice aislado, entonces $G - \{x\}$ no contiene v\'ertices aislados
+        y $|E_{G - \{x\}}| = 2|V_{G - \{x\}}|$ !!, lo que implica que $G$ contiene como
+        subgr\'afica inducida a alg\'un ciclo (pues la cantidad de v\'ertices
+        ser\'ia de al menos la cantidad de v\'ertices) y se deja de cumplir que
+        $\sum_{i=1}^n d_i = 2(n-1)$ !!.
+        
+        De la misma manera que la anterior podemos observar que todos los v\'ertices
+        de $G$ no pueden tener al menos grado $2$, pues suponer esto nos genera
+        al menos un ciclo y esto implicar\'ia que $\sum_{i=1}^n d_i = 2(n)$!!, y
+        claramente $2n \not= 2(n - 1)$.
+        
+        Luego, hay exactamente $2$ v\'ertices de grado $1$ en $G$, para esto
+        llamemos $x, y \in V_G$ a los v\'ertices de grado $1$, entonces en
+        $G -\{x, y\}$ se cumple que $\sum_{i=1}^n d_i = 2(n-2)$ y al anexarle
+        exactamente $\{x, y\}$ tendremos que
+        \begin{eqnarray*}
+          \sum_{i=1}^n d_i &=& 2(n-2) + 2\\
+          &=& 4n - 4 + 2\\
+          &=& 4n - 2\\
+          &=& 2(n - 1)
+        \end{eqnarray*}
+        en caso contrario, se deja de cumplir lo anterior y es por esto que
+        se puede garantizar que estos son \'unicos.
+        
+        Como $G$ es ac\'iclica (por el argumento dado anteriormente), podemos
+        deducir que $G$ es conexa, pues de no serlo habr\'ia m\'as de $2$
+        v\'ertices con grado $1$ y ya observamos que este no es un caso posible.
+        Luego, $G$ es un \'arbol y por el ejercicio $1$ de esta tarea tenemos
+        que $G$ es, part\'icularmente, una trayectoria.
       \end{itemize}
+      
+      De los casos analizados concluimos que una sucesi\'on $(d_1, \dots,
+      d_n)$ de enteros positivos es la sucesi\'on de grados de un \'arbol
+      si y s\'olo si $\displaystyle \sum_{i=1}^n d_i = 2(n-1)$.
     \end{proof}
 \end{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
