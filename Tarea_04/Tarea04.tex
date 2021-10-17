@@ -19,11 +19,12 @@
 %\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 % Tikz
+\usepackage{tkz-graph}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
-
+% Def. Dr. César.
 \usetikzlibrary{shapes,calc}
 \tikzstyle{edge}=[shorten <=2pt, shorten >=2pt,
   >=stealth, line width=1.1pt]
@@ -50,6 +51,20 @@
 \tikzstyle{vertex}=[circle, draw, minimum size=6pt,
   line width=0.75pt, inner sep=0pt,
   outer sep=0pt]
+
+% Nueva Def.
+\newcommand{\kaspressknodel}[2]{\pgfmathtruncatemacro{\mymod}{#1+1}
+  \foreach \X in {0,...,#1}
+           {\node[bullet,label={right:$\boldsymbol{(2,\X)}$}] (v2\X) at 
+             (4,{1.2*(\X-(#1+0)/2)}){};
+             \node[bullet,label={left:$\boldsymbol{(1,\X)}$}] (v1\X) at 
+             (1.5,{1.2*(\X-(#1+0)/2)}){};}
+           \foreach \X [evaluate=\X as \NextX using {int(mod(\X+3,\mymod))},
+             evaluate=\X as \AnotherX using {int(mod(\X+1,\mymod))},] in {0,...,#1}
+                    {\draw[thick] (v1\X) -- (v2\NextX);
+                      \draw[dashed] (v1\X) -- (v2\AnotherX);
+                      \draw (v1\X) -- (v2\X);} 
+}
 
 % Margins
 \addtolength{\voffset}{-1.5cm}
@@ -125,6 +140,86 @@
     \item Construya, para cada elecci\'on de $n$ y $\Delta$,
       con $2\le \Delta < n$, un \'arbol de orden $n$ con
       exactamente $\Delta$ hojas.
+      
+      \textbf{\textit{Soluci\'on:}} Sea $G$ un \'arbol, usemos el resultado anterior,
+      y garantizamos que, como $G$ tiene alg\'un $x \in V_G : d(x) = \Delta$, entonces
+      $G$ tiene al menos $\Delta$ hojas. Luego, part\'icularmente en los \'arboles de
+      exactamente $\Delta$ hojas, cada camino $W_i$ que tenga como v\'ertice inicial a
+      $x$ no tendr\'a bifurcaciones, esto es, $x W_i v_i$ es la \'unica manera de llegar
+      de $x$ a $v_i$ y adem\'as $W_i$ es una trayectoria (y por definici\'on de trayectoria,
+      no tendr\'a bifurcaciones), como $x$ es v\'ertice inicial de exactamente $\Delta$
+      trayectorias $W_i$, entonces hay exactamente $\Delta$ hojas en $G$. En resumen, $G$
+      tendr\'a exactamente $\Delta$ v\'ertices de grado $1$, a continuaci\'on se muestra
+      un ejemplo que trata de ser lo m\'as general posible:
+      
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \begin{figure}[ht!]
+        \centering
+        \begin{tikzpicture}
+          %%%%%  Componente izquierda  %%%%%
+          %\foreach \i in {0,1}
+          %\node(\i) [vertex] at (\i*1, -2){};
+          \node(0) [blueV, label=270:$v_1$] at (0, -2){};
+          \node(1) [vertex] at (1, -2){};
+          \draw[edge] (0) to (1);
+          \node (L) at (-0.5,-1.5){$G$};
+          
+          %% Suspensivos.
+          \begin{scope}[xshift=1cm]
+            \foreach \i in {1,...,3}
+            \fill (\i*0.7, -2) circle (1pt);
+          \end{scope}
+          
+          %% x y vecino.
+          \begin{scope}[xshift=4cm]
+            \node(3) [vertex] at (0, -2){};
+            \node(4) [redV, label=270:$x$] at (1, -2){};
+            \draw[edge] (3) to (4);
+          \end{scope}
+          
+          %%  Nodos, esto se puede mejorar con un foreach.
+          \begin{scope}[xshift=5cm]
+            \node(5) [vertex] at (3, 1){};
+            \node(6) [vertex] at (3, 0){};
+            \foreach \i in {1,...,3}
+            \fill (3, -\i*1) circle (1pt);
+            \node(7) [vertex] at (3, -4){};
+            \node(8) [vertex] at (3, -5){};  
+          \end{scope}
+
+          %% Aristas de x hacia la derecha.
+          \draw[edge] (4) to (5);
+          \draw[edge] (4) to (6);
+          \draw[edge] (4) to (7);
+          \draw[edge] (4) to (8);
+          
+          %% Parte derecha.
+          \begin{scope}[xshift=8cm]
+            \foreach \j in {1,0,...,-5}
+            \foreach \i in {1,...,3}
+            \fill (\i*0.7, \j) circle (1pt);
+            \node(9)  [vertex] at (3, 1){};
+            \node(10) [blueV, label=0:$v_2$] at (4, 1){};
+            \draw[edge] (9) to (10);
+            \node(11) [vertex] at (3, 0){};
+            \node(12) [blueV, label=0:$v_3$] at (4, 0){};
+            \draw[edge] (11) to (12);
+            \foreach \j in {3,4}
+            \foreach \i in {-1,-2,-3}
+            \fill (\j, \i) circle (1pt);
+            \node(13)  [vertex] at (3, -4){};
+            \node(14) [blueV, label=0:$v_{\Delta -1}$] at (4, -4){};
+            \draw[edge] (13) to (14);
+            \node(15) [vertex] at (3, -5){};
+            \node(16) [blueV, label=0:$v_{\Delta}$] at (4, -5){};
+            \draw[edge] (15) to (16);
+          \end{scope}
+        \end{tikzpicture}
+      \end{figure}
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      
+      donde los $v_i$'s son las hojas, para $1 \leq i \leq \Delta$.
+      \hfill $\square$
   \end{enumerate}
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3. %%%%%%%%%%%%%%%%%%%%%%%%%%%%
