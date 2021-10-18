@@ -113,6 +113,31 @@
     un \'arbol con exactamente dos v\'ertices de
     grado $1$.
     
+
+
+    \begin{proof} (Reducción al absurdo)
+      (------->) Pd G es una trayectoria $\Longrightarrow$ G es un arbol con exactamente 2 vértices de grado 1
+      
+      Pd G es una trayectoria  y G no es un árbol 
+      
+      Pd G es una trayectoria  y G no es conexa o contiene un ciclo 
+      
+      Caso 1 G no es conexa
+      
+      Si G no es conexa $\Longrightarrow$ Existen  u,v que pertenecen a G tal que u,v no son adyacente $\Longrightarrow$ G no puede ser una trayectoria (Lo que es una contradicción ya que G es una trayectoria)
+      
+      Caso 2 G contiene un ciclo
+      
+      Si G contiene un ciclo $\Longrightarrow$  G no es un orden lineal  $\Longrightarrow$ G no es trayectoria (Lo que es una contradicción ya que G es una trayectoria)
+      
+      Por lo tanto G es una trayectoria y G es un Árbol $\Longrightarrow$ (---tengo dudas aqui---) Existe G con tansolo 2 vertices de grado 2, pero tambien existen G con mas vertices que lo cumplen 
+      
+      
+      (<-------) Sea G un arbol con exactamente 2 vertices de grado 1  $\Longrightarrow$ G es un orden lineal por lo tanto G es una trayectoria
+      
+      \end{proof}
+
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2. %%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item \begin{enumerate}
     %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 2 (a).
@@ -243,6 +268,30 @@
     $m$, la mol\'ecula $C_mH_n$ existe s\'olo si
     $n = 2m + 2$.
     
+
+
+    \begin{proof} Demostración por inducción sobre m
+
+      Paso base (m=1)
+      
+      Por definición de hidrocarburo saturado $C_1 k_4 \Longrightarrow$  4 = 2(1)+2 por lo tanto para m=1 se cumple que n=2m+2
+      
+      Hipótesis de inducción m = k, si  $C_k H_n \Longrightarrow$ supongamos n=2k+2
+      
+      Paso Inductivo
+      
+      Pd m=k+1
+      
+      Por hipótesis de inducción tenemos que $C_k H_n \Longrightarrow$ n=2k+2 y por paso base $c_1 K_4 \Longrightarrow$ 4=2(1)+2 $\Longrightarrow$ sean r que pertenece a los Naturales sin el 0, sea $C_r$ y $C_1$ donde  $C_r$ pertenece a $C_k H_n$  y $C_1$ pertenece a $C_1 k_4$ tal que r pertenece a ${1,2,3,...,k}$  $\Longrightarrow$  eliminemos 1 hidrógeno a $C_r$ y $C_1 \Longrightarrow C_k H_{n-1}$ y $C_1 k_3$ son iguales a n-1=2k+1 ...(1) y 3=2(1)+1 ...(2) $\Longrightarrow$ uniendo $C_k H_{n-1}$ y $C_1 k_3$ mediante los vertices $C_r$ y $C_1$ $\Longrightarrow C_{k+1} H_{m}$ seria igual a la suma de (1) y (2) $\Longrightarrow$ n+2 = 2(k) + 2(1) +2 $\Longrightarrow$  n+2 = 2(k+1)+2
+      $\Longrightarrow$ m=n+1 $\Longrightarrow$  n+2 = 2(k+1)+2. Por lo tanto para $C_{k+1} H_{m}$ m=2(k+1)+2
+      
+      Por lo tanto,  para todo m que pertenece a Naturales sin el cero $C_m H_n$ tal que n=2m+2 
+      
+      
+      \end{proof}
+
+
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 6. %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Demuestre que una sucesi\'on $(d_1, \dots,
     d_n)$ de enteros positivos es la sucesi\'on de
