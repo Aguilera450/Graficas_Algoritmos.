@@ -98,6 +98,28 @@
       un \'arbol con exactamente dos v\'ertices de
       grado $1$.
 
+      \begin{proof} (Reducción al absurdo)
+        (------->) Pd G es una trayectoria $\Longrightarrow$ G es un arbol con exactamente 2 vértices de grado 1
+
+        Pd G es una trayectoria  y G no es un árbol
+
+        Pd G es una trayectoria  y G no es conexa o contiene un ciclo
+
+        Caso 1 G no es conexa
+
+        Si G no es conexa $\Longrightarrow$ Existen  u,v que pertenecen a G tal que u,v no son adyacente $\Longrightarrow$ G no puede ser una trayectoria (Lo que es una contradicción ya que G es una trayectoria)
+
+        Caso 2 G contiene un ciclo
+
+        Si G contiene un ciclo $\Longrightarrow$  G no es un orden lineal  $\Longrightarrow$ G no es trayectoria (Lo que es una contradicción ya que G es una trayectoria)
+
+        Por lo tanto G es una trayectoria y G es un Árbol $\Longrightarrow$ (---tengo dudas aqui---) Existe G con tansolo 2 vertices de grado 2, pero tambien existen G con mas vertices que lo cumplen
+
+
+        (<-------) Sea G un arbol con exactamente 2 vertices de grado 1  $\Longrightarrow$ G es un orden lineal por lo tanto G es una trayectoria
+
+      \end{proof}
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item \begin{enumerate}
       %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 2 (a).
@@ -230,10 +252,79 @@
       Demuestre que un \'arbol tiene exactamente un centro
       o dos centros adyacentes.
 
+      \renewcommand\qedsymbol{QED}
+      \begin{proof}
+        Sea $G$ un árbol.
+
+        \textbf{Procedemos por contradicción.}
+
+        Supongamos que $G$ tiene más de un centro tales que no son adyacentes.
+
+        Sean $u, v \in V_{G}$ tales que $u$ y $v$ no son adyacentes.
+        Esto significa que hay al menos un vértice entre ellos (llamémoslo $w$).
+
+        Por definición de \textbf{centro}, sabemos que:
+        $$max_{y \in V}d(x,y) \text{ es mínima}$$
+        En nuestro caso, $d(u, v)$ es mínima.
+
+        Pero notemos que $d(w, v) < d(u, v)$!!!, lo que implica que $w$ est\'a m\'as
+        cerca del v\'ertice $v$ que el v\'ertice $u$.
+
+        Como la contradicción yace de suponer que $u$ y $v$ no son adyacentes, podemos
+        concluir que $u$ y $v$ son adyacentes.
+
+        \textbf{Observación.} Veamos que $G$ no puede tener más de dos centros adyacentes.
+
+        Supongamos que $G$ tiene tres centros adyacentes.
+
+        Sean $w, v, x \in V_{G}$ tales que $w$ es adyacente a $x$ y $x$ es adyacente a $v$.
+
+        Como vimos anteriormente, tendríamos que $d(x, v) < d(w, v)$ !!!.
+
+        Esto contradice que el vértice $w$ sea un centro, ya que encontramos un vértice
+        $x$ tal que su distancia a otro vértice $v$ es menor.
+        La contradicción yace de suponer que $G$ tiene más de dos centros adyacentes.
+
+        Por lo tanto, $G$ tiene a lo más dos centros adyacentes. \\
+        \\
+      \end{proof}
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 4. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Demuestre o brinde un contraejemplo: Toda
       gr\'afica con menos aristas que v\'ertices tiene
       una componente que es un \'arbol.
+
+      \renewcommand\qedsymbol{QED}
+      \begin{proof}
+        \textbf{Procedemos por contradicción.}
+
+        Sea $G$ una gráfica tal que $|V_{G}| > |E_{G}|$.
+
+        Supongamos que todas sus componentes conexas no son árboles.
+
+        Esto es, $G_{1}, G_{2}, \dots, G_{n}$ componentes conexas de $G$ de donde
+        cada $G_{i}$ con $i \in  \{1, 2, \dots, n\}$ no es un árbol.
+
+        Como cada componente conexa de $G$ no es un árbol, entonces tienen
+        ciclos.
+
+        Notemos que por hipótesis, $|V_{G}| > |E_{G}|$. Lo que implica que existe
+        al menos una componente conexa de $G$, digamos $G_{j}$ (con
+        $j \in \{1, \dots, n\}$) tal que $G_{j} \cong K_{1}$.
+
+        Por tanto, como $G_{j} \cong K_{1}$ y $K_{1}$ no tiene ciclos, la componente
+        conexa $G_{j}$ es un árbol !!!.
+
+        Lo anterior contradice el hecho de que toda componente conexa de $G$ no
+        sea un árbol, pues si tienen ciclos significa que $|V_{G}| = |E_{G}|$.
+
+        La contradicción yace de suponer que cada componente conexa de $G$ no es un
+        árbol.
+
+        Por lo tanto, podemos concluir que existe una componente conexa de $G$ que
+        es un árbol. \\
+        \\
+      \end{proof}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 5. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Un {\em hidrocarburo saturado} es una
@@ -244,6 +335,26 @@
       Demuestre que para cualquier entero positivo
       $m$, la mol\'ecula $C_mH_n$ existe s\'olo si
       $n = 2m + 2$.
+
+      \begin{proof} Demostración por inducción sobre m
+
+        Paso base (m=1)
+
+        Por definición de hidrocarburo saturado $C_1 k_4 \Longrightarrow$  4 = 2(1)+2 por lo tanto para m=1 se cumple que n=2m+2
+
+        Hipótesis de inducción m = k, si  $C_k H_n \Longrightarrow$ supongamos n=2k+2
+
+        Paso Inductivo
+
+        Pd m=k+1
+
+        Por hipótesis de inducción tenemos que $C_k H_n \Longrightarrow$ n=2k+2 y por paso base $c_1 K_4 \Longrightarrow$ 4=2(1)+2 $\Longrightarrow$ sean r que pertenece a los Naturales sin el 0, sea $C_r$ y $C_1$ donde  $C_r$ pertenece a $C_k H_n$  y $C_1$ pertenece a $C_1 k_4$ tal que r pertenece a ${1,2,3,...,k}$  $\Longrightarrow$  eliminemos 1 hidrógeno a $C_r$ y $C_1 \Longrightarrow C_k H_{n-1}$ y $C_1 k_3$ son iguales a n-1=2k+1 ...(1) y 3=2(1)+1 ...(2) $\Longrightarrow$ uniendo $C_k H_{n-1}$ y $C_1 k_3$ mediante los vertices $C_r$ y $C_1$ $\Longrightarrow C_{k+1} H_{m}$ seria igual a la suma de (1) y (2) $\Longrightarrow$ n+2 = 2(k) + 2(1) +2 $\Longrightarrow$  n+2 = 2(k+1)+2
+        $\Longrightarrow$ m=n+1 $\Longrightarrow$  n+2 = 2(k+1)+2. Por lo tanto para $C_{k+1} H_{m}$ m=2(k+1)+2
+
+        Por lo tanto,  para todo m que pertenece a Naturales sin el cero $C_m H_n$ tal que n=2m+2
+
+
+      \end{proof}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 6. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Demuestre que una sucesi\'on $(d_1, \dots,
