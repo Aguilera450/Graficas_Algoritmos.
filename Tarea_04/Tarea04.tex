@@ -26,44 +26,29 @@
 \usetikzlibrary{arrows,automata}
 % Def. Dr. César.
 \usetikzlibrary{shapes,calc}
-\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt,
-  >=stealth, line width=1.1pt]
-\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt,
-  >=stealth, line width=1.5pt, blue]
-\tikzstyle{blackV}=[circle, fill=black,
-  minimum size=6pt,
-  inner sep=0pt, outer sep=0pt]
-\tikzstyle{blueV}=[circle, fill=blue, draw,
-  minimum size=6pt, line width=0.75pt,
-  inner sep=0pt, outer sep=0pt]
-\tikzstyle{redV}=[circle, fill=red, draw,
-  minimum size=6pt, line width=0.75pt,
-  inner sep=0pt, outer sep=0pt]
-\tikzstyle{redSV}=[semicircle, fill=red, minimum
-  size=3pt, inner sep=0pt, outer sep=0pt,
-  rotate=225]
-\tikzstyle{blueSV}=[semicircle, fill=blue, minimum
-  size=3pt, inner sep=0pt, outer sep=0pt,
-  rotate=225]
-\tikzstyle{blackSV}=[semicircle, fill=black, minimum
-  size=3pt, inner sep=0pt, outer sep=0pt,
-  rotate=225]
-\tikzstyle{vertex}=[circle, draw, minimum size=6pt,
-  line width=0.75pt, inner sep=0pt,
-  outer sep=0pt]
+\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.1pt]
+\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.5pt, blue]
+\tikzstyle{blackV}=[circle, fill=black, minimum size=6pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{blueV}=[circle, fill=blue, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redV}=[circle, fill=red, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redSV}=[semicircle, fill=red, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blueSV}=[semicircle, fill=blue, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blackSV}=[semicircle, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{vertex}=[circle, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
 
 % Nueva Def.
-\newcommand{\kaspressknodel}[2]{\pgfmathtruncatemacro{\mymod}{#1+1}
-  \foreach \X in {0,...,#1}
-           {\node[bullet,label={right:$\boldsymbol{(2,\X)}$}] (v2\X) at 
-             (4,{1.2*(\X-(#1+0)/2)}){};
-             \node[bullet,label={left:$\boldsymbol{(1,\X)}$}] (v1\X) at 
-             (1.5,{1.2*(\X-(#1+0)/2)}){};}
-           \foreach \X [evaluate=\X as \NextX using {int(mod(\X+3,\mymod))},
-             evaluate=\X as \AnotherX using {int(mod(\X+1,\mymod))},] in {0,...,#1}
-                    {\draw[thick] (v1\X) -- (v2\NextX);
-                      \draw[dashed] (v1\X) -- (v2\AnotherX);
-                      \draw (v1\X) -- (v2\X);} 
+\newcommand{\kaspressknodel}[2] {
+  \pgfmathtruncatemacro{\mymod}{#1+1}
+  \foreach \X in {0,...,#1} {
+    \node[bullet,label={right:$\boldsymbol{(2,\X)}$}] (v2\X) at (4,{1.2*(\X-(#1+0)/2)}){};
+    \node[bullet,label={left:$\boldsymbol{(1,\X)}$}] (v1\X) at (1.5,{1.2*(\X-(#1+0)/2)}){};
+  }
+  \foreach \X [evaluate=\X as \NextX using {int(mod(\X+3,\mymod))},
+               evaluate=\X as \AnotherX using {int(mod(\X+1,\mymod))},] in {0,...,#1} {
+    \draw[thick] (v1\X) -- (v2\NextX);
+    \draw[dashed] (v1\X) -- (v2\AnotherX);
+    \draw (v1\X) -- (v2\X);
+  }
 }
 
 % Margins
@@ -88,299 +73,336 @@
 \pagestyle{fancyplain}
 
 \begin{document}
-\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
-\author{Autores:
-  \\ Fernanda Villaf\'an Flores
-  \\ Fernando Alvarado Palacios
-  \\ Adri\'an Aguilera Moreno}
-\date{}
-\maketitle
-\begin{center}
-  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
-  \Large
-  \bf{Gr\'aficas y Juegos}
-  \normalsize
-\end{center}
-\newpage
-\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{\LARGE{Tarea 4}}
+  \title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+  \author{Autores:
+    \\ Fernanda Villaf\'an Flores
+    \\ Fernando Alvarado Palacios
+    \\ Adri\'an Aguilera Moreno}
+  \date{}
+  \maketitle
+  \begin{center}
+    \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+    \Large
+    \bf{Gr\'aficas y Juegos}
+    \normalsize
+  \end{center}
+  \newpage
+  \fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section*{\LARGE{Tarea 4}}
 
-\begin{enumerate}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Sea $G$ una gr\'afica no trivial.   Demuestre
-    que $G$ es una trayectoria si y s\'olo si $G$ es
-    un \'arbol con exactamente dos v\'ertices de
-    grado $1$.
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2. %%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item \begin{enumerate}
-    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 2 (a).
-    \item Demuestre que cada \'arbol con grado m\'aximo
-      $\Delta > 1$ tiene al menos $\Delta$ hojas.
+  \begin{enumerate}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Sea $G$ una gr\'afica no trivial.   Demuestre
+      que $G$ es una trayectoria si y s\'olo si $G$ es
+      un \'arbol con exactamente dos v\'ertices de
+      grado $1$.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 2. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item \begin{enumerate}
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 2 (a).
+      \item Demuestre que cada \'arbol con grado m\'aximo
+        $\Delta > 1$ tiene al menos $\Delta$ hojas.
+
+        \renewcommand\qedsymbol{QED}
+        \begin{proof}
+          Sea $G$ un \'arbol y sea $x \in V_G$ tal que $d(x) = \Delta$ (notar que $x$
+          no necesariamente es el \'unico que cumple tener grado igual a $\Delta$, por
+          lo que se tomar\'a alguno que cumpla esto), entonces $x$ tiene exactamente
+          $\Delta$ vecinos.
+
+          Por la caracterizaci\'on de \'arbol, sabemos que $G$ es ac\'iclico
+          y por tanto, los caminos que parten desde $x$ (tienen a $x$
+          como v\'ertice inicial) hacia algunos de sus $\Delta$ vecinos no tienen
+          v\'ertices en com\'un que sean distintos de $x$. En caso contrario, habr\'ia $2$
+          trayectorias que tienen inicio en $x$ a las que llamaremos $w_1$ y $w_2$, y
+          adem\'as tienen en com\'un al menos un v\'ertice $v$ y por tanto, $w_1 w_2$ es
+          un ciclo!! que est\'a contenido en $G$.
+
+          Luego, como $x$ tiene $\Delta$ vecinos, entonces podemos tomar al menos
+          $\Delta$ trayectorias distintas entre ellas tales que terminen en alg\'un
+          v\'ertice $u_i$ ($1 \leq i \leq \Delta$).
+
+          Así, cada $u_i$ es una hoja de $G$ y como hemos encontrado $\Delta$ hojas
+          podemos concluir que el \'arbol $G$ con grado m\'aximo $\Delta$ tiene al menos
+          $\Delta$ hojas. \\
+          \\
+        \end{proof}
+  \newpage
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 2 (b).
+      \item Construya, para cada elecci\'on de $n$ y $\Delta$,
+        con $2\le \Delta < n$, un \'arbol de orden $n$ con
+        exactamente $\Delta$ hojas.
+
+          \textbf{\textit{Soluci\'on:}}
+
+          Sea $G$ un \'arbol.
+
+          Usando el resultado anterior, garantizamos que $G$ tiene alg\'un
+          $x \in V_G : d(x) = \Delta$, entonces $G$ tiene al menos $\Delta$ hojas.
+
+          Luego, part\'icularmente en los \'arboles de
+          exactamente $\Delta$ hojas, cada camino $W_i$ que tenga como v\'ertice
+          inicial a $x$ no tendr\'a bifurcaciones. Esto es, $x W_i v_i$ es la
+          \'unica manera de llegar de $x$ a $v_i$ y adem\'as $W_i$ es una trayectoria
+          (y por definici\'on de trayectoria, no tendr\'a bifurcaciones).
+
+          Como $x$ es v\'ertice inicial de exactamente $\Delta$ trayectorias $W_i$,
+          entonces hay exactamente $\Delta$ hojas en $G$.
+
+          En resumen, $G$ tendr\'a exactamente $\Delta$ v\'ertices de grado $1$,
+          a continuaci\'on se muestra un ejemplo que trata de ser lo m\'as general
+          posible:
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{figure}[ht!]
+          \centering
+          \begin{tikzpicture}
+            %%%%%  Componente izquierda  %%%%%
+            %\foreach \i in {0,1}
+            %\node(\i) [vertex] at (\i*1, -2){};
+            \node(0) [blueV, label=270:$v_1$] at (0, -2){};
+            \node(1) [vertex] at (1, -2){};
+            \draw[edge] (0) to (1);
+            \node (L) at (-0.5,-1.5){$G$};
+
+            %% Suspensivos.
+            \begin{scope}[xshift=1cm]
+              \foreach \i in {1,...,3}
+              \fill (\i*0.7, -2) circle (1pt);
+            \end{scope}
+
+            %% x y vecino.
+            \begin{scope}[xshift=4cm]
+              \node(3) [vertex] at (0, -2){};
+              \node(4) [redV, label=270:$x$] at (1, -2){};
+              \draw[edge] (3) to (4);
+            \end{scope}
+
+            %%  Nodos, esto se puede mejorar con un foreach.
+            \begin{scope}[xshift=5cm]
+              \node(5) [vertex] at (3, 1){};
+              \node(6) [vertex] at (3, 0){};
+              \foreach \i in {1,...,3}
+              \fill (3, -\i*1) circle (1pt);
+              \node(7) [vertex] at (3, -4){};
+              \node(8) [vertex] at (3, -5){};
+            \end{scope}
+
+            %% Aristas de x hacia la derecha.
+            \draw[edge] (4) to (5);
+            \draw[edge] (4) to (6);
+            \draw[edge] (4) to (7);
+            \draw[edge] (4) to (8);
+
+            %% Parte derecha.
+            \begin{scope}[xshift=8cm]
+              \foreach \j in {1,0,...,-5}
+              \foreach \i in {1,...,3}
+              \fill (\i*0.7, \j) circle (1pt);
+              \node(9)  [vertex] at (3, 1){};
+              \node(10) [blueV, label=0:$v_2$] at (4, 1){};
+              \draw[edge] (9) to (10);
+              \node(11) [vertex] at (3, 0){};
+              \node(12) [blueV, label=0:$v_3$] at (4, 0){};
+              \draw[edge] (11) to (12);
+              \foreach \j in {3,4}
+              \foreach \i in {-1,-2,-3}
+              \fill (\j, \i) circle (1pt);
+              \node(13)  [vertex] at (3, -4){};
+              \node(14) [blueV, label=0:$v_{\Delta -1}$] at (4, -4){};
+              \draw[edge] (13) to (14);
+              \node(15) [vertex] at (3, -5){};
+              \node(16) [blueV, label=0:$v_{\Delta}$] at (4, -5){};
+              \draw[edge] (15) to (16);
+            \end{scope}
+          \end{tikzpicture}
+        \end{figure}
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        donde los $v_i$'s son las hojas, para $1 \leq i \leq \Delta$.
+        \hfill $\square$
+        \end{enumerate}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Un {\em centro} en una gr\'afica es un v\'ertice
+      $u$ tal que $\max_{v \in V} d(u, v)$ es m\'inima.
+      Demuestre que un \'arbol tiene exactamente un centro
+      o dos centros adyacentes.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 4. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Demuestre o brinde un contraejemplo: Toda
+      gr\'afica con menos aristas que v\'ertices tiene
+      una componente que es un \'arbol.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 5. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Un {\em hidrocarburo saturado} es una
+      mol\'ecula $C_mH_n$ en la que cada \'atomo de
+      carbono tiene cuatro enlaces, cada
+      \'atomo de hidr\'ogeno tiene un enlace, y
+      ninguna sucesi\'on de enlaces forma un ciclo.
+      Demuestre que para cualquier entero positivo
+      $m$, la mol\'ecula $C_mH_n$ existe s\'olo si
+      $n = 2m + 2$.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 6. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Demuestre que una sucesi\'on $(d_1, \dots,
+      d_n)$ de enteros positivos es la sucesi\'on de
+      grados de un \'arbol si y s\'olo si
+      $\sum_{i=1}^n d_i = 2(n-1)$.
+
       \renewcommand\qedsymbol{QED}
       \begin{proof}
-      Sea $G$ un \'arbol y sea $x \in V_G$ tal que $d(x) = \Delta$ (notar que $x$
-      no necesariamente es el \'unico que cumple tener grado igual a $\Delta$, por
-      lo que se tomar\'a alguno que cumpla esto), entonces $x$ tiene exactamente
-      $\Delta$ vecinos, por la caracterizaci\'on de \'arbol, sabemos que $G$ es
-      ac\'iclico y por tanto los caminos que parten desde $x$ (tienen a $x$
-      como v\'ertice inicial) hacia algunos de sus $\Delta$ vecinos, no tienen
-      v\'ertices en com\'un que sean distintos de $x$ (caso contrario, habr\'ia $2$
-      trayectorias que tienen inicio en $x$ a las que llamaremos $w_1$ y $w_2$, y
-      adem\'as tienen en com\'un al menos un v\'ertice $v$ y por tanto $w_1 w_2$ es
-      un ciclo!! que est\'a contenido en $G$), luego, como $x$ tiene $\Delta$ vecinos,
-      entonces podemos tomar al menos $\Delta$ trayectorias distintas entre ellas
-      tales que terminen en alg\'un v\'ertice $u_i$ ($1 \leq i \leq \Delta$) y por
-      tanto cada $u_i$ es una hoja de $G$, como hemos encontrado $\Delta$ hojas
-      podemos concluir que el \'arbol $G$ con grado m\'aximo $\Delta$ tiene al menos
-      $\Delta$ hojas.
+        Para este ejercicio veamos las dos implicaciones:
+        \begin{itemize}
+          \item[$\Rightarrow$)] Dada la sucesi\'on de grados $(d_1, \dots, d_n)$ de un
+            \'arbol, entonces $\displaystyle \sum_{i=1}^n d_i = 2(n-1)$.
+
+            Sabemos que para cualquier gr\'afica:
+            \[
+            \sum_{i=1}^n d_i = 2|E|
+            \]
+            Como en un \'arbol se cumple que $|E| = |V| - 1$, entonces $|E| = n - 1$. \footnote{Prop. $2.2.5$ en las
+            notas de clase}
+
+            Por tanto,
+            \[
+            \sum_{i=1}^n d_i = 2(n - 1)
+            \]
+
+          \item[$\Leftarrow$)] Dada una gr\'afica $G$ donde se cumple que
+            $$\displaystyle \sum_{i=1}^n d_i = 2(n-1)$$
+            , entonces $(d_1, \dots, d_n)$ es la sucesi\'on de grados en un \'arbol.
+
+            Veamos que $G$ no tiene v\'ertices aislados.
+
+            En el caso de tenerlos, supongamos sin p\'erdida de generalidad que
+            $x \in V_G$ es un v\'ertice aislado. Entonces, $G - \{x\}$ no contiene
+            v\'ertices aislados
+            y $|E_{G - \{x\}}| = 2|V_{G - \{x\}}|$ !!
+
+            Lo que implica que $G$ contiene como subgr\'afica inducida a alg\'un
+            ciclo (pues la cantidad de v\'ertices ser\'ia de al menos la cantidad
+            de v\'ertices) y se deja de cumplir que
+            $$\displaystyle \sum_{i=1}^n d_i = 2(n-1)$$
+
+            De la misma manera, podemos observar que todos los v\'ertices
+            de $G$ no pueden tener al menos grado $2$, pues suponer esto nos genera
+            al menos un ciclo e implicar\'ia que
+            $$\displaystyle \sum_{i=1}^n d_i = 2(n) \text{!!!}$$
+            , y claramente $2n \not= 2(n - 1)$.
+
+            Luego, hay exactamente $2$ v\'ertices de grado $1$ en $G$, para esto
+            llamemos $x, y \in V_G$ a los v\'ertices de grado $1$. Entonces, en
+            $G -\{x, y\}$ se cumple que $\displaystyle \sum_{i=1}^n d_i = 2(n-2)$
+            y al anexarle exactamente $\{x, y\}$ tendremos que
+            \begin{eqnarray*}x
+              \sum_{i=1}^n d_i &=& 2(n-2) + 2\\
+              &=& 4n - 4 + 2\\
+              &=& 4n - 2\\
+              &=& 2(n - 1)
+            \end{eqnarray*}
+
+            En caso contrario, se deja de cumplir lo anterior y por esto
+            se puede garantizar que estos son \'unicos.
+
+            Como $G$ es ac\'iclica (por el argumento dado anteriormente), podemos
+            deducir que $G$ es conexa. De no serlo, habr\'ia m\'as de $2$
+            v\'ertices con grado $1$ y ya observamos que este no es un caso posible.
+
+            Luego, $G$ es un \'arbol y por el ejercicio $1$ de esta tarea tenemos
+            que $G$ es, part\'icularmente, una trayectoria.
+        \end{itemize}
+        Por lo tanto, podemos concluir que una sucesi\'on $(d_1, \dots,
+        d_n)$ de enteros positivos es la sucesi\'on de grados de un \'arbol
+        si y s\'olo si $\displaystyle \sum_{i=1}^n d_i = 2(n-1)$. \\
+        \\
       \end{proof}
-      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 2 (c).
-    \item Construya, para cada elecci\'on de $n$ y $\Delta$,
-      con $2\le \Delta < n$, un \'arbol de orden $n$ con
-      exactamente $\Delta$ hojas.
-      
-      \textbf{\textit{Soluci\'on:}} Sea $G$ un \'arbol, usemos el resultado anterior,
-      y garantizamos que, como $G$ tiene alg\'un $x \in V_G : d(x) = \Delta$, entonces
-      $G$ tiene al menos $\Delta$ hojas. Luego, part\'icularmente en los \'arboles de
-      exactamente $\Delta$ hojas, cada camino $W_i$ que tenga como v\'ertice inicial a
-      $x$ no tendr\'a bifurcaciones, esto es, $x W_i v_i$ es la \'unica manera de llegar
-      de $x$ a $v_i$ y adem\'as $W_i$ es una trayectoria (y por definici\'on de trayectoria,
-      no tendr\'a bifurcaciones), como $x$ es v\'ertice inicial de exactamente $\Delta$
-      trayectorias $W_i$, entonces hay exactamente $\Delta$ hojas en $G$. En resumen, $G$
-      tendr\'a exactamente $\Delta$ v\'ertices de grado $1$, a continuaci\'on se muestra
-      un ejemplo que trata de ser lo m\'as general posible:
-      
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \begin{figure}[ht!]
-        \centering
-        \begin{tikzpicture}
-          %%%%%  Componente izquierda  %%%%%
-          %\foreach \i in {0,1}
-          %\node(\i) [vertex] at (\i*1, -2){};
-          \node(0) [blueV, label=270:$v_1$] at (0, -2){};
-          \node(1) [vertex] at (1, -2){};
-          \draw[edge] (0) to (1);
-          \node (L) at (-0.5,-1.5){$G$};
-          
-          %% Suspensivos.
-          \begin{scope}[xshift=1cm]
-            \foreach \i in {1,...,3}
-            \fill (\i*0.7, -2) circle (1pt);
-          \end{scope}
-          
-          %% x y vecino.
-          \begin{scope}[xshift=4cm]
-            \node(3) [vertex] at (0, -2){};
-            \node(4) [redV, label=270:$x$] at (1, -2){};
-            \draw[edge] (3) to (4);
-          \end{scope}
-          
-          %%  Nodos, esto se puede mejorar con un foreach.
-          \begin{scope}[xshift=5cm]
-            \node(5) [vertex] at (3, 1){};
-            \node(6) [vertex] at (3, 0){};
-            \foreach \i in {1,...,3}
-            \fill (3, -\i*1) circle (1pt);
-            \node(7) [vertex] at (3, -4){};
-            \node(8) [vertex] at (3, -5){};  
-          \end{scope}
-
-          %% Aristas de x hacia la derecha.
-          \draw[edge] (4) to (5);
-          \draw[edge] (4) to (6);
-          \draw[edge] (4) to (7);
-          \draw[edge] (4) to (8);
-          
-          %% Parte derecha.
-          \begin{scope}[xshift=8cm]
-            \foreach \j in {1,0,...,-5}
-            \foreach \i in {1,...,3}
-            \fill (\i*0.7, \j) circle (1pt);
-            \node(9)  [vertex] at (3, 1){};
-            \node(10) [blueV, label=0:$v_2$] at (4, 1){};
-            \draw[edge] (9) to (10);
-            \node(11) [vertex] at (3, 0){};
-            \node(12) [blueV, label=0:$v_3$] at (4, 0){};
-            \draw[edge] (11) to (12);
-            \foreach \j in {3,4}
-            \foreach \i in {-1,-2,-3}
-            \fill (\j, \i) circle (1pt);
-            \node(13)  [vertex] at (3, -4){};
-            \node(14) [blueV, label=0:$v_{\Delta -1}$] at (4, -4){};
-            \draw[edge] (13) to (14);
-            \node(15) [vertex] at (3, -5){};
-            \node(16) [blueV, label=0:$v_{\Delta}$] at (4, -5){};
-            \draw[edge] (15) to (16);
-          \end{scope}
-        \end{tikzpicture}
-      \end{figure}
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      
-      donde los $v_i$'s son las hojas, para $1 \leq i \leq \Delta$.
-      \hfill $\square$
   \end{enumerate}
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3. %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Un {\em centro} en una gr\'afica es un v\'ertice
-    $u$ tal que $\max_{v \in V} d(u, v)$ es m\'inima.
-    Demuestre que un \'arbol tiene exactamente un centro
-    o dos centros adyacentes.
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 4. %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Demuestre o brinde un contraejemplo: Toda
-    gr\'afica con menos aristas que v\'ertices tiene
-    una componente que es un \'arbol.
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 5. %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Un {\em hidrocarburo saturado} es una
-    mol\'ecula $C_mH_n$ en la que cada \'atomo de
-    carbono tiene cuatro enlaces, cada
-    \'atomo de hidr\'ogeno tiene un enlace, y
-    ninguna sucesi\'on de enlaces forma un ciclo.
-    Demuestre que para cualquier entero positivo
-    $m$, la mol\'ecula $C_mH_n$ existe s\'olo si
-    $n = 2m + 2$.
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 6. %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \item Demuestre que una sucesi\'on $(d_1, \dots,
-    d_n)$ de enteros positivos es la sucesi\'on de
-    grados de un \'arbol si y s\'olo si
-    $\sum_{i=1}^n d_i = 2(n-1)$.
-    \renewcommand\qedsymbol{QED}
-    \begin{proof}
-      Para este ejercicio analicemos $2$ posibles casos:
-      \begin{itemize}
-      \item[$\Rightarrow$)] Dada la sucesi\'on de grados $(d_1, \dots, d_n)$ de un
-        \'arbol, entonces $\sum_{i=1}^n d_i = 2(n-1)$.
-        
-        Sabemos que para cualquier gr\'afica pasa que
-        \[
-        \sum_{i=1}^n d_i = 2|E|
-        \]
-        Como en un \'arbol se cumple que $|E| = |V| - 1$\footnote{Prop. $2.2.5$ en las
-          notas de clase}, entonces $|E| = n - 1$ y por tanto
-        \[
-        \sum_{i=1}^n d_i = 2(n - 1)
-        \]
-        
-      \item[$\Leftarrow$)] Dada una gr\'afica $G$ donde se cumple que
-        $\sum_{i=1}^n d_i = 2(n-1)$, entonces $(d_1, \dots, d_n)$ es la
-        sucesi\'on de grados en un arbol.
-        
-        Veamos que $G$ no tiene v\'ertices aislados, pues en caso de tenerlos
-        supongamos sin p\'erdida de generalidad que $x \in V_G$ es un
-        v\'ertice aislado, entonces $G - \{x\}$ no contiene v\'ertices aislados
-        y $|E_{G - \{x\}}| = 2|V_{G - \{x\}}|$ !!, lo que implica que $G$ contiene como
-        subgr\'afica inducida a alg\'un ciclo (pues la cantidad de v\'ertices
-        ser\'ia de al menos la cantidad de v\'ertices) y se deja de cumplir que
-        $\sum_{i=1}^n d_i = 2(n-1)$ !!.
-        
-        De la misma manera que la anterior podemos observar que todos los v\'ertices
-        de $G$ no pueden tener al menos grado $2$, pues suponer esto nos genera
-        al menos un ciclo y esto implicar\'ia que $\sum_{i=1}^n d_i = 2(n)$!!, y
-        claramente $2n \not= 2(n - 1)$.
-        
-        Luego, hay exactamente $2$ v\'ertices de grado $1$ en $G$, para esto
-        llamemos $x, y \in V_G$ a los v\'ertices de grado $1$, entonces en
-        $G -\{x, y\}$ se cumple que $\sum_{i=1}^n d_i = 2(n-2)$ y al anexarle
-        exactamente $\{x, y\}$ tendremos que
-        \begin{eqnarray*}
-          \sum_{i=1}^n d_i &=& 2(n-2) + 2\\
-          &=& 4n - 4 + 2\\
-          &=& 4n - 2\\
-          &=& 2(n - 1)
-        \end{eqnarray*}
-        en caso contrario, se deja de cumplir lo anterior y es por esto que
-        se puede garantizar que estos son \'unicos.
-        
-        Como $G$ es ac\'iclica (por el argumento dado anteriormente), podemos
-        deducir que $G$ es conexa, pues de no serlo habr\'ia m\'as de $2$
-        v\'ertices con grado $1$ y ya observamos que este no es un caso posible.
-        Luego, $G$ es un \'arbol y por el ejercicio $1$ de esta tarea tenemos
-        que $G$ es, part\'icularmente, una trayectoria.
-      \end{itemize}
-      
-      De los casos analizados concluimos que una sucesi\'on $(d_1, \dots,
-      d_n)$ de enteros positivos es la sucesi\'on de grados de un \'arbol
-      si y s\'olo si $\displaystyle \sum_{i=1}^n d_i = 2(n-1)$.
-    \end{proof}
-\end{enumerate}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Puntos Extra}
-\begin{enumerate}
-  %-------------------------------------- Extra 1.
-  \item Para una gr\'afica conexa $G$ definimos la
-    gr\'afica de \'arboles de $G$, $\mathcal{T}_G$,
-    como la gr\'afica que tiene por v\'ertices a
-    todos los \'arboles generadores de $G$, y tal que,
-    si $S, T \in V_{\mathcal{T}_G}$, entonces $ST$ es
-    una arista de $\mathcal{T}_G$ si y s\'olo si
-    existen aristas $e \in E_S - E_T$ y $f \in E_T -
-    E_S$ tales que $(S - e) + f = T$.   Demuestre que
-    $\mathcal{T}_G$ es conexa.
-    %-------------------------------------- Extra 2.
-  \item Sea $T$ un \'arbol arbitrario con $k+1$ v\'ertices.
-    Demuestre que si $G$ es simple y $\delta \ge k$,
-    entonces $G$ tiene una subgr\'afica isomorfa a $T$.
-    %-------------------------------------- Extra 3.
-  \item Sea $\mathcal{T}$ una familia de sub\'arboles
-    de un \'arbol $T$.   Deduzca, por inducci\'on sobre
-    $|\mathcal{T}|$, que si cualesquiera dos elementos
-    de $\mathcal{T}$ tienen un v\'ertice en com\'un,
-    entonces hay un v\'ertice de $T$ que est\'a en
-    todos los elementos de $\mathcal{T}$.
-      %-------------------------------------- Extra 4.
-  \item \begin{enumerate}
-    \item Determine todos los arboles $T$ tales que
-      $\overline T$ tambi\'en es un \'arbol.
-      
-      \textbf{\textit{Soluci\'on:}} 
-      \begin{itemize}
-      \item[$\cdot$)]  Si $|V_T| = 1$, entonces por vacuidad se cumple
-        el enunciado y terminamos.
-      \item[$\cdot \cdot$)] Si $|V_T| > 1$, entonces sabemos existen $|V_T| -1$
-        aristas para $T$ y que a lo más ${|V_T| \choose 2}$ si $T$ fuera
-        completa. Notar que $E_{\overline{T}} = {|V_T| \choose 2} - (|V_T| -1)$,
-        como queremos que $\overline{T}$ se un árbol, entonces se debe cumplir
-        la siguiente igualdad
-        \begin{eqnarray*}
-          |V_T| -1 &=& {|V_T| \choose 2} - (|V_T| -1)\\
-          \Leftrightarrow 2 \cdot (|V_T| -1) &=& {|V_T| \choose 2}\\
-          \Leftrightarrow 2 \cdot (|V_T| -1) &=& \frac{|V_T| \cdot (|V_T| -1)}{2}\\
-          \Leftrightarrow 4 \cdot \cancel{(|V_T| -1)} &=& |V_T| \cdot \cancel{(|V_T| -1)}\\
-          \Rightarrow |V_T| &=& 4
-        \end{eqnarray*}
-        
-        y del ejercicio $1$ de la tarea $1$ sabemos que hay $11$ gráficas
-        de orden $4$ no isomorfas entre sí y sólo $2$ de esas son árboles,
-        una es $P_4$ y la otra es el árbol tal que uno de sus vértices es
-        de grado $3$, pero en este último su complemento no es un árbol.
-        Luego  $T = P_4$ y este es la único  salvo isomorfismo.
-        \hfill $\square$
-        
-      \end{itemize}
-      
-    \item Determine todas las gr\'aficas de orden al
-      menos cuatro tales que la subgr\'afica inducida por
-      cualesquiera tres de sus v\'ertices es un \'arbol.
-      
-      \textbf{\textit{Soluci\'on:}} 
-      Veamos que si $|V| > 4$, se cumple cualquiera de las siguientes condiciones:
-      \begin{itemize}
-      \item[$\cdot$)] Si la gráfica es incompleta existen al menos dos vértices
-        que no se conectan mediante una arista, si no existe trayectoria entre estos,
-        entonces existe una "elección" de $3$ vértices tales que son inducidos de
-        la gráfica original y no son un árbol.
-        
-      \item[$\cdot \cdot$)] Si la gráfica es completa, entonces hay $3$ vértices que
-        al inducirlos en la gráfica original forman un $3$-ciclo y por tanto no son un árbol.
-      \end{itemize}
-      De lo anterior la única gráfica que cumple con el enunciado es un $4$-ciclo
-      que no contenga como gráfica inducida un $3$-ciclo. \hfill $\square$
-    \end{enumerate}
-    
-\end{enumerate}
 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section*{Puntos Extra}
+  \begin{enumerate}
+    %-------------------------------------- Extra 1.
+    \item Para una gr\'afica conexa $G$ definimos la
+      gr\'afica de \'arboles de $G$, $\mathcal{T}_G$,
+      como la gr\'afica que tiene por v\'ertices a
+      todos los \'arboles generadores de $G$, y tal que,
+      si $S, T \in V_{\mathcal{T}_G}$, entonces $ST$ es
+      una arista de $\mathcal{T}_G$ si y s\'olo si
+      existen aristas $e \in E_S - E_T$ y $f \in E_T -
+      E_S$ tales que $(S - e) + f = T$.   Demuestre que
+      $\mathcal{T}_G$ es conexa.
+
+      %-------------------------------------- Extra 2.
+    \item Sea $T$ un \'arbol arbitrario con $k+1$ v\'ertices.
+      Demuestre que si $G$ es simple y $\delta \ge k$,
+      entonces $G$ tiene una subgr\'afica isomorfa a $T$.
+
+      %-------------------------------------- Extra 3.
+    \item Sea $\mathcal{T}$ una familia de sub\'arboles
+      de un \'arbol $T$.   Deduzca, por inducci\'on sobre
+      $|\mathcal{T}|$, que si cualesquiera dos elementos
+      de $\mathcal{T}$ tienen un v\'ertice en com\'un,
+      entonces hay un v\'ertice de $T$ que est\'a en
+      todos los elementos de $\mathcal{T}$.
+
+        %-------------------------------------- Extra 4.
+    \item \begin{enumerate}
+      \item Determine todos los arboles $T$ tales que
+        $\overline T$ tambi\'en es un \'arbol.
+
+        \textbf{\textit{Soluci\'on:}}
+        \begin{itemize}
+          \item[$\cdot$)]  Si $|V_T| = 1$, entonces por vacuidad se cumple
+            el enunciado y terminamos.
+          \item[$\cdot \cdot$)] Si $|V_T| > 1$, entonces sabemos existen $|V_T| -1$
+            aristas para $T$ y que a lo más ${|V_T| \choose 2}$ si $T$ fuera
+            completa.
+
+            Notemos que $E_{\overline{T}} = {|V_T| \choose 2} - (|V_T| -1)$ y
+            como queremos que $\overline{T}$ sea un árbol, entonces se debe cumplir
+            la siguiente igualdad:
+            \begin{eqnarray*}
+              |V_T| -1 &=& {|V_T| \choose 2} - (|V_T| -1)\\
+              \Leftrightarrow 2 \cdot (|V_T| -1) &=& {|V_T| \choose 2}\\
+              \Leftrightarrow 2 \cdot (|V_T| -1) &=& \frac{|V_T| \cdot (|V_T| -1)}{2}\\
+              \Leftrightarrow 4 \cdot \cancel{(|V_T| -1)} &=& |V_T| \cdot \cancel{(|V_T| -1)}\\
+              \Rightarrow |V_T| &=& 4
+            \end{eqnarray*}
+
+            y del \textbf{Ejercicio $1$ de la Tarea $1$}, sabemos que hay $11$ gráficas
+            de orden $4$ no isomorfas entre sí y sólo $2$ de esas son árboles.
+
+            De \'estas dos \'ultimas, tenemos una es $P_4$ y la otra es el árbol
+            tal que uno de sus vértices es de grado $3$. Pero en este último su
+            complemento no es un árbol.
+
+            Luego, $T = P_4$ y este es la único salvo isomorfismo.
+            \hfill $\square$ \\
+            \\
+        \end{itemize}
+
+      \item Determine todas las gr\'aficas de orden al
+        menos cuatro tales que la subgr\'afica inducida por
+        cualesquiera tres de sus v\'ertices es un \'arbol.
+
+        \textbf{\textit{Soluci\'on:}}
+
+        Veamos que si $|V| > 4$, se cumple cualquiera de las siguientes condiciones:
+        \begin{itemize}
+          \item[$\cdot$)] Si la gráfica es incompleta, existen al menos dos vértices
+            que no se conectan mediante una arista y si no existe trayectoria entre estos,
+            entonces existe una ``elección" de $3$ vértices tales que son inducidos de
+            la gráfica original y no son un árbol.
+
+          \item[$\cdot \cdot$)] Si la gráfica es completa, entonces hay $3$ vértices que
+            al inducirlos en la gráfica original forman un $3$-ciclo y por tanto, no son un árbol.
+        \end{itemize}
+        De lo anterior la única gráfica que cumple con el enunciado es un $4$-ciclo
+        que no tenga como gráfica inducida un $3$-ciclo.
+        \hfill $\square$ \\
+        \\
+      \end{enumerate}
+  \end{enumerate}
 \end{document}
