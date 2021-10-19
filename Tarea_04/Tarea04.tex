@@ -101,9 +101,9 @@
     \begin{proof} 
 
 
-      $\Longrightarrow$) Sea G una trayectoria $\rightarrow$ para cualesquiera dos vértices u, v que pertenecen  a G uv son adyacentes $\Leftrightarrow$ u,v son consecutivos  $\rightarrow$ sea $V_t$ el  vértice inicial y $V_q$ el  vértice final de la trayectoria  $\rightarrow$ $V_t$ y $V_q$ seran de grado 1 ya que no existe un vertice antes o uno despues, por lo tanto existen unicamente 2 vertices en G con grado 1.
+      $\Longrightarrow$) Sea G una trayectoria $\rightarrow$ para cualesquiera dos vértices u, v que pertenecen  a G uv son adyacentes $\Leftrightarrow$ u,v son consecutivos  $\rightarrow$ sea $v_t$ el  vértice inicial y $v_q$ el  vértice final de la trayectoria  $\rightarrow  v_t$ y $v_q$ seran de grado 1 ya que no existe un vertice antes o uno despues, por lo tanto existen unicamente 2 vertices en G con grado 1 ya que los demas son internos a la trayectoria.
       
-      $\Longleftarrow$) Sea  $V_G$ el conjunto de vértices de G $\rightarrow$ sean cualesquiera vertices $V_r$, $V_s$ pertenecientes a $V_G$ tales que $V_r$ y $V_s$ tienen grado 1 $\rightarrow$  como G es un árbol, todos los vértices de G estan relacionados y tampoco existe ningun  ciclo en G $\rightarrow$  G admite un orden lineal empezando la trayectoria s.p.g. por $V_r$ y acandola en $V_s$ $\rightarrow$ que si uv son adyacentes  $\Leftrightarrow$ u,v son consecutivos  $\rightarrow$ G es una trayectoria.
+      $\Longleftarrow$) Sea  $V_G$ el conjunto de vértices de G $\rightarrow$ sean cualesquiera vertices $v_r$, $v_s$ pertenecientes a $V_G$ tales que $v_r$ y $v_s$ tienen grado 1 $\rightarrow$  como G es un árbol, todos los vértices de G estan relacionados y tampoco existe ningun  ciclo en G $\rightarrow$  G admite un orden lineal empezando la trayectoria s.p.g. por $v_r$ y finalizando en $v_s \rightarrow$ que si uv son adyacentes  $\Leftrightarrow$ u,v son consecutivos  $\rightarrow$ G es una trayectoria.
       
       
       \end{proof}
@@ -337,8 +337,8 @@
 
         Pd m=k+1
 
-        Por hipótesis de inducción tenemos que $C_k H_n \Longrightarrow$ n=2k+2 y por paso base $c_1 K_4 \Longrightarrow$ 4=2(1)+2 $\Longrightarrow$ sean r que pertenece a los Naturales sin el 0, sea $C_r$ y $C_1$ donde  $C_r$ pertenece a $C_k H_n$  y $C_1$ pertenece a $C_1 k_4$ tal que r pertenece a ${1,2,3,...,k}$  $\Longrightarrow$  eliminemos 1 hidrógeno a $C_r$ y $C_1 \Longrightarrow C_k H_{n-1}$ y $C_1 k_3$ son iguales a n-1=2k+1 ...(1) y 3=2(1)+1 ...(2) $\Longrightarrow$ uniendo $C_k H_{n-1}$ y $C_1 k_3$ mediante los vertices $C_r$ y $C_1$ $\Longrightarrow C_{k+1} H_{m}$ seria igual a la suma de (1) y (2) $\Longrightarrow$ n+2 = 2(k) + 2(1) +2 $\Longrightarrow$  n+2 = 2(k+1)+2
-        $\Longrightarrow$ m=n+1 $\Longrightarrow$  n+2 = 2(k+1)+2. Por lo tanto para $C_{k+1} H_{m}$ m=2(k+1)+2
+        Por hipótesis de inducción tenemos que $C_k H_n \Longrightarrow$ n=2k+2 y por paso base $c_1 K_4 \Longrightarrow$ 4=2(1)+2 $\Longrightarrow$ sean r que pertenece a los Naturales sin el 0, sea $C_r$ y $C_1$ donde  $C_r$ pertenece a $C_k H_n$  y $C_1$ pertenece a $C_1 k_4$ tal que r pertenece a ${1,2,3,...,k}$  $\Longrightarrow$  eliminemos 1 hidrógeno a $C_r$ y $C_1 \Longrightarrow C_k H_{n-1}$ y $C_1 k_3$ son iguales a n-1=2k+1 ...(1) y 3=2(1)+1 ...(2) $\Longrightarrow$ uniendo $C_k H_{n-1}$ y $C_1 k_3$ mediante los vertices $C_r$ y $C_1$ $\Longrightarrow C_{k+1} H_{r}$ seria igual a la suma de (1) y (2) $\Longrightarrow$ n+2 = 2(k) + 2(1) +2 $\Longrightarrow$  n+2 = 2(k+1)+2
+        $\Longrightarrow$ r=n+2 $\Longrightarrow$  r = 2(k+1)+2. Por lo tanto para $C_{k+1} H_{r}$ r=2(k+1)+2
 
         Por lo tanto,  para todo m que pertenece a Naturales sin el cero $C_m H_n$ tal que n=2m+2
 
