@@ -76,16 +76,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{\LARGE{Tarea 5}}
 \begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 01 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $G$ es simple y $3$-regular, entonces $\kappa =
   \kappa'$.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que una gr\'afica es $2$-conexa por aristas si y s\'olo si
   cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias
   ajenas por aristas.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Demuestre que si $G$ no tiene ciclos pares, entonces cada bloque de $G$
   es $K_1$, $K_2$ o un ciclo impar.
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 04 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Sea $G$ una gr\'afica $2$-conexa y sean $X$ y $Y$ subconjuntos ajenos de
   $V$, cada un con al menos dos v\'ertices.   Demuestre que $G$ contiene
   trayectorias ajenas $P$ y $Q$ tales que
@@ -96,7 +97,7 @@
 
   \item Ning\'un v\'ertice interno de $P$ o $Q$ pertenece a $X \cup Y$.
   \end{enumerate}
-
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Sea $G$ una gr\'afica conexa con al menos 3 v\'ertices. Demuestre que
   los siguientes enunciados son equivalentes.
   \begin{enumerate}
@@ -125,6 +126,118 @@
     trayectoria que une a cualesquiera dos de ellos que no pasa por el
     tercero.
   \end{enumerate}
+  \begin{proof}
+    
+    Las implicaciones; $(a) \Rightarrow (b)$, $(b) \Rightarrow (c)$
+    y $(c) \Rightarrow (d)$, se omiten por estar escritas en las
+    notas de clase. Las implicaciones restantes se enumeran a
+    continuación:
+    \begin{itemize}
+    \item[$\cdot$)] Por mostrar $(d) \Rightarrow (e)$.
+      
+      Por ($d$) sabemos que cualquier arista se encuentra
+      contenida en un ciclo, por consecuencia directa,
+      cualesquiera $2$ aristas se encuentran contenidas en
+      algún ciclo.
+    \item[$\cdot$)] Por mostrar $(e) \Rightarrow (f)$.
+      
+      Nótese que como consecuencia de ($e$)(en partícular
+      cualquier arista esta contenida en un ciclo)
+      cualquier vértice no aislado forma parte de un ciclo,
+      como $G$ es conexa, entonces todos sus vértices son
+      parte de algún ciclo, esto nos lleva a que $G$ es
+      $2$-conexa por aristas. Luego para $u,v$ en $V_G$
+      existen al menos dos $uv$-trayectoria ajenas por
+      aristas. De lo anterior veamos como son $v$ y $u$,
+      esto es
+      \begin{itemize}
+      \item Si $u, v$ forman parte de un mismo ciclo $C$.
+        Sea $e \in E_G$ tal que forme parte de $C$, entonces
+        terminamos, pues existe una trayectoria que pasa por
+        $e$. Ahora, supongamos que $e$ no es parte de $C$, y
+        sea $e = xy (x, y \text{ en } V_G)$, así supongamos que
+        los vértices $y$ y $v$ son los que se pueden "conectar"
+        por la trayectoria de mayor longitud entre ellos y a la
+        que llamaremos $T$, veamos que si $x$ se encuentra en $T$
+        terminamos, pues existe una $xu$-trayectoria que complementa
+        a $T$ para formar una $uv$-trayectoria con $e$ contenida, luego
+        si $x$ no esta contenida en $T$, entonces $Tx$ incluye a $e$ por
+        lo que si $u$ no esta contenida en $T$, entonces existe una
+        $xu$-trayectoria $P$ tal que $TxP$ es la trayectoria buscada\footnote{
+          Con esto debería bastar, pues estamos mostrando la equivalencia
+          a un bloque propiamente, sin embargo el caso restante también
+          lo analizo, pues no veo como descartalo sin usar lo que estoy
+          mostrando.}.
+        
+      \item $u, v$ forman parte de ciclos distintos. Si $e$ forma
+        parte de alguno de los ciclos que contiene a $u$ y $v$ como
+        vértices, entonces hay una trayectoria $Q$ que pasa por $v$
+        (o $u$) y por $e$, pues están en el mismo ciclo, luego existe
+        una trayectoria $P$ que inicia en $e$ y llega hasta $u$ (o $v$)
+        como consecuencia de que $G$ sea conexa, además $P$ ajena con $Q$
+        por ser $G$ $2$-conexa por aristas, luego $PQ$ es la trayectoria
+        que pasa por $u$ y $v$ que además contiene a la arista $e$. Para
+        finalizar, si $e$ no se encuentra contenida en los ciclos que
+        contienen a $u$ y $v$ como vértices. Supongamos que
+        $e = xy (x, y \text{ en } V_G)$ y que de $x$ se pueda obtener la
+        trayectoria más larga con $v$, así, existe una $xv$-trayectoria $T$
+        que ya contiene a $e$ (porque $T$ es la más larga, caso contrario
+        sólo basta unir $T = Ty$), como existe una $vu$-trayectoria $P$,
+        entonces $TP$ ($TyP$) es la trayectoria buscada y terminamos.
+      \end{itemize}
+    \item[$\cdot$)] Por mostrar $(f) \Rightarrow (g)$.
+      
+      Por ($f$) tenemos que cualesquiera $2$ vértices $u, v$ y para
+      toda arista $e$, existe una $uv$-trayectoria que contiene a $e$.
+      Como $G$ es conexa, entonces, cualquier vértice es parte de alguna
+      arista, así, para cualesquiera $x, y, z$ en $V_G$ existe una
+      $xz$-trayectoria $T$ que contiene a $e \in E_G$, tal que $e =
+      yw (w \in E_G)$ y por tanto $T$ pasa por $y$.
+    \item[$\cdot$)] Por mostrar $(g) \Rightarrow (h)$.
+      
+      Como $G$ es conexa, sabemos que existe una $xy$-trayectoria $T$,
+      una $xz$-trayectoria $P$, y una $yz$-trayectoria $Q$, todas ellas
+      de longitud mínima. Así
+      \begin{itemize}
+      \item[-] Si todas las longitudes son iguales, \textit{i.e.}, $\mathcal{L}(T)
+        = \mathcal{L}(P) = \mathcal{L}(Q)$. Por hipótesis $x,y,z$ no son iguales,
+        así, cualquier trayectoria no contiene al tercer vértice y hemos encontrado
+        al menos $2$ trayectoias que cumplen con $h$.
+        
+      \item[-] Si dos de las trayectorias tienen una longitus mínima igual y menor
+        a la que es desigual, \textit{i.e.}, $\mathcal{L}(T) = \mathcal{L}(P) < \mathcal{L}(Q)$
+        o $\mathcal{L}(T) > \mathcal{L}(P) = \mathcal{L}(Q)$ o $\mathcal{L}(T) = \mathcal{L}(Q)
+        < \mathcal{L}(P)$. En este caso, analicemos las dos trayectorias que resulten tener menor
+        longitud entre $P, Q, T$. Si las trayectorias son $T$ y $P$, entonces cualquiera de estas
+        no contiene al tercer vértice, pues $x,y,z$ son distintos y las trayectorias elegidas son
+        las de menor longitud. Si se tiene que las trayectorias mínimas son $T$ y $Q$, o $P$ y $Q$,
+        se cumple que un tercer vértice no esta en alguna de las dos trayectorias, pues en caso
+        contrario y por saber que $x,y,z$ son distintos, se tendría que  hay una trayectoria menor
+        con $2$ de los vértices que estamos trabajando!!!, pero esto es absurdo, ya que, nuestras
+        trayectorias eran mínimas, por lo cual se cumple $h$.
+        
+      \item[-] Si una de las longitudes mínimas es menor a las restantes, \textit{i.e.},
+        $\mathcal{L}(T) = \mathcal{L}(P) > \mathcal{L}(Q)$ o $\mathcal{L}(T) < \mathcal{L}(P)
+        = \mathcal{L}(Q)$ o $\mathcal{L}(T) = \mathcal{L}(Q) > \mathcal{L}(P)$. Para este caso,
+        elegimos la trayectoria con menor longitud y esta no contendrá al tercer vértice, pues
+        para que pasará por el se necesitaría recorrer más aristas. En este caso tenemos una
+        trayectoria que cumple con $h$.
+      \end{itemize}
+      
+    \item[$\cdot$)] Por mostrar $(h) \Rightarrow (a)$.
+      
+      Sean $x, y, z$ en $V_G$ tales que $P$ es una $xy$-trayectoria que no pasa por $z$.
+      Como $G$ es conexa, entonces existe una $xy$-trayectoria $R$ y una $yz$-trayectoria
+      $S$, tales que, $T = RS$, luego hemos encontrado dos $xy$-trayectorias distintas que
+      en partícular forman un ciclo, además este ciclo es único porque esto pasa con cualquier
+      vértice y entre ellos, \textit{i.e.}, si seguimos escogiendo vértices de $V_G$ veremos que
+      todos están en un ciclo y que están relacionados de esta manera con todos los vértices, de
+      lo anterior $G$ es un único ciclo y concluimos que $G$ es un bloque.
+    \end{itemize}
+
+    De lo anterior y por silogismo hipotético en los incisos anteriores se concluye que la
+    caracterización se cumple. \hfill \textbf{Q.E.D.}
+  \end{proof}
 \end{enumerate}
 
 \end{document}
