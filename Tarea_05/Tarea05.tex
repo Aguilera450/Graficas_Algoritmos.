@@ -96,7 +96,30 @@
   \item Los v\'ertices finales de $P$ y $Q$ pertenecen a $Y$.
 
   \item Ning\'un v\'ertice interno de $P$ o $Q$ pertenece a $X \cup Y$.
-  \end{enumerate}
+  \end{enumerate} 
+
+  \begin{proof} 
+
+    Sea G 2-conexa y X, Y subconjuntos ajenos de V $\Leftrightarrow$ sean x'$\in$ X y y'$\in$ Y $\Leftrightarrow$ por el ejercicio 2 esta tarea, podemos asegurar que existen dos trayectorias internamente ajenas por aristas que conectan a x' y y', nombremos a estas trayectorias P' y Q'.
+    
+    Sea P'$=(x'=a_0, a_1, a_2, ..., a_n = y')$ para alguna n que pertenezca a los Naturales y sea  Q'$=(x' =b_0, b_1, b_2, ..., b_k = y')$ para alguna k que pertenezca a los naturales.
+    
+    $\Leftrightarrow$ Comparando los vertices, sea $a_i$ para alguna i que pertenece a los naturales, tal que  $a_i \in$ X, pero  $a_{i+1} \notin$ X por lo que ahora P'$=(x'=a_i, a_{i+1}, a_{i+2}, ..., a_n = y')$.
+    
+    De igual forma existira algun $b_r$ para alguna r que pertenece a los naturales, tal que $b_r \in$ X, pero $b_{r+1} \notin $ X por lo que ahora  Q'$=(x' =b_r, b_{r+1}, b_{r+2}, ..., b_k = y')$.
+    
+    Ahora definamos $P'^{-1}$ como $(y'=a_n, a_{n-1}, a_{n-2}, ..., a_i=x')$ y $Q'^{-1}$ como $(y'=b_k, b_{k-1}, b_{k-2}, ..., b_r=x') \Leftrightarrow$ aplicando el razonamiento anterior,  existira t que pertenenzca los naturales, tal que $b_{k-t} \in Y$ y $b_{k-(t+1)} \notin Y$  y de igual forma existiara s que pertenezca a los naturales tal que $a_{n-s} \in Y$ y  $a_{n-(s+1)} \notin Y \Leftrightarrow$ definamos a $P=(a_i, a_{i+1}, ...., a_{n-s})$ y definimos a $Q=(b_j, b_{j+1}, ..., b_{k-t})$
+    
+    Por lo tanto: 
+    
+    a) se cumple ya que $a_i$ y $b_j$ pertenencen a X por construccion de nuetras trayectorias P y Q.
+    
+    b) se cumple ya que $a_{n-r}$ y $b_{k-t}$ pertenencen a Y por construccion de P y Q.
+    
+    c) se cumple de nuevo por construccion de P y Q y ya que X y Y son conjuntos disjuntos de V
+    
+    \end{proof}
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Sea $G$ una gr\'afica conexa con al menos 3 v\'ertices. Demuestre que
   los siguientes enunciados son equivalentes.
