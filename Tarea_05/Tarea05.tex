@@ -58,266 +58,312 @@
 \pagestyle{fancyplain}
 
 \begin{document}
-    \title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
-    \author{Autores:
-      \\ Fernanda Villaf\'an Flores
-      \\ Fernando Alvarado Palacios
-      \\ Adri\'an Aguilera Moreno}
-    \date{}
-    \maketitle
-    \begin{center}
-      \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
-      \Large
-      \bf{Gr\'aficas y Juegos}
-      \normalsize
-    \end{center}
-    \newpage
-    \fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \section*{\LARGE{Tarea 5}}
-    \begin{enumerate}
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 01 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \item Demuestre que si $G$ es simple y $3$-regular, entonces $\kappa =
-      \kappa'$.
+\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+\author{Autores:
+  \\ Fernanda Villaf\'an Flores
+  \\ Fernando Alvarado Palacios
+  \\ Adri\'an Aguilera Moreno}
+\date{}
+\maketitle
+\begin{center}
+  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+  \Large
+  \bf{Gr\'aficas y Juegos}
+  \normalsize
+\end{center}
+\newpage
+\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\LARGE{Tarea 5}}
+\begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 01 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Demuestre que si $G$ es simple y $3$-regular, entonces $\kappa =
+  \kappa'$.
+  
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
+    Para este ejercicio veamos que $\kappa$ y $\kappa$' son a lo m\'as $3$, pues por el
+    teorema
+    \[
+    \kappa \leq \kappa ' \leq \delta
+    \]
+    y como $G$ es $3$-regular, entonces $\delta = 3$ y $\kappa \leq \kappa ' \leq 3$.
+    
+    Luego, analicemos 3 posibles casos:
+    \begin{itemize}
+    \item[$\cdot$)] $\kappa = 1 = \kappa '$. Procedamos por reducci\'on al absurdo.
+      Si $\kappa = 1$ y $\kappa ' \in \{2, 3\}$, entonces si $\kappa ' = 2$ (o $3$)
+      tenemos que particularmente $\kappa ' = 1$ !! (por la definici\'on de $\kappa '$),
+      lo anterior es una contradcci\'on de suponer que $\kappa \not= \kappa '$, as\'i
+      $\kappa = 1 = \kappa '$.
+    \item[$\cdot$)] $\kappa = 2 = \kappa '$. Procedamos por reducci\'on al absurdo.
+      Si $\kappa = 2$ y $\kappa ' \in \{1, 3\}$, entonces tenemos que $\kappa' = 3$
+      es an\'alogo al caso anterior. Si $\kappa ' = 1$, tenemos que $\kappa = 2$ y
+      por definici\'on de $\kappa$ tenemos que particularmente $\kappa = 1$!!, he
+      aqu\'i una contradicci\'on de suponer que $\kappa \not= \kappa'$, luego
+      $\kappa = 2 = \kappa '$.
+    \item[$\cdot$)] $\kappa = 3 = \kappa '$. Procedamos por reducci\'on al absurdo.
+      Si $\kappa = 3$ y $\kappa ' \in \{1, 2\}$, entonces $\kappa = 1$!! de manera
+      particular y por definici\'on de $\kappa$, de esto se sigue que
+      $\kappa = 3 = \kappa '$.
+    \end{itemize}
+    De los casos anteriores se tiene que si $G$ es simple y $3$-regular, entonces
+    $\kappa = \kappa'$.
+  \end{proof}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Demuestre que una gr\'afica es $2$-conexa por aristas si y s\'olo si
+  cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias
+  ajenas por aristas.
+
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
+    Procedemos por doble implicación.
+
+    Sea $G$ una gráfica y sean $u, v \in V_{G}$.
+
+    \begin{itemize}
+    \item $\Longrightarrow$.
+
+      \textbf{Demostraremos que cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias ajenas por aristas.}
+
+      Tenemos que $G$ es 2-conexa por aristas, entonces existe una $uv$-trayectoria $P$ tal que:
+      $$P = (p_{1}, p_{2}, \cdots, p_{n})$$
+
+      Ahora, si borramos a la arista $e$ de $P$ que conecta a los vértices $p_{i}$ y $p_{i+1}$,
+      entonces existe una $uv$-trayectoria $Q$ tal que:
+      $$Q = (q_{1}, q_{2}, \cdots, q_{n})$$
+      , donde $Q$ no pasa por la arista $e$ (esto ya que $G$ es 2-conexa por aristas).
+
+      Luego, $G$ sigue siendo conexa y por tanto, pudimos encontrar al menos dos $uv$-trayectorias
+      ajenas por aristas que conectan a los vértices $u$ y $v$.
+
+    \item $\Longleftarrow$.
+
+      \textbf{Demostraremos que $G$ es una gráfica 2-conexa por aristas.}
+
+      Tenemos que $u$ y $v$ están conectados por al menos dos $uv$-trayectorias ajenas por
+      aristas $P$ y $Q$. Esto implica que si queremos desconectar a la gráfica $G$, debemos
+      borrar dos aristas (una arista en $P$ y otra en $Q$). Entonces, $G$ sigue siendo conexa
+      si tenemos subconjuntos $S$ en $G$ con $|S| < 2$.
+
+      Por lo tanto, tenemos que $G$ es 2-conexa.
+
+    \end{itemize}
+    De lo anterior, concluimos que $G$ es $2$-conexa por aristas si y s\'olo si
+    cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias
+    ajenas por aristas.
+  \end{proof}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Demuestre que si $G$ no tiene ciclos pares, entonces cada bloque de $G$ es $K_1$, $K_2$ o un ciclo impar.
+
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
+    Procedemos por contrapositiva.
+
+    Demostraremos que si ningún bloque de $G$ es $K_{1}$, $K_{2}$ ni un ciclo impar, entonces $G$ tiene ciclos pares.
+
+    Sea $G$ una gráfica y $G_{1}$ un bloque de $G$ con al menos $3$ vértices.
+
+    El inciso $c)$ del \textbf{Ejercicio $5$} nos dice que:
+    $$\text{Para cualesquiera dos vértices de } G \text{, existe un ciclo que los contiene}$$
+
+    Por lo anterior, entonces $G_{1}$ contiene un ciclo y además, por hipótesis, tenemos que
+    $G_{1}$ no tiene ciclos impares.
+
+    Por lo tanto, $G_{1}$ tiene ciclos pares.
+  \end{proof}
 
 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \item Demuestre que una gr\'afica es $2$-conexa por aristas si y s\'olo si
-        cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias
-        ajenas por aristas.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 04 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Sea $G$ una gr\'afica $2$-conexa y sean $X$ y $Y$ subconjuntos ajenos de $V$,
+  cada un con al menos dos v\'ertices.   Demuestre que $G$ contiene
+  trayectorias ajenas $P$ y $Q$ tales que
 
-            \renewcommand\qedsymbol{QED}
-            \begin{proof}
-                Procedemos por doble implicación.
+  \begin{enumerate}
+  \item Los v\'ertices iniciales de $P$ y $Q$ pertenecen a $X$.
 
-                Sea $G$ una gráfica y sean $u, v \in V_{G}$.
+  \item Los v\'ertices finales de $P$ y $Q$ pertenecen a $Y$.
 
-                \begin{itemize}
-                    \item $\Longrightarrow$.
+  \item Ning\'un v\'ertice interno de $P$ o $Q$ pertenece a $X \cup Y$.
+  \end{enumerate}
 
-                        \textbf{Demostraremos que cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias ajenas por aristas.}
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
+    Sea G 2-conexa y X, Y subconjuntos ajenos de V $\Leftrightarrow$ sean x'$\in$ X y y'$\in$ Y
+    $\Leftrightarrow$ por el ejercicio 2 esta tarea, podemos asegurar que existen dos trayectorias
+    internamente ajenas por aristas que conectan a x' y y', nombremos a estas trayectorias P' y Q'.
 
-                        Tenemos que $G$ es 2-conexa por aristas, entonces existe una $uv$-trayectoria $P$ tal que:
-                        $$P = (p_{1}, p_{2}, \cdots, p_{n})$$
+    Sea P'$=(x'=a_0, a_1, a_2, ..., a_n = y')$ para alguna n que pertenezca a los Naturales y sea
+    Q'$=(x' =b_0, b_1, b_2, ..., b_k = y')$ para alguna k que pertenezca a los naturales.
 
-                        Ahora, si borramos a la arista $e$ de $P$ que conecta a los vértices $p_{i}$ y $p_{i+1}$, entonces existe una $uv$-trayectoria $Q$ tal que:
-                        $$Q = (q_{1}, q_{2}, \cdots, q_{n})$$
-                        , donde $Q$ no pasa por la arista $e$ (esto ya que $G$ es 2-conexa por aristas).
+    $\Leftrightarrow$ Comparando los vertices, sea $a_i$ para alguna i que pertenece a los naturales,
+    tal que  $a_i \in$ X, pero  $a_{i+1} \notin$ X por lo que ahora P'$=(x'=a_i, a_{i+1}, a_{i+2}, ..., a_n = y')$.
 
-                        Luego, $G$ sigue siendo conexa y por tanto, pudimos encontrar al menos dos $uv$-trayectorias ajenas por aristas que conectan a los vértices $u$ y $v$.
+    De igual forma existira algun $b_r$ para alguna r que pertenece a los naturales, tal que $b_r \in$ X,
+    pero $b_{r+1} \notin $ X por lo que ahora  Q'$=(x' =b_r, b_{r+1}, b_{r+2}, ..., b_k = y')$.
 
-                    \item $\Longleftarrow$.
+    Ahora definamos $P'^{-1}$ como $(y'=a_n, a_{n-1}, a_{n-2}, ..., a_i=x')$ y $Q'^{-1}$ como
+    $(y'=b_k, b_{k-1}, b_{k-2}, ..., b_r=x') \Leftrightarrow$ aplicando el razonamiento anterior,
+    existira t que pertenenzca los naturales, tal que $b_{k-t} \in Y$ y $b_{k-(t+1)} \notin Y$
+    y de igual forma existiara s que pertenezca a los naturales tal que $a_{n-s} \in Y$ y
+    $a_{n-(s+1)} \notin Y \Leftrightarrow$ definamos a $P=(a_i, a_{i+1}, ...., a_{n-s})$ y definimos
+    a $Q=(b_j, b_{j+1}, ..., b_{k-t})$
 
-                        \textbf{Demostraremos que $G$ es una gráfica 2-conexa por aristas.}
+    Por lo tanto:
 
-                        Tenemos que $u$ y $v$ están conectados por al menos dos $uv$-trayectorias ajenas por aristas $P$ y $Q$. Esto implica que si queremos desconectar a la gráfica $G$, debemos borrar dos aristas (una arista en $P$ y otra en $Q$). Entonces, $G$ sigue siendo conexa si tenemos subconjuntos $S$ en $G$ con $|S| < 2$.
+    a) se cumple ya que $a_i$ y $b_j$ pertenencen a X por construccion de nuetras trayectorias P y Q.
 
-                        Por lo tanto, tenemos que $G$ es 2-conexa.
+    b) se cumple ya que $a_{n-r}$ y $b_{k-t}$ pertenencen a Y por construccion de P y Q.
 
-                \end{itemize}
-                De lo anterior, concluimos que $G$ es $2$-conexa por aristas si y s\'olo si
-                cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias
-                ajenas por aristas.
-            \end{proof}
+    c) se cumple de nuevo por construccion de P y Q y ya que X y Y son conjuntos disjuntos de V
+  \end{proof}
 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \item Demuestre que si $G$ no tiene ciclos pares, entonces cada bloque de $G$ es $K_1$, $K_2$ o un ciclo impar.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Sea $G$ una gr\'afica conexa con al menos 3 v\'ertices. Demuestre que
+  los siguientes enunciados son equivalentes.
+  \begin{enumerate}
+  \item $G$ es un bloque.
 
-            \renewcommand\qedsymbol{QED}
-            \begin{proof}
-               Procedemos por contrapositiva.
+  \item Entre cualesquiera dos v\'ertices distintos existen dos trayectorias internamente ajenas.
 
-               Demostraremos que si ningún bloque de $G$ es $K_{1}$, $K_{2}$ ni un ciclo impar, entonces $G$ tiene ciclos pares.
+  \item Para cualesquiera dos v\'ertices de $G$ existe un ciclo que los
+    contiene.
 
-               Sea $G$ una gráfica y $G_{1}$ un bloque de $G$ con al menos $3$ vértices.
+  \item Para cualquier v\'ertice y cualquier arista de $G$ existe un ciclo
+    que los contiene.
 
-               El inciso $c)$ del \textbf{Ejercicio $5$} nos dice que:
-               $$\text{Para cualesquiera dos vértices de } G \text{, existe un ciclo que los contiene}$$
+  \item Para cualesquiera dos aristas de $G$ existe un ciclo que los
+    contiene.
 
-               Por lo anterior, entonces $G_{1}$ contiene un ciclo y además, por hipótesis, tenemos que $G_{1}$ no tiene ciclos impares.
+  \item Dados dos v\'ertices $u,v \in V(G)$ y una arista $e \in E(G)$,
+    existe una $uv$-trayectoria que pasa por $e$.
 
-               Por lo tanto, $G_{1}$ tiene ciclos pares.
-            \end{proof}
+  \item Para cualesquiera tres v\'ertices distintos de $G$, existe una
+    trayectoria que une a cualesquiera dos de ellos y que pasa por el
+    tercero.
 
+  \item Para cualesquiera tres v\'ertices distintos de $G$, existe una
+    trayectoria que une a cualesquiera dos de ellos que no pasa por el
+    tercero.
+  \end{enumerate}
 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 04 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \item Sea $G$ una gr\'afica $2$-conexa y sean $X$ y $Y$ subconjuntos ajenos de $V$, cada un con al menos dos v\'ertices.   Demuestre que $G$ contiene
-        trayectorias ajenas $P$ y $Q$ tales que
+  \renewcommand\qedsymbol{QED}
+  \begin{proof}
+    Las implicaciones; $(a) \Rightarrow (b)$, $(b) \Rightarrow (c)$
+    y $(c) \Rightarrow (d)$, se omiten por estar escritas en las
+    notas de clase. Las implicaciones restantes se enumeran a
+    continuación:
+    \begin{itemize}
+    \item[$\cdot$)] Por mostrar $(d) \Rightarrow (e)$.
 
-            \begin{enumerate}
-                \item Los v\'ertices iniciales de $P$ y $Q$ pertenecen a $X$.
+      Por ($d$) sabemos que cualquier arista se encuentra
+      contenida en un ciclo, por consecuencia directa,
+      cualesquiera $2$ aristas se encuentran contenidas en
+      algún ciclo.
 
-                \item Los v\'ertices finales de $P$ y $Q$ pertenecen a $Y$.
+    \item[$\cdot$)] Por mostrar $(e) \Rightarrow (f)$.
 
-                \item Ning\'un v\'ertice interno de $P$ o $Q$ pertenece a $X \cup Y$.
-            \end{enumerate}
+      Nótese que como consecuencia de ($e$)(en partícular
+      cualquier arista esta contenida en un ciclo)
+      cualquier vértice no aislado forma parte de un ciclo,
+      como $G$ es conexa, entonces todos sus vértices son
+      parte de algún ciclo, esto nos lleva a que $G$ es
+      $2$-conexa por aristas. Luego para $u,v$ en $V_G$
+      existen al menos dos $uv$-trayectoria ajenas por
+      aristas. De lo anterior veamos como son $v$ y $u$,
+      esto es
 
-            \renewcommand\qedsymbol{QED}
-            \begin{proof}
-                Sea G 2-conexa y X, Y subconjuntos ajenos de V $\Leftrightarrow$ sean x'$\in$ X y y'$\in$ Y $\Leftrightarrow$ por el ejercicio 2 esta tarea, podemos asegurar que existen dos trayectorias internamente ajenas por aristas que conectan a x' y y', nombremos a estas trayectorias P' y Q'.
+      \begin{itemize}
+      \item Si $u, v$ forman parte de un mismo ciclo $C$.
+        Sea $e \in E_G$ tal que forme parte de $C$, entonces
+        terminamos, pues existe una trayectoria que pasa por
+        $e$. Ahora, supongamos que $e$ no es parte de $C$, y
+        sea $e = xy (x, y \text{ en } V_G)$, así supongamos que
+        los vértices $y$ y $v$ son los que se pueden ``conectar"
+        por la trayectoria de mayor longitud entre ellos y a la
+        que llamaremos $T$, veamos que si $x$ se encuentra en $T$
+        terminamos, pues existe una $xu$-trayectoria que complementa
+        a $T$ para formar una $uv$-trayectoria con $e$ contenida, luego
+        si $x$ no esta contenida en $T$, entonces $Tx$ incluye a $e$ por
+        lo que si $u$ no esta contenida en $T$, entonces existe una
+        $xu$-trayectoria $P$ tal que $TxP$ es la trayectoria buscada\footnote{
+          Con esto debería bastar, pues estamos mostrando la equivalencia
+          a un bloque propiamente, sin embargo el caso restante también
+          lo analizo, pues no veo como descartalo sin usar lo que estoy
+          mostrando.}.
 
-                Sea P'$=(x'=a_0, a_1, a_2, ..., a_n = y')$ para alguna n que pertenezca a los Naturales y sea  Q'$=(x' =b_0, b_1, b_2, ..., b_k = y')$ para alguna k que pertenezca a los naturales.
+      \item $u, v$ forman parte de ciclos distintos. Si $e$ forma
+        parte de alguno de los ciclos que contiene a $u$ y $v$ como
+        vértices, entonces hay una trayectoria $Q$ que pasa por $v$
+        (o $u$) y por $e$, pues están en el mismo ciclo, luego existe
+        una trayectoria $P$ que inicia en $e$ y llega hasta $u$ (o $v$)
+        como consecuencia de que $G$ sea conexa, además $P$ ajena con $Q$
+        por ser $G$ $2$-conexa por aristas, luego $PQ$ es la trayectoria
+        que pasa por $u$ y $v$ que además contiene a la arista $e$. Para
+        finalizar, si $e$ no se encuentra contenida en los ciclos que
+        contienen a $u$ y $v$ como vértices. Supongamos que
+        $e = xy (x, y \text{ en } V_G)$ y que de $x$ se pueda obtener la
+        trayectoria más larga con $v$, así, existe una $xv$-trayectoria $T$
+        que ya contiene a $e$ (porque $T$ es la más larga, caso contrario
+        sólo basta unir $T = Ty$), como existe una $vu$-trayectoria $P$,
+        entonces $TP$ ($TyP$) es la trayectoria buscada y terminamos.
+      \end{itemize}
 
-                $\Leftrightarrow$ Comparando los vertices, sea $a_i$ para alguna i que pertenece a los naturales, tal que  $a_i \in$ X, pero  $a_{i+1} \notin$ X por lo que ahora P'$=(x'=a_i, a_{i+1}, a_{i+2}, ..., a_n = y')$.
+    \item[$\cdot$)] Por mostrar $(f) \Rightarrow (g)$.
 
-                De igual forma existira algun $b_r$ para alguna r que pertenece a los naturales, tal que $b_r \in$ X, pero $b_{r+1} \notin $ X por lo que ahora  Q'$=(x' =b_r, b_{r+1}, b_{r+2}, ..., b_k = y')$.
+      Por ($f$) tenemos que cualesquiera $2$ vértices $u, v$ y para
+      toda arista $e$, existe una $uv$-trayectoria que contiene a $e$.
+      Como $G$ es conexa, entonces, cualquier vértice es parte de alguna
+      arista, así, para cualesquiera $x, y, z$ en $V_G$ existe una
+      $xz$-trayectoria $T$ que contiene a $e \in E_G$, tal que $e =
+      yw (w \in E_G)$ y por tanto $T$ pasa por $y$.
 
-                Ahora definamos $P'^{-1}$ como $(y'=a_n, a_{n-1}, a_{n-2}, ..., a_i=x')$ y $Q'^{-1}$ como $(y'=b_k, b_{k-1}, b_{k-2}, ..., b_r=x') \Leftrightarrow$ aplicando el razonamiento anterior,  existira t que pertenenzca los naturales, tal que $b_{k-t} \in Y$ y $b_{k-(t+1)} \notin Y$  y de igual forma existiara s que pertenezca a los naturales tal que $a_{n-s} \in Y$ y  $a_{n-(s+1)} \notin Y \Leftrightarrow$ definamos a $P=(a_i, a_{i+1}, ...., a_{n-s})$ y definimos a $Q=(b_j, b_{j+1}, ..., b_{k-t})$
+    \item[$\cdot$)] Por mostrar $(g) \Rightarrow (h)$.
 
-                Por lo tanto:
+      Como $G$ es conexa, sabemos que existe una $xy$-trayectoria $T$,
+      una $xz$-trayectoria $P$, y una $yz$-trayectoria $Q$, todas ellas
+      de longitud mínima. Así
 
-                a) se cumple ya que $a_i$ y $b_j$ pertenencen a X por construccion de nuetras trayectorias P y Q.
+      \begin{itemize}
+      \item[-] Si todas las longitudes son iguales, \textit{i.e.}, $\mathcal{L}(T)
+        = \mathcal{L}(P) = \mathcal{L}(Q)$. Por hipótesis $x,y,z$ no son iguales,
+        así, cualquier trayectoria no contiene al tercer vértice y hemos encontrado
+        al menos $2$ trayectoias que cumplen con $h$.
 
-                b) se cumple ya que $a_{n-r}$ y $b_{k-t}$ pertenencen a Y por construccion de P y Q.
+      \item[-] Si dos de las trayectorias tienen una longitud mínima igual y menor
+        a la que es desigual, \textit{i.e.}, $\mathcal{L}(T) = \mathcal{L}(P) < \mathcal{L}(Q)$
+        o $\mathcal{L}(T) > \mathcal{L}(P) = \mathcal{L}(Q)$ o $\mathcal{L}(T) = \mathcal{L}(Q)
+        < \mathcal{L}(P)$. En este caso, analicemos las dos trayectorias que resulten tener menor
+        longitud entre $P, Q, T$. Si las trayectorias son $T$ y $P$, entonces cualquiera de estas
+        no contiene al tercer vértice, pues $x,y,z$ son distintos y las trayectorias elegidas son
+        las de menor longitud. Si se tiene que las trayectorias mínimas son $T$ y $Q$, o $P$ y $Q$,
+        se cumple que un tercer vértice no esta en alguna de las dos trayectorias, pues en caso
+        contrario y por saber que $x,y,z$ son distintos, se tendría que  hay una trayectoria menor
+        con $2$ de los vértices que estamos trabajando!!!, pero esto es absurdo, ya que, nuestras
+        trayectorias eran mínimas, por lo cual se cumple $h$.
 
-                c) se cumple de nuevo por construccion de P y Q y ya que X y Y son conjuntos disjuntos de V
-            \end{proof}
+      \item[-] Si una de las longitudes mínimas es menor a las restantes, \textit{i.e.},
+        $\mathcal{L}(T) = \mathcal{L}(P) > \mathcal{L}(Q)$ o $\mathcal{L}(T) < \mathcal{L}(P)
+        = \mathcal{L}(Q)$ o $\mathcal{L}(T) = \mathcal{L}(Q) > \mathcal{L}(P)$. Para este caso,
+        elegimos la trayectoria con menor longitud y esta no contendrá al tercer vértice, pues
+        para que pasará por el se necesitaría recorrer más aristas. En este caso tenemos una
+        trayectoria que cumple con $h$.
+      \end{itemize}
 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \item Sea $G$ una gr\'afica conexa con al menos 3 v\'ertices. Demuestre que
-          los siguientes enunciados son equivalentes.
-            \begin{enumerate}
-                \item $G$ es un bloque.
+    \item[$\cdot$)] Por mostrar $(h) \Rightarrow (a)$.
 
-                \item Entre cualesquiera dos v\'ertices distintos existen dos trayectorias internamente ajenas.
+      Sean $x, y, z$ en $V_G$ tales que $P$ es una $xy$-trayectoria que no pasa por $z$.
+      Como $G$ es conexa, entonces existe una $xy$-trayectoria $R$ y una $yz$-trayectoria
+      $S$, tales que, $T = RS$, luego hemos encontrado dos $xy$-trayectorias distintas que
+      en partícular forman un ciclo, además este ciclo es único porque esto pasa con cualquier
+      vértice y entre ellos, \textit{i.e.}, si seguimos escogiendo vértices de $V_G$ veremos que
+      todos están en un ciclo y que están relacionados de esta manera con todos los vértices, de
+      lo anterior $G$ es un único ciclo y concluimos que $G$ es un bloque.
+    \end{itemize}
 
-                \item Para cualesquiera dos v\'ertices de $G$ existe un ciclo que los
-                contiene.
-
-                \item Para cualquier v\'ertice y cualquier arista de $G$ existe un ciclo
-                que los contiene.
-
-                \item Para cualesquiera dos aristas de $G$ existe un ciclo que los
-                contiene.
-
-                \item Dados dos v\'ertices $u,v \in V(G)$ y una arista $e \in E(G)$,
-                existe una $uv$-trayectoria que pasa por $e$.
-
-                \item Para cualesquiera tres v\'ertices distintos de $G$, existe una
-                trayectoria que une a cualesquiera dos de ellos y que pasa por el
-                tercero.
-
-                \item Para cualesquiera tres v\'ertices distintos de $G$, existe una
-                trayectoria que une a cualesquiera dos de ellos que no pasa por el
-                tercero.
-            \end{enumerate}
-
-            \renewcommand\qedsymbol{QED}
-            \begin{proof}
-                Las implicaciones; $(a) \Rightarrow (b)$, $(b) \Rightarrow (c)$
-                y $(c) \Rightarrow (d)$, se omiten por estar escritas en las
-                notas de clase. Las implicaciones restantes se enumeran a
-                continuación:
-                \begin{itemize}
-                    \item[$\cdot$)] Por mostrar $(d) \Rightarrow (e)$.
-
-                        Por ($d$) sabemos que cualquier arista se encuentra
-                        contenida en un ciclo, por consecuencia directa,
-                        cualesquiera $2$ aristas se encuentran contenidas en
-                        algún ciclo.
-
-                    \item[$\cdot$)] Por mostrar $(e) \Rightarrow (f)$.
-
-                        Nótese que como consecuencia de ($e$)(en partícular
-                        cualquier arista esta contenida en un ciclo)
-                        cualquier vértice no aislado forma parte de un ciclo,
-                        como $G$ es conexa, entonces todos sus vértices son
-                        parte de algún ciclo, esto nos lleva a que $G$ es
-                        $2$-conexa por aristas. Luego para $u,v$ en $V_G$
-                        existen al menos dos $uv$-trayectoria ajenas por
-                        aristas. De lo anterior veamos como son $v$ y $u$,
-                        esto es
-
-                        \begin{itemize}
-                            \item Si $u, v$ forman parte de un mismo ciclo $C$.
-                                Sea $e \in E_G$ tal que forme parte de $C$, entonces
-                                terminamos, pues existe una trayectoria que pasa por
-                                $e$. Ahora, supongamos que $e$ no es parte de $C$, y
-                                sea $e = xy (x, y \text{ en } V_G)$, así supongamos que
-                                los vértices $y$ y $v$ son los que se pueden ``conectar"
-                                por la trayectoria de mayor longitud entre ellos y a la
-                                que llamaremos $T$, veamos que si $x$ se encuentra en $T$
-                                terminamos, pues existe una $xu$-trayectoria que complementa
-                                a $T$ para formar una $uv$-trayectoria con $e$ contenida, luego
-                                si $x$ no esta contenida en $T$, entonces $Tx$ incluye a $e$ por
-                                lo que si $u$ no esta contenida en $T$, entonces existe una
-                                $xu$-trayectoria $P$ tal que $TxP$ es la trayectoria buscada\footnote{
-                                  Con esto debería bastar, pues estamos mostrando la equivalencia
-                                  a un bloque propiamente, sin embargo el caso restante también
-                                  lo analizo, pues no veo como descartalo sin usar lo que estoy
-                                  mostrando.}.
-
-                            \item $u, v$ forman parte de ciclos distintos. Si $e$ forma
-                                parte de alguno de los ciclos que contiene a $u$ y $v$ como
-                                vértices, entonces hay una trayectoria $Q$ que pasa por $v$
-                                (o $u$) y por $e$, pues están en el mismo ciclo, luego existe
-                                una trayectoria $P$ que inicia en $e$ y llega hasta $u$ (o $v$)
-                                como consecuencia de que $G$ sea conexa, además $P$ ajena con $Q$
-                                por ser $G$ $2$-conexa por aristas, luego $PQ$ es la trayectoria
-                                que pasa por $u$ y $v$ que además contiene a la arista $e$. Para
-                                finalizar, si $e$ no se encuentra contenida en los ciclos que
-                                contienen a $u$ y $v$ como vértices. Supongamos que
-                                $e = xy (x, y \text{ en } V_G)$ y que de $x$ se pueda obtener la
-                                trayectoria más larga con $v$, así, existe una $xv$-trayectoria $T$
-                                que ya contiene a $e$ (porque $T$ es la más larga, caso contrario
-                                sólo basta unir $T = Ty$), como existe una $vu$-trayectoria $P$,
-                                entonces $TP$ ($TyP$) es la trayectoria buscada y terminamos.
-                        \end{itemize}
-
-                    \item[$\cdot$)] Por mostrar $(f) \Rightarrow (g)$.
-
-                        Por ($f$) tenemos que cualesquiera $2$ vértices $u, v$ y para
-                        toda arista $e$, existe una $uv$-trayectoria que contiene a $e$.
-                        Como $G$ es conexa, entonces, cualquier vértice es parte de alguna
-                        arista, así, para cualesquiera $x, y, z$ en $V_G$ existe una
-                        $xz$-trayectoria $T$ que contiene a $e \in E_G$, tal que $e =
-                        yw (w \in E_G)$ y por tanto $T$ pasa por $y$.
-
-                    \item[$\cdot$)] Por mostrar $(g) \Rightarrow (h)$.
-
-                        Como $G$ es conexa, sabemos que existe una $xy$-trayectoria $T$,
-                        una $xz$-trayectoria $P$, y una $yz$-trayectoria $Q$, todas ellas
-                        de longitud mínima. Así
-
-                        \begin{itemize}
-                            \item[-] Si todas las longitudes son iguales, \textit{i.e.}, $\mathcal{L}(T)
-                                = \mathcal{L}(P) = \mathcal{L}(Q)$. Por hipótesis $x,y,z$ no son iguales,
-                                así, cualquier trayectoria no contiene al tercer vértice y hemos encontrado
-                                al menos $2$ trayectoias que cumplen con $h$.
-
-                            \item[-] Si dos de las trayectorias tienen una longitud mínima igual y menor
-                                a la que es desigual, \textit{i.e.}, $\mathcal{L}(T) = \mathcal{L}(P) < \mathcal{L}(Q)$
-                                o $\mathcal{L}(T) > \mathcal{L}(P) = \mathcal{L}(Q)$ o $\mathcal{L}(T) = \mathcal{L}(Q)
-                                < \mathcal{L}(P)$. En este caso, analicemos las dos trayectorias que resulten tener menor
-                                longitud entre $P, Q, T$. Si las trayectorias son $T$ y $P$, entonces cualquiera de estas
-                                no contiene al tercer vértice, pues $x,y,z$ son distintos y las trayectorias elegidas son
-                                las de menor longitud. Si se tiene que las trayectorias mínimas son $T$ y $Q$, o $P$ y $Q$,
-                                se cumple que un tercer vértice no esta en alguna de las dos trayectorias, pues en caso
-                                contrario y por saber que $x,y,z$ son distintos, se tendría que  hay una trayectoria menor
-                                con $2$ de los vértices que estamos trabajando!!!, pero esto es absurdo, ya que, nuestras
-                                trayectorias eran mínimas, por lo cual se cumple $h$.
-
-                            \item[-] Si una de las longitudes mínimas es menor a las restantes, \textit{i.e.},
-                                $\mathcal{L}(T) = \mathcal{L}(P) > \mathcal{L}(Q)$ o $\mathcal{L}(T) < \mathcal{L}(P)
-                                = \mathcal{L}(Q)$ o $\mathcal{L}(T) = \mathcal{L}(Q) > \mathcal{L}(P)$. Para este caso,
-                                elegimos la trayectoria con menor longitud y esta no contendrá al tercer vértice, pues
-                                para que pasará por el se necesitaría recorrer más aristas. En este caso tenemos una
-                                trayectoria que cumple con $h$.
-                        \end{itemize}
-
-                    \item[$\cdot$)] Por mostrar $(h) \Rightarrow (a)$.
-
-                        Sean $x, y, z$ en $V_G$ tales que $P$ es una $xy$-trayectoria que no pasa por $z$.
-                        Como $G$ es conexa, entonces existe una $xy$-trayectoria $R$ y una $yz$-trayectoria
-                        $S$, tales que, $T = RS$, luego hemos encontrado dos $xy$-trayectorias distintas que
-                        en partícular forman un ciclo, además este ciclo es único porque esto pasa con cualquier
-                        vértice y entre ellos, \textit{i.e.}, si seguimos escogiendo vértices de $V_G$ veremos que
-                        todos están en un ciclo y que están relacionados de esta manera con todos los vértices, de
-                        lo anterior $G$ es un único ciclo y concluimos que $G$ es un bloque.
-                \end{itemize}
-
-                De lo anterior y por silogismo hipotético en los incisos anteriores se concluye que la
-                caracterización se cumple.
-            \end{proof}
-    \end{enumerate}
+    De lo anterior y por silogismo hipotético en los incisos anteriores se concluye que la
+    caracterización se cumple.
+  \end{proof}
+\end{enumerate}
 \end{document}
