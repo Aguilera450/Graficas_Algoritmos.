@@ -1,0 +1,148 @@
+\documentclass{article}
+
+% Symbols
+%\usepackage{recycle}
+\usepackage{amsfonts, amsthm}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{amssymb, latexsym, amsmath}
+
+% Proof
+\renewcommand*{\proofname}{\textbf{Demostraci\'on:}}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{pgf}
+
+% Color a letras.
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Tikz
+\usepackage{tkz-graph}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+% Def. Dr. César.
+\usetikzlibrary{shapes,calc}
+\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.1pt]
+\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.5pt, blue]
+\tikzstyle{blackV}=[circle, fill=black, minimum size=6pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{blueV}=[circle, fill=blue, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redV}=[circle, fill=red, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redSV}=[semicircle, fill=red, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blueSV}=[semicircle, fill=blue, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blackSV}=[semicircle, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{vertex}=[circle, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+
+% Margins
+\addtolength{\voffset}{-1cm}
+\addtolength{\hoffset}{-1cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\textheight}{2cm}
+
+%Header-Footer
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{1pt}
+
+\newcommand{\set}[1]{%
+  \left\{ #1 \right\}%
+}
+
+%\pagenumbering{gobble} -- Este comando
+%                       -- quita el número de página.
+\footskip = 50pt
+\renewcommand{\headrulewidth}{1pt}
+
+\pagestyle{fancyplain}
+
+\begin{document}
+\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+\author{Autores:
+  \\ Fernanda Villaf\'an Flores
+  \\ Fernando Alvarado Palacios
+  \\ Adri\'an Aguilera Moreno}
+\date{}
+\maketitle
+\begin{center}
+  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+  \Large
+  \bf{Gr\'aficas y Juegos}
+  \normalsize
+\end{center}
+\newpage
+\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\LARGE{Tarea 6}}
+\begin{enumerate}
+\item Sea $G$ una gr\'afica conexa no euleriana.   Demuestre que
+  las siguientes afirmaciones son equivalentes.
+  \begin{enumerate}
+  \item Hay un paseo euleriano en $G$.
+
+  \item Hay exactamente dos v\'ertices de grado impar en $G$.
+
+  \item Existe una familia de ciclos ajenos por aristas dos
+    a dos $\{ C_i \}_{i=1}^k$ y un paseo $P$ tal que
+    $E_G = E_P \cup \bigcup_{i=1}^k E_{C_i}$.
+  \end{enumerate}
+
+\item Sea $D$ una digr\'afica conexa. Demuestre que $D$ es
+  euleriana si y s\'olo si  para cada $v \in V_D$, se tiene
+  $d^+(v) = d^-(v)$.
+
+\item La digr\'afica de {\em de Bruijn-Good} $BG_n$ tiene como
+  conjunto de v\'ertices al conjunto de todas las sucesiones
+  binarias de longitud $n$, y donde el v\'ertice $a_1 a_2
+  \cdots a_n$ es adyacente al v\'ertice $b_1 b_2 \cdots b_n$
+  si y s\'olo si $a_{i+1} = b_i$ para $1 \le i \le n-1$.  Demuestre
+  que $BG_n$ es una digr\'afica euleriana de orden $2^n$ y
+  di\'ametro dirigido $n$.
+
+\item Demuestre que existe una forma de ordenar todas las fichas
+  de domin\'o en un ciclo (respetando las reglas del juego).
+  ?`C\'omo generalizar\'ia este resultado para domin\'os con
+  $n$ puntos? (el domin\'o est\'andar es el de $6$ puntos).
+
+\item Sean $G$ una gr\'afica euleriana no trivial
+  y $u \in V_G$. Demuestre que todo paseo en $G$
+  que inicia en $u$ se puede extender a un circuito
+  euleriano si y s\'olo si $G-u$ es ac\'iclica.
+
+\end{enumerate}
+
+\section*{Puntos Extra}
+
+\begin{enumerate}
+\item Una digr\'afica $D$ es {\em balanceada} si $|d^+(v) - d^-(v)|
+  \le 1$, para cada $v \in V$.   Demuestre que toda gr\'afica tiene
+  una orientaci\'on balanceada.
+
+\item Una sucesi\'on circular $s_1 s_2 \cdots s_{2^n}$ de ceros
+  y unos es llamada una {\em sucesi\'on de de Bruijn-Good}
+  de orden $n$ si las $2^n$ subsucesiones $s_i s_{i+1} \cdots
+  s_{i+n-1}$, $1 \le i \le 2^n$ (con los sub\'indices tomados
+  m\'odulo $2^n$ son distintas, y por lo tanto constituyen todas
+  las posibles sucesiones binarias de longitud $n$.   Por ejemplo,
+  la sucesi\'on $00011101$ es una una sucesi\'on de de Bruijn-Good
+  de orden tres.   Muestre como encontrar un de estas sucesiones
+  para cualquier orden $n$ utilizando un circuito euleriano dirigido
+  en la gr\'afica de de Bruijn-Good $BG_{n-1}$. Justifique su
+  respuesta.
+
+\item Sea $G$ una gr\'afica conexa, y sea $X$ el conjunto
+  de v\'ertices de $G$ de grado impar.   Suponga que
+  $|X| = 2k$, con $k \ge 1$.
+  \begin{enumerate}
+  \item Demuestre que hay $k$ paseos ajenos por
+    aristas $Q_1, \dots, Q_k$ en $G$ tales que
+    $E_G = \bigcup_{i=1}^k E_{Q_i}$.
+
+  \item Deduza que $G$ contiene $k$ paseos ajenos
+    por aristas que conectan a los v\'ertices de $X$
+    en pares.
+  \end{enumerate}
+
+\end{enumerate}
+\end{document}
