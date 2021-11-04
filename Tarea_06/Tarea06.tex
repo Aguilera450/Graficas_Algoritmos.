@@ -92,6 +92,18 @@
   euleriana si y s\'olo si  para cada $v \in V_D$, se tiene
   $d^+(v) = d^-(v)$.
 
+  \begin{proof} 
+    $\Longrightarrow$ Sea D una digrafica conexa e eucliriana $\rightarrow$ Por definicion de grafica eucliriana existe un circuito euclidiano que une a todos los vertices, llamemosle C a este circuito $\rightarrow$ sea x perteneciente a $V_D$ el inicio de este circuito $\rightarrow$ C$=(x,v_i, v_{i+1},...,v_{i+n},u)$ con i y n pertenecientes a los naturales, $\rightarrow$ como todos los vertices son consecutivos notemos que cada vertice de C es cola y cabeza para dos flechas distintas en el circuito $\rightarrow$ para todo $V_k$ que pertenece a C existe $d^+$ y $d^-$ que unene a $V_k$ con sus vertices adyacentes  $V_{k-1}$ y $V_{k+1}$  $\rightarrow$ cada vertice de la trayectoria C tendrá  una "arista" $d^+$ y una $d^-$, ya que D es par y por construccion de C.
+    Por lo tanto $d^+=d^-$ ya que para todo vertice de D se puen sumar el numero de veces que aparecen en la trayectoria C y preservará la igualdad anterior.
+    
+    
+    
+    $\Longleftarrow$ Sea D conexa y para toda v que pertenece a $V_D$ se tiene que $d^+ = d^- \rightarrow$ para toda v que pertenece a $V_D$ existe al menos una $d^+$ y una $d^-$, por lo que para todo v que pertenece a $V_D$ v es mayor igual a 2, pero el grado de V siempre debe ser par, ya que tenemos la igualdad $d^+=d^- \rightarrow$ D es par, por lo tanto por teorema visto en clase tenemos que D es una grafica Eucliriana 
+    
+    \end{proof}
+
+
+
 \item La digr\'afica de {\em de Bruijn-Good} $BG_n$ tiene como
   conjunto de v\'ertices al conjunto de todas las sucesiones
   binarias de longitud $n$, y donde el v\'ertice $a_1 a_2
