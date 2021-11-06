@@ -58,103 +58,195 @@
 \pagestyle{fancyplain}
 
 \begin{document}
-\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
-\author{Autores:
-  \\ Fernanda Villaf\'an Flores
-  \\ Fernando Alvarado Palacios
-  \\ Adri\'an Aguilera Moreno}
-\date{}
-\maketitle
-\begin{center}
-  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
-  \Large
-  \bf{Gr\'aficas y Juegos}
-  \normalsize
-\end{center}
-\newpage
-\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{\LARGE{Tarea 6}}
-\begin{enumerate}
-\item Sea $G$ una gr\'afica conexa no euleriana.   Demuestre que
-  las siguientes afirmaciones son equivalentes.
-  \begin{enumerate}
-  \item Hay un paseo euleriano en $G$.
+  \title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+  \author{Autores:
+    \\ Fernanda Villaf\'an Flores
+    \\ Fernando Alvarado Palacios
+    \\ Adri\'an Aguilera Moreno}
+  \date{}
+  \maketitle
+  \begin{center}
+    \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+    \Large
+    \bf{Gr\'aficas y Juegos}
+    \normalsize
+  \end{center}
+  \newpage
+  \fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section*{\LARGE{Tarea 6}}
+    \begin{enumerate}
+      \item Sea $G$ una gr\'afica conexa no euleriana.   Demuestre que
+        las siguientes afirmaciones son equivalentes.
+        \begin{enumerate}
+        \item Hay un paseo euleriano en $G$.
 
-  \item Hay exactamente dos v\'ertices de grado impar en $G$.
+        \item Hay exactamente dos v\'ertices de grado impar en $G$.
 
-  \item Existe una familia de ciclos ajenos por aristas dos
-    a dos $\{ C_i \}_{i=1}^k$ y un paseo $P$ tal que
-    $E_G = E_P \cup \bigcup_{i=1}^k E_{C_i}$.
+        \item Existe una familia de ciclos ajenos por aristas dos
+          a dos $\{ C_i \}_{i=1}^k$ y un paseo $P$ tal que
+          $E_G = E_P \cup \bigcup_{i=1}^k E_{C_i}$.
+        \end{enumerate}
+
+        \begin{proof}
+          Sea $G$ una gráfica.
+
+          Probaremos las siguientes implicaciones:
+          \begin{itemize}
+            \item $(a) \Longrightarrow (b)$.
+
+              Sea $P$ un paseo euleriano en $G$.
+
+              Como $G$ es conexa, podemos hacer adyacentes al vértice inicial y al vértice final de $P$. Esto implica que tenemos un \textbf{paseo cerrado} y por tanto, tenemos un \textbf{circuito euleriano}.
+
+              Así, obtenemos que $G$ es una gráfica euleriana.
+
+              De aquí, notemos que todos los vértices de la gráfica euleriana tienen grado par (\textit{por propiedades de gráficas eulerianas}) y, si borramos la arista que une al vértice inicial y al vértice final de $P$, obtenemos que el grado de dichos vértices disminuye en $1$.
+
+              Esto implica que ambos vértices ahora tienen grado impar (ya que \textit{número par $-$ número impar $=$ número impar}).
+
+              Por lo tanto, dichos vértices son los únicos dos vértices de grado impar en $G$.
+
+            \item $(b) \Longrightarrow (c)$.
+
+              Como ya probamos que $G$ es una gráfica euleriana, \textit{por propiedades} sabemos que $G$ tiene una \textbf{descomposición en ciclos}, digamos $C_{1}, C_{2}, \cdots, C_{k}$. Y además por el inciso $(a)$, sabemos que existe un paseo $P$ en $G$ el cuál (\textit{por hipótesis}) tiene exactamente dos vértices de grado impar.
+
+              Entonces tenemos que:
+              \begin{equation*}
+                \begin{split}
+                  E_{G}
+                  & = \bigcup_{i=1}^{k} E_{C_{i}} \cup E_{P} \\
+                  & = E_{P} \cup \bigcup_{i=1}^{k} E_{C_{i}}
+                \end{split}
+              \end{equation*}
+
+            \item $(c) \Longrightarrow (a)$.
+
+              Esto es inmediato ya que \textit{por hipótesis}, existe un paseo $P$ tal que:
+              $$E_{G} = E_{P} \cup \bigcup_{i=1}^{k} E_{C_{i}}$$
+
+              En particular si $G$ no tiene ciclos, es decir, $\displaystyle \bigcup_{i=1}^{k} E_{C_{i}} = \emptyset$ tenemos que:
+              \begin{equation*}
+                \begin{split}
+                  E_{G}
+                  & = E_{P} \cup \bigcup_{i=1}^{k} E_{C_{i}} \\
+                  & = E_{P} \cup \emptyset \\
+                  & = E_{P}
+                \end{split}
+              \end{equation*}
+
+                Así, si $E_{G} = E_{P}$ implica que hay un paseo euleriano en $G$ (por definición de \textbf{paseo euleriano}).
+
+                Por lo tanto, queda demostrado que las afirmaciones son equivalentes.
+          \end{itemize}
+        \end{proof}
+
+      \item Sea $D$ una digr\'afica conexa. Demuestre que $D$ es
+          euleriana si y s\'olo si  para cada $v \in V_D$, se tiene
+          $d^+(v) = d^-(v)$.
+
+        \begin{proof}
+          \begin{itemize}
+            \item $\Longrightarrow$.
+
+              Sea $D$ una digráfica conexa e eucliriana $\rightarrow$ Por definición de gráfica eucliriana existe un circuito euclidiano que une a todos los vértices, llamémosle $C$ a este circuito.
+
+              Entonces, sea $x$ perteneciente a $V_D$ el inicio de este circuito.
+
+              $\rightarrow$ $C = (x,v_i, v_{i+1}, \cdots, v_{i+n}, u)$ con $i$ y $n$ pertenecientes a los naturales.
+
+              Como todos los vértices son consecutivos, notemos que cada vértice de $C$ es cola y cabeza para dos flechas distintas en el circuito $\rightarrow$ para todo $V_k$ que pertenece a $C$ existe $d^+$ y $d^-$ que une a $V_k$ con sus vértices adyacentes $V_{k-1}$ y $V_{k+1}$.
+
+              Así, cada vértice de la trayectoria $C$ tendrá  una ``arista" $d^+$ y una $d^-$ (ya que $D$ es par y por construcción de $C$).
+
+              Por lo tanto, $d^+ = d^-$ ya que para todo vértice de $D$ se pueden sumar el número de veces que aparecen en la trayectoria $C$ y preservará la igualdad anterior.
+
+            \item $\Longleftarrow$.
+
+              Sea $D$ conexa y para toda $v$ que pertenece a $V_D$ se tiene que $d^+ = d^- \rightarrow$ para toda $v$ que pertenece a $V_D$, existe al menos una $d^+$ y una $d^-$.
+
+              Por lo que para todo $v$ que pertenece a $V_D$, $v$ es mayor igual a $2$. Pero el grado de $v$ siempre debe ser par, ya que tenemos la igualdad $d^+ = d^- \rightarrow$ $D$ es par.
+
+              Por lo tanto, por teorema visto en clase tenemos que $D$ es una gráfica eucliriana.
+          \end{itemize}
+        \end{proof}
+
+      \item La digr\'afica de {\em de Bruijn-Good} $BG_n$ tiene como
+        conjunto de v\'ertices al conjunto de todas las sucesiones
+        binarias de longitud $n$, y donde el v\'ertice $a_1 a_2
+        \cdots a_n$ es adyacente al v\'ertice $b_1 b_2 \cdots b_n$
+        si y s\'olo si $a_{i+1} = b_i$ para $1 \le i \le n-1$.  Demuestre
+        que $BG_n$ es una digr\'afica euleriana de orden $2^n$ y
+        di\'ametro dirigido $n$.
+
+      \item Demuestre que existe una forma de ordenar todas las fichas
+        de domin\'o en un ciclo (respetando las reglas del juego).
+        ?`C\'omo generalizar\'ia este resultado para domin\'os con
+        $n$ puntos? (el domin\'o est\'andar es el de $6$ puntos).
+
+      \item Sean $G$ una gr\'afica euleriana no trivial
+        y $u \in V_G$. Demuestre que todo paseo en $G$
+        que inicia en $u$ se puede extender a un circuito
+        euleriano si y s\'olo si $G-u$ es ac\'iclica.
+
+        \begin{proof}
+          Sean $G$ una gr\'afica euleriana no trivial y $u \in V_{G}$.
+
+          Procedemos por doble implicación.
+
+          \begin{itemize}
+            \item $\Longrightarrow$.
+
+              Suponemos que todo paseo en $G$ que inicia en $u$ se puede extender a un circuito euleriano.
+
+              Demostraremos que $G-u$ es ac\'iclica.
+
+              Procedemos por contradicción.
+
+              Sea $P$ un circuito euleriano de $G$.
+
+              Supongamos que $G-u$ no es ac\'iclica.
+
+              Esto implica que existe un ciclo $C$ en $G-u$
+
+            \item $\Longleftarrow$.
+
+              Suponemos que $G-u$ es ac\'iclica.
+
+              Demostraremos que todo paseo en $G$ que inicia en $u$ se puede extender a un circuito euleriano.
+          \end{itemize}
+        \end{proof}
+    \end{enumerate}
+
+  \section*{Puntos Extra}  
+    \begin{enumerate}
+        \item Una digr\'afica $D$ es {\em balanceada} si $|d^+(v) - d^-(v)|
+          \le 1$, para cada $v \in V$.   Demuestre que toda gr\'afica tiene
+          una orientaci\'on balanceada.
+
+        \item Una sucesi\'on circular $s_1 s_2 \cdots s_{2^n}$ de ceros
+          y unos es llamada una {\em sucesi\'on de de Bruijn-Good}
+          de orden $n$ si las $2^n$ subsucesiones $s_i s_{i+1} \cdots
+          s_{i+n-1}$, $1 \le i \le 2^n$ (con los sub\'indices tomados
+          m\'odulo $2^n$ son distintas, y por lo tanto constituyen todas
+          las posibles sucesiones binarias de longitud $n$.   Por ejemplo,
+          la sucesi\'on $00011101$ es una una sucesi\'on de de Bruijn-Good
+          de orden tres.   Muestre como encontrar un de estas sucesiones
+          para cualquier orden $n$ utilizando un circuito euleriano dirigido
+          en la gr\'afica de de Bruijn-Good $BG_{n-1}$. Justifique su
+          respuesta.
+
+        \item Sea $G$ una gr\'afica conexa, y sea $X$ el conjunto
+          de v\'ertices de $G$ de grado impar.   Suponga que
+          $|X| = 2k$, con $k \ge 1$.
+          \begin{enumerate}
+          \item Demuestre que hay $k$ paseos ajenos por
+            aristas $Q_1, \dots, Q_k$ en $G$ tales que
+            $E_G = \bigcup_{i=1}^k E_{Q_i}$.
+
+          \item Deduza que $G$ contiene $k$ paseos ajenos
+            por aristas que conectan a los v\'ertices de $X$
+            en pares.
+    \end{enumerate}
   \end{enumerate}
-
-\item Sea $D$ una digr\'afica conexa. Demuestre que $D$ es
-  euleriana si y s\'olo si  para cada $v \in V_D$, se tiene
-  $d^+(v) = d^-(v)$.
-
-  \begin{proof} 
-    $\Longrightarrow$ Sea D una digrafica conexa e eucliriana $\rightarrow$ Por definicion de grafica eucliriana existe un circuito euclidiano que une a todos los vertices, llamemosle C a este circuito $\rightarrow$ sea x perteneciente a $V_D$ el inicio de este circuito $\rightarrow$ C$=(x,v_i, v_{i+1},...,v_{i+n},u)$ con i y n pertenecientes a los naturales, $\rightarrow$ como todos los vertices son consecutivos notemos que cada vertice de C es cola y cabeza para dos flechas distintas en el circuito $\rightarrow$ para todo $V_k$ que pertenece a C existe $d^+$ y $d^-$ que unene a $V_k$ con sus vertices adyacentes  $V_{k-1}$ y $V_{k+1}$  $\rightarrow$ cada vertice de la trayectoria C tendrá  una "arista" $d^+$ y una $d^-$, ya que D es par y por construccion de C.
-    Por lo tanto $d^+=d^-$ ya que para todo vertice de D se puen sumar el numero de veces que aparecen en la trayectoria C y preservará la igualdad anterior.
-    
-    
-    
-    $\Longleftarrow$ Sea D conexa y para toda v que pertenece a $V_D$ se tiene que $d^+ = d^- \rightarrow$ para toda v que pertenece a $V_D$ existe al menos una $d^+$ y una $d^-$, por lo que para todo v que pertenece a $V_D$ v es mayor igual a 2, pero el grado de V siempre debe ser par, ya que tenemos la igualdad $d^+=d^- \rightarrow$ D es par, por lo tanto por teorema visto en clase tenemos que D es una grafica Eucliriana 
-    
-    \end{proof}
-
-
-
-\item La digr\'afica de {\em de Bruijn-Good} $BG_n$ tiene como
-  conjunto de v\'ertices al conjunto de todas las sucesiones
-  binarias de longitud $n$, y donde el v\'ertice $a_1 a_2
-  \cdots a_n$ es adyacente al v\'ertice $b_1 b_2 \cdots b_n$
-  si y s\'olo si $a_{i+1} = b_i$ para $1 \le i \le n-1$.  Demuestre
-  que $BG_n$ es una digr\'afica euleriana de orden $2^n$ y
-  di\'ametro dirigido $n$.
-
-\item Demuestre que existe una forma de ordenar todas las fichas
-  de domin\'o en un ciclo (respetando las reglas del juego).
-  ?`C\'omo generalizar\'ia este resultado para domin\'os con
-  $n$ puntos? (el domin\'o est\'andar es el de $6$ puntos).
-
-\item Sean $G$ una gr\'afica euleriana no trivial
-  y $u \in V_G$. Demuestre que todo paseo en $G$
-  que inicia en $u$ se puede extender a un circuito
-  euleriano si y s\'olo si $G-u$ es ac\'iclica.
-
-\end{enumerate}
-
-\section*{Puntos Extra}
-
-\begin{enumerate}
-\item Una digr\'afica $D$ es {\em balanceada} si $|d^+(v) - d^-(v)|
-  \le 1$, para cada $v \in V$.   Demuestre que toda gr\'afica tiene
-  una orientaci\'on balanceada.
-
-\item Una sucesi\'on circular $s_1 s_2 \cdots s_{2^n}$ de ceros
-  y unos es llamada una {\em sucesi\'on de de Bruijn-Good}
-  de orden $n$ si las $2^n$ subsucesiones $s_i s_{i+1} \cdots
-  s_{i+n-1}$, $1 \le i \le 2^n$ (con los sub\'indices tomados
-  m\'odulo $2^n$ son distintas, y por lo tanto constituyen todas
-  las posibles sucesiones binarias de longitud $n$.   Por ejemplo,
-  la sucesi\'on $00011101$ es una una sucesi\'on de de Bruijn-Good
-  de orden tres.   Muestre como encontrar un de estas sucesiones
-  para cualquier orden $n$ utilizando un circuito euleriano dirigido
-  en la gr\'afica de de Bruijn-Good $BG_{n-1}$. Justifique su
-  respuesta.
-
-\item Sea $G$ una gr\'afica conexa, y sea $X$ el conjunto
-  de v\'ertices de $G$ de grado impar.   Suponga que
-  $|X| = 2k$, con $k \ge 1$.
-  \begin{enumerate}
-  \item Demuestre que hay $k$ paseos ajenos por
-    aristas $Q_1, \dots, Q_k$ en $G$ tales que
-    $E_G = \bigcup_{i=1}^k E_{Q_i}$.
-
-  \item Deduza que $G$ contiene $k$ paseos ajenos
-    por aristas que conectan a los v\'ertices de $X$
-    en pares.
-  \end{enumerate}
-
-\end{enumerate}
 \end{document}
