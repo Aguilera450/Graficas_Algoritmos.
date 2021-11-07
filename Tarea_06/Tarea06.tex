@@ -178,7 +178,7 @@
   si y s\'olo si $a_{i+1} = b_i$ para $1 \le i \le n-1$.  Demuestre
   que $BG_n$ es una digr\'afica euleriana de orden $2^n$ y
   di\'ametro dirigido $n$.
-  
+
   \begin{proof}
     Sabemos que dado $2$ vértices $v = a_1a_2 \dotsm a_n$ y
     $u = b_1b_2 \dotsm b_n$, estos son adyacentes si $1 \leq i \leq n -1$,
@@ -215,14 +215,14 @@
   de domin\'o en un ciclo (respetando las reglas del juego).
   ?`C\'omo generalizar\'ia este resultado para domin\'os con
   $n$ puntos? (el domin\'o est\'andar es el de $6$ puntos).
-  
+
   \begin{proof}
     A continuación se muestra una manera de ordenar las fichas de dominó de
     tamaño estándar en un ciclo:
-    
+
     \begin{center}
       \begin{tikzpicture}[->, node distance = 3cm, auto]
-        
+
         \node[state](v1)   at(0,  0)         {$\frac{6}{3}$};
         \node[state](v2)   at(1,  1)         {$\frac{6}{6}$};
         \node[state](v3)   at(1.75,  2.2)    {$\frac{0}{6}$};
@@ -251,7 +251,7 @@
         \node[state](v26)  at(-3.94, -1.38)  {$\frac{1}{6}$};
         \node[state](v27)  at(-2.54, -1.22)  {$\frac{5}{6}$};
         \node[state](v28)  at(-1.2,  -0.75)  {$\frac{3}{5}$};
-        
+
         %%----------------------------------
         \path (v12)edge[bend left]node{$00$}(v11)
         (v12)edge[bend left]node{$00$}(v13)
@@ -312,7 +312,7 @@
       puntos, pues las fichas con puntos mayor a $n_i$ contienen alguna con una cara igual
       a $n_i$ puntos, luego estas son $n - n_i$ y si les sumamos las $n_i$ antes contadas
       tenemos que hay $n$ fichas que cumplen lo antes mencionado.
-      
+
     \item[$\cdot$)] Las fichas impares (las que tengan puntos impares, un ejemplo serían
       todas las fichas que tienen $3$ puntos en una de sus caras) son una cantidad par, pues
       si hay una ficha con $m = 2p +1$ [$p \in \mathbb{N}$] puntos, como $n$ es par y es la
@@ -328,7 +328,7 @@
       par, otra manera de verlo es que $(n -m) + m = n$ y hay justo $n$ fichas con al menos una de
       sus caras igual a $m$ puntos.
     \end{itemize}
-    
+
     Como en cualquiera de los casos anteriores hay una cantidad par de fichas, entonces podemos agrupar
     conjuntos [aristas] de orden $2$ con las fichas [vértices] y obtendremos una gráfica par, pues cada
     ficha se relacionará con exactamente $2$, luego, los ordenes $n$ en el dominó, siempre que $n$ sea
@@ -346,30 +346,45 @@
     Procedemos por doble implicación.
 
     \begin{itemize}
-    \item $\Longrightarrow$.
+      \item $\Longrightarrow$.
 
-      Suponemos que todo paseo en $G$ que inicia en $u$ se puede extender a un circuito euleriano.
+        Suponemos que todo paseo en $G$ que inicia en $u$ se puede extender a un circuito euleriano.
 
-      Demostraremos que $G-u$ es ac\'iclica.
+        Demostraremos que $G-u$ es ac\'iclica.
 
-      Procedemos por contradicción.
+        \textbf{Procedemos por contradicción.}
 
-      Sea $P$ un circuito euleriano de $G$.
+        Sea $P$ un circuito euleriano de $G$.
 
-      Supongamos que $G-u$ no es ac\'iclica.
+        Supongamos que $G-u$ no es ac\'iclica. Esto implica que existe un ciclo $C$ en $G-u$.
 
-      Esto implica que existe un ciclo $C$ en $G-u$
+        Ahora, como $G$ es una gráfica euleriana, en particular es par, entonces $G - E_{C}$ debe ser par. Notemos que el vértice $u$ no pertenece a los vértices del ciclo $C$, lo que implica que $u$ no es adyacente a ningún vértice del ciclo $C$.
 
-    \item $\Longleftarrow$.
+        De lo anterior tenemos que $u \in V_{P}$ y entonces, $P$ empieza y termina en $u$. Así, como todos los vértices adyacentes a $u$ están en $P$ implica que $P$ no se puede extender a un circuito euleriano !!!
 
-      Suponemos que $G-u$ es ac\'iclica.
+        La contradicción yace de suponer que $G - u$ no es acíclica, por tanto, $G - u$ es acíclica.
 
-      Demostraremos que todo paseo en $G$ que inicia en $u$ se puede extender a un circuito euleriano.
+      \item $\Longleftarrow$.
+
+        Suponemos que $G-u$ es ac\'iclica.
+
+        Demostraremos que todo paseo en $G$ que inicia en $u$ se puede extender a un circuito euleriano.
+
+        Como $G - u$ es acíclica, implica que todo ciclo $C$ en $G$ contiene al vértice $u$. De aquí, entonces tenemos que todo ciclo $C$ en $G$ empieza y termina en $u$ (pues sabemos que un ciclo empieza y termina en el mismo vértice, es decir, es cerrado).
+
+        Ahora, como cada ciclo en $G$ no comparte ninguna arista (porque $G$ es una gráfica euleriana), \textit{por propiedades} sabemos que existe una familia de ciclos $\bigg\{ C_{i}\bigg\}_{i = 1}^{k}$ y un paseo $P$ tal que:
+        $$E_{G} = E_{P} \cup \bigcup_{i = 1}^{k} E_{C_{i}}$$
+
+        Como $G$ es una gráfica euleriana (en particular), es par y entonces, $G - u$ es par. Notemos que $P$ usa al vértice $u$ ya que de no ser así, contradice el hecho de que $G$ es par.
+
+        De esto se sigue que $P$ debe ser un paseo que inicia y termina en el mismo vértice (en este caso, $u$), lo que implica que $P$ es un paseo cerrado y por definición, $P$ sería un circuito euleriano.
+
+        Por lo tanto, tenemos un paseo cualquiera en $G$ que empieza en $u$ y se puede extender a un circuito euleriano.
     \end{itemize}
   \end{proof}
 \end{enumerate}
 
-\section*{Puntos Extra}  
+\section*{Puntos Extra}
 \begin{enumerate}
 \item Una digr\'afica $D$ es {\em balanceada} si $|d^+(v) - d^-(v)|
   \le 1$, para cada $v \in V$.   Demuestre que toda gr\'afica tiene
