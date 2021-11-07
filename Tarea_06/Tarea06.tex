@@ -375,9 +375,7 @@
         Ahora, como cada ciclo en $G$ no comparte ninguna arista (porque $G$ es una gráfica euleriana), \textit{por propiedades} sabemos que existe una familia de ciclos $\bigg\{ C_{i}\bigg\}_{i = 1}^{k}$ y un paseo $P$ tal que:
         $$E_{G} = E_{P} \cup \bigcup_{i = 1}^{k} E_{C_{i}}$$
 
-        Como $G$ es una gráfica euleriana (en particular), es par y entonces, $G - u$ es par. Notemos que $P$ usa al vértice $u$ ya que de no ser así, contradice el hecho de que $G$ es par.
-
-        De esto se sigue que $P$ debe ser un paseo que inicia y termina en el mismo vértice (en este caso, $u$), lo que implica que $P$ es un paseo cerrado y por definición, $P$ sería un circuito euleriano.
+        Sea $u \in V_{P}$. Entonces se sigue que $P$ debe ser un paseo que inicia y termina en el mismo vértice (en este caso, $u$), lo que implica que $P$ es un paseo cerrado y por definición, $P$ sería un circuito euleriano.
 
         Por lo tanto, tenemos un paseo cualquiera en $G$ que empieza en $u$ y se puede extender a un circuito euleriano.
     \end{itemize}
