@@ -1,0 +1,141 @@
+\documentclass{article}
+
+% Symbols
+%\usepackage{recycle}
+\usepackage{amsfonts, amsthm}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{amssymb, latexsym, amsmath}
+
+% Proof
+\renewcommand*{\proofname}{\textbf{Demostraci\'on:}}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{pgf}
+
+% Color a letras.
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Tikz
+\usepackage{tkz-graph}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+% Def. Dr. César.
+\usetikzlibrary{shapes,calc}
+\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.1pt]
+\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.5pt, blue]
+\tikzstyle{blackV}=[circle, fill=black, minimum size=6pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{blueV}=[circle, fill=blue, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redV}=[circle, fill=red, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redSV}=[semicircle, fill=red, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blueSV}=[semicircle, fill=blue, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blackSV}=[semicircle, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{vertex}=[circle, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+
+% Margins
+\addtolength{\voffset}{-1.5cm}
+\addtolength{\hoffset}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\textheight}{3cm}
+
+%Header-Footer
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{1pt}
+
+\newcommand{\set}[1]{%
+  \left\{ #1 \right\}%
+}
+
+%\pagenumbering{gobble} -- Este comando
+%                       -- quita el número de página.
+\footskip = 50pt
+\renewcommand{\headrulewidth}{1pt}
+
+\pagestyle{fancyplain}
+
+\begin{document}
+\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+\author{Autores:
+  \\ Fernanda Villaf\'an Flores
+  \\ Fernando Alvarado Palacios
+  \\ Adri\'an Aguilera Moreno}
+\date{}
+\maketitle
+\begin{center}
+  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+  \Large
+  \bf{Gr\'aficas y Juegos}
+  \normalsize
+\end{center}
+\newpage
+\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\LARGE{Tarea 7}}
+\begin{enumerate}
+\item \begin{enumerate}
+\item Demuestre que si $G$ tiene di\'ametro mayor que $3$ (posiblemente
+  infinito), entonces $\overline{G}$ tiene di\'ametro menor que $3$.
+  Concluya que si $G$ es inconexa, entonces $\overline{G}$ es conexa.
+
+\item Una gr\'afica $G$ es autocomplementaria si $G \cong \overline{G}$.
+  Demuestre que si $G$ es autocomplementaria, entonces $|V|
+  \stackrel{4}{\equiv} 0$ o $|V| \stackrel{4}{\equiv} 1$.
+\end{enumerate}
+
+\item Un {\em orden topol\'ogico} de una digr\'afica $D$ es un orden lineal de
+  sus v\'ertices tal que para cada flecha $a$ de $D$, la cola de $a$ precede a
+  su cabeza en el orden.
+  \begin{enumerate}
+  \item Demuestre que toda digr\'afica ac\'iclica tiene al menos una fuente
+    (v\'ertice de ingrado $0$) y un sumidero (v\'ertice de exgrado $0$).
+
+  \item Deduzca que una digr\'afica admite un orden topol\'ogico si y s\'olo
+    si es ac\'iclica.
+
+  \item Exhiba un algoritmo de tiempo a lo m\'as cuadr\'atico para encontrar
+    un orden topol\'ogico en una digr\'afica ac\'iclica.
+  \end{enumerate}
+
+\item Demuestre que cada uno de los siguientes problemas est\'a en la clase
+  $NP$ exhibiendo un certificado y un algoritmo de tiempo polinomial para
+  verificar el certificado (escriba el algoritmo utilizando pseudo c\'odigo
+  como el visto en clase; s\'olo est\'a permitido el uso de las estructuras de
+  control {\bf if}, {\bf while} y {\bf for}).   Demuestre que su algoritmo
+  usa tiempo polinomial.
+  \begin{enumerate}
+  \item \textsc{Hamilton Cycle}.
+
+  \item \textsc{Vertex Cover}.
+
+  \item \textsc{Colouring}.
+
+  \item \textsc{Dominating Set}.
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{Puntos extra}
+\begin{enumerate}
+\item Demuestre que toda digr\'afica sin lazos admite una
+  descomposici\'on en dos digr\'aficas ac\'iclicas, es decir, que
+  existen $D_1$ y $D_2$ subdigr\'aficas de $D$, ac\'iclicas y
+  tales que $D_1 \cup D_2 = D$ y $A_{D_1} \cap A_{D_2} =
+  \varnothing$.
+
+\item Un torneo es una digr\'afica en la que entre cualesquiera
+  dos v\'ertices existe una \'unica flecha.   Demuestre que todo
+  torneo es fuertemente conexo o puede transformarse en un
+  torneo fuertemente conexo al reorientar exactamente una
+  flecha.
+
+\item Demuestre que una digr\'afica es fuertemente conexa si
+  y s\'olo si contiene un camino cerrado generador.
+
+\item Demuestre que si $l, m$ y $n$ son enteros con $0 < l \le
+  m \le n$, entonces existe una gr\'afica simple $G$ con $\kappa
+  = l$, $\kappa' = m$ y $\delta = n$.
+\end{enumerate}
+\end{document}
