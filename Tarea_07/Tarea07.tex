@@ -8,6 +8,17 @@
 \usepackage{cancel}
 \usepackage{amssymb, latexsym, amsmath}
 
+%Algorithms
+\usepackage[ruled,lined,linesnumbered,commentsnumbered]{algorithm2e}
+
+% Código
+\newcommand{\code}[1]{\textcolor{white!25!black}{\texttt{#1}}}
+\usepackage{listings}
+
+%AMS
+\usepackage{amsthm}
+\newtheorem{algo-thm}{Algoritmo}
+
 % Proof
 \renewcommand*{\proofname}{\textbf{Demostraci\'on:}}
 
@@ -42,12 +53,18 @@
 \addtolength{\textwidth}{3cm}
 \addtolength{\textheight}{3cm}
 
+%\usepackage{geometry}
+%\addtolength{\hoffset}{0cm}
+%\addtolength{\textwidth}{0cm}
+%\addtolength{\voffset}{0cm}
+%\addtolength{\textheight}{1cm}
+
 %Header-Footer
 \usepackage{fancyhdr}
 \renewcommand{\headrulewidth}{1pt}
 
-\newcommand{\set}[1]{%
-  \left\{ #1 \right\}%
+\newcommand{\set}[1]{
+  \left\{ #1 \right\}
 }
 
 %\pagenumbering{gobble} -- Este comando
@@ -152,8 +169,49 @@
   \item Exhiba un algoritmo de tiempo a lo m\'as cuadr\'atico para encontrar
     un orden topol\'ogico en una digr\'afica ac\'iclica.
   \end{enumerate}
+\end{enumerate}
+%%********************************** Algoritmo 1: Orden Topol\'ogico.
+\begin{algorithm}[H]
+  \SetAlgorithmName{Orden Topol\'ogico}{}
+  \DontPrintSemicolon
+  \SetKwData{False}{false}\SetKwData{True}{true}
+  \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+  
+  \KwIn{Una digr\'afica $D$ y el conjunto $\beta = \{x \in V_D|x \text{ es un fuente}\}$.}
+  \KwOut{Un orden topol\'ogico admitido en $D$ basado en n\'umeros.}
+  \BlankLine {
+    \For{$v \in \beta$}{
+      $v \gets$ 0\;
+    }
+    \For{$v \in V_D$}{
+      \If{$v \not= 0$}{
+        \code{temp} $\gets 0$\;
+        \For{$u\in V_D: u$\textnormal{ es antecesor de} $v$ \textnormal{en} $D$
+          \textnormal{\textbf{and}} $u \not=$ \textnormal{\code{null}}}{
+          \If{\textnormal{\code{temp}} $< u$}{
+            \code{temp} $\gets u$
+          }
+        }
+        $v \gets temp + 1$\;
+        \For{$u\in V_D: u$\textnormal{ es sucesor de} $v$ \textnormal{en} $D$
+          \textnormal{\textbf{and}} $u \not=$ \textnormal{\code{null}}}{
+          \If{$u < v$}{
+            $u \gets v + 1$ 
+          }
+        }
+      }
+    }
+  }
+  {\Return $D$}
+  \caption{TopologicalOrder$(\big<D, \beta, \gamma\big>;D)$} \label{trace}%\textnormal{new}
+  \DecMargin{1em}
+\end{algorithm}
+
+\vspace{0.3cm}
+\begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Demuestre que cada uno de los siguientes problemas est\'a en la clase
+\item[3.] Demuestre que cada uno de los siguientes problemas est\'a en la clase
   $NP$ exhibiendo un certificado y un algoritmo de tiempo polinomial para
   verificar el certificado (escriba el algoritmo utilizando pseudo c\'odigo
   como el visto en clase; s\'olo est\'a permitido el uso de las estructuras de
