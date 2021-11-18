@@ -116,9 +116,37 @@
     \begin{proof}
       Para este inciso analicemos $2$ posibles casos:
       \begin{itemize}
-      \item[$\Rightarrow$)]
-      \item[$\Leftarrow$)]
+      \item[$\Rightarrow$)] Procedamos por reducci\'on al absurdo. Sea $D$ una
+        digr\'afica tal que admite un orden topol\'ogico. Supongamos que $D$
+        contiene al menos un ciclo $C$, entonces existe un $x \in V_D$ tal que
+        $\{x\} \subset C$ y $x$ es un v\'ertice inicial y final en $C$, luego
+        existe $y \in V_D : \{y\} \subset C$ tal que $\vec{yx}$ es una arista,
+        por tanto $y < x$ [esto es que $y$ precede a $x$ en el orden]. N\'otese
+        que hay una trayectoria $\vec{T}$ que va de $x$ a $y$ en $C$, as\'i
+        $x < y$!! [esto es que $x$ precede a $y$ en el orden], he aqu\'i una
+        contradicci\'on de suponer que $D$ admite un orden topol\'ogico.
+        \[
+        \therefore \text{ Si $D$ admite un orden topol\'ogico}
+        \Rightarrow D \text{ es ac\'iclica.}
+        \]
+      \item[$\Leftarrow$)] Por el inciso $(a)$ sabemos que $D$ tiene al menos
+        una \textit{fuente} y un \textit{sumidero}, tomemos una componente
+        conexa en $D$ y veamos que si los v\'ertices $x$ es \textit{fuente}
+        e $y$ es \textit{sumidero}, entonces la trayectoria de $x$ a $y$ es
+        un orden topol\'ogico, si hay m\'as de una \textit{fuente} o m\'as de
+        un \textit{sumidero}, cada trayectoria entre una \textit{fuente} y un
+        \textit{sumidero} es un orden topol\'ogico [pues de no serlo, dos flechas
+          distintas provenientes de una misma fuente incidir\'ian en alg\'un
+          v\'ertice en com\'un, lo que implicar\'ia que $D$ contiene un ciclo!!],
+        as\'i la componente conexa admite un orden topol\'ogico y esto pasa
+        para cualquier componente conexa en $D$.
+        \[
+        \therefore \text{ Si $D$ es ac\'iclica}
+        \Rightarrow D \text{ admite un orden topol\'ogico.}
+        \]
       \end{itemize}
+      \hspace*{1.3cm} $\therefore\;$ Una digr\'afica admite un orden
+      topol\'ogico si y s\'olo si es ac\'iclica.
     \end{proof}
     %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (c)
   \item Exhiba un algoritmo de tiempo a lo m\'as cuadr\'atico para encontrar
