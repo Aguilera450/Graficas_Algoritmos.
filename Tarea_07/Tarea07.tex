@@ -95,9 +95,31 @@
     %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
   \item Demuestre que toda digr\'afica ac\'iclica tiene al menos una fuente
     (v\'ertice de ingrado $0$) y un sumidero (v\'ertice de exgrado $0$).
+    \begin{proof}
+      Procedamos por reducci\'on al absurdo. Sea $D$ una digr\'afica ac\'iclica
+      con $\delta^+ > 0$ y $\delta^- > 0$, esto es que, para cada $v \in V_D$ hay
+      una flecha que le ``\textit{pega}''\footnote{Una arista incide en $v$ y $v$
+        es la cabeza.} a $v$ y otra que ``\textit{sale}''\footnote{Una arista que
+        inicia en $v$ con direcci\'on a otro v\'ertice.} de $v$. Tomemos la
+      trayectoria $\vec{T}$ m\'as larga en $D$ y sea $x \in V_D$ el \'ultimo
+      v\'ertice de $\vec{T}$, luego en $x$ \textit{sale} una arista hacia alg\'un
+      otro v\'ertice en $\vec{T}$ [pues si saliera hacia alg\'un otro v\'ertice que
+        no este en $\vec{T}$, llegariamos a que $\vec{T}$ no es de longitud m\'axima!!],
+      as\'i $\vec{T}xy$ claramente contiene un ciclo, esto implica que $D$ contiene
+      un ciclo!!, he aqu\'i una contradicci\'on de suponer que $D$ no contiene ciclos.
+      
+      \hspace*{2cm} $\therefore\;$ Si $D$ es ac\'iclica tiene al menos una fuente y un sumidero.
+    \end{proof}
     %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
   \item Deduzca que una digr\'afica admite un orden topol\'ogico si y s\'olo
     si es ac\'iclica.
+    \begin{proof}
+      Para este inciso analicemos $2$ posibles casos:
+      \begin{itemize}
+      \item[$\Rightarrow$)]
+      \item[$\Leftarrow$)]
+      \end{itemize}
+    \end{proof}
     %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (c)
   \item Exhiba un algoritmo de tiempo a lo m\'as cuadr\'atico para encontrar
     un orden topol\'ogico en una digr\'afica ac\'iclica.
