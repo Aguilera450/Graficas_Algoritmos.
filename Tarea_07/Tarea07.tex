@@ -253,6 +253,10 @@ A continuaci\'on se da un certificado para una gr\'afica que contiene un ciclo h
     }
   \end{tikzpicture}
 \end{center}
+
+y $S = (v_0, v_1, \dotsm, v_n, v_0) = (3, 10, 2, 9, 1, 16, 8, 15, 7, 14, 6, 13, 5, 12, 4, 11, 3)$
+una \code{colecci\'on} que contiene los v\'ertices en sucesi\'on tal que est\'a sucesi\'on forma
+un ciclo hamiltoniano en $H$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 As\'i, nuestro algoritmo es el siguiente:
 
@@ -262,34 +266,28 @@ As\'i, nuestro algoritmo es el siguiente:
   \SetKwData{False}{false}\SetKwData{True}{true}
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
   \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
-  
-  \KwIn{Una gr\'afica $H$.}
-  \KwOut{\code{TRUE} o \code{FALSE} dependiendo si la entrada contiene un ciclo hamiltoniano.}
+  \KwIn{Una gr\'afica $H$ y una colecci\'on $S$ que contiene a la sucesi\'on de v\'ertices que
+    representar\'a el ciclo hamiltoniano en $H$.}
+  \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es un ciclo hamiltoniano en $H$.}
   \BlankLine {
-%    \For{$v \in V_D$ \textnormal{\textbf{and}} $d^-(v) = 0$}{
-%      $v \gets$ 0\;
-%    }
-%    \For{$v \in V_D$}{
-%      \If{$v \not= 0$}{
-%        \code{temp} $\gets 0$\;
-%        \For{$u\in V_D: u$\textnormal{ es antecesor de} $v$ \textnormal{en} $D$
-%          \textnormal{\textbf{and}} $u \not=$ \textnormal{\code{null}}}{
-%          \If{\textnormal{\code{temp}} $< u$}{
-%            \code{temp} $\gets u$
-%          }
-%        }
-%        $v \gets temp + 1$\;
-%        \For{$u\in V_D: u$\textnormal{ es sucesor de} $v$ \textnormal{en} $D$
-%          \textnormal{\textbf{and}} $u \not=$ \textnormal{\code{null}}}{
-%          \If{$u < v$}{
-%            $u \gets v + 1$ 
-%          }
-%        }
-%      }
+    \code{siguiente}$= 0$\;
+    \While{\textnormal{\code{siguiente}} $< |V_H|$}{
+      $u \gets $ S(\code{siguiente})\;
+      \code{siguiente} $\gets$ \code{siguiente} + 1\;
+      \If{$vu \in E_H$}{
+        {\Return \code{false}\;}
+      }
     }
-  }
-             %{\Return $D$}
-             \caption{HamiltonCycle$(H;\code{true}/\code{false})$} \label{HamiltonCycle}%\textnormal{new}
+    \If{$S(0) \not= $S($|V_H - 1|$)}{
+      {\Return \code{false}\;}
+    }
+    \For{$u \in S$}{
+      \If{$v \notin V_H$}{
+        {\Return false\;}
+      }
+    }
+  } {\Return \code{true}\;}
+             \caption{HamiltonCycle$(\big<H,S\big>;\code{true}/\code{false})$} \label{HamiltonCycle}%\textnormal{new}
              \DecMargin{1em}
 \end{algorithm}
 
