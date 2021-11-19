@@ -215,8 +215,7 @@ A continuaci\'on se muestra el algoritmo\footnote{Tome en cuenta que suponemos
   \caption{TopologicalOrder$(D;D)$} \label{TopologicalOrder}%\textnormal{new}
   \DecMargin{1em}
 \end{algorithm}
-\hfill $\square$
-\newpage
+%\newpage
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item[3.] Demuestre que cada uno de los siguientes problemas est\'a en la clase
@@ -244,13 +243,14 @@ A continuaci\'on se da un certificado para una gr\'afica que contiene un ciclo h
   \begin{tikzpicture}[transform shape]
     \foreach \x in {1,...,16}{%
       \pgfmathparse{(\x-1)*45+floor(\x/9)*22.5}
-      \node[draw,circle,inner sep=0.25cm] (N-\x) at (\pgfmathresult:5.4cm) {$\x$};
+      \node[draw,circle,inner sep=0.25cm] (N-\x) at (\pgfmathresult:4.5cm) {$\x$};%5.4cm
     } 
     \foreach \x [count=\xi from 1] in {2,...,16}{%
       \foreach \y in {\x,...,16}{%
         \path (N-\xi) edge[-,bend right=3] (N-\y)  edge[-,bend left=3] (N-\y);
       }
     }
+    \node (L) at (-4,5){$H$};   
   \end{tikzpicture}
 \end{center}
 
@@ -261,7 +261,7 @@ un ciclo hamiltoniano en $H$.
 As\'i, nuestro algoritmo es el siguiente:
 
 \begin{algorithm}[H]
-  \SetAlgorithmName{}{}%Hamilton Cycle}{}
+  \SetAlgorithmName{}{}
   \DontPrintSemicolon
   \SetKwData{False}{false}\SetKwData{True}{true}
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
@@ -270,32 +270,162 @@ As\'i, nuestro algoritmo es el siguiente:
     representar\'a el ciclo hamiltoniano en $H$.}
   \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es un ciclo hamiltoniano en $H$.}
   \BlankLine {
-    \code{siguiente}$= 0$\;
-    \While{\textnormal{\code{siguiente}} $< |V_H|$}{
-      $u \gets $ S(\code{siguiente})\;
-      \code{siguiente} $\gets$ \code{siguiente} + 1\;
-      \If{$vu \in E_H$}{
-        {\Return \code{false}\;}
+    \For{$v \in S$}{
+      \code{siguiente}$= 0$\;
+      \While{\textnormal{\code{siguiente}} $< |V_H|$}{
+        $u \gets $ S(\code{siguiente})\;
+        \code{siguiente} $\gets$ \code{siguiente} + 1\;
+        \If{$vu \notin E_H$}{
+          {\Return \code{false}\;}
+        }
       }
     }
     \If{$S(0) \not= $S($|V_H - 1|$)}{
       {\Return \code{false}\;}
     }
-    \For{$u \in S$}{
+    \For{$v \in S$}{
       \If{$v \notin V_H$}{
         {\Return false\;}
       }
     }
   } {\Return \code{true}\;}
-             \caption{HamiltonCycle$(\big<H,S\big>;\code{true}/\code{false})$} \label{HamiltonCycle}%\textnormal{new}
-             \DecMargin{1em}
+  \caption{HamiltonCycle$(\big<H,S\big>;\code{true}/\code{false})$} \label{HamiltonCycle}
+  \DecMargin{1em}
 \end{algorithm}
 
 \textbf{Soluci\'on de (b):}
+A continuaci\'on se da un certificado para una gr\'afica que contiene un covertura de v\'ertices:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \foreach \i in {-1,0,1,...,5}
+    \node(\i) [vertex] at (\i*1, -2){};
+    \node(6) [blueV, label=0:$v_1$] at (2, -1){};
+    \node(7) [blueV, label=0:$v_2$] at (2, -3){};
+    \node(8) [blueV, label=0:$v_3$] at (4, -1){};
+    \node(9) [blueV, label=0:$v_4$] at (4, -3){};
+    \draw[edge] (1) to (6);
+    \draw[edge] (1) to (7);
+    \draw[edge] (3) to (6);
+    \draw[edge] (3) to (7);
+    \draw[edge] (1) to (6);
+    \draw[edge] (-1) to (6);
+    \draw[edge] (-1) to (7);
+    \draw[edge] (5) to (9);
+    \draw[edge] (3) to (8);
+    \node (L) at (-1,-1){$G$};   
+  \end{tikzpicture}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+con $S = (v_1,v_2v_3,v_4)$ una cubierta de v\'ertices en $G$. As\'i
+nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
+
+\begin{algorithm}[H]
+  \SetAlgorithmName{}{}
+  \DontPrintSemicolon
+  \SetKwData{False}{false}\SetKwData{True}{true}
+  \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+  \KwIn{Una gr\'afica $G$ y una \code{colecci\'on} $S$ que contiene a la sucesi\'on
+  que conforma la covertura de v\'ertices en $G$.}
+  \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es una covertura de v\'ertices en $G$.}
+  \BlankLine {
+    \code{contador} $\gets 0$\;
+    \For{$v \in S$}{
+      \If{$v \notin V_G$}{
+        {\Return \code{false}\;}
+      }
+      \For{$u \in V_G$}{
+        \If{$vu \in E_G$}{
+          \code{contador} $\gets$ \code{contador} + 1\;
+        }
+      }
+    }
+    \If{\textnormal{\code{contador}}$\not= |V_G|$}{
+      {\Return \code{false}\;}
+    }
+  } {\Return \code{true}\;}
+  \caption{VertexCover$(\big<G,S\big>;\code{true}/\code{false})$} \label{VertexCover}
+  \DecMargin{1em}
+\end{algorithm}
 
 \textbf{Soluci\'on de (c):}
+A continuaci\'on se muestra un certificado para una gr\'afica que admite una coloraci\'on:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \foreach \i in {0,2,4}
+    \node (\i) [redV, label=270:$\i$]  at ({(360/6)*\i}:1){};
+    \foreach \i in {1,3,5}
+    \node (\i) [blueV, label=90:$\i$] at ({(360/6)*\i}:1){};
+    
+    \foreach \i in {0,...,5}
+    \draw [edge] let \n1={int(mod(\i+1,6))} in (\i) to (\n1);
+    
+    \node (L) at (-1,1){$G$};
+  \end{tikzpicture}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+con $S = (1R,3R,5R,0A,2A,4A)$ una coloraci\'on de v\'ertices en $G$. Luego,
+nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
+
+\begin{algorithm}[H]
+  \SetAlgorithmName{}{}
+  \DontPrintSemicolon
+  \SetKwData{False}{false}\SetKwData{True}{true}
+  \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+  \KwIn{Una gr\'afica $G$ y una \code{colecci\'on} $S$ que contiene a la sucesi\'on
+    que conforma la coloraci\'on de v\'ertices en $G$.}
+  \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es una coloraci\'on de v\'ertices en $G$.}
+  \BlankLine {
+    \If{$|S| = |V_G|$}{
+      {\Return false\;}
+    }
+    \For{$v \in S$}{
+      \If{$v \notin V_G$}{
+        {\Return \code{false}\;}
+      }
+      \For{$u \in S$}{
+        \If{$v$ \textnormal{tiene el mismo color que} $u$}{
+          \If{$uv \in E_G$}{
+            {\Return \code{false}\;}
+          }
+        }
+      }
+    }
+  } {\Return \code{true}\;}
+  \caption{Colouring$(\big<G,S\big>;\code{true}/\code{false})$} \label{Colouring}
+  \DecMargin{1em}
+\end{algorithm}
 
 \textbf{Soluci\'on de (d):}
+A continuaci\'on se muestra un certificado para una gr\'afica que admite una coloraci\'on:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \foreach \i in {0,2,4}
+    \node (\i) [redV, label=270:$\i$]  at ({(360/6)*\i}:1){};
+    \foreach \i in {1,3,5}
+    \node (\i) [blueV, label=90:$\i$] at ({(360/6)*\i}:1){};
+    
+    \foreach \i in {0,...,5}
+    \draw [edge] let \n1={int(mod(\i+1,6))} in (\i) to (\n1);
+    
+    \node (L) at (-1,1){$G$};
+  \end{tikzpicture}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+con $S = (1R,3R,5R,0A,2A,4A)$ una coloraci\'on de v\'ertices en $G$. Luego,
+nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Puntos extra}
 \begin{enumerate}
