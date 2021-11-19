@@ -129,7 +129,7 @@
         no este en $\vec{T}$, llegariamos a que $\vec{T}$ no es de longitud m\'axima!!],
       as\'i $\vec{T}xy$ claramente contiene un ciclo, esto implica que $D$ contiene
       un ciclo!!, he aqu\'i una contradicci\'on de suponer que $D$ no contiene ciclos.
-      
+
       \hspace*{2cm} $\therefore\;$ Si $D$ es ac\'iclica tiene al menos una fuente y un sumidero.
     \end{proof}
     %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
@@ -185,7 +185,7 @@ A continuaci\'on se muestra el algoritmo\footnote{Tome en cuenta que suponemos
   \SetKwData{False}{false}\SetKwData{True}{true}
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
   \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
-  
+
   \KwIn{Una digr\'afica $D$ ac\'iclica.}
   \KwOut{Un orden topol\'ogico admitido en $D$ basado en n\'umeros.}
   \BlankLine {
@@ -205,7 +205,7 @@ A continuaci\'on se muestra el algoritmo\footnote{Tome en cuenta que suponemos
         \For{$u\in V_D: u$\textnormal{ es sucesor de} $v$ \textnormal{en} $D$
           \textnormal{\textbf{and}} $u \not=$ \textnormal{\code{null}}}{
           \If{$u < v$}{
-            $u \gets v + 1$ 
+            $u \gets v + 1$
           }
         }
       }
@@ -245,7 +245,7 @@ A continuaci\'on se da un certificado para una gr\'afica que contiene un ciclo h
     \foreach \x in {1,...,16}{%
       \pgfmathparse{(\x-1)*45+floor(\x/9)*22.5}
       \node[draw,circle,inner sep=0.25cm] (N-\x) at (\pgfmathresult:5.4cm) {$\x$};
-    } 
+    }
     \foreach \x [count=\xi from 1] in {2,...,16}{%
       \foreach \y in {\x,...,16}{%
         \path (N-\xi) edge[-,bend right=3] (N-\y)  edge[-,bend left=3] (N-\y);
@@ -262,7 +262,7 @@ As\'i, nuestro algoritmo es el siguiente:
   \SetKwData{False}{false}\SetKwData{True}{true}
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
   \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
-  
+
   \KwIn{Una gr\'afica $H$.}
   \KwOut{\code{TRUE} o \code{FALSE} dependiendo si la entrada contiene un ciclo hamiltoniano.}
   \BlankLine {
@@ -282,11 +282,11 @@ As\'i, nuestro algoritmo es el siguiente:
 %        \For{$u\in V_D: u$\textnormal{ es sucesor de} $v$ \textnormal{en} $D$
 %          \textnormal{\textbf{and}} $u \not=$ \textnormal{\code{null}}}{
 %          \If{$u < v$}{
-%            $u \gets v + 1$ 
+%            $u \gets v + 1$
 %          }
 %        }
 %      }
-    }
+%    }
   }
              %{\Return $D$}
              \caption{HamiltonCycle$(H;\code{true}/\code{false})$} \label{HamiltonCycle}%\textnormal{new}
@@ -320,11 +320,11 @@ As\'i, nuestro algoritmo es el siguiente:
   m \le n$, entonces existe una gr\'afica simple $G$ con $\kappa
   = l$, $\kappa' = m$ y $\delta = n$.
 
-  \begin{proof} 
+  \begin{proof}
     Sean l, m, n perteneciente a los Enteros  y G una gráfica con K=l, k'=m y $\delta$=n, tenemos que $0<k$ ya que una gráfica no puede tener conexidad menor que 0  $\rightarrow$ por proposición demostrada en clase esta gráfica tendra la desigualdad $0<k \leqslant k' \leqslant \delta $ sustituyendo los valores  $0 < l \leqslant m \leqslant n$
-    
+
     Por lo tanto existe la grafica (ya que la proposicion demostrada en clase era un para todo y el paratodo implica el existe)
-    
+
     \end{proof}
 
 \end{enumerate}
