@@ -98,82 +98,189 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{\LARGE{Tarea 7}}
 \begin{enumerate}
-\item \begin{enumerate}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 01 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
-\item Demuestre que si $G$ tiene di\'ametro mayor que $3$ (posiblemente
-  infinito), entonces $\overline{G}$ tiene di\'ametro menor que $3$.
-  Concluya que si $G$ es inconexa, entonces $\overline{G}$ es conexa.
-   %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
-\item Una gr\'afica $G$ es autocomplementaria si $G \cong \overline{G}$.
-  Demuestre que si $G$ es autocomplementaria, entonces $|V|
-  \stackrel{4}{\equiv} 0$ o $|V| \stackrel{4}{\equiv} 1$.
-\end{enumerate}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Un {\em orden topol\'ogico} de una digr\'afica $D$ es un orden lineal de
-  sus v\'ertices tal que para cada flecha $a$ de $D$, la cola de $a$ precede a
-  su cabeza en el orden.
-  \begin{enumerate}
+  \item \begin{enumerate}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 01 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
-  \item Demuestre que toda digr\'afica ac\'iclica tiene al menos una fuente
-    (v\'ertice de ingrado $0$) y un sumidero (v\'ertice de exgrado $0$).
-    \begin{proof}
-      Procedamos por reducci\'on al absurdo. Sea $D$ una digr\'afica ac\'iclica
-      con $\delta^+ > 0$ y $\delta^- > 0$, esto es que, para cada $v \in V_D$ hay
-      una flecha que le ``\textit{pega}''\footnote{Una arista incide en $v$ y $v$
-        es la cabeza.} a $v$ y otra que ``\textit{sale}''\footnote{Una arista que
-        inicia en $v$ con direcci\'on a otro v\'ertice.} de $v$. Tomemos la
-      trayectoria $\vec{T}$ m\'as larga en $D$ y sea $x \in V_D$ el \'ultimo
-      v\'ertice de $\vec{T}$, luego en $x$ \textit{sale} una arista hacia alg\'un
-      otro v\'ertice en $\vec{T}$ [pues si saliera hacia alg\'un otro v\'ertice que
-        no este en $\vec{T}$, llegariamos a que $\vec{T}$ no es de longitud m\'axima!!],
-      as\'i $\vec{T}xy$ claramente contiene un ciclo, esto implica que $D$ contiene
-      un ciclo!!, he aqu\'i una contradicci\'on de suponer que $D$ no contiene ciclos.
+    \item Demuestre que si $G$ tiene di\'ametro mayor que $3$ (posiblemente
+      infinito), entonces $\overline{G}$ tiene di\'ametro menor que $3$.
+      Concluya que si $G$ es inconexa, entonces $\overline{G}$ es conexa.
 
-      \hspace*{2cm} $\therefore\;$ Si $D$ es ac\'iclica tiene al menos una fuente y un sumidero.
-    \end{proof}
-    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
-  \item Deduzca que una digr\'afica admite un orden topol\'ogico si y s\'olo
-    si es ac\'iclica.
-    \begin{proof}
-      Para este inciso analicemos $2$ posibles casos:
-      \begin{itemize}
-      \item[$\Rightarrow$)] Procedamos por reducci\'on al absurdo. Sea $D$ una
-        digr\'afica tal que admite un orden topol\'ogico. Supongamos que $D$
-        contiene al menos un ciclo $C$, entonces existe un $x \in V_D$ tal que
-        $\{x\} \subset C$ y $x$ es un v\'ertice inicial y final en $C$, luego
-        existe $y \in V_D : \{y\} \subset C$ tal que $\vec{yx}$ es una arista,
-        por tanto $y < x$ [esto es que $y$ precede a $x$ en el orden]. N\'otese
-        que hay una trayectoria $\vec{T}$ que va de $x$ a $y$ en $C$, as\'i
-        $x < y$!! [esto es que $x$ precede a $y$ en el orden], he aqu\'i una
-        contradicci\'on de suponer que $D$ admite un orden topol\'ogico.
-        \[
-        \therefore \text{ Si $D$ admite un orden topol\'ogico}
-        \Rightarrow D \text{ es ac\'iclica.}
-        \]
-      \item[$\Leftarrow$)] Por el inciso $(a)$ sabemos que $D$ tiene al menos
-        una \textit{fuente} y un \textit{sumidero}, tomemos una componente
-        conexa en $D$ y veamos que si los v\'ertices $x$ es \textit{fuente}
-        e $y$ es \textit{sumidero}, entonces la trayectoria de $x$ a $y$ es
-        un orden topol\'ogico, si hay m\'as de una \textit{fuente} o m\'as de
-        un \textit{sumidero}, cada trayectoria entre una \textit{fuente} y un
-        \textit{sumidero} es un orden topol\'ogico [pues de no serlo, dos flechas
-          distintas provenientes de una misma fuente incidir\'ian en alg\'un
-          v\'ertice en com\'un, lo que implicar\'ia que $D$ contiene un ciclo!!],
-        as\'i la componente conexa admite un orden topol\'ogico y esto pasa
-        para cualquier componente conexa en $D$.
-        \[
-        \therefore \text{ Si $D$ es ac\'iclica}
-        \Rightarrow D \text{ admite un orden topol\'ogico.}
-        \]
-      \end{itemize}
-      \hspace*{1.3cm} $\therefore\;$ Una digr\'afica admite un orden
-      topol\'ogico si y s\'olo si es ac\'iclica.
-    \end{proof}
-    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (c)
-  \item Exhiba un algoritmo de tiempo a lo m\'as cuadr\'atico para encontrar
-    un orden topol\'ogico en una digr\'afica ac\'iclica.
+      \begin{proof}
+        Sea $G$ una gráfica.
+
+        Probaremos que $\overline{G}$ tiene diámetro menor a $3$.
+
+        Primero, sabemos que $G$ tiene diametro mayor a $3$ entonces tomemos una trayectoria $P$ de $G$ tal que su longitud es $n$ (con $n > 3$).
+
+        La denotaremos como:
+        $$P = (x_{0}, x_{1}, \dots, x_{n})$$
+
+        Ahora, por definición de $\overline{G}$ es tal que:
+        $$|E_{\overline{G}}| = \binom{|V| - 1}{2} - |E_{G}|$$
+
+        Por tanto, en $\overline{G}$ la trayectoria $P$ cambia de la siguiente manera:
+        \begin{itemize}
+          \item El vértice $x_{0}$ es adyacente a los vértices $x_{2}, x_{3}, \dots, x_{n}$, donde esto equivale a $n - 1$ vértices.
+
+          \item El vértice $x_{1}$ es adyacente a los vértices $x_{3}, x_{4}, \dots, x_{n}$, donde esto equivale a $n - 2$ vértices.
+
+          \item El vértice $x_{2}$ es adyacente a los vértices $x_{0}, x_{4}, \dots, x_{n}$, donde esto equivale a $n - 2$ vértices.
+        \end{itemize}
+
+        Siguiendo este procedimiento, tenemos lo siguiente:
+        \begin{itemize}
+          \item El vértice $x_{i}$ es adyacente a los vértices $x_{i-2}, x_{i+2}, x_{i+3}, \dots, x_{n}$, con $i > 1$. \\
+        \end{itemize}
+
+        Así, notemos lo siguiente:
+
+        En $\overline{G}$ $x_{0}$ \textbf{no es} adyacente a $x_{1}$, entonces necesitamos otro vértice $x_{3}$ para llegar a $x_{1}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{0}$ a $x_{1}$. \\
+
+        De la misma forma, $x_{1}$ \textbf{no es} adyacente a $x_{0}$ ni a $x_{2}$, entonces necesitamos otro vértice $x_{4}$ para llegar a $x_{0}$ o $x_{2}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{1}$ a $x_{0}$ o de $x_{1}$ a $x_{2}$. \\
+
+        De lo anterior obtenemos que:
+
+        El vértice $x_{i}$ \textbf{no es} adyacente al vértice $x_{i-1}$ ni al vértice $x_{i+1}$, entonces necesitamos otro vértice $x_{i+2}$ para llegar a $x_{i-1}$ o $x_{i+1}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{i}$ a $x_{i-1}$ o de $x_{i}$ a $x_{i+1}$. \\
+
+        Por lo tanto, $\overline{G}$ tiene diámetro menor a $3$.
+
+        Aún más, si $G$ es inconexa entonces $\overline{G}$ es conexa (ya que por definición, para cualesquiera dos vértices distintos $u, v \in G$ se tiene que $uv \in E_{\overline{G}}$ si y sólo si $uv \notin E_{G}$). Es decir, en $\overline{G}$ estarán todas las aristas que no estén en $G$. \\
+      \end{proof}
+       %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
+    \item Una gr\'afica $G$ es autocomplementaria si $G \cong \overline{G}$.
+    Demuestre que si $G$ es autocomplementaria, entonces $|V|
+    \stackrel{4}{\equiv} 0$ o $|V| \stackrel{4}{\equiv} 1$.
+
+      \begin{proof}
+        Primero, sabemos que si $G \cong \overline{G}$ entonces $V_{G} = V_{\overline{G}}$.
+
+        Probaremos que $|E_{G}| = |E_{\overline{G}}|$.
+
+        Veamos lo siguiente:
+        $$|V| \stackrel{4}{\equiv} 1 \longrightarrow |V| \equiv 1 \mod{4}$$
+        Recordando la definición de $\mod$, tenemos:
+        \begin{align*}
+          |V| \equiv 1 \mod{4}
+          & \longrightarrow 4 \text{ \Big \vert } |V| - 1 \\
+          & \longrightarrow |V| - 1 = 4 \cdot k, \text{ con $k \in \mathbb{N}$} \\
+          & \longrightarrow |V| = 4 \cdot k + 1
+        \end{align*}
+
+        Luego, por definición de $\overline{G}$, tenemos:
+        $$|E_{\overline{G}}| = \binom{|V| - 1}{2} - |E_{G}|$$
+
+        Sea $n = |V_{G}|$.
+
+        Así,
+        \begin{align*}
+          |E_{G}|
+          & = |E_{\overline{G}}| \\
+          & = \binom{|V_{G}| - 1}{2} - |E_{G}| \\
+          & =  \binom{n - 1}{2} - (n - 1), \text{ porque sabemos que $|E_{G}| = |V_{G} - 1|$ y $|V_{G}| = n$} \\
+          & = \dfrac{(n - 1)!}{2! \cdot ((n - 1) - 2)!} - (n - 1) \\
+          & = \dfrac{(n - 1)!}{2! \cdot (n - 1 - 2)!} - (n - 1) \\
+          & = \dfrac{(n - 1)!}{2! \cdot (n - 3)!} - (n - 1) \\
+          & = \dfrac{(n - 1)(n - 2)(n - 3)!}{2! \cdot (n - 3)!} - (n - 1), \text{ porque $n! = n \cdot (n - 1) \cdot (n - 2)!$} \\
+          & = \dfrac{(n - 1)(n - 2) \cancel{(n - 3)!}}{2! \cdot \cancel{(n - 3)!}} - (n - 1) \\
+          & = \dfrac{(n - 1)(n - 2)}{2!} - (n - 1) \\
+          & = \dfrac{(n - 1)(n - 2)}{2} - (n - 1), \text{ porque $2! = 2 \cdot 1 = 2$} \\
+          & = \dfrac{(n - 1)(n - 2)}{2} - \dfrac{2(n - 1)}{2} \\
+          & = \dfrac{(n - 1)(n - 2) - 2(n - 1)}{2} \\
+          & = \dfrac{n^{2} - 3n + 2 - 2n + 2}{2} \\
+          & = \dfrac{n^{2} - 5n + 4}{2}
+        \end{align*}
+        Ahora,
+        \begin{align*}
+          \dfrac{n^{2} - 5n + 4}{2}
+          & = \dfrac{4 \left[\dfrac{n^{2}}{4} - \dfrac{5n}{4} + 1 \right]}{2} \\
+          & = 4 \cdot \dfrac{\left[\dfrac{n^{2}}{4} - \dfrac{5n}{4} + 1 \right]}{2} \\
+          & = 4 \cdot \dfrac{\left[\dfrac{n^{2} - 5n}{4} + 1 \right]}{2} \\
+          & = 4 \cdot \dfrac{\left[\dfrac{n^{2} - 5n + 4}{4} \right]}{2} \\
+          & = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right]
+        \end{align*}
+
+        Por lo tanto, tenemos lo siguiente:
+        $$|E_{G}| = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] \longrightarrow |V_{G}| - 1 = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right]$$
+
+        Despejando $|V_{G}|$, obtenemos:
+        $$|V_{G}| - 1 = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] \longrightarrow |V_{G}| = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] + 1$$
+
+        Sea $k = \left[\dfrac{n^{2} - 5n + 4}{8} \right]$. Entonces:
+        $$|V_{G}| = 4 \cdot k + 1$$
+
+        Por lo tanto, llegamos a que $|E_{G}| = |E_{\overline{G}}|$ si $|V_{G}| = 4 \cdot k + 1$. \\
+      \end{proof}
   \end{enumerate}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Un {\em orden topol\'ogico} de una digr\'afica $D$ es un orden lineal de
+    sus v\'ertices tal que para cada flecha $a$ de $D$, la cola de $a$ precede a
+    su cabeza en el orden.
+    \begin{enumerate}
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
+      \item Demuestre que toda digr\'afica ac\'iclica tiene al menos una fuente
+        (v\'ertice de ingrado $0$) y un sumidero (v\'ertice de exgrado $0$).
+
+        \begin{proof}
+          Procedamos por reducci\'on al absurdo. Sea $D$ una digr\'afica ac\'iclica
+          con $\delta^+ > 0$ y $\delta^- > 0$, esto es que, para cada $v \in V_D$ hay
+          una flecha que le ``\textit{pega}''\footnote{Una arista incide en $v$ y $v$
+            es la cabeza.} a $v$ y otra que ``\textit{sale}''\footnote{Una arista que
+            inicia en $v$ con direcci\'on a otro v\'ertice.} de $v$. Tomemos la
+          trayectoria $\vec{T}$ m\'as larga en $D$ y sea $x \in V_D$ el \'ultimo
+          v\'ertice de $\vec{T}$, luego en $x$ \textit{sale} una arista hacia alg\'un
+          otro v\'ertice en $\vec{T}$ [pues si saliera hacia alg\'un otro v\'ertice que
+            no este en $\vec{T}$, llegariamos a que $\vec{T}$ no es de longitud m\'axima!!],
+          as\'i $\vec{T}xy$ claramente contiene un ciclo, esto implica que $D$ contiene
+          un ciclo!!, he aqu\'i una contradicci\'on de suponer que $D$ no contiene ciclos.
+
+          \hspace*{2cm} $\therefore\;$ Si $D$ es ac\'iclica tiene al menos una fuente y un sumidero.
+        \end{proof}
+
+        %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
+      \item Deduzca que una digr\'afica admite un orden topol\'ogico si y s\'olo
+        si es ac\'iclica.
+
+        \begin{proof}
+          Para este inciso analicemos $2$ posibles casos:
+          \begin{itemize}
+            \item[$\Rightarrow$)] Procedamos por reducci\'on al absurdo. Sea $D$ una
+              digr\'afica tal que admite un orden topol\'ogico. Supongamos que $D$
+              contiene al menos un ciclo $C$, entonces existe un $x \in V_D$ tal que
+              $\{x\} \subset C$ y $x$ es un v\'ertice inicial y final en $C$, luego
+              existe $y \in V_D : \{y\} \subset C$ tal que $\vec{yx}$ es una arista,
+              por tanto $y < x$ [esto es que $y$ precede a $x$ en el orden]. N\'otese
+              que hay una trayectoria $\vec{T}$ que va de $x$ a $y$ en $C$, as\'i
+              $x < y$!! [esto es que $x$ precede a $y$ en el orden], he aqu\'i una
+              contradicci\'on de suponer que $D$ admite un orden topol\'ogico.
+              \[
+              \therefore \text{ Si $D$ admite un orden topol\'ogico}
+              \Rightarrow D \text{ es ac\'iclica.}
+              \]
+            \item[$\Leftarrow$)] Por el inciso $(a)$ sabemos que $D$ tiene al menos
+              una \textit{fuente} y un \textit{sumidero}, tomemos una componente
+              conexa en $D$ y veamos que si los v\'ertices $x$ es \textit{fuente}
+              e $y$ es \textit{sumidero}, entonces la trayectoria de $x$ a $y$ es
+              un orden topol\'ogico, si hay m\'as de una \textit{fuente} o m\'as de
+              un \textit{sumidero}, cada trayectoria entre una \textit{fuente} y un
+              \textit{sumidero} es un orden topol\'ogico [pues de no serlo, dos flechas
+                distintas provenientes de una misma fuente incidir\'ian en alg\'un
+                v\'ertice en com\'un, lo que implicar\'ia que $D$ contiene un ciclo!!],
+              as\'i la componente conexa admite un orden topol\'ogico y esto pasa
+              para cualquier componente conexa en $D$.
+              \[
+              \therefore \text{ Si $D$ es ac\'iclica}
+              \Rightarrow D \text{ admite un orden topol\'ogico.}
+              \]
+          \end{itemize}
+          \hspace*{1.3cm} $\therefore\;$ Una digr\'afica admite un orden
+          topol\'ogico si y s\'olo si es ac\'iclica.
+        \end{proof}
+
+        %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (c)
+      \item Exhiba un algoritmo de tiempo a lo m\'as cuadr\'atico para encontrar
+        un orden topol\'ogico en una digr\'afica ac\'iclica.
+    \end{enumerate}
 \end{enumerate}
 %%********************************** Algoritmo 1: Orden Topol\'ogico.
 A continuaci\'on se muestra el algoritmo\footnote{Tome en cuenta que suponemos
@@ -215,26 +322,25 @@ A continuaci\'on se muestra el algoritmo\footnote{Tome en cuenta que suponemos
   \caption{TopologicalOrder$(D;D)$} \label{TopologicalOrder}%\textnormal{new}
   \DecMargin{1em}
 \end{algorithm}
-\hfill $\square$
-\newpage
+
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item[3.] Demuestre que cada uno de los siguientes problemas est\'a en la clase
-  $NP$ exhibiendo un certificado y un algoritmo de tiempo polinomial para
-  verificar el certificado (escriba el algoritmo utilizando pseudo c\'odigo
-  como el visto en clase; s\'olo est\'a permitido el uso de las estructuras de
-  control {\bf if}, {\bf while} y {\bf for}).   Demuestre que su algoritmo
-  usa tiempo polinomial.
-  \begin{enumerate}
-    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
-  \item \textsc{Hamilton Cycle}.
-    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
-  \item \textsc{Vertex Cover}.
-    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (c)
-  \item \textsc{Colouring}.
-    %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (d)
-  \item \textsc{Dominating Set}.
-  \end{enumerate}
+  \item[3.] Demuestre que cada uno de los siguientes problemas est\'a en la clase
+    $NP$ exhibiendo un certificado y un algoritmo de tiempo polinomial para
+    verificar el certificado (escriba el algoritmo utilizando pseudo c\'odigo
+    como el visto en clase; s\'olo est\'a permitido el uso de las estructuras de
+    control {\bf if}, {\bf while} y {\bf for}).   Demuestre que su algoritmo
+    usa tiempo polinomial.
+    \begin{enumerate}
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
+    \item \textsc{Hamilton Cycle}.
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
+    \item \textsc{Vertex Cover}.
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (c)
+    \item \textsc{Colouring}.
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (d)
+    \item \textsc{Dominating Set}.
+    \end{enumerate}
 \end{enumerate}
 \textbf{Soluci\'on de (a):}
 A continuaci\'on se da un certificado para una gr\'afica que contiene un ciclo hamiltoniano:
@@ -244,13 +350,14 @@ A continuaci\'on se da un certificado para una gr\'afica que contiene un ciclo h
   \begin{tikzpicture}[transform shape]
     \foreach \x in {1,...,16}{%
       \pgfmathparse{(\x-1)*45+floor(\x/9)*22.5}
-      \node[draw,circle,inner sep=0.25cm] (N-\x) at (\pgfmathresult:5.4cm) {$\x$};
+      \node[draw,circle,inner sep=0.25cm] (N-\x) at (\pgfmathresult:4.5cm) {$\x$};%5.4cm
     }
     \foreach \x [count=\xi from 1] in {2,...,16}{%
       \foreach \y in {\x,...,16}{%
         \path (N-\xi) edge[-,bend right=3] (N-\y)  edge[-,bend left=3] (N-\y);
       }
     }
+    \node (L) at (-4,5){$H$};
   \end{tikzpicture}
 \end{center}
 
@@ -261,7 +368,7 @@ un ciclo hamiltoniano en $H$.
 As\'i, nuestro algoritmo es el siguiente:
 
 \begin{algorithm}[H]
-  \SetAlgorithmName{}{}%Hamilton Cycle}{}
+  \SetAlgorithmName{}{}
   \DontPrintSemicolon
   \SetKwData{False}{false}\SetKwData{True}{true}
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
@@ -270,60 +377,188 @@ As\'i, nuestro algoritmo es el siguiente:
     representar\'a el ciclo hamiltoniano en $H$.}
   \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es un ciclo hamiltoniano en $H$.}
   \BlankLine {
-    \code{siguiente}$= 0$\;
-    \While{\textnormal{\code{siguiente}} $< |V_H|$}{
-      $u \gets $ S(\code{siguiente})\;
-      \code{siguiente} $\gets$ \code{siguiente} + 1\;
-      \If{$vu \in E_H$}{
-        {\Return \code{false}\;}
+    \For{$v \in S$}{
+      \code{siguiente}$= 0$\;
+      \While{\textnormal{\code{siguiente}} $< |V_H|$}{
+        $u \gets $ S(\code{siguiente})\;
+        \code{siguiente} $\gets$ \code{siguiente} + 1\;
+        \If{$vu \notin E_H$}{
+          {\Return \code{false}\;}
+        }
       }
     }
     \If{$S(0) \not= $S($|V_H - 1|$)}{
       {\Return \code{false}\;}
     }
-    \For{$u \in S$}{
+    \For{$v \in S$}{
       \If{$v \notin V_H$}{
         {\Return false\;}
       }
     }
   } {\Return \code{true}\;}
-             \caption{HamiltonCycle$(\big<H,S\big>;\code{true}/\code{false})$} \label{HamiltonCycle}%\textnormal{new}
-             \DecMargin{1em}
+  \caption{HamiltonCycle$(\big<H,S\big>;\code{true}/\code{false})$} \label{HamiltonCycle}
+  \DecMargin{1em}
 \end{algorithm}
 
 \textbf{Soluci\'on de (b):}
+A continuaci\'on se da un certificado para una gr\'afica que contiene un covertura de v\'ertices:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \foreach \i in {-1,0,1,...,5}
+    \node(\i) [vertex] at (\i*1, -2){};
+    \node(6) [blueV, label=0:$v_1$] at (2, -1){};
+    \node(7) [blueV, label=0:$v_2$] at (2, -3){};
+    \node(8) [blueV, label=0:$v_3$] at (4, -1){};
+    \node(9) [blueV, label=0:$v_4$] at (4, -3){};
+    \draw[edge] (1) to (6);
+    \draw[edge] (1) to (7);
+    \draw[edge] (3) to (6);
+    \draw[edge] (3) to (7);
+    \draw[edge] (1) to (6);
+    \draw[edge] (-1) to (6);
+    \draw[edge] (-1) to (7);
+    \draw[edge] (5) to (9);
+    \draw[edge] (3) to (8);
+    \node (L) at (-1,-1){$G$};
+  \end{tikzpicture}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+con $S = (v_1,v_2v_3,v_4)$ una cubierta de v\'ertices en $G$. As\'i
+nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
+
+\begin{algorithm}[H]
+  \SetAlgorithmName{}{}
+  \DontPrintSemicolon
+  \SetKwData{False}{false}\SetKwData{True}{true}
+  \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+  \KwIn{Una gr\'afica $G$ y una \code{colecci\'on} $S$ que contiene a la sucesi\'on
+  que conforma la covertura de v\'ertices en $G$.}
+  \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es una covertura de v\'ertices en $G$.}
+  \BlankLine {
+    \code{contador} $\gets 0$\;
+    \For{$v \in S$}{
+      \If{$v \notin V_G$}{
+        {\Return \code{false}\;}
+      }
+      \For{$u \in V_G$}{
+        \If{$vu \in E_G$}{
+          \code{contador} $\gets$ \code{contador} + 1\;
+        }
+      }
+    }
+    \If{\textnormal{\code{contador}}$\not= |V_G|$}{
+      {\Return \code{false}\;}
+    }
+  } {\Return \code{true}\;}
+  \caption{VertexCover$(\big<G,S\big>;\code{true}/\code{false})$} \label{VertexCover}
+  \DecMargin{1em}
+\end{algorithm}
 
 \textbf{Soluci\'on de (c):}
+A continuaci\'on se muestra un certificado para una gr\'afica que admite una coloraci\'on:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \foreach \i in {0,2,4}
+    \node (\i) [redV, label=270:$\i$]  at ({(360/6)*\i}:1){};
+    \foreach \i in {1,3,5}
+    \node (\i) [blueV, label=90:$\i$] at ({(360/6)*\i}:1){};
+
+    \foreach \i in {0,...,5}
+    \draw [edge] let \n1={int(mod(\i+1,6))} in (\i) to (\n1);
+
+    \node (L) at (-1,1){$G$};
+  \end{tikzpicture}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+con $S = (1R,3R,5R,0A,2A,4A)$ una coloraci\'on de v\'ertices en $G$. Luego,
+nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
+
+\begin{algorithm}[H]
+  \SetAlgorithmName{}{}
+  \DontPrintSemicolon
+  \SetKwData{False}{false}\SetKwData{True}{true}
+  \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+  \KwIn{Una gr\'afica $G$ y una \code{colecci\'on} $S$ que contiene a la sucesi\'on
+    que conforma la coloraci\'on de v\'ertices en $G$.}
+  \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es una coloraci\'on de v\'ertices en $G$.}
+  \BlankLine {
+    \If{$|S| = |V_G|$}{
+      {\Return false\;}
+    }
+    \For{$v \in S$}{
+      \If{$v \notin V_G$}{
+        {\Return \code{false}\;}
+      }
+      \For{$u \in S$}{
+        \If{$v$ \textnormal{tiene el mismo color que} $u$}{
+          \If{$uv \in E_G$}{
+            {\Return \code{false}\;}
+          }
+        }
+      }
+    }
+  } {\Return \code{true}\;}
+  \caption{Colouring$(\big<G,S\big>;\code{true}/\code{false})$} \label{Colouring}
+  \DecMargin{1em}
+\end{algorithm}
 
 \textbf{Soluci\'on de (d):}
+A continuaci\'on se muestra un certificado para una gr\'afica que admite una coloraci\'on:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \foreach \i in {0,2,4}
+    \node (\i) [redV, label=270:$\i$]  at ({(360/6)*\i}:1){};
+    \foreach \i in {1,3,5}
+    \node (\i) [blueV, label=90:$\i$] at ({(360/6)*\i}:1){};
+
+    \foreach \i in {0,...,5}
+    \draw [edge] let \n1={int(mod(\i+1,6))} in (\i) to (\n1);
+
+    \node (L) at (-1,1){$G$};
+  \end{tikzpicture}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+con $S = (1R,3R,5R,0A,2A,4A)$ una coloraci\'on de v\'ertices en $G$. Luego,
+nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Puntos extra}
-\begin{enumerate}
-\item Demuestre que toda digr\'afica sin lazos admite una
-  descomposici\'on en dos digr\'aficas ac\'iclicas, es decir, que
-  existen $D_1$ y $D_2$ subdigr\'aficas de $D$, ac\'iclicas y
-  tales que $D_1 \cup D_2 = D$ y $A_{D_1} \cap A_{D_2} =
-  \varnothing$.
+  \begin{enumerate}
+    \item Demuestre que toda digr\'afica sin lazos admite una
+      descomposici\'on en dos digr\'aficas ac\'iclicas, es decir, que
+      existen $D_1$ y $D_2$ subdigr\'aficas de $D$, ac\'iclicas y
+      tales que $D_1 \cup D_2 = D$ y $A_{D_1} \cap A_{D_2} =
+      \varnothing$.
 
-\item Un torneo es una digr\'afica en la que entre cualesquiera
-  dos v\'ertices existe una \'unica flecha.   Demuestre que todo
-  torneo es fuertemente conexo o puede transformarse en un
-  torneo fuertemente conexo al reorientar exactamente una
-  flecha.
+    \item Un torneo es una digr\'afica en la que entre cualesquiera
+      dos v\'ertices existe una \'unica flecha.   Demuestre que todo
+      torneo es fuertemente conexo o puede transformarse en un
+      torneo fuertemente conexo al reorientar exactamente una
+      flecha.
 
-\item Demuestre que una digr\'afica es fuertemente conexa si
-  y s\'olo si contiene un camino cerrado generador.
+    \item Demuestre que una digr\'afica es fuertemente conexa si
+      y s\'olo si contiene un camino cerrado generador.
 
-\item Demuestre que si $l, m$ y $n$ son enteros con $0 < l \le
-  m \le n$, entonces existe una gr\'afica simple $G$ con $\kappa
-  = l$, $\kappa' = m$ y $\delta = n$.
+    \item Demuestre que si $l, m$ y $n$ son enteros con $0 < l \le
+      m \le n$, entonces existe una gr\'afica simple $G$ con $\kappa
+      = l$, $\kappa' = m$ y $\delta = n$.
 
-  \begin{proof}
-    Sean l, m, n perteneciente a los Enteros  y G una gráfica con K=l, k'=m y $\delta$=n, tenemos que $0<k$ ya que una gráfica no puede tener conexidad menor que 0  $\rightarrow$ por proposición demostrada en clase esta gráfica tendra la desigualdad $0<k \leqslant k' \leqslant \delta $ sustituyendo los valores  $0 < l \leqslant m \leqslant n$
+      \begin{proof}
+        Sean l, m, n perteneciente a los Enteros  y G una gráfica con K=l, k'=m y $\delta$=n, tenemos que $0<k$ ya que una gráfica no puede tener conexidad menor que 0  $\rightarrow$ por proposición demostrada en clase esta gráfica tendra la desigualdad $0<k \leqslant k' \leqslant \delta $ sustituyendo los valores  $0 < l \leqslant m \leqslant n$
 
-    Por lo tanto existe la grafica (ya que la proposicion demostrada en clase era un para todo y el paratodo implica el existe)
-
-    \end{proof}
-
-\end{enumerate}
+        Por lo tanto existe la grafica (ya que la proposicion demostrada en clase era un para todo y el paratodo implica el existe)
+      \end{proof}
+  \end{enumerate}
 \end{document}
