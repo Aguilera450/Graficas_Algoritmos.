@@ -390,17 +390,14 @@
   \le 1$, para cada $v \in V$.   Demuestre que toda gr\'afica tiene
   una orientaci\'on balanceada.
 
-  \begin{proof} 
+  \begin{proof}
 
 
-    Sea G una grafica $\rightarrow$ G tendrá vertices de grado par o impar, sea x un vertice que no pertenezca a G, construiremos a $G^1$ parecida a G, con la diferencia de que todos los vértices G que sean impares estaran relacionados con el vértice X, por lo tanto, todos los vertices de nuestra nueva gráfica $G^1$ tendran grado par, por lo que $G^1$ sera una grafica G euleriana, lo que implica que tendra un circuito euleriano que empezara en el vector x y terminara en el vector x, $\rightarrow$ le podemos dar un orden a las aristas de $G^1$ mediante este ciclo (si $v_k$ es un vertice de $G^1$ para algun k natural  $\rightarrow$ de $v_{k-1}$ a $v_k$ tendremos una flecha  $d^-$ y de $v_{k}$ a $v_{k+1}$ tendremos una flecha $d^+$), ya que construimos la digrafica $G^1\rightarrow$ vamos a quitar las aristas "ahora flechas" que agregamos hace un momento y ahora esta esta nueva digráfica  será G $\rightarrow$ podemos notar que si los grados de los vértices de G eran pares $\rightarrow|d^+(v) - d^-(v)| = 0$ "por construccion de $G^1$" y si los grados de los vertices eran impares $\rightarrow |d^+(v) - d^-(v)|=1$ (por construcción de la digráfica $G^1$).
-    
+    Sea G una grafica $\rightarrow$ G tendrá vertices de grado par o impar, sea x un vertice que no pertenezca a G, construiremos a $G^1$ parecida a G, con la diferencia de que todos los vértices G que sean impares estaran relacionados con el vértice X, por lo tanto, todos los vertices de nuestra nueva gráfica $G^1$ tendran grado par, por lo que $G^1$ sera una grafica G euleriana, lo que implica que tendra un circuito euleriano que empezara en el vector x y terminara en el vector x, $\rightarrow$ le podemos dar un orden a las aristas de $G^1$ mediante este ciclo (si $v_k$ es un vertice de $G^1$ para algun k natural  $\rightarrow$ de $v_{k-1}$ a $v_k$ tendremos una flecha  $d^-$ y de $v_{k}$ a $v_{k+1}$ tendremos una flecha $d^+$), ya que construimos la digrafica $G^1\rightarrow$ vamos a quitar las aristas ``ahora flechas" que agregamos hace un momento y ahora esta esta nueva digráfica será G $\rightarrow$ podemos notar que si los grados de los vértices de G eran pares $\rightarrow|d^+(v) - d^-(v)| = 0$ ``por construccion de $G^1$" y si los grados de los vertices eran impares $\rightarrow |d^+(v) - d^-(v)|=1$ (por construcción de la digráfica $G^1$).
+
     Por lo tanto, para todo vertice de la digrafica G tenemos que $|d^+(v) - d^-(v)| es menor igual que 1$ por lo tanto toda gráfica G tiene un orientación balanceada.
-    
+
     \end{proof}
-    
-
-
 
 \item Una sucesi\'on circular $s_1 s_2 \cdots s_{2^n}$ de ceros
   y unos es llamada una {\em sucesi\'on de de Bruijn-Good}
