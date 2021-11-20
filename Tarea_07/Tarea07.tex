@@ -296,8 +296,10 @@ A continuaci\'on se muestra el algoritmo\footnote{Tome en cuenta que suponemos
   \KwIn{Una digr\'afica $D$ ac\'iclica.}
   \KwOut{Un orden topol\'ogico admitido en $D$ basado en n\'umeros.}
   \BlankLine {
-    \For{$v \in V_D$ \textnormal{\textbf{and}} $d^-(v) = 0$}{
-      $v \gets$ 0\;
+    \For{$v \in V_D$}{
+      \If{$d^-(v) = 0$}{
+        $v \gets$ 0\;  
+      }      
     }
     \For{$v \in V_D$}{
       \If{$v \not= 0$}{
@@ -350,7 +352,7 @@ A continuaci\'on se da un certificado para una gr\'afica que contiene un ciclo h
   \begin{tikzpicture}[transform shape]
     \foreach \x in {1,...,16}{%
       \pgfmathparse{(\x-1)*45+floor(\x/9)*22.5}
-      \node[draw,circle,inner sep=0.25cm] (N-\x) at (\pgfmathresult:4.5cm) {$\x$};%5.4cm
+      \node[draw,circle,inner sep=0.25cm] (N-\x) at (\pgfmathresult:5.4cm) {$\x$};%5.4cm
     }
     \foreach \x [count=\xi from 1] in {2,...,16}{%
       \foreach \y in {\x,...,16}{%
@@ -377,6 +379,9 @@ As\'i, nuestro algoritmo es el siguiente:
     representar\'a el ciclo hamiltoniano en $H$.}
   \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es un ciclo hamiltoniano en $H$.}
   \BlankLine {
+    \If{$|V_G| \not= |S|$}{
+      {\Return \code{false}\;}
+    }
     \For{$v \in S$}{
       \code{siguiente}$= 0$\;
       \While{\textnormal{\code{siguiente}} $< |V_H|$}{
@@ -387,11 +392,17 @@ As\'i, nuestro algoritmo es el siguiente:
         }
       }
     }
-    \If{$S(0) \not= $S($|V_H - 1|$)}{
+    \If{$S(0) \not= $S($|V_H| - 1$)}{
       {\Return \code{false}\;}
     }
     \For{$v \in S$}{
-      \If{$v \notin V_H$}{
+      \code{decision} $\gets$ \code{false}\;
+      \For{$u \in V_G$}{
+        \If{$u = v$}{
+          \code{desicion} $\gets$ \code{true}\;
+        }
+      }
+      \If{\textnormal{\code{decision} $=$ \code{false}}}{
         {\Return false\;}
       }
     }
@@ -399,6 +410,34 @@ As\'i, nuestro algoritmo es el siguiente:
   \caption{HamiltonCycle$(\big<H,S\big>;\code{true}/\code{false})$} \label{HamiltonCycle}
   \DecMargin{1em}
 \end{algorithm}
+
+
+Este algoritmo verifica si la entrada (\code{input}) es un s\'i-certificado o no.
+
+\begin{center}
+  \fbox{
+    \begin{minipage}[b][1\height]%
+      [t]{0.867\textwidth}
+      Obs. Tomar a \code{S} como una colecci\'on da flexibilidad en su implementaci\'on,
+      es por eso que \code{S(int siguiente)} est\'a entre par\'entesis.
+  \end{minipage}}
+\end{center}
+
+Ahora, analicemos la complejidad del algoritmo \code{HamiltonCycle}, veamos que en la
+l\'inea \code{1} tenemos una instrucci\'on iterativa que por definici\'on de $S$ tenemos
+que se iterar\'a $|V_G| - 1$ veces, luego en la l\'inea \code{6} hay otro ciclo tal que
+se itera $|V_G|$ veces, as\'i por la regla de la multiplicaci\'on de complejidades tenemos
+una complejidad, hasta el momento, contenida en $\mathcal{O}(|V_G|^2)$.
+Luego, por la l\'inea \code{17} sabemos que hay una instrucci\'on iterativa no anidada en
+las instrucciones anteriores que se iterar\'a $|V_G|$ veces, y por la l\'inea \code{19}
+sabemos que hay un ciclo que se itera $|V_G|$ veces y adem\'as est\'a anidada en el ciclo
+de la l\'inea \code{17}, luego la complejidad de \code{HamiltonCycle} esta contenida en
+$\mathcal{O}(|V_G|^2 + |V_G|^2)$ y por la regla de suma de complejidades tenemos que
+\[
+\mathcal{O}(|V_G|^2 + |V_G|^2) = \mathcal{O}(|V_G|^2)
+\]
+Como la complejidad de \code{HamiltonCycle} est\'a en un tiempo cuadr\'atico y por la definici\'on
+de problemas en la clase $NP$, tenemos que \code{HamiltonCycle} est\'a en la clase $NP$. \hfill $\square$
 
 \textbf{Soluci\'on de (b):}
 A continuaci\'on se da un certificado para una gr\'afica que contiene un covertura de v\'ertices:
@@ -457,6 +496,8 @@ nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
   \caption{VertexCover$(\big<G,S\big>;\code{true}/\code{false})$} \label{VertexCover}
   \DecMargin{1em}
 \end{algorithm}
+
+
 
 \textbf{Soluci\'on de (c):}
 A continuaci\'on se muestra un certificado para una gr\'afica que admite una coloraci\'on:
