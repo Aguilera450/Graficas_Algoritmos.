@@ -129,22 +129,22 @@
 
         Siguiendo este procedimiento, tenemos lo siguiente:
         \begin{itemize}
-          \item El vértice $x_{i}$ es adyacente a los vértices $x_{i-2}, x_{i+2}, x_{i+3}, \dots, x_{n}$, con $i > 1$. \\
+          \item El vértice $x_{i}$ es adyacente a los vértices $x_{i-2}, x_{i+2}, x_{i+3}, \dots, x_{n}$, con $i > 1$. 
         \end{itemize}
 
         Así, notemos lo siguiente:
 
-        En $\overline{G}$ $x_{0}$ \textbf{no es} adyacente a $x_{1}$, entonces necesitamos otro vértice $x_{3}$ para llegar a $x_{1}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{0}$ a $x_{1}$. \\
+        En $\overline{G}$ $x_{0}$ \textbf{no es} adyacente a $x_{1}$, entonces necesitamos otro vértice $x_{3}$ para llegar a $x_{1}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{0}$ a $x_{1}$. 
 
-        De la misma forma, $x_{1}$ \textbf{no es} adyacente a $x_{0}$ ni a $x_{2}$, entonces necesitamos otro vértice $x_{4}$ para llegar a $x_{0}$ o $x_{2}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{1}$ a $x_{0}$ o de $x_{1}$ a $x_{2}$. \\
+        De la misma forma, $x_{1}$ \textbf{no es} adyacente a $x_{0}$ ni a $x_{2}$, entonces necesitamos otro vértice $x_{4}$ para llegar a $x_{0}$ o $x_{2}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{1}$ a $x_{0}$ o de $x_{1}$ a $x_{2}$. 
 
         De lo anterior obtenemos que:
 
-        El vértice $x_{i}$ \textbf{no es} adyacente al vértice $x_{i-1}$ ni al vértice $x_{i+1}$, entonces necesitamos otro vértice $x_{i+2}$ para llegar a $x_{i-1}$ o $x_{i+1}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{i}$ a $x_{i-1}$ o de $x_{i}$ a $x_{i+1}$. \\
+        El vértice $x_{i}$ \textbf{no es} adyacente al vértice $x_{i-1}$ ni al vértice $x_{i+1}$, entonces necesitamos otro vértice $x_{i+2}$ para llegar a $x_{i-1}$ o $x_{i+1}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{i}$ a $x_{i-1}$ o de $x_{i}$ a $x_{i+1}$. 
 
         Por lo tanto, $\overline{G}$ tiene diámetro menor a $3$.
 
-        Aún más, si $G$ es inconexa entonces $\overline{G}$ es conexa (ya que por definición, para cualesquiera dos vértices distintos $u, v \in G$ se tiene que $uv \in E_{\overline{G}}$ si y sólo si $uv \notin E_{G}$). Es decir, en $\overline{G}$ estarán todas las aristas que no estén en $G$. \\
+        Aún más, si $G$ es inconexa entonces $\overline{G}$ es conexa (ya que por definición, para cualesquiera dos vértices distintos $u, v \in G$ se tiene que $uv \in E_{\overline{G}}$ si y sólo si $uv \notin E_{G}$). Es decir, en $\overline{G}$ estarán todas las aristas que no estén en $G$. 
       \end{proof}
        %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
     \item Una gr\'afica $G$ es autocomplementaria si $G \cong \overline{G}$.
@@ -511,27 +511,73 @@ nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
 \end{algorithm}
 
 \textbf{Soluci\'on de (d):}
-A continuaci\'on se muestra un certificado para una gr\'afica que admite una coloraci\'on:
+A continuaci\'on se muestra un conjunto dominante como certificado para una gr\'afica $G$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}
-    \foreach \i in {0,2,4}
-    \node (\i) [redV, label=270:$\i$]  at ({(360/6)*\i}:1){};
-    \foreach \i in {1,3,5}
-    \node (\i) [blueV, label=90:$\i$] at ({(360/6)*\i}:1){};
-
-    \foreach \i in {0,...,5}
-    \draw [edge] let \n1={int(mod(\i+1,6))} in (\i) to (\n1);
-
+    \node(0) [blueV, label=0:$v_1$] at (0, 1){};
+    \node(1) [blueV, label=0:$v_2$] at (1, 0){};
+    \node(2) [blueV, label=270:$v_3$] at (1.5, 1.5){};
+    \node(3) [vertex] at (2, 4){};
+    \node(4) [vertex] at (2.5, 3.5){};
+    \node(5) [vertex] at (3, 3){};
+    \node(6) [vertex] at (3.5, 2.5){};
+    \node(7) [vertex] at (3.5, 2){};
+    \node(8) [vertex] at (3.5, 1.5){};
+    \node(9) [vertex] at (3.5, 1){};
+    \foreach \i in {3,4,...,9}
+    \draw[edge] (2) to (\i);
+    \draw[edge] (3) to (4);
     \node (L) at (-1,1){$G$};
   \end{tikzpicture}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-con $S = (1R,3R,5R,0A,2A,4A)$ una coloraci\'on de v\'ertices en $G$. Luego,
+con $S = (v_1, v_2, v_3)$ un conjunto dominante de v\'ertices en $G$. Luego,
 nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
 
+\begin{algorithm}[H]
+  \SetAlgorithmName{}{}
+  \DontPrintSemicolon
+  \SetKwData{False}{false}\SetKwData{True}{true}
+  \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+  \KwIn{Una gr\'afica $G$ y una \code{colecci\'on} $S$ que contiene a la sucesi\'on
+    que conforma un conjunto dominante de v\'ertices en $G$.}
+  \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es un conjunto
+    dominante de v\'ertices en $G$.}
+  \BlankLine {
+    \code{C} $\gets \varnothing$\;
+    \For{$v \in S$}{
+      \code{decision} $\gets$ \code{false}\;
+      \For{$u \in V_G$}{
+        \If{$v = u$}{
+          \code{decision} $\gets$ \code{true}\;
+        }
+      }
+      \If{\textnormal{\code{decision} $=$ \code{false}}}{
+        {\Return \code{false}\;}
+      }
+      \code{C} $\gets v$\;
+      \For{$u \in V_G$}{
+        \If{$uv \in E_G$}{
+          \code{C} $\gets u$\;
+        }
+      }
+    }
+    \For{$v \in V_G$}{
+      \code{decision} $\gets$ \code{false}\;
+      \For{$u \in$ \textnormal{\code{C}}}{
+        \If{$v = u$}{
+          \code{decision} $\gets$ \code{true}\;
+        }
+      }
+    }
+  } {\Return \code{decision}\;}
+  \caption{DominatingSet$(\big<G,S\big>;\code{true}/\code{false})$} \label{DominatingSet}
+  \DecMargin{1em}
+\end{algorithm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Puntos extra}
