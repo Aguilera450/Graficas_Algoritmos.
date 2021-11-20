@@ -399,11 +399,11 @@ As\'i, nuestro algoritmo es el siguiente:
       \code{decision} $\gets$ \code{false}\;
       \For{$u \in V_G$}{
         \If{$u = v$}{
-          \code{desicion} $\gets$ \code{true}\;
+          \code{decision} $\gets$ \code{true}\;
         }
       }
       \If{\textnormal{\code{decision} $=$ \code{false}}}{
-        {\Return false\;}
+        {\Return \code{decision}\;}
       }
     }
   } {\Return \code{true}\;}
@@ -438,7 +438,7 @@ $\mathcal{O}(|V_G|^2 + |V_G|^2)$ y por la regla de suma de complejidades tenemos
 \]
 Como la complejidad de \code{HamiltonCycle} est\'a en un tiempo cuadr\'atico y por la definici\'on
 de problemas en la clase $NP$, tenemos que \code{HamiltonCycle} est\'a en la clase $NP$. \hfill $\square$
-
+\newpage
 \textbf{Soluci\'on de (b):}
 A continuaci\'on se da un certificado para una gr\'afica que contiene un covertura de v\'ertices:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
@@ -480,8 +480,14 @@ nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
   \BlankLine {
     \code{contador} $\gets 0$\;
     \For{$v \in S$}{
-      \If{$v \notin V_G$}{
-        {\Return \code{false}\;}
+      \code{decision} $\gets$ \code{false}\;
+      \For{$u \in V_G$}{
+        \If{$u = v$}{
+          \code{decision} $\gets$ \code{true}\;
+        }
+      }
+      \If{\textnormal{\code{decision $=$ \code{false}}}}{
+        {\Return \code{decision}\;}
       }
       \For{$u \in V_G$}{
         \If{$vu \in E_G$}{
@@ -489,7 +495,7 @@ nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
         }
       }
     }
-    \If{\textnormal{\code{contador}}$\not= |V_G|$}{
+    \If{\textnormal{\code{contador}}$\not= |E_G|$}{
       {\Return \code{false}\;}
     }
   } {\Return \code{true}\;}
@@ -497,10 +503,28 @@ nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
   \DecMargin{1em}
 \end{algorithm}
 
+Este algoritmo verifica que la entrada (\code{input}) sea un s\'i-certificado, \textit{i.e.},
+que \code{S} sea una cobertura de v\'ertices sobre $G$. Esto es, que la uni\'on de todas las
+aristas incidentes en los v\'ertices de \code{S} contengan todas las aristas de $G$.
+\vspace*{0.2cm}
 
+Ahora analicemos la complejidad del algoritmo \code{VertexCover}, veamos que en la
+l\'inea \code{2} hay una instrucci\'on iterativa de complejidad en $\mathcal{O}(|V_G|)$,
+en la cual est\'an anidadas las instrucciones de las l\'ineas \code{4} y \code{12}, por
+regla de la suma de complejidades y como estas instrucciones\footnote{L\'inea \code{4}
+  y l\'inea{12}.} tienen las misma complejidad (contenida en $\mathcal{O}(|V_G|)$), es
+indistinto con cual nos quedemos, as\'i por la regla del producto tenemos que la
+complejidad de \code{VertexCover} es $\mathcal{O}(|V|^2)$.
+\vspace*{0.2cm}
 
+Como la complejidad del algoritmo \code{VertexCover} es $\mathcal{O}(|V|^2)$, podemos
+concluir que se ejecuta en tiempo polinomial, luego por la definici\'on de problemas
+en la clase $NP$, tenemos que \code{VertexCover} est\'a contenido en esta misma.
+\hfill $\square$
+\newpage
 \textbf{Soluci\'on de (c):}
 A continuaci\'on se muestra un certificado para una gr\'afica que admite una coloraci\'on:
+\vspace*{0.3cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
 \begin{figure}[ht!]
   \centering
@@ -531,12 +555,18 @@ nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
     que conforma la coloraci\'on de v\'ertices en $G$.}
   \KwOut{\code{TRUE} o \code{FALSE} dependiendo si $S$ es una coloraci\'on de v\'ertices en $G$.}
   \BlankLine {
-    \If{$|S| = |V_G|$}{
-      {\Return false\;}
+    \If{$|S| \not= |V_G|$}{
+      {\Return \code{false}\;}
     }
     \For{$v \in S$}{
-      \If{$v \notin V_G$}{
-        {\Return \code{false}\;}
+      \code{decision} $\gets$ \code{false}\; 
+      \For{$u \in V_G$}{
+        \If{$v = u$}{
+          \code{decision} $\gets$ \code{true}\;
+        }              
+      }
+      \If{\textnormal{\code{decision} $=$ \code{false}}}{
+              {\Return \code{decision}\;}
       }
       \For{$u \in S$}{
         \If{$v$ \textnormal{tiene el mismo color que} $u$}{
@@ -551,6 +581,23 @@ nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
   \DecMargin{1em}
 \end{algorithm}
 
+Este algoritmo verifica si la entrada (\code{input}) es un s\'i-certificado o no,
+\textit{i.e.}, si \code{S} es una coloraci\'on para $G$. Esto es, que a cada v\'ertice
+de la gr\'afica le asigne un color de tal manera que dos v\'ertices vecinos no tienen
+el mismo color.
+\vspace*{0.3cm}
+
+Analizando la complejidad del algoritmo \code{Colouring} tenemos que por la l\'inea
+\code{4} hay una instrucci\'on iterativa que tiene complejidad en $\mathcal{O}(|V|)$,
+luego los ciclos de las l\'ineas \code{6} y \code{14} est\'an anidados en el de la
+l\'inea \code{4}, usando la regla de la suma (y como ambos tienen la misma complejidad)
+tenemos que la complejidad de \code{Colouring} es $\mathcal{O}(|V_G|^2)$.
+\vspace*{0.3cm}
+
+Como \code{Colouring} tiene complejidad polinomial, se sigue que \code{Colouring} esta
+en la clase $NP$. \hfill $\square$
+\vspace*{0.3cm}
+\newpage
 \textbf{Soluci\'on de (d):}
 A continuaci\'on se muestra un conjunto dominante como certificado para una gr\'afica $G$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sí-certificado:
@@ -620,6 +667,21 @@ nuestro algoritmo ser\'ia el que a continuaci\'on se muestra:
   \DecMargin{1em}
 \end{algorithm}
 
+Este algoritmo verifica si la entrada (\code{input}) es un s\'i-certificado o no,
+\textit{i.e.}, si \code{S} es un conjunto dominante para $G$. Esto es, que la uni\'on
+de los vecinos de los v\'ertices de \code{S}, m\'as los v\'ertices que est\'an en \code{S},
+son todos los v\'ertices en $G$.
+
+Por la l\'inea \code{2} sabemos que hay una instrucci\'on iterativa que contiene anidadas
+a los ciclos de las l\'ineas \code{4} y \code{13}, en el peor de los casos el ciclo de la
+l\'inea \code{2} se iterar\'a $|V_G|$ veces y esto producto con $|V_G|$ que son las veces
+que se iteran los ciclos de las l\'ineas \code{4} y \code{13}, esto nos da una complejidad
+en $\mathcal{O}(|V_G|)$. Luego las los ciclos anidados de las l\'ineas \code{19} y \code{21}
+nos dan una complejidad en $\mathcal{O}(|V_G|^2)$, as\'i concluimos que \code{DominatingSet}
+tiene una complejidad en $\mathcal{O}(|V_G|^2)$.
+
+Como \code{DominatingSet} tiene comlejidad cuadr\'atica, entonces tiene complejidad
+polinomial y por tanto \code{DominatingSet} se encuentra en la clase de problemas $NP$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Puntos extra}
   \begin{enumerate}
