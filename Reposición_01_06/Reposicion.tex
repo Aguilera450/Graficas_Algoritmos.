@@ -149,6 +149,40 @@
   es $k$-partita completa si y s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$
   como subgr\'aficas inducidas.
   
+  \begin{proof}
+    En este ejercicio analizaremos 2 casos posibles:
+
+    \begin{itemize}
+    \item[$\Rightarrow$)] Procedamos reducción al absurdo .
+
+      \begin{itemize}
+      \item[$\cdot$)] Supongamos que $\overline{P_3}$ es subgr\'afica inducida
+        de $G$, por definición de $k$-partita completa $\overline{P_3}$ no está
+        en la misma parte (pues, en caso de estarlo hay una adyacencia en $2$
+        vértices de la misma parte). Luego $\overline{P_3}$ está en $2$ o $3$
+        partes distintas y habrá un $x \in \overline{P_3}$ que no se relacionará
+        con al menos $1$ vértice en algunas de las partes y por tanto, $G$ no es
+        $k$-partita completa!! (lo que no cumple es ser completa bajo el supuesto
+        tomado) y he aquí una contradicción de suponer que $\overline{P_3}$ es
+        subgr\'afica inducida de $G$. Por lo tanto, concluimos que $\overline{P_3}$
+        no es subgr\'afica inducida de $G$.
+        
+      \item[$\cdot$)] Supongamos que $K_{k + 1}$ es subgr\'afica inducida de $G$,
+        entonces hay $1$ vértice de $K_{k + 1}$ en cada una de las partes (lo que
+        suma $k$ v\'ertices) y un $x \in K_{k + 1}$ en alguna parte tal que se
+        relaciona con exactamente un v\'ertice en esa parte y por tanto, $G$ no
+        es $k$-partita completa!! (no cumple el ser $k$-partita) y he aquí una
+        contradicción de suponer que $K_{k + 1}$ es subgr\'afica inducida de $G$.
+        Por lo tanto, concluimos que $K_{k + 1}$ no es subgr\'afica inducida de $G$.
+        
+      \item[$\Leftarrow$)] 
+      \end{itemize}
+    \end{itemize}
+    De los casos anterior concluimos que $G$ es $k$-partita completa si y
+    s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
+    inducidas.
+  \end{proof}
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
 \item
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
