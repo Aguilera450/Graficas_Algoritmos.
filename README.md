@@ -33,7 +33,7 @@ la Facultad de Ciencias de la UNAM.
    * Caracterizaciones.
    * Vértices de corte y puentes.
    * Árboles generadores.
-   * Isomorfismos en arboles.
+   * Isomorfismos en árboles.
 3. Conexidad.
    * Introducción.
    * Bloques.
