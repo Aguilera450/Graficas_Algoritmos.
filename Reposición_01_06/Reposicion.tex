@@ -16,7 +16,7 @@
 \usepackage{pgf}
 
 % Color a letras.
-%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 % Tikz
 \usepackage{tikz}
@@ -90,13 +90,64 @@
 \section*{\LARGE{Reposioción}}
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 de la Tarea 02.
-\item Sea $G$ una gr\'afica conexa. Demuestre que si $G$ no es
-  completa, entonces contiente a $P_3$ como subgr\'afica inducida.
+\item \text{[Ejercicio 3 de la Tarea 02]} Sea $G$ una gr\'afica conexa. Demuestre
+  que si $G$ no es completa, entonces contiente a $P_3$ como subgr\'afica inducida.
+    \renewcommand\qedsymbol{QED}
+  \begin{proof} Para este ejercicio necesitamos que $|V_G| \geq 3$, para las
+    gr\'aficas que no cumplan esto se tendr\'a la demostraci\'on por vacuidad.
+    Nótese que el hecho de que $G$ no sea completa implica que para al
+    menos $x,y \in V_G$ se tiene que $xy \notin E_G$.
+
+        \begin{center}
+      \fbox{
+        \begin{minipage}[b][1\height]%
+          [t]{0.867\textwidth}
+          Previo a la demostraci\'on, provemos que en una gr\'afica conexa
+          siempre podemos construir una trayectoria con exactamente $3$
+          v\'ertices:
+          \vspace*{0.3cm}
+          
+          Sea $x \in V_G$, por definici\'on de conexidad y como $|V_G| \geq 3$,
+          tenemos ha $x,y \in V_G$ tales que $xy \in E_G$, luego $x$ es vecino
+          a alg\'un v\'ertice distinto a $y$ (o $y$ es vecino de alg\'un v\'ertice
+          distinto de $x$), pues en caso contrario $xy$ ser\'ia una componente
+          conexa contenida en $G$ y $xy \not= G$!! lo que contradice la hip\'otesis
+          de que $G$ es conexa. Supongamos, sin p\'erdida de generalidad, que $z$
+          es vecino de $x$ y $z \not= y$, luego $zxy$ es una trayectoria de orden
+          exactamente $3$. \hfill $\square$
+      \end{minipage}}
+    \end{center}
+    
+    Para este ejercicio basta analizar $2$ posibles casos\footnote{Se
+      analizan los casos ``extremos'', pues los casos intermedios son combinaciones
+      de estos.}:
+    
+    \textcolor{blue}{Caso 1:} Si $G + e$ es completa, donde $e = xy-$arista para
+    $x,y \in V_G$. Por \textbf{\textit{Prop.}} $\mathbf{1.64}$ y por hipótesis
+    sabemos que existe un $xy$-camino en $G$, luego por \textbf{\textit{Prop.}}
+    $\mathbf{1.62}$ sabemos que hay, en particular, una $xy-$trayectoria en $G$,
+    luego hay alguna $xy-$trayectoria de orden $3$ (esto lo sabemos gracias al
+    resultado mostrado previamente) y supongamos, sin p\'erdida de generalidad,
+    que \'esta es $T = (x,z,y)$, para $z \in V_G$, notemos que $T$ tiene tamaño
+    igual a $2$, pues existen las aristas $zx, zy$ pero no $xy$ (por como definimos
+    este caso), luego $T$ es $P_3$ y concluimos que $P_3$ es subgr\'afica inducida
+    de $G$.
+    
+    \textcolor{blue}{Caso 2:} Si $G$ es un \'arbol, esto nos indica que $G$ es
+    $1-$conexa, y es por eso que se considera este caso como el m\'inimo para el
+    que se cumplir\'a la condici\'on a demostrar. Sabemos por el teorema de
+    caracterizaci\'on de \'arboles que cada arista en $G$ ser\'a un puente, y
+    por el resultado previamente mostrado sabemos que existe una trayectoria $T$
+    en $G$ de orden exactamente $3$, as\'i $T$ es claramente $P_3$ y concluimos
+    $P_3$ es subg\'afica inducida de $G$.
+    
+    De los casos anteriores concluimos que el enunciado es verdadero.
+  \end{proof}
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 extra de la Tarea 02.
-\item Sea $G$ una gr\'afica. Demuestre que $G$ es $k$-partita completa si y
-      s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
-      inducidas.
+\item \text{[Ejercicio 1 extra de la Tarea 02]} Sea $G$ una gr\'afica. Demuestre que $G$
+  es $k$-partita completa si y s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$
+  como subgr\'aficas inducidas.
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
 \item
