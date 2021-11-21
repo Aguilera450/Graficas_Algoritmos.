@@ -55,3 +55,8 @@ la Facultad de Ciencias de la UNAM.
      * Apareamientos en gráficas bipartitas.
      * Apareamientos Perfectos.
    * Teorema de Menger.
+## Bibliografía:
+* Graph Theory -Fifth Edition- Diestel.
+* Graph Theory -First Edition- Bondy & Murty.
+* Graph Theory with Application -First Edition- Bondy & Murty.
+* Graphs, Networks and Algorithms -Fourth Edition- Jungnickel.
