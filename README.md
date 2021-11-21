@@ -9,11 +9,49 @@ la Facultad de Ciencias de la UNAM.
 * Adrián Aguilera Moreno.
 ## Temario:
 1. Gráficas y digráficas.
+   * Definiciones básicas.
+   * Algunas familias de gráficas.
+     * Introducción.
+     *	Gráficas de intersección.
+   * Representaciones (matriciales).
+   * Isomorfismos.
+   * Subgráficas.
+   * Caminos y conexidad.
+     * Caminos.
+     * Ciclos y trayectorias.
+     * Conexidad.
+   * Gráficas bipartitas.
+   * Propiedades hereditarias.
+   * Operaciones en gráficas.
+     * Introducción.
+     * Productos.
+     * Complemento.
+     * Otras operaciones binarias.
+   * Digráficas.
 2. Árboles.
+   * Introducción (El problema del conector).
+   * Caracterizaciones.
+   * Vértices de corte y puentes.
+   * Árboles generadores.
+   * Isomorfismos en arboles.
 3. Conexidad.
+   * Introducción.
+   * Bloques.
+   * Descomposición por orejas.
+   * Conexidad y conexidad por aristas.
    * Introducción a algoritmos y complejidad computacional.
 4. Gráficas Eulerianas.
+   * Gráficas Eulerianas.
+     * Introducción (Puentes de Königsberg, el problema del agente viajero). 
+   * El algoritmo de Hierholzer.
+   * Gráficas hamiltonianas.
 5. Algoritmos de busqueda en árboles.
+   * Búsqueda en gráficas.
+   * Árboles de peso mínimo.
+   * BFS.
+   * DFS.
 6. Flujos en redes.
    * Apareamientos.
+     * Apareamientos en gráficas bipartitas.
+     * Apareamientos Perfectos.
    * Teorema de Menger.
