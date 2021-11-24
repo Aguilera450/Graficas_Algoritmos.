@@ -215,15 +215,15 @@
    
    Hipótesis de inducción: supongamos para $\mathcal{T} = k$
    
-   Supongamos que si $\mathcal{T} = k$ tal que existen i,j tal que $i \neq j$ e i,j pertenezen a $\left\lbrace 1,...,k \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow  \bigcap\limit_{r=1}^{k}{T_r} \neq \emptyset$
+   Supongamos que si $\mathcal{T} = k$ tal que existen i,j tal que $i \neq j$ e i,j pertenezen a $\left\lbrace 1,...,k \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow  \bigcap_{r=1}^{k}{T_r} \neq \emptyset$
    
    Paso inductivo: Pd para $\mathcal{T} = k+1$
    
-   Pd si existen i,j tal que $i \neq j$ e i,j pertenezen a $\left\lbrace 1,...,k+1 \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow  \bigcap\limit_{r=1}^{k+1}{T_r} \neq \emptyset$
+   Pd si existen i,j tal que $i \neq j$ e i,j pertenezen a $\left\lbrace 1,...,k+1 \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow  \bigcap_{r=1}^{k+1}{T_r} \neq \emptyset$
    
    Dem (Reducción al absurdo)
    
-   Supongamos $\bigcap\limit_{r=1}^{k+1}{T_r} = \emptyset$ y existen i,j pertenezen a $\left\lbrace 1,...,k+1 \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow $ consideremos a T' como el subárbol formado por la unión de todos los subárboles de $T_1, T_2,...;T_{k+1}$ menos los subárboles $T_i$ y $T_j$. Es decir T'= $\bigcup\limit_{r=1, r \neq i,  r \neq j }^{k+1}{T_r} \rightarrow T' \cap T_i \cap T_j = \emptyset$, pero por paso base esto es una contradicción $\rightarrow$ existe un x tal que x pertenece a  $\bigcap\limit_{r=1}^{k+1}{T_r}$ 
+   Supongamos $\bigcap_{r=1}^{k+1}{T_r} = \emptyset$ y existen i,j pertenezen a $\left\lbrace 1,...,k+1 \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow $ consideremos a T' como el subárbol formado por la unión de todos los subárboles de $T_1, T_2,...;T_{k+1}$ menos los subárboles $T_i$ y $T_j$. Es decir T'= $\bigcup_{r=1, r \neq i,  r \neq j }^{k+1}{T_r} \rightarrow T' \cap T_i \cap T_j = \emptyset$, pero por paso base esto es una contradicción $\rightarrow$ existe un x tal que x pertenece a  $\bigcap_{r=1}^{k+1}{T_r}$ 
    
    Por lo tanto la porposición es verdadera.
   \end{proof}
