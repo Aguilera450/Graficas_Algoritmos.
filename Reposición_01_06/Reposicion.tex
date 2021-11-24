@@ -183,8 +183,88 @@
     inducidas.
   \end{proof}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Parte Fer jajajjaaj ...
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 de la tarea 4
+  Ejercicio de la Tarea 4
+
+  $\blacktriangleright$ Ejercicio extra 3
+  
+   \item Sea $\mathcal{T}$ una familia de sub\'arboles
+      de un \'arbol $T$.   Deduzca, por inducci\'on sobre
+      $|\mathcal{T}|$, que si cualesquiera dos elementos
+      de $\mathcal{T}$ tienen un v\'ertice en com\'un,
+      entonces hay un v\'ertice de $T$ que est\'a en
+      todos los elementos de $\mathcal{T}$.
+      
+  \begin{proof} 
+      Demostración por induccion sobre el numero de subarboles
+      
+  Paso base: $\mathcal{T} = 3$
+  
+  Sean $T_1$, $T_2$, $T_3$ subarboles de T 
+  
+  Pd Existe  un vértice x que pertenece a T tal que $T_1 \cap T_2=x \rightarrow  T_1 \cap T_2 \cap T_3 = x$ 
+  
+  Dem (Reduccion al absurdo)
+  
+  Supongamos que $T_1 \cap T_2 \cap T_3 = \emptyset$ (algo que no puede pasar es que $T_1 \cap T_2 = T_1 \cap T_3 = T_2 \cap T_3  = \emptyset$ por hipotesis T es conexa y tambien por hipotesis $T_1 \cap T_2$ diferente del vacio) $\rightarrow$ existe $x_1$ tal que $x_1$ pertenece a $T_1 \cap T_2$ y $x_1$ no pertenece a $T_3$, existe $x_2$ tal que $x_2$ pertenece a $T_1 \cap T_3$ y $x_2$ no pertenece a $T_2$, existe $x_3$ tal que $x_3$ pertenece a $T_2 \cap T_3$ y $x_3$ no pertenece a $T_1  \rightarrow x_1, x_2, x_3$ son vértices diferentes $\rightarrow$ por las intersecciones  y gracias que T  es conexo  $\rightarrow$ s.p.g. podemos formar un ciclo $(x_1, ... ,x_2, ... ,x_3, ...,x_1)$ (Lo que es una contradicción, ya que los arboles son aciclicos)
+  
+  Por lo tanto $T_1 \cap T_2 \cap T_3   \neq
+   \emptyset \rightarrow$ existe un vértice compartido para los 3 subárboles
+   
+   Hipótesis de inducción: supongamos para $\mathcal{T} = k$
+   
+   Supongamos que si $\mathcal{T} = k$ tal que existen i,j tal que $i \neq j$ e i,j pertenezen a $\left\lbrace 1,...,k \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow  \bigcap\limit_{r=1}^{k}{T_r} \neq \emptyset$
+   
+   Paso inductivo: Pd para $\mathcal{T} = k+1$
+   
+   Pd si existen i,j tal que $i \neq j$ e i,j pertenezen a $\left\lbrace 1,...,k+1 \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow  \bigcap\limit_{r=1}^{k+1}{T_r} \neq \emptyset$
+   
+   Dem (Reducción al absurdo)
+   
+   Supongamos $\bigcap\limit_{r=1}^{k+1}{T_r} = \emptyset$ y existen i,j pertenezen a $\left\lbrace 1,...,k+1 \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow $ consideremos a T' como el subárbol formado por la unión de todos los subárboles de $T_1, T_2,...;T_{k+1}$ menos los subárboles $T_i$ y $T_j$. Es decir T'= $\bigcup\limit_{r=1, r \neq i,  r \neq j }^{k+1}{T_r} \rightarrow T' \cap T_i \cap T_j = \emptyset$, pero por paso base esto es una contradicción $\rightarrow$ existe un x tal que x pertenece a  $\bigcap\limit_{r=1}^{k+1}{T_r}$ 
+   
+   Por lo tanto la porposición es verdadera.
+  \end{proof}
+  
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tarea 5
+  Ejercicios de la tarea 5 
+  
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preguta 1
+  
+  $\blacktriangleright$ Pregunta 1 
+  
+  \item Demuestre que si $G$ es simple y $3$-regular, entonces $\kappa = \kappa'$.
+  
+  \begin{proof} 
+  
+  Sea G 3-regular $\rightarrow d(v)=3$ para todo v que pertenece a V $\rightarrow$ sea $v'$ un vertice de G  $\rightarrow$ para desconectar a $v'$ de G, solo basta  con "cortar" las 3 aristas de $v' \rightarrow$ k'=3
+  
+  Por lo tanto $k=k'$
+  \end{proof}
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pregunta 2
+
+  $\blacktriangleright$ Pregunta 2
+  
+  \item Demuestre que una gr\'afica es $2$-conexa por aristas si y s\'olo si
+    cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias
+    ajenas por aristas.
+  
+  \begin{proof} 
+     $\Longrightarrow$) Sea G una gráfica 2-conexa $\rightarrow$ por teorema visto en clase en G existe  un cliclo C que contendra 2 vertices v y u donde u y v pertenecen a G $\rightarrow$ podemos tener la trayectoria $P=(v,C,u)$ pero como C es un ciclo $\rightarrow$ tambien existira la trayectoria $P'=(u,V,v)$ 
+     
+     Por lo tanto existen 2 trayectorias ajenas por aristas en una gráfica 2-conexa 
+     
+     
+     $\Longleftarrow$) Sean u y v cualesquiera vértices de una gráfica G y si u y v están conectados por dos trayectorias ajenas por aristas P y P' $\rightarrow$ si unimos  uPv y vP'v obtendremos un ciclo C que ira de uPvP'u $\rightarrow$ sea G' una gráfica igual al ciclo C, si borramos una arista a G' $\rightarrow$ G' seguira siendo conexa  $\rightarrow$ G' es 2-conexa $\rightarrow$ G será 2-conexa ya que para todo v y u que pertenecen G existen 2 trayectorias ajenas por vertices
+     
+      
+  \end{proof}
+  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
 \item
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
