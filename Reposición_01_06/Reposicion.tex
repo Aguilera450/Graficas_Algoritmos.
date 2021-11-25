@@ -16,7 +16,7 @@
 \usepackage{pgf}
 
 % Color a letras.
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 % Tikz
 \usepackage{tikz}
@@ -106,7 +106,7 @@
           siempre podemos construir una trayectoria con exactamente $3$
           v\'ertices:
           \vspace*{0.3cm}
-          
+
           Sea $x \in V_G$, por definici\'on de conexidad y como $|V_G| \geq 3$,
           tenemos ha $x,y \in V_G$ tales que $xy \in E_G$, luego $x$ es vecino
           a alg\'un v\'ertice distinto a $y$ (o $y$ es vecino de alg\'un v\'ertice
@@ -117,11 +117,11 @@
           exactamente $3$. \hfill $\square$
       \end{minipage}}
     \end{center}
-    
+
     Para este ejercicio basta analizar $2$ posibles casos\footnote{Se
       analizan los casos ``extremos'', pues los casos intermedios son combinaciones
       de estos.}:
-    
+
     \textcolor{blue}{Caso 1:} Si $G + e$ es completa, donde $e = xy-$arista para
     $x,y \in V_G$. Por \textbf{\textit{Prop.}} $\mathbf{1.64}$ y por hipótesis
     sabemos que existe un $xy$-camino en $G$, luego por \textbf{\textit{Prop.}}
@@ -132,7 +132,7 @@
     igual a $2$, pues existen las aristas $zx, zy$ pero no $xy$ (por como definimos
     este caso), luego $T$ es $P_3$ y concluimos que $P_3$ es subgr\'afica inducida
     de $G$.
-    
+
     \textcolor{blue}{Caso 2:} Si $G$ es un \'arbol, esto nos indica que $G$ es
     $1-$conexa, y es por eso que se considera este caso como el m\'inimo para el
     que se cumplir\'a la condici\'on a demostrar. Sabemos por el teorema de
@@ -140,15 +140,15 @@
     por el resultado previamente mostrado sabemos que existe una trayectoria $T$
     en $G$ de orden exactamente $3$, as\'i $T$ es claramente $P_3$ y concluimos
     $P_3$ es subg\'afica inducida de $G$.
-    
+
     De los casos anteriores concluimos que el enunciado es verdadero.
   \end{proof}
-  
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 extra de la Tarea 02.
 \item \text{[Ejercicio 1 extra de la Tarea 02]} Sea $G$ una gr\'afica. Demuestre que $G$
   es $k$-partita completa si y s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$
   como subgr\'aficas inducidas.
-  
+
   \begin{proof}
     En este ejercicio analizaremos 2 casos posibles:
 
@@ -166,7 +166,7 @@
         tomado) y he aquí una contradicción de suponer que $\overline{P_3}$ es
         subgr\'afica inducida de $G$. Por lo tanto, concluimos que $\overline{P_3}$
         no es subgr\'afica inducida de $G$.
-        
+
       \item[$\cdot$)] Supongamos que $K_{k + 1}$ es subgr\'afica inducida de $G$,
         entonces hay $1$ vértice de $K_{k + 1}$ en cada una de las partes (lo que
         suma $k$ v\'ertices) y un $x \in K_{k + 1}$ en alguna parte tal que se
@@ -174,8 +174,8 @@
         es $k$-partita completa!! (no cumple el ser $k$-partita) y he aquí una
         contradicción de suponer que $K_{k + 1}$ es subgr\'afica inducida de $G$.
         Por lo tanto, concluimos que $K_{k + 1}$ no es subgr\'afica inducida de $G$.
-        
-      \item[$\Leftarrow$)] 
+
+      \item[$\Leftarrow$)]
       \end{itemize}
     \end{itemize}
     De los casos anterior concluimos que $G$ es $k$-partita completa si y
