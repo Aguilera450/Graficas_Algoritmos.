@@ -16,6 +16,7 @@
 \usepackage{pgf}
 
 % Color a letras.
+%
 %\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 % Tikz
@@ -87,117 +88,329 @@
 \end{center}
 \newpage
 \fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
-\section*{\LARGE{Reposioción}}
+\section*{\LARGE{Reposición}}
+
+$$\text{\textbf{\large Ejercicio de la Tarea 2}}$$
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 de la Tarea 02.
-\item \text{[Ejercicio 3 de la Tarea 02]} Sea $G$ una gr\'afica conexa. Demuestre
-  que si $G$ no es completa, entonces contiente a $P_3$ como subgr\'afica inducida.
+  \item \text{[Ejercicio 3]}
+
+    Sea $G$ una gr\'afica conexa. Demuestre que si $G$ no es completa, entonces contiente a $P_3$ como subgr\'afica inducida.
+
     \renewcommand\qedsymbol{QED}
-  \begin{proof} Para este ejercicio necesitamos que $|V_G| \geq 3$, para las
-    gr\'aficas que no cumplan esto se tendr\'a la demostraci\'on por vacuidad.
-    Nótese que el hecho de que $G$ no sea completa implica que para al
-    menos $x,y \in V_G$ se tiene que $xy \notin E_G$.
+    \begin{proof}
 
-        \begin{center}
-      \fbox{
-        \begin{minipage}[b][1\height]%
-          [t]{0.867\textwidth}
-          Previo a la demostraci\'on, provemos que en una gr\'afica conexa
-          siempre podemos construir una trayectoria con exactamente $3$
-          v\'ertices:
-          \vspace*{0.3cm}
+      Para este ejercicio necesitamos que $|V_G| \geq 3$, para las
+      gr\'aficas que no cumplan esto se tendr\'a la demostraci\'on por vacuidad.
+      Nótese que el hecho de que $G$ no sea completa implica que para al
+      menos $x,y \in V_G$ se tiene que $xy \notin E_G$.
 
-          Sea $x \in V_G$, por definici\'on de conexidad y como $|V_G| \geq 3$,
-          tenemos ha $x,y \in V_G$ tales que $xy \in E_G$, luego $x$ es vecino
-          a alg\'un v\'ertice distinto a $y$ (o $y$ es vecino de alg\'un v\'ertice
-          distinto de $x$), pues en caso contrario $xy$ ser\'ia una componente
-          conexa contenida en $G$ y $xy \not= G$!! lo que contradice la hip\'otesis
-          de que $G$ es conexa. Supongamos, sin p\'erdida de generalidad, que $z$
-          es vecino de $x$ y $z \not= y$, luego $zxy$ es una trayectoria de orden
-          exactamente $3$. \hfill $\square$
-      \end{minipage}}
-    \end{center}
+      \begin{center}
+        \fbox{
+          \begin{minipage}[b][1\height]%
+            [t]{0.867\textwidth}
+            Previo a la demostraci\'on, provemos que en una gr\'afica conexa
+            siempre podemos construir una trayectoria con exactamente $3$
+            v\'ertices:
+            \vspace*{0.3cm}
 
-    Para este ejercicio basta analizar $2$ posibles casos\footnote{Se
+            Sea $x \in V_G$, por definici\'on de conexidad y como $|V_G| \geq 3$,
+            tenemos ha $x,y \in V_G$ tales que $xy \in E_G$, luego $x$ es vecino
+            a alg\'un v\'ertice distinto a $y$ (o $y$ es vecino de alg\'un v\'ertice
+            distinto de $x$), pues en caso contrario $xy$ ser\'ia una componente
+            conexa contenida en $G$ y $xy \not= G$!! lo que contradice la hip\'otesis
+            de que $G$ es conexa. Supongamos, sin p\'erdida de generalidad, que $z$
+            es vecino de $x$ y $z \not= y$, luego $zxy$ es una trayectoria de orden
+            exactamente $3$.
+
+            \hfill $\square$
+        \end{minipage}}
+      \end{center}
+
+      Para este ejercicio basta analizar $2$ posibles casos\footnote{Se
       analizan los casos ``extremos'', pues los casos intermedios son combinaciones
       de estos.}:
 
-    \textcolor{blue}{Caso 1:} Si $G + e$ es completa, donde $e = xy-$arista para
-    $x,y \in V_G$. Por \textbf{\textit{Prop.}} $\mathbf{1.64}$ y por hipótesis
-    sabemos que existe un $xy$-camino en $G$, luego por \textbf{\textit{Prop.}}
-    $\mathbf{1.62}$ sabemos que hay, en particular, una $xy-$trayectoria en $G$,
-    luego hay alguna $xy-$trayectoria de orden $3$ (esto lo sabemos gracias al
-    resultado mostrado previamente) y supongamos, sin p\'erdida de generalidad,
-    que \'esta es $T = (x,z,y)$, para $z \in V_G$, notemos que $T$ tiene tamaño
-    igual a $2$, pues existen las aristas $zx, zy$ pero no $xy$ (por como definimos
-    este caso), luego $T$ es $P_3$ y concluimos que $P_3$ es subgr\'afica inducida
-    de $G$.
+      \textcolor{blue}{Caso 1:} Si $G + e$ es completa, donde $e = xy-$arista para
+      $x,y \in V_G$. Por \textbf{\textit{Prop.}} $\mathbf{1.64}$ y por hipótesis
+      sabemos que existe un $xy$-camino en $G$, luego por \textbf{\textit{Prop.}}
+      $\mathbf{1.62}$ sabemos que hay, en particular, una $xy-$trayectoria en $G$,
+      luego hay alguna $xy-$trayectoria de orden $3$ (esto lo sabemos gracias al
+      resultado mostrado previamente) y supongamos, sin p\'erdida de generalidad,
+      que \'esta es $T = (x,z,y)$, para $z \in V_G$, notemos que $T$ tiene tamaño
+      igual a $2$, pues existen las aristas $zx, zy$ pero no $xy$ (por como definimos
+      este caso), luego $T$ es $P_3$ y concluimos que $P_3$ es subgr\'afica inducida
+      de $G$.
 
-    \textcolor{blue}{Caso 2:} Si $G$ es un \'arbol, esto nos indica que $G$ es
-    $1-$conexa, y es por eso que se considera este caso como el m\'inimo para el
-    que se cumplir\'a la condici\'on a demostrar. Sabemos por el teorema de
-    caracterizaci\'on de \'arboles que cada arista en $G$ ser\'a un puente, y
-    por el resultado previamente mostrado sabemos que existe una trayectoria $T$
-    en $G$ de orden exactamente $3$, as\'i $T$ es claramente $P_3$ y concluimos
-    $P_3$ es subg\'afica inducida de $G$.
+      \textcolor{blue}{Caso 2:} Si $G$ es un \'arbol, esto nos indica que $G$ es
+      $1-$conexa, y es por eso que se considera este caso como el m\'inimo para el
+      que se cumplir\'a la condici\'on a demostrar. Sabemos por el teorema de
+      caracterizaci\'on de \'arboles que cada arista en $G$ ser\'a un puente, y
+      por el resultado previamente mostrado sabemos que existe una trayectoria $T$
+      en $G$ de orden exactamente $3$, as\'i $T$ es claramente $P_3$ y concluimos
+      $P_3$ es subg\'afica inducida de $G$.
 
-    De los casos anteriores concluimos que el enunciado es verdadero.
-  \end{proof}
+      De los casos anteriores concluimos que el enunciado es verdadero.
+    \end{proof}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 extra de la Tarea 02.
-\item \text{[Ejercicio 1 extra de la Tarea 02]} Sea $G$ una gr\'afica. Demuestre que $G$
-  es $k$-partita completa si y s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$
-  como subgr\'aficas inducidas.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 extra de la Tarea 02.
+    \item \text{[Ejercicio 1 extra]}
 
-  \begin{proof}
-    En este ejercicio analizaremos 2 casos posibles:
+        Sea $G$ una gr\'afica. Demuestre que $G$ es $k$-partita completa si y s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas inducidas.
 
-    \begin{itemize}
-    \item[$\Rightarrow$)] Procedamos reducción al absurdo .
+        \begin{proof}
+        En este ejercicio analizaremos 2 casos posibles:
 
-      \begin{itemize}
-      \item[$\cdot$)] Supongamos que $\overline{P_3}$ es subgr\'afica inducida
-        de $G$, por definición de $k$-partita completa $\overline{P_3}$ no está
-        en la misma parte (pues, en caso de estarlo hay una adyacencia en $2$
-        vértices de la misma parte). Luego $\overline{P_3}$ está en $2$ o $3$
-        partes distintas y habrá un $x \in \overline{P_3}$ que no se relacionará
-        con al menos $1$ vértice en algunas de las partes y por tanto, $G$ no es
-        $k$-partita completa!! (lo que no cumple es ser completa bajo el supuesto
-        tomado) y he aquí una contradicción de suponer que $\overline{P_3}$ es
-        subgr\'afica inducida de $G$. Por lo tanto, concluimos que $\overline{P_3}$
-        no es subgr\'afica inducida de $G$.
+            \begin{itemize}
+                \item[$\Rightarrow$)] Procedamos reducción al absurdo .
 
-      \item[$\cdot$)] Supongamos que $K_{k + 1}$ es subgr\'afica inducida de $G$,
-        entonces hay $1$ vértice de $K_{k + 1}$ en cada una de las partes (lo que
-        suma $k$ v\'ertices) y un $x \in K_{k + 1}$ en alguna parte tal que se
-        relaciona con exactamente un v\'ertice en esa parte y por tanto, $G$ no
-        es $k$-partita completa!! (no cumple el ser $k$-partita) y he aquí una
-        contradicción de suponer que $K_{k + 1}$ es subgr\'afica inducida de $G$.
-        Por lo tanto, concluimos que $K_{k + 1}$ no es subgr\'afica inducida de $G$.
+                    \begin{itemize}
+                        \item[$\cdot$)] Supongamos que $\overline{P_3}$ es subgr\'afica inducida
+                        de $G$, por definición de $k$-partita completa $\overline{P_3}$ no está
+                        en la misma parte (pues, en caso de estarlo hay una adyacencia en $2$
+                        vértices de la misma parte). Luego $\overline{P_3}$ está en $2$ o $3$
+                        partes distintas y habrá un $x \in \overline{P_3}$ que no se relacionará
+                        con al menos $1$ vértice en algunas de las partes y por tanto, $G$ no es
+                        $k$-partita completa!! (lo que no cumple es ser completa bajo el supuesto
+                        tomado) y he aquí una contradicción de suponer que $\overline{P_3}$ es
+                        subgr\'afica inducida de $G$. Por lo tanto, concluimos que $\overline{P_3}$
+                        no es subgr\'afica inducida de $G$.
 
-      \item[$\Leftarrow$)]
-      \end{itemize}
-    \end{itemize}
-    De los casos anterior concluimos que $G$ es $k$-partita completa si y
-    s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
-    inducidas.
-  \end{proof}
+                        \item[$\cdot$)] Supongamos que $K_{k + 1}$ es subgr\'afica inducida de $G$,
+                        entonces hay $1$ vértice de $K_{k + 1}$ en cada una de las partes (lo que
+                        suma $k$ v\'ertices) y un $x \in K_{k + 1}$ en alguna parte tal que se
+                        relaciona con exactamente un v\'ertice en esa parte y por tanto, $G$ no
+                        es $k$-partita completa!! (no cumple el ser $k$-partita) y he aquí una
+                        contradicción de suponer que $K_{k + 1}$ es subgr\'afica inducida de $G$.
+                        Por lo tanto, concluimos que $K_{k + 1}$ no es subgr\'afica inducida de $G$.
+                    \end{itemize}
+
+                \item[$\Leftarrow$)]
+            \end{itemize}
+            De los casos anterior concluimos que $G$ es $k$-partita completa si y
+            s\'olo si no contiene a $K_{k+1}$ ni a $\overline{P_3}$ como subgr\'aficas
+            inducidas.
+        \end{proof}
+
+    $$\text{\textbf{\large Ejercicio de la Tarea 4}}$$
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 3 de la tarea 4
+
+   \item \text{[Ejercicio extra 3]}
+
+        Sea $\mathcal{T}$ una familia de sub\'arboles
+        de un \'arbol $T$.   Deduzca, por inducci\'on sobre
+        $|\mathcal{T}|$, que si cualesquiera dos elementos
+        de $\mathcal{T}$ tienen un v\'ertice en com\'un,
+        entonces hay un v\'ertice de $T$ que est\'a en
+        todos los elementos de $\mathcal{T}$.
+
+        \begin{proof}
+            Demostración por induccion sobre el numero de subarboles
+
+            Paso base: $\mathcal{T} = 3$
+
+            Sean $T_1$, $T_2$, $T_3$ subarboles de T
+
+            Pd Existe  un vértice x que pertenece a T tal que $T_1 \cap T_2=x \rightarrow  T_1 \cap T_2 \cap T_3 = x$
+
+            Dem (Reduccion al absurdo)
+
+            Supongamos que $T_1 \cap T_2 \cap T_3 = \emptyset$ (algo que no puede pasar es que $T_1 \cap T_2 = T_1 \cap T_3 = T_2 \cap T_3  = \emptyset$ por hipotesis T es conexa y tambien por hipotesis $T_1 \cap T_2$ diferente del vacio) $\rightarrow$ existe $x_1$ tal que $x_1$ pertenece a $T_1 \cap T_2$ y $x_1$ no pertenece a $T_3$, existe $x_2$ tal que $x_2$ pertenece a $T_1 \cap T_3$ y $x_2$ no pertenece a $T_2$, existe $x_3$ tal que $x_3$ pertenece a $T_2 \cap T_3$ y $x_3$ no pertenece a $T_1  \rightarrow x_1, x_2, x_3$ son vértices diferentes $\rightarrow$ por las intersecciones  y gracias que T  es conexo  $\rightarrow$ s.p.g. podemos formar un ciclo $(x_1, ... ,x_2, ... ,x_3, ...,x_1)$ (Lo que es una contradicción, ya que los arboles son aciclicos)
+
+            Por lo tanto $T_1 \cap T_2 \cap T_3   \neq
+            \emptyset \rightarrow$ existe un vértice compartido para los 3 subárboles
+
+            Hipótesis de inducción: supongamos para $\mathcal{T} = k$
+
+            Supongamos que si $\mathcal{T} = k$ tal que existen i,j tal que $i \neq j$ e i,j pertenezen a $\left\lbrace 1,...,k \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow  \bigcap_{r=1}^{k}{T_r} \neq \emptyset$
+
+            Paso inductivo: Pd para $\mathcal{T} = k+1$
+
+            Pd si existen i,j tal que $i \neq j$ e i,j pertenezen a $\left\lbrace 1,...,k+1 \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow  \bigcap_{r=1}^{k+1}{T_r} \neq \emptyset$
+
+            Dem (Reducción al absurdo)
+
+            Supongamos $\bigcap_{r=1}^{k+1}{T_r} = \emptyset$ y existen i,j pertenezen a $\left\lbrace 1,...,k+1 \right\rbrace$ donde $T_i \cap T_j \neq \emptyset \rightarrow $ consideremos a T' como el subárbol formado por la unión de todos los subárboles de $T_1, T_2,...;T_{k+1}$ menos los subárboles $T_i$ y $T_j$. Es decir T'= $\bigcup_{r=1, r \neq i,  r \neq j }^{k+1}{T_r} \rightarrow T' \cap T_i \cap T_j = \emptyset$, pero por paso base esto es una contradicción $\rightarrow$ existe un x tal que x pertenece a  $\bigcap_{r=1}^{k+1}{T_r}$
+
+            Por lo tanto la porposición es verdadera.
+        \end{proof}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tarea 5
+  $$\text{\textbf{\large Ejercicio de la Tarea 5}}$$
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preguta 1
+  \item \text{[Pregunta 1]}
+
+    Demuestre que si $G$ es simple y $3$-regular, entonces $\kappa = \kappa'$.
+
+    \begin{proof}
+      Sea G 3-regular $\rightarrow d(v)=3$ para todo v que pertenece a V $\rightarrow$ sea $v'$ un vertice de G  $\rightarrow$ para desconectar a $v'$ de G, solo basta  con "cortar" las 3 aristas de $v' \rightarrow$ k'=3.
+
+      Por lo tanto $k=k'$.
+    \end{proof}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pregunta 2
+  \item \text{[Pregunta 2]}
+
+    Demuestre que una gr\'afica es $2$-conexa por aristas si y s\'olo si
+    cualesquiera dos v\'ertices est\'an conectados por al menos dos trayectorias
+    ajenas por aristas.
+
+    \begin{proof}
+      $\Longrightarrow$) Sea G una gráfica 2-conexa $\rightarrow$ por teorema visto en clase en G existe  un cliclo C que contendra 2 vertices v y u donde u y v pertenecen a G $\rightarrow$ podemos tener la trayectoria $P=(v,C,u)$ pero como C es un ciclo $\rightarrow$ tambien existira la trayectoria $P'=(u,V,v)$
+
+      Por lo tanto existen 2 trayectorias ajenas por aristas en una gráfica 2-conexa
+
+
+      $\Longleftarrow$) Sean u y v cualesquiera vértices de una gráfica G y si u y v están conectados por dos trayectorias ajenas por aristas P y P' $\rightarrow$ si unimos  uPv y vP'v obtendremos un ciclo C que ira de uPvP'u $\rightarrow$ sea G' una gráfica igual al ciclo C, si borramos una arista a G' $\rightarrow$ G' seguira siendo conexa  $\rightarrow$ G' es 2-conexa $\rightarrow$ G será 2-conexa ya que para todo v y u que pertenecen G existen 2 trayectorias ajenas por vertices
+    \end{proof}
+
+  $$\text{\textbf{\large Ejercicio de la Tarea 7}}$$
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 1 de la tarea 7
+  \item \text{[Ejercicio 1]}
+
+    \begin{enumerate}
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
+      \item Demuestre que si $G$ tiene di\'ametro mayor que $3$ (posiblemente
+      infinito), entonces $\overline{G}$ tiene di\'ametro menor que $3$.
+      Concluya que si $G$ es inconexa, entonces $\overline{G}$ es conexa.
+
+        \begin{proof}
+          Sea $G$ una gráfica.
+
+          Probaremos que $\overline{G}$ tiene diámetro menor a $3$.
+
+          Primero, sabemos que $G$ tiene diametro mayor a $3$ entonces tomemos una trayectoria $P$ de $G$ tal que su longitud es $n$ (con $n > 3$).
+
+          La denotaremos como:
+          $$P = (x_{0}, x_{1}, \dots, x_{n})$$
+
+          Ahora, por definición de $\overline{G}$ es tal que:
+          $$|E_{\overline{G}}| = \binom{|V| - 1}{2} - |E_{G}|$$
+
+          Por tanto, en $\overline{G}$ la trayectoria $P$ cambia de la siguiente manera:
+          \begin{itemize}
+            \item El vértice $x_{0}$ es adyacente a los vértices $x_{2}, x_{3}, \dots, x_{n}$, donde esto equivale a $n - 1$ vértices.
+
+            \item El vértice $x_{1}$ es adyacente a los vértices $x_{3}, x_{4}, \dots, x_{n}$, donde esto equivale a $n - 2$ vértices.
+
+            \item El vértice $x_{2}$ es adyacente a los vértices $x_{0}, x_{4}, \dots, x_{n}$, donde esto equivale a $n - 2$ vértices.
+          \end{itemize}
+
+          Siguiendo este procedimiento, tenemos lo siguiente:
+          \begin{itemize}
+            \item El vértice $x_{i}$ es adyacente a los vértices $x_{i-2}, x_{i+2}, x_{i+3}, \dots, x_{n}$, con $i > 1$.
+          \end{itemize}
+
+          Así, notemos lo siguiente:
+
+          En $\overline{G}$ $x_{0}$ \textbf{no es} adyacente a $x_{1}$, entonces necesitamos otro vértice $x_{3}$ para llegar a $x_{1}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{0}$ a $x_{1}$.
+
+          De la misma forma, $x_{1}$ \textbf{no es} adyacente a $x_{0}$ ni a $x_{2}$, entonces necesitamos otro vértice $x_{4}$ para llegar a $x_{0}$ o $x_{2}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{1}$ a $x_{0}$ o de $x_{1}$ a $x_{2}$.
+
+          De lo anterior obtenemos que:
+
+          El vértice $x_{i}$ \textbf{no es} adyacente al vértice $x_{i-1}$ ni al vértice $x_{i+1}$, entonces necesitamos otro vértice $x_{i+2}$ para llegar a $x_{i-1}$ o $x_{i+1}$. Lo que implica que nos toma distancia igual a $2$ llegar de $x_{i}$ a $x_{i-1}$ o de $x_{i}$ a $x_{i+1}$.
+
+          Por lo tanto, $\overline{G}$ tiene diámetro menor a $3$. \\
+          \\
+          \textbf{Por último}, probemos que si $G$ es inconexa entonces $\overline{G}$ es conexa.
+
+          \begin{proof}
+            Sean $u, v \in G$ cualesquiera.
+
+            Supongamos que $G$ es inconexa.
+
+            Sabemos que si $uv \notin E_{G}$, entonces $uv \in E_{\overline{G}}$.
+
+            Por lo antes visto, tenemos que:
+
+            Si $u$ es adyacente a $v$, como el diámetro de $\overline{G}$ es menor a $3$, entonecs existe otro vértice $w \in G$ tal que $uv, vw \in E_{\overline{G}}$.
+
+            Es decir, podemos llegar desde un vértice $u$ a cualquier otro vértice $w$ usando al vértice $v$.
+
+            Por lo tanto, ya que $u, v$ fueron arbitrarios, podemos concluir que $\overline{G}$ es conexa.
+          \end{proof}
+
+          Así, concluímos que si $G$ es inconexa, entonces $\overline{G}$ es conexa.
+        \end{proof}
+      %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
+      \item Una gr\'afica $G$ es autocomplementaria si $G \cong \overline{G}$.
+      Demuestre que si $G$ es autocomplementaria, entonces $|V|
+      \stackrel{4}{\equiv} 0$ o $|V| \stackrel{4}{\equiv} 1$.
+
+        \begin{proof}
+          Primero, sabemos que si $G \cong \overline{G}$ entonces $V_{G} = V_{\overline{G}}$.
+
+          Probaremos que $|E_{G}| = |E_{\overline{G}}|$.
+
+          Veamos lo siguiente:
+          $$|V| \stackrel{4}{\equiv} 1 \longrightarrow |V| \equiv 1 \mod{4}$$
+          Recordando la definición de $\mod$, tenemos:
+          \begin{align*}
+            |V| \equiv 1 \mod{4}
+            & \longrightarrow 4 \text{ \Big \vert } |V| - 1 \\
+            & \longrightarrow |V| - 1 = 4 \cdot k, \text{ con $k \in \mathbb{N}$} \\
+            & \longrightarrow |V| = 4 \cdot k + 1
+          \end{align*}
+
+          Luego, por definición de $\overline{G}$, tenemos:
+          $$|E_{\overline{G}}| = \binom{|V| - 1}{2} - |E_{G}|$$
+
+          Sea $n = |V_{G}|$.
+
+          Así,
+          \begin{align*}
+            |E_{G}|
+            & = |E_{\overline{G}}| \\
+            & = \binom{|V_{G}| - 1}{2} - |E_{G}| \\
+            & =  \binom{n - 1}{2} - (n - 1), \text{ porque $|V_{G}| = n$} \\
+            & = \dfrac{(n - 1)!}{2! \cdot ((n - 1) - 2)!} - (n - 1) \\
+            & = \dfrac{(n - 1)!}{2! \cdot (n - 1 - 2)!} - (n - 1) \\
+            & = \dfrac{(n - 1)!}{2! \cdot (n - 3)!} - (n - 1) \\
+            & = \dfrac{(n - 1)(n - 2)(n - 3)!}{2! \cdot (n - 3)!} - (n - 1), \text{ porque $n! = n \cdot (n - 1) \cdot (n - 2)!$} \\
+            & = \dfrac{(n - 1)(n - 2) \cancel{(n - 3)!}}{2! \cdot \cancel{(n - 3)!}} - (n - 1) \\
+            & = \dfrac{(n - 1)(n - 2)}{2!} - (n - 1) \\
+            & = \dfrac{(n - 1)(n - 2)}{2} - (n - 1), \text{ porque $2! = 2 \cdot 1 = 2$} \\
+            & = \dfrac{(n - 1)(n - 2)}{2} - \dfrac{2(n - 1)}{2} \\
+            & = \dfrac{(n - 1)(n - 2) - 2(n - 1)}{2} \\
+            & = \dfrac{n^{2} - 3n + 2 - 2n + 2}{2} \\
+            & = \dfrac{n^{2} - 5n + 4}{2}
+          \end{align*}
+          Ahora,
+          \begin{align*}
+            \dfrac{n^{2} - 5n + 4}{2}
+            & = \dfrac{4 \left[\dfrac{n^{2}}{4} - \dfrac{5n}{4} + 1 \right]}{2} \\
+            & = 4 \cdot \dfrac{\left[\dfrac{n^{2}}{4} - \dfrac{5n}{4} + 1 \right]}{2} \\
+            & = 4 \cdot \dfrac{\left[\dfrac{n^{2} - 5n}{4} + 1 \right]}{2} \\
+            & = 4 \cdot \dfrac{\left[\dfrac{n^{2} - 5n + 4}{4} \right]}{2} \\
+            & = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right]
+          \end{align*}
+
+          Por lo tanto, tenemos lo siguiente:
+          $$|E_{G}| = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] \longrightarrow |V_{G}| - 1 = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right]$$
+
+          Despejando $|V_{G}|$, obtenemos:
+          $$|V_{G}| - 1 = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] \longrightarrow |V_{G}| = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] + 1$$
+
+          Sea $k = \left[\dfrac{n^{2} - 5n + 4}{8} \right]$. Entonces:
+          $$|V_{G}| = 4 \cdot k + 1$$
+
+          Por lo tanto, llegamos a que $|E_{G}| = |E_{\overline{G}}|$ si $|V_{G}| = 4 \cdot k + 1$. \\
+        \end{proof}
+    \end{enumerate}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
+  \item
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
+  \item
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
+  \item
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
+  \item
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
+  \item
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-\item
+  \item
 \end{enumerate}
 \end{document}
