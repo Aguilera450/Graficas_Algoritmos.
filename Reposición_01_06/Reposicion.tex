@@ -339,78 +339,63 @@ $$\text{\textbf{\large Ejercicio de la Tarea 2}}$$
       Demuestre que si $G$ es autocomplementaria, entonces $|V|
       \stackrel{4}{\equiv} 0$ o $|V| \stackrel{4}{\equiv} 1$.
 
-        \begin{proof}
-          Primero, sabemos que si $G \cong \overline{G}$ entonces $V_{G} = V_{\overline{G}}$.
+      \begin{proof}
+        Notemos lo siguiente:
+        $$|V| \stackrel{4}{\equiv} 1 \longrightarrow |V| \equiv 1 \mod{4} \text{\hspace{0.3cm} y \hspace{0.3cm}} |V| \stackrel{4}{\equiv} 0 \longrightarrow |V| \equiv 0 \mod{4}$$
+        Recordando la definición de $\mod$, tenemos:
+        \begin{align*}
+          |V| \equiv 1 \mod{4}
+          & \longrightarrow 4 \text{ \Big \vert } |V| - 1 \\
+          & \longrightarrow |V| - 1 = 4 \cdot k, \text{ con $k \in \mathbb{N}$} \\
+          & \longrightarrow |V| = 4 \cdot k + 1
+        \end{align*}
+        De la misma forma, tenemos:
+        \begin{align*}
+          |V| \equiv 0 \mod{4}
+          & \longrightarrow 4 \text{ \Big \vert } |V| - 0 \\
+          & \longrightarrow |V| = 4 \cdot k, \text{ con $k \in \mathbb{N}$} \\
+          & \longrightarrow |V| = 4 \cdot k
+        \end{align*}
 
-          Probaremos que $|E_{G}| = |E_{\overline{G}}|$.
+        Sea $G$ una gráfica cualquiera.
 
-          Veamos lo siguiente:
-          $$|V| \stackrel{4}{\equiv} 1 \longrightarrow |V| \equiv 1 \mod{4}$$
-          Recordando la definición de $\mod$, tenemos:
-          \begin{align*}
-            |V| \equiv 1 \mod{4}
-            & \longrightarrow 4 \text{ \Big \vert } |V| - 1 \\
-            & \longrightarrow |V| - 1 = 4 \cdot k, \text{ con $k \in \mathbb{N}$} \\
-            & \longrightarrow |V| = 4 \cdot k + 1
-          \end{align*}
+        Como $G \cong \overline{G}$, entonces $|V_{G}| = |V_{\overline{G}}|$ y $|E_{G}| = |E_{\overline{G}}|$.
 
-          Luego, por definición de $\overline{G}$, tenemos:
-          $$|E_{\overline{G}}| = \binom{|V| - 1}{2} - |E_{G}|$$
+        Sea $n = |V_{G}|$. Tenemos que:
+        \begin{center}
+          $|E_{G}| = |E_{\overline{G}}| = \dfrac{|E(K_{n})|}{2}$
 
-          Sea $n = |V_{G}|$.
+          , donde $K_{n}$ es la gráfica completa de $n$ vértices.
+        \end{center}
 
-          Así,
-          \begin{align*}
-            |E_{G}|
-            & = |E_{\overline{G}}| \\
-            & = \binom{|V_{G}| - 1}{2} - |E_{G}| \\
-            & =  \binom{n - 1}{2} - (n - 1), \text{ porque $|V_{G}| = n$} \\
-            & = \dfrac{(n - 1)!}{2! \cdot ((n - 1) - 2)!} - (n - 1) \\
-            & = \dfrac{(n - 1)!}{2! \cdot (n - 1 - 2)!} - (n - 1) \\
-            & = \dfrac{(n - 1)!}{2! \cdot (n - 3)!} - (n - 1) \\
-            & = \dfrac{(n - 1)(n - 2)(n - 3)!}{2! \cdot (n - 3)!} - (n - 1), \text{ porque $n! = n \cdot (n - 1) \cdot (n - 2)!$} \\
-            & = \dfrac{(n - 1)(n - 2) \cancel{(n - 3)!}}{2! \cdot \cancel{(n - 3)!}} - (n - 1) \\
-            & = \dfrac{(n - 1)(n - 2)}{2!} - (n - 1) \\
-            & = \dfrac{(n - 1)(n - 2)}{2} - (n - 1), \text{ porque $2! = 2 \cdot 1 = 2$} \\
-            & = \dfrac{(n - 1)(n - 2)}{2} - \dfrac{2(n - 1)}{2} \\
-            & = \dfrac{(n - 1)(n - 2) - 2(n - 1)}{2} \\
-            & = \dfrac{n^{2} - 3n + 2 - 2n + 2}{2} \\
-            & = \dfrac{n^{2} - 5n + 4}{2}
-          \end{align*}
-          Ahora,
-          \begin{align*}
-            \dfrac{n^{2} - 5n + 4}{2}
-            & = \dfrac{4 \left[\dfrac{n^{2}}{4} - \dfrac{5n}{4} + 1 \right]}{2} \\
-            & = 4 \cdot \dfrac{\left[\dfrac{n^{2}}{4} - \dfrac{5n}{4} + 1 \right]}{2} \\
-            & = 4 \cdot \dfrac{\left[\dfrac{n^{2} - 5n}{4} + 1 \right]}{2} \\
-            & = 4 \cdot \dfrac{\left[\dfrac{n^{2} - 5n + 4}{4} \right]}{2} \\
-            & = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right]
-          \end{align*}
+        Ahora, recordemos que:
+        \begin{center}
+            \textit{Una gráfica es completa si su conjunto de aristas es igual a} $\displaystyle \binom{V}{2}$.
+        \end{center}
 
-          Por lo tanto, tenemos lo siguiente:
-          $$|E_{G}| = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] \longrightarrow |V_{G}| - 1 = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right]$$
+        Así,
+        \begin{align*}
+          \binom{V}{2}
+          & = \binom{n}{2} \\
+          & = \dfrac{n!}{2! \cdot (n -2)!} \\
+          & = \dfrac{n \cdot (n -1) \cdot (n - 2)!}{2 \cdot (n - 2)!} \\
+          & = \dfrac{n(n - 1)}{2}
+        \end{align*}
 
-          Despejando $|V_{G}|$, obtenemos:
-          $$|V_{G}| - 1 = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] \longrightarrow |V_{G}| = 4 \cdot \left[\dfrac{n^{2} - 5n + 4}{8} \right] + 1$$
+        Como $|E_{G}| = |E_{\overline{G}}|$, entonces sabemos que:
+        \begin{align*}
+          \dfrac{|E(K_{n})|}{2}
+          & = \dfrac{1}{2} (|E(K_{n})|) \\
+          & = \dfrac{1}{2} \left[\dfrac{n(n - 1)}{2} \right] \\
+          & = \dfrac{n(n - 1)}{4}
+        \end{align*}
 
-          Sea $k = \left[\dfrac{n^{2} - 5n + 4}{8} \right]$. Entonces:
-          $$|V_{G}| = 4 \cdot k + 1$$
+        Por tanto, como $n$ y $(n - 1)$ son número enteros consecutivos, el máximo común divisor de ambos números es $1$.
 
-          Por lo tanto, llegamos a que $|E_{G}| = |E_{\overline{G}}|$ si $|V_{G}| = 4 \cdot k + 1$. \\
-        \end{proof}
+        Luego, $4$ es divisor de $n$ o de $(n -1)$. Es decir, $n = 4k$ o $n - 1 = 4k \longrightarrow n = 4k + 1$ (con $k \in \mathbb{N}$).
+
+        Por lo tanto, podemos concluir que si $G$ es autocomplementaria, entonces $|V| \stackrel{4}{\equiv} 0$ o $|V| \stackrel{4}{\equiv} 1$. \\
+      \end{proof}
     \end{enumerate}
-
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-  \item
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-  \item
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-  \item
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-  \item
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-  \item
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio ...
-  \item
 \end{enumerate}
 \end{document}
