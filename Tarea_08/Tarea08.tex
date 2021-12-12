@@ -97,11 +97,29 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 01
 \item Sean $G$ una gr\'afica conexa y $e \in E$.   Demuestre que
   \begin{enumerate}
+
+    Proposiciones a usar 
+
+    Prop. 1) Corolario 2.2.3 Si G es una gráfica conexa, entonces G contiene un árbol  generador (Demostración en la notas pagina 32).
+    
+    Obs. 1) Por definicion podemos concluir que una arista es un puente sii no esta contenida en ningun ciclo.
+
     %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
   \item $e$ est\'a en cada \'arbol generador de $G$ si y s\'olo si $e$ es un puente
     de $G$;
+
+    $\Longrightarrow$) Dem (Ad. abs.). Sea $e$ que pertenece a todo árbol generador de G tal que $e$ no sea un puente $\rightarrow$ como G es conexa si quitamos a $e$, G-e seguira siendo conexa $\rightarrow$ por Prop. 1 G-e tendra un arbol generador, que lo denotaremos como $T_e$, como todos los vértices de G-e están tambien en G $\rightarrow$ que $T_e$ tambien  es un arbol generador de G pero $e$ no esta en $T_e$! ya que por hipóteis $e$ pertenece a todo árbol generador de G. Por lo tanto $e$ es un puente.
+     
+     
+    $\Longleftarrow$) Dem (Ad. abs.) Sea $e$ un puente de G y $T_e$ un árbol generador de G tal que e no pertenece a las arista de $T_e$, donde $e$ es una arista que une a $u$ con  $v \rightarrow$ como $T_e$ es conexa $\rightarrow$ existe una trayectoria en $T_e$ que une a $u$ con  $v$, pero esta misma trayectoria tambien debe estar en G $\rightarrow$ existen al menos 2 trayectorias que unen a $u$ con  $v$! pero esto es una contradiccion ya que $e$ es un puente.
+
         %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
   \item $e$ no est\'a en \'arbol generador alguno de $G$ si y s\'olo si $e$ es un lazo.
+  
+  $\Longrightarrow$) Sea $e$ que no esta en ningun arbol generador de G $ \rightarrow$ por contrapositiva del inciso a) $ \rightarrow e$ no es un puente $ \rightarrow$ por contrapositiva de la Obs. 1) $e$ está contenida en un ciclo, pero esto solo puede pasar si $e$ es un lazo, ya que si esto no pasa podriamos dar un árbol generador de G tal que $e$ pertenezca a este. 
+     
+  $\Longleftarrow$) Sea $e$ un lazo $\rightarrow e$ pertenece a un ciclo (por definición)$\rightarrow$  por contrapositiva de la Obs. 1) $e$ no es un puente $\rightarrow$ por contrapositiva del inciso a) $e$ no esta en ningun arbol generador de G.
+
   \end{enumerate}
   
   \newpage
@@ -290,6 +308,36 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05
 \item[$5$.] Describa un algoritmo para encontrar un bosque generador en una
   gr\'afica arbitraria (no necesariamente conexa).
+
+  Para encontrar un bosque generador en una gráfica $G$, llamaremos BFS a cada componente conexa de $G$ (en caso que $G$, sea inconexa).\\
+  
+  \begin{algorithm}[H]
+      \textbf{Input:} \\
+      \textbf{Output:} 
+      
+      $F \leftarrow \O$  (1)
+      
+      $P \leftarrow \O$  (2)
+      
+      \For{v en $V_{G}$}{
+        \If{v no está coloreado}{
+            encolar en P la función $p$ que nos regresa $BFS(G,r)$
+        }
+      }
+     \For{p en P}{
+        añadir $p$ a F  (3)
+     } 
+     \Return{F}
+      \caption{BosqueGenerador}
+  \end{algorithm}
+
+  Comentarios:
+
+  (1) Será la collecion de árboles de G
+
+  (2) Collecion de funciones de parentesco
+
+  (3) Nos servirá para obtener el árbol o árboles generados en la colleción
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 06
 \item[$6$.] Una {\em gr\'afica de Moore de di\'ametro $d$} es una gr\'afica
