@@ -136,6 +136,7 @@
           \item $G$ no contiene ciclos impares.
           \item $G$ no contiene ciclos impares inducidos.
           \end{enumerate}
+          
         \end{theorem}
     \end{minipage}}
   \end{center}
