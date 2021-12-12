@@ -234,11 +234,11 @@
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
   \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
 
-  \KwIn{Una gráfica conexa $G$ con un v\'ertice distingido $r$.}
+  \KwIn{Una gráfica conexa $G$, que contenga al menos un ciclo impar, con un v\'ertice distingido $r$.}
   \KwOut{Una lista que contenga al ciclo impar m\'as corto.}
   \BlankLine {
     $Q \gets$ \code{[]}; $i \gets 0$\;
-    $L \gets$ \code{[]}\;
+    $L_1, L_2 \gets$ \code{[]}\;
     $i \gets i + 1$\;
 
     colorear a \code{r} de negro\;
@@ -256,24 +256,29 @@
           
           \If{\textnormal{$x$ tiene un vecino $y$ coloreado \small{\&}
               \normalsize$\ell(x) = \ell(y)$}}{
-            $L \gets$ \code{[x,y,x]}\;
+            $L_1 \gets$ \code{[x,y,x]}\;
             \code{temp} $\gets$ \code{[]}\;
             
             \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
               $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
               \code{temp} $\gets$ \code{[$x, y$]}\;
-              insertar \code{temp} entre la primer $x$ y $y$ en $L$\;
+              insertar \code{temp} entre la primer $x$ y $y$ en $L_1$\;
             }
             
-            insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L$\;
-            {\Return L\;}
+            insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L_1$\;
+            %%{\Return $L_1$\;}
+            \uIf{\textnormal{$|L_2| =$ \code{[]}}}{
+              $L_2 \gets L_1$\;
+            } \ElseIf{$|L_1|<|L_2|$}{
+              $L_2 \gets L_1$\;
+            }
           }
           
           eliminar $x$ de Q\;
         }
     }
     
-  } {\Return $L$\;}
+  } {\Return $L_2$\;}
   \caption{OptimalOddCycle$(<G,r>;L/C)$} \label{OptimalOddCycle}
   \DecMargin{1em}
 \end{algorithm}
