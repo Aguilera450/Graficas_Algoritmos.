@@ -104,10 +104,10 @@
   \item $e$ no est\'a en \'arbol generador alguno de $G$ si y s\'olo si $e$ es un lazo.
   \end{enumerate}
   
+  \newpage
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02
 \item Modifique el algoritmo BFS para que regrese una bipartici\'on de la
   gr\'afica (si la gr\'afica es bipartita) o un ciclo impar (si la gr\'afica no es bipartita).
-  %%\begin{proof}
   
   \textbf{\textit{Soluci\'on:}} Para este ejercicio, emplearemos las siguientes estructuras de datos:
   \begin{itemize}
@@ -119,7 +119,7 @@
     para preservar, en la medida de lo posible, el concepto de parte de una bipartici\'on
     y aun m\'as porque, en este caso, necesitamos una bipartici\'on de v\'ertices.
   \end{itemize}
-    
+  
   \begin{center}
     \fbox{
       \begin{minipage}[b][1\height]%
@@ -136,9 +136,27 @@
           \item $G$ no contiene ciclos impares.
           \item $G$ no contiene ciclos impares inducidos.
           \end{enumerate}
+          
         \end{theorem}
     \end{minipage}}
   \end{center}
+  En esta ocasi\'on, empecemos mostrando que el algoritmo termina. Para esto s\'olo nos
+  debemos fijar en el \underline{While} de  la l\'inea $25$\footnote{El an\'alisis del
+    resto del algoritmo se realizo en clase y las modificaciones incluidas no alteran las
+    condiciones iniciales de \textbf{BFS}.}. N\'otese que $x$ e $y$ no son el nodo  ra\'iz,
+  as\'i $x$ e $y$ son descendientes de $r$, por lo que ocasionalmente
+  $\mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(x))) = r = \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(y)))$\footnote{En
+  otro caso, $x$ e $y$ tienen un ancestro comu\'un distinto de $r$ y se cumple la misma condici\'on.},
+  como la cantidad de v\'ertices en $G$ es finita, entonces lo anterior pasa en una cantidad
+  finita de iteraciones, por tanto la instrucci\'on iterativa de la l\'inea $25$ termina.
+  
+  Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS} tiene complejidad contenida
+  en $\mathcal{O}(|E| + |V|)$, por tanto el algoritmo \code{OddCycleOrBipartition} tiene complejidad
+  en $\mathcal{O}(|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)$, esto por la anexi\'on de la instrucci\'on
+  iterativa \underline{While} de la l\'inea $25$, pues todas las dem\'as alteraciones a \textbf{BFS} se realizan
+  en un tiempo constante.
+  
+  \textbf{Prop.}
 \end{enumerate}
 \begin{algorithm}[H]
   \SetAlgorithmName{}{}%BipartitionOrOddCycle}{}
@@ -202,13 +220,65 @@
   \caption{OddCycleOrBipartition$(<G,r>;L/C)$} \label{BipartitionOrOddCycle}
   \DecMargin{1em}
 \end{algorithm}
-%%\end{proof}
 \hfill $\square$
 \begin{enumerate}
+  \newpage
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03
 \item[$3$.] Describa un algoritmo basado en BFS para encontrar el ciclo impar m\'as
   corto en una gr\'afica.
-  
+  \end{enumerate}
+\begin{algorithm}[H]
+  \SetAlgorithmName{}{}%OptimalOddCycle}{}
+  \DontPrintSemicolon
+  \SetKwData{False}{false}\SetKwData{True}{true}
+  \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+  \KwIn{Una gráfica conexa $G$ con un v\'ertice distingido $r$.}
+  \KwOut{Una lista que contenga al ciclo impar m\'as corto.}
+  \BlankLine {
+    $Q \gets$ \code{[]}; $i \gets 0$\;
+    $L \gets$ \code{[]}\;
+    $i \gets i + 1$\;
+
+    colorear a \code{r} de negro\;
+    añadir a \code{r} al final de $Q$\;
+    $t(r) \gets i, \mathcal{P}(r) \gets \emptyset, \ell(r) \gets 0$\;
+    
+    \While{$Q \not=$ \textnormal{\code{[]}}}{
+        \uIf{\textnormal{$x$ tiene un vecino $y$ sin colorear}}{
+          $i \gets i + 1$\;
+          elegir a la cabeza $x$ de $Q$\;
+          colorear a $y$ de negro\;
+          añadir $y$ al final de $Q$\;
+          $t(r) \gets i, \mathcal{P}(y) \gets x, \ell(y) \gets \ell(x) + 1$\;
+        } \Else{
+          
+          \If{\textnormal{$x$ tiene un vecino $y$ coloreado \small{\&}
+              \normalsize$\ell(x) = \ell(y)$}}{
+            $L \gets$ \code{[x,y,x]}\;
+            \code{temp} $\gets$ \code{[]}\;
+            
+            \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
+              $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
+              \code{temp} $\gets$ \code{[$x, y$]}\;
+              insertar \code{temp} entre la primer $x$ y $y$ en $L$\;
+            }
+            
+            insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L$\;
+            {\Return L\;}
+          }
+          
+          eliminar $x$ de Q\;
+        }
+    }
+    
+  } {\Return $L$\;}
+  \caption{OptimalOddCycle$(<G,r>;L/C)$} \label{OptimalOddCycle}
+  \DecMargin{1em}
+\end{algorithm}
+\hfill $\square$
+\begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 04
 \item[$4$.] Sea $G$ una gr\'afica con conjunto de bloques $B$ y conjunto de
   v\'ertices de corte $C$.   La {\em gr\'afica de bloques y cortes} de $G$,
