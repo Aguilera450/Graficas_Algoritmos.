@@ -105,23 +105,72 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02
 \item Modifique el algoritmo BFS para que regrese una bipartici\'on de la
   gr\'afica (si la gr\'afica es bipartita) o un ciclo impar (si la gr\'afica no es bipartita).
-  \begin{proof}
-    Para este ejercicio recordemos un resultado visto en clase,
-    \begin{center}
-  \fbox{
-    \begin{minipage}[b][1\height]%
-      [t]{0.867\textwidth}
-      Nota. Los ciclos de longitud impar son obstrucci\'on m\'inima de las gr\'aficas
-      bipartitas.
-  \end{minipage}}
-\end{center}
-  \end{proof}
+  %%\begin{proof}
+  
+  \textbf{\textit{Soluci\'on:}}
+  %%Para este ejercicio recordemos un resultado visto en clase,
+%  \begin{center}
+%    \fbox{
+%      \begin{minipage}[b][1\height]%
+%        [t]{0.867\textwidth}
+%        Nota. Los ciclos de longitud impar son obstrucci\'on m\'inima de las gr\'aficas
+%        bipartitas.
+%    \end{minipage}}
+%  \end{center}
+\end{enumerate}
+\begin{algorithm}[H]
+  \SetAlgorithmName{}{}%BipartitionOrOddCycle}{}
+  \DontPrintSemicolon
+  \SetKwData{False}{false}\SetKwData{True}{true}
+  \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+  \KwIn{Una gráfica conexa $G$ con un v\'ertice distingido $r$.}
+  \KwOut{Una lista que contenga un ciclo impar o un conjunto que
+    contenga una bipartici\'on entre los v\'ertices.}
+  \BlankLine {
+    $Q \gets$ \code{[]}; $i \gets 0$\;
+    $L \gets$ \code{[]}; $C \gets$ \code{[]}\;
+    $i \gets i + 1$\;
+    colorear a \code{r} de negro\;
+    añadir a \code{r} al final de $Q$\;
+    $t(r) \gets i, \mathcal{P}(r) \gets \emptyset, \ell(r) \gets 0$\;
+    \While{$Q \not=$ \textnormal{\code{[]}}}{
+      elegir a la cabeza $x$ de $Q$\;
+      \uIf{\textnormal{$x$ tiene un vecino $y$ sin colorear}}{
+        $i \gets i + 1$\;
+        colorear a $y$ de negro\;
+        añadir $y$ al final de $Q$\;
+        $t(r) \gets i, \mathcal{P}(y) \gets x, \ell(y) \gets \ell(x) + 1$\;
+      } \Else{
+        \If{\textnormal{$x$ tiene un vecino $y$ coloreado \small{\&}
+            \normalsize$\ell(x) = \ell(y)$}}{
+          $L \gets$ \code{[x,y,x]}\;
+          \code{temp} $\gets$ \code{[]}\;
+          \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
+            $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
+            \code{temp} $\gets$ \code{[$x, y$]}\;
+            insertar \code{temp} entre la primer $x$ y $y$ en $L$\;
+          }
+          insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L$\;
+          {\Return L\;}
+        }
+        eliminar $x$ de Q\;
+      }
+    }
+  } {\Return $C$\;}
+  \caption{OddCycleOrBipartition$(<G,r>;L/C)$} \label{BipartitionOrOddCycle}
+  \DecMargin{1em}
+\end{algorithm}
+%%\end{proof}
+\hfill $\square$
+\begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03
-\item Describa un algoritmo basado en BFS para encontrar el ciclo impar m\'as
+\item[$3$.] Describa un algoritmo basado en BFS para encontrar el ciclo impar m\'as
   corto en una gr\'afica.
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 04
-\item Sea $G$ una gr\'afica con conjunto de bloques $B$ y conjunto de
+\item[$4$.] Sea $G$ una gr\'afica con conjunto de bloques $B$ y conjunto de
   v\'ertices de corte $C$.   La {\em gr\'afica de bloques y cortes} de $G$,
   denotada por $B_C (G)$, esta definida por $V_{B_C (G)} = B \cup C$ y
   si $u, v \in V_{B_C (G)}$, entonces $uv \in E_{B_C (G)}$ si y s\'olo si
@@ -129,11 +178,11 @@
   $B_C (G)$ es un \'arbol.
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05
-\item Describa un algoritmo para encontrar un bosque generador en una
+\item[$5$.] Describa un algoritmo para encontrar un bosque generador en una
   gr\'afica arbitraria (no necesariamente conexa).
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 06
-\item Una {\em gr\'afica de Moore de di\'ametro $d$} es una gr\'afica
+\item[$6$.] Una {\em gr\'afica de Moore de di\'ametro $d$} es una gr\'afica
   regular de di\'ametro $d$ y cuello $2d+1$.   Demuestre que si $G$ es
   una gr\'afica de Moore, entonces todos los \'arboles de BFS de $G$
   son isomorfos.
