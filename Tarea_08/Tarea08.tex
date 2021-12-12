@@ -130,34 +130,52 @@
     contenga una bipartici\'on entre los v\'ertices.}
   \BlankLine {
     $Q \gets$ \code{[]}; $i \gets 0$\;
-    $L \gets$ \code{[]}; $C \gets$ \code{[]}\;
-    $i \gets i + 1$\;
+    $L \gets$ \code{[]}; $C \gets \emptyset$\;
+    \code{X} $\gets \emptyset$; \code{Y} $\gets \emptyset$\;
+    $i \gets i + 1$; \code{X} $\gets r$\;
+
     colorear a \code{r} de negro\;
     añadir a \code{r} al final de $Q$\;
     $t(r) \gets i, \mathcal{P}(r) \gets \emptyset, \ell(r) \gets 0$\;
+    
     \While{$Q \not=$ \textnormal{\code{[]}}}{
+      
       elegir a la cabeza $x$ de $Q$\;
+
       \uIf{\textnormal{$x$ tiene un vecino $y$ sin colorear}}{
         $i \gets i + 1$\;
-        colorear a $y$ de negro\;
+        \uIf{$x$ es color negro}{
+          colorear a $y$ de blanco\;
+          \code{Y} $\gets y$\;
+        } \Else{
+          colorear a $y$ de negro\;
+          \code{X} $\gets y$\;
+        }
+        
         añadir $y$ al final de $Q$\;
         $t(r) \gets i, \mathcal{P}(y) \gets x, \ell(y) \gets \ell(x) + 1$\;
       } \Else{
+
         \If{\textnormal{$x$ tiene un vecino $y$ coloreado \small{\&}
             \normalsize$\ell(x) = \ell(y)$}}{
           $L \gets$ \code{[x,y,x]}\;
           \code{temp} $\gets$ \code{[]}\;
+
           \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
             $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
             \code{temp} $\gets$ \code{[$x, y$]}\;
             insertar \code{temp} entre la primer $x$ y $y$ en $L$\;
           }
+          
           insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L$\;
           {\Return L\;}
         }
+        
         eliminar $x$ de Q\;
       }
     }
+    
+    $C \gets$ \code{[X, Y]}\;
   } {\Return $C$\;}
   \caption{OddCycleOrBipartition$(<G,r>;L/C)$} \label{BipartitionOrOddCycle}
   \DecMargin{1em}
