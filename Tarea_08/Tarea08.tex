@@ -97,29 +97,11 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 01
 \item Sean $G$ una gr\'afica conexa y $e \in E$.   Demuestre que
   \begin{enumerate}
-
-    Proposiciones a usar 
-
-    Prop. 1) Corolario 2.2.3 Si G es una gráfica conexa, entonces G contiene un árbol  generador (Demostración en la notas pagina 32).
-    
-    Obs. 1) Por definicion podemos concluir que una arista es un puente sii no esta contenida en ningun ciclo.
-
     %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (a)
   \item $e$ est\'a en cada \'arbol generador de $G$ si y s\'olo si $e$ es un puente
     de $G$;
-
-    $\Longrightarrow$) Dem (Ad. abs.). Sea $e$ que pertenece a todo árbol generador de G tal que $e$ no sea un puente $\rightarrow$ como G es conexa si quitamos a $e$, G-e seguira siendo conexa $\rightarrow$ por Prop. 1 G-e tendra un arbol generador, que lo denotaremos como $T_e$, como todos los vértices de G-e están tambien en G $\rightarrow$ que $T_e$ tambien  es un arbol generador de G pero $e$ no esta en $T_e$! ya que por hipóteis $e$ pertenece a todo árbol generador de G. Por lo tanto $e$ es un puente.
-     
-     
-    $\Longleftarrow$) Dem (Ad. abs.) Sea $e$ un puente de G y $T_e$ un árbol generador de G tal que e no pertenece a las arista de $T_e$, donde $e$ es una arista que une a $u$ con  $v \rightarrow$ como $T_e$ es conexa $\rightarrow$ existe una trayectoria en $T_e$ que une a $u$ con  $v$, pero esta misma trayectoria tambien debe estar en G $\rightarrow$ existen al menos 2 trayectorias que unen a $u$ con  $v$! pero esto es una contradiccion ya que $e$ es un puente.
-
         %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
   \item $e$ no est\'a en \'arbol generador alguno de $G$ si y s\'olo si $e$ es un lazo.
-  
-  $\Longrightarrow$) Sea $e$ que no esta en ningun arbol generador de G $ \rightarrow$ por contrapositiva del inciso a) $ \rightarrow e$ no es un puente $ \rightarrow$ por contrapositiva de la Obs. 1) $e$ está contenida en un ciclo, pero esto solo puede pasar si $e$ es un lazo, ya que si esto no pasa podriamos dar un árbol generador de G tal que $e$ pertenezca a este. 
-     
-  $\Longleftarrow$) Sea $e$ un lazo $\rightarrow e$ pertenece a un ciclo (por definición)$\rightarrow$  por contrapositiva de la Obs. 1) $e$ no es un puente $\rightarrow$ por contrapositiva del inciso a) $e$ no esta en ningun arbol generador de G.
-
   \end{enumerate}
   
   \newpage
@@ -127,7 +109,8 @@
 \item Modifique el algoritmo BFS para que regrese una bipartici\'on de la
   gr\'afica (si la gr\'afica es bipartita) o un ciclo impar (si la gr\'afica no es bipartita).
   
-  \textbf{\textit{Soluci\'on:}} Para este ejercicio, emplearemos las siguientes estructuras de datos:
+  \textbf{\textit{Soluci\'on:}} Para este ejercicio, emplearemos las siguientes estructuras
+  de datos:
   \begin{itemize}
   \item[$\cdot$)] Colas: Estas fungen de la misma manera que originalmente en \textbf{BFS}.
   \item[$\cdot$)] Listas: Estas nos servir\'an para insertas listas binarias en un tiempo
@@ -158,26 +141,67 @@
         \end{theorem}
     \end{minipage}}
   \end{center}
-  En esta ocasi\'on, empecemos mostrando que el algoritmo termina. Para esto s\'olo nos
-  debemos fijar en el \underline{While} de  la l\'inea $25$\footnote{El an\'alisis del
-    resto del algoritmo se realizo en clase y las modificaciones incluidas no alteran las
-    condiciones iniciales de \textbf{BFS}.}. N\'otese que $x$ e $y$ no son el nodo  ra\'iz,
-  as\'i $x$ e $y$ son descendientes de $r$, por lo que ocasionalmente
-  $\mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(x))) = r = \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(y)))$\footnote{En
-  otro caso, $x$ e $y$ tienen un ancestro comu\'un distinto de $r$ y se cumple la misma condici\'on.},
-  como la cantidad de v\'ertices en $G$ es finita, entonces lo anterior pasa en una cantidad
-  finita de iteraciones, por tanto la instrucci\'on iterativa de la l\'inea $25$ termina.
+  En esta ocasi\'on, empecemos mostrando que el algoritmo termina.
+  Para esto s\'olo nos debemos fijar en el \underline{While} de  la
+  l\'inea $25$\footnote{El an\'alisis del resto del algoritmo se
+    realizo en clase y las modificaciones incluidas no alteran las
+    condiciones iniciales de \textbf{BFS}.}. N\'otese que $x$ e $y$
+  no son el nodo  ra\'iz, as\'i $x$ e $y$ son descendientes de $r$,
+  por lo que ocasionalmente
+  \[
+  \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}
+  (x))) = r = \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(y)))\text{
+    \footnote{En otro caso, $x$ e $y$ tienen un ancestro comu\'un
+      distinto de $r$ y se cumple la misma condici\'on.}}
+  \]
+  como la cantidad de v\'ertices
+  en $G$ es finita, entonces lo anterior pasa en una cantidad finita
+  de iteraciones, por tanto la instrucci\'on iterativa de la l\'inea
+  $25$ termina.
+    
+  Para terminar de mostrar la correctez del algoritmo sólo falta ver que
+  realmente hace lo que se pide, as\'i propongamos dos invariantes de ciclo:
   
-  Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS} tiene complejidad contenida
-  en $\mathcal{O}(|E| + |V|)$, por tanto el algoritmo \code{OddCycleOrBipartition} tiene complejidad
-  en $\mathcal{O}(|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)$, esto por la anexi\'on de la instrucci\'on
-  iterativa \underline{While} de la l\'inea $25$, pues todas las dem\'as alteraciones a \textbf{BFS} se realizan
-  en un tiempo constante.
+  \textbf{Prop. 1:} [Invariante de ciclo, caso bipartita]. El conjunto
+  devuelto por el algoritmo \code{OddCycleOrBipartition}, cuando $G$
+  no contenga ciclos impares, es una bipartici\'on de $V_G$.  
   
-  \textbf{Prop.}
+  \textbf{Dem.}   Para esto veamos que:
+  \begin{itemize}
+  \item[$\cdot$)] $X\cup Y = V_G$. Por la l\'inea $5$, tenemos que el
+    v\'ertice ra\'iz (que es el primero en entrar a la cola) se pinta
+    de negro, por tanto sus hijos tienen un padre coloreado (y en concecuencia,
+    estos ser\'an coloreados de blanco), luego por el \code{IF/ELSE}
+    de la l\'inea $12$, el resto de los v\'ertices se pintan de negro
+    o blanco, como todo el resto de v\'ertices es descendiente de $r$,
+    entonces todos estos tienen un padre coloreado, pues su ancestro
+    inmediato (no necesariamente $r$) est\'a coloreado. Luego, todos
+    los v\'ertices de $G$ son coloreados (esto por la demostraci\'on de
+    \textbf{BFS}) e introducidos en $X$ o $Y$, as\'i $X\cup Y = V_G$.
+    
+  \item[$\cdot$)] $X\cap Y = \emptyset$. Observemos que $r$ es coloreado
+    de negro, as\'i los hijos de $r$ son coloreados de blanco. Luego,
+    para alg\'un v\'ertice $x$ distinto de $r$ se tiene que si $x$ est\'a
+    coloreado de negro, entonces sus hijos ser\'an coloreados de blanco
+    (an\'alogo el caso cuando $x$ es de color blanco). Si suponemos que
+    existe
+    \[
+    z \in V_G : z \in X \land z \in Y
+    \]
+    entonces $z$ debe tener $2$ padres distintos (uno de color negro y
+    otro blanco), pero esto contradice a la funci\'on de parentezco,
+    que como vimos cuando se mostr\'o \textbf{BFS}, a cada v\'ertice
+    le asocia un \'unico padre. Por tanto no existe
+    \[
+    z \in V_G : z \in X \land z \in Y
+    \]
+    y concluimos que $X\cap Y = \emptyset$.
+    
+  \end{itemize}
+  \hfill $\dashv$
 \end{enumerate}
 \begin{algorithm}[H]
-  \SetAlgorithmName{}{}%BipartitionOrOddCycle}{}
+  \SetAlgorithmName{}{}%OddCycleOrBipartition}{}
   \DontPrintSemicolon
   \SetKwData{False}{false}\SetKwData{True}{true}
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
@@ -218,14 +242,14 @@
             \normalsize$\ell(x) = \ell(y)$}}{
           $L \gets$ \code{[x,y,x]}\;
           \code{temp} $\gets$ \code{[]}\;
-
+          
           \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
             $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
             \code{temp} $\gets$ \code{[$x, y$]}\;
-            insertar \code{temp} entre la primer $x$ y $y$ en $L$\;
+            insertar \code{temp} entre los $x$ e $y$ m\'as centrales en $L$\;
           }
           
-          insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L$\;
+          insertar $\mathcal{P}(x)$ entre los $x$ e $y$ m\'as centrales en $L$\;
           {\Return L\;}
         }
         
@@ -235,15 +259,64 @@
     
     $C \gets$ \code{[X, Y]}\;
   } {\Return $C$\;}
-  \caption{OddCycleOrBipartition$(<G,r>;L/C)$} \label{BipartitionOrOddCycle}
+  \caption{OddCycleOrBipartition$(<G,r>;L/C)$} \label{OddCycleOrBipartition}
   \DecMargin{1em}
 \end{algorithm}
+\textbf{Prop. 2:} [Invariante de ciclo, en caso de haber ciclo impar]. La lista
+devuelta por el algoritmo \code{OddCycleOrBipartition}, cuando $G$
+no es bipartita, es un ciclo impar.
+
+\textbf{Dem.} Por el teorema anunciado con anterioridad (mostrado en clase), tenemos
+que nuestra gr\'afica no es bipartita.
+
+Obs\'ervese que por la l\'inea $22$ tenemos un ciclo, pues estamos antes $x,y \in V_G$
+que ya han sido explorados con anterioridad, sin embargo existe una $xy$-arista, por
+tanto hay dos trayectorias con alg\'un v\'ertice en com\'un (\textit{e.g.}, $r$) que terminan
+en $x$ e $y$ respectivamente, luego la $xy$-arista cierra un ciclo. De esta manera s\'olo
+nos falta verificar que el ciclo es de longitud impar, para esto veamos que, como $x$ tiene
+el mismo nivel que $y$, entonces para el ancestro com\'un a $x$ e $y$ m\'as lejano de $r$,
+llamemosle $z \in V_G$, tenemos que $d(z,x) = d(z,y)$, esto se sigue de
+\begin{eqnarray*}
+  d(z,x) &=& \ell(x) - \ell(z)\\
+  &=& \ell(y) - \ell(z)\\
+  &=& d(z,y)
+\end{eqnarray*}
+as\'i, $[d(z,x) + d(z,y)] \stackrel{2}{\equiv}0$, y si ha esto le sumamos la $xy$-arista,
+entonces tenemos que
+\[
+[d(z,x) + d(z,y) + |xy|] \stackrel{2}{\equiv}1
+\]
+de lo anterior, hemos encontrado un ciclo impar. El ciclo \underline{While} de la $25$
+termina cuando se llega a un ancestro en com\'un, que en el peor de los casos este ser\'ia
+$r$, as\'i la l\'inea $28$ inserta listas binarias al centro de $L$ y permite tener consistencia
+con el orden del ciclo, finalmente la l\'inea $30$ inserta al ancestro, de $x$ e $y$, com\'un
+m\'as lejano de $r$ a la lista $L$. Por tanto, con $L$ se puede construir un ciclo de
+longitud impar.
+\hfill $\dashv$
+
+Finalmente, observemos que por el teorema enunciado con anterioridad (que fue mostrado en clase),
+$G$ contiene un ciclo impar o una bipartici\'on en $V_G$, pero no ambas. As\'i, por la \textbf{Prop. 1}
+tenemos que el algoritmo \code{OddCycleOrBipartition} devuelve una bipartici\'on cuando no contiene
+un ciclo impar, y por \textbf{Prop.2} tenemos que \code{OddCycleOrBipartition} regresa un ciclo
+impar cuando $G$ no es bipartita.
+
+Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS}
+tiene complejidad contenida en $\mathcal{O}(|E| + |V|)$, por tanto el
+algoritmo \code{OddCycleOrBipartition} tiene complejidad en
+\[
+\mathcal{O}(|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)
+\]
+esto por la anexi\'on de la instrucci\'on iterativa \underline{While} de
+la l\'inea $25$, pues todas las dem\'as alteraciones a \textbf{BFS} se
+realizan en un tiempo constante.
 \hfill $\square$
+\newpage
 \begin{enumerate}
-  \newpage
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03
 \item[$3$.] Describa un algoritmo basado en BFS para encontrar el ciclo impar m\'as
   corto en una gr\'afica.
+  
+  \textbf{\textit{Soluci\'on:}} A continuaci\'on se muestra una propuesta para el algoritmo solicitado:
   \end{enumerate}
 \begin{algorithm}[H]
   \SetAlgorithmName{}{}%OptimalOddCycle}{}
@@ -252,11 +325,11 @@
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
   \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
 
-  \KwIn{Una gráfica conexa $G$ con un v\'ertice distingido $r$.}
+  \KwIn{Una gráfica conexa $G$, que contenga al menos un ciclo impar, con un v\'ertice distingido $r$.}
   \KwOut{Una lista que contenga al ciclo impar m\'as corto.}
   \BlankLine {
     $Q \gets$ \code{[]}; $i \gets 0$\;
-    $L \gets$ \code{[]}\;
+    $L_1, L_2 \gets$ \code{[]}\;
     $i \gets i + 1$\;
 
     colorear a \code{r} de negro\;
@@ -274,27 +347,81 @@
           
           \If{\textnormal{$x$ tiene un vecino $y$ coloreado \small{\&}
               \normalsize$\ell(x) = \ell(y)$}}{
-            $L \gets$ \code{[x,y,x]}\;
+            $L_1 \gets$ \code{[x,y,x]}\;
             \code{temp} $\gets$ \code{[]}\;
             
             \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
               $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
               \code{temp} $\gets$ \code{[$x, y$]}\;
-              insertar \code{temp} entre la primer $x$ y $y$ en $L$\;
+              insertar \code{temp} entre los $x$ e $y$ m\'as centrales en $L_1$\;
             }
-            
-            insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L$\;
-            {\Return L\;}
+             insertar $\mathcal{P}(x)$  entre los $x$ e $y$ m\'as centrales en $L_1$\;
+            \uIf{\textnormal{$|L_2| =$ \code{[]}}}{
+              $L_2 \gets L_1$\;
+            } \ElseIf{$|L_1|<|L_2|$}{
+              $L_2 \gets L_1$\;
+            }
           }
           
           eliminar $x$ de Q\;
         }
     }
     
-  } {\Return $L$\;}
+  } {\Return $L_2$\;}
   \caption{OptimalOddCycle$(<G,r>;L/C)$} \label{OptimalOddCycle}
   \DecMargin{1em}
 \end{algorithm}
+
+Para este ejercicio emplearemos la estructura de datos listas, pues se puede insertar
+en alguna posici\'on de la lista en tiempo constante.
+
+\textbf{Prop.} [Invariante de ciclo]. La lista devuelta por el algoritmo
+\code{OddCycleOrBipartition} es un ciclo impar de longitud m\'as pequeña
+en comparaci\'on con todos los posibles ciclos impares en $G$.
+
+\textbf{Dem.} Por \textbf{Prop. 2} en el ejercicio $2$ (pues se siguen las
+mismas l\'ineas) sabemos que nuestro algoritmo ya devuelve un ciclo de
+longitud impar, falta mostrar que este es de longitud m\'as corta.
+
+As\'i, analicemos el \underline{If} de la l\'inea $24$, podemos notar que
+cuando se itera el algoritmo \code{OptimalOddCycle} y se encuentra por $1$era
+vez un ciclo de longitud impar, tenemos que $L_1 = L_2$, y tanto $L_1$ como
+$L_2$ son la reprecentaci\'on de ciclos de longitud impar.
+
+En iteraciones posteriores a la $1$era, ya no se entrar\'a  la l\'inea $24$,
+en cambio se seguir\'a directamente la instrucci\'on de la l\'inea $26$, luego
+$L_1$ y $L_2$ son la representaci\'on de ciclos de longitud impar, no necesariamente
+distintos, as\'i:
+\begin{itemize}
+\item[$\cdot$)] Si $|L_1|<|L_2|$, entonces $L_2$ no es el ciclo de longitud impar
+  m\'as corto, por la l\'inea $27$, $L_2$ representar\'a un ciclo impar de longitud
+  menor al que anteriormente representaba.
+\item[$\cdot$)] En otro caso, $L_2$ es el m\'as corto, pues $L_1$ es de mayor
+  longitud, o bien, ambos son de la misma longitud y nos quedamos con el que
+  ya teniamos.
+\end{itemize}
+cuando el algoritmo termine $L_2$ contendr\'a la representaci\'on de un ciclo impar
+con menor longitud comparado con los posibles ciclos impares en $G$.
+\hfill $\dashv$
+
+Usando la proposici\'on anterior, tenemos que $L_2$ es el ciclo impar de menor longitud en
+$G$, por tanto el algoritmo \code{OptimalOddCycle} hace lo que se pide.
+
+Para terminar de mostrar la correctez del algoritmo \code{OptimalOddCycle}, veamos que
+este termina. Para esto analicemos el \underline{While} de la l\'inea $18$, que como ya
+vimos en el ejercicio $2$, termina en un tiempo finito de iteraciones, por tanto
+nuestro algoritmo termina, pues las dem\'as instrucciones que alteran a \textbf{BFS}
+son instrucciones no iterativas.
+
+Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS}
+tiene complejidad contenida en $\mathcal{O}(|E| + |V|)$, por tanto el
+algoritmo \code{OptimalOddCycle} tiene complejidad en
+\[
+\mathcal{O}(|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)
+\]
+esto por la anexi\'on de la instrucci\'on iterativa \underline{While} de
+la l\'inea $18$, pues todas las dem\'as alteraciones a \textbf{BFS} se
+realizan en un tiempo constante.
 \hfill $\square$
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 04
@@ -308,36 +435,6 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05
 \item[$5$.] Describa un algoritmo para encontrar un bosque generador en una
   gr\'afica arbitraria (no necesariamente conexa).
-
-  Para encontrar un bosque generador en una gráfica $G$, llamaremos BFS a cada componente conexa de $G$ (en caso que $G$, sea inconexa).\\
-  
-  \begin{algorithm}[H]
-      \textbf{Input:} \\
-      \textbf{Output:} 
-      
-      $F \leftarrow \O$  (1)
-      
-      $P \leftarrow \O$  (2)
-      
-      \For{v en $V_{G}$}{
-        \If{v no está coloreado}{
-            encolar en P la función $p$ que nos regresa $BFS(G,r)$
-        }
-      }
-     \For{p en P}{
-        añadir $p$ a F  (3)
-     } 
-     \Return{F}
-      \caption{BosqueGenerador}
-  \end{algorithm}
-
-  Comentarios:
-
-  (1) Será la collecion de árboles de G
-
-  (2) Collecion de funciones de parentesco
-
-  (3) Nos servirá para obtener el árbol o árboles generados en la colleción
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 06
 \item[$6$.] Una {\em gr\'afica de Moore de di\'ametro $d$} es una gr\'afica
