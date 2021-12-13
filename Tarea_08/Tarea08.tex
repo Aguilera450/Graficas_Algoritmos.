@@ -103,12 +103,12 @@
         %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inciso (b)
   \item $e$ no est\'a en \'arbol generador alguno de $G$ si y s\'olo si $e$ es un lazo.
   \end{enumerate}
-  
+
   \newpage
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 02
 \item Modifique el algoritmo BFS para que regrese una bipartici\'on de la
   gr\'afica (si la gr\'afica es bipartita) o un ciclo impar (si la gr\'afica no es bipartita).
-  
+
   \textbf{\textit{Soluci\'on:}} Para este ejercicio, emplearemos las siguientes estructuras
   de datos:
   \begin{itemize}
@@ -120,7 +120,7 @@
     para preservar, en la medida de lo posible, el concepto de parte de una bipartici\'on
     y aun m\'as porque, en este caso, necesitamos una bipartici\'on de v\'ertices.
   \end{itemize}
-  
+
   \begin{center}
     \fbox{
       \begin{minipage}[b][1\height]%
@@ -129,7 +129,7 @@
         bipartitas. Este resultado se menciona en las notas de clase, adem\'as, esto
         se sigue por la caracterizaci\'on de gr\'aficas bipartitas (demostrado en
         clases), esto es,
-        
+
         \begin{theorem}
           Sea $G$ una gr\'afica. Son equivalentes:
           \begin{enumerate}
@@ -137,7 +137,7 @@
           \item $G$ no contiene ciclos impares.
           \item $G$ no contiene ciclos impares inducidos.
           \end{enumerate}
-          
+
         \end{theorem}
     \end{minipage}}
   \end{center}
@@ -158,14 +158,14 @@
   en $G$ es finita, entonces lo anterior pasa en una cantidad finita
   de iteraciones, por tanto la instrucci\'on iterativa de la l\'inea
   $25$ termina.
-    
+
   Para terminar de mostrar la correctez del algoritmo sólo falta ver que
   realmente hace lo que se pide, as\'i propongamos dos invariantes de ciclo:
-  
+
   \textbf{Prop. 1:} [Invariante de ciclo, caso bipartita]. El conjunto
   devuelto por el algoritmo \code{OddCycleOrBipartition}, cuando $G$
-  no contenga ciclos impares, es una bipartici\'on de $V_G$.  
-  
+  no contenga ciclos impares, es una bipartici\'on de $V_G$.
+
   \textbf{Dem.}   Para esto veamos que:
   \begin{itemize}
   \item[$\cdot$)] $X\cup Y = V_G$. Por la l\'inea $5$, tenemos que el
@@ -178,7 +178,7 @@
     inmediato (no necesariamente $r$) est\'a coloreado. Luego, todos
     los v\'ertices de $G$ son coloreados (esto por la demostraci\'on de
     \textbf{BFS}) e introducidos en $X$ o $Y$, as\'i $X\cup Y = V_G$.
-    
+
   \item[$\cdot$)] $X\cap Y = \emptyset$. Observemos que $r$ es coloreado
     de negro, as\'i los hijos de $r$ son coloreados de blanco. Luego,
     para alg\'un v\'ertice $x$ distinto de $r$ se tiene que si $x$ est\'a
@@ -196,7 +196,7 @@
     z \in V_G : z \in X \land z \in Y
     \]
     y concluimos que $X\cap Y = \emptyset$.
-    
+
   \end{itemize}
   \hfill $\dashv$
 \end{enumerate}
@@ -219,9 +219,9 @@
     colorear a \code{r} de negro\;
     añadir a \code{r} al final de $Q$\;
     $t(r) \gets i, \mathcal{P}(r) \gets \emptyset, \ell(r) \gets 0$\;
-    
+
     \While{$Q \not=$ \textnormal{\code{[]}}}{
-      
+
       elegir a la cabeza $x$ de $Q$\;
 
       \uIf{\textnormal{$x$ tiene un vecino $y$ sin colorear}}{
@@ -233,7 +233,7 @@
           \code{X} $\gets y$\;
           colorear a $y$ de negro\;
         }
-        
+
         añadir $y$ al final de $Q$\;
         $t(r) \gets i, \mathcal{P}(y) \gets x, \ell(y) \gets \ell(x) + 1$\;
       } \Else{
@@ -242,21 +242,21 @@
             \normalsize$\ell(x) = \ell(y)$}}{
           $L \gets$ \code{[x,y,x]}\;
           \code{temp} $\gets$ \code{[]}\;
-          
+
           \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
             $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
             \code{temp} $\gets$ \code{[$x, y$]}\;
             insertar \code{temp} entre los $x$ e $y$ m\'as centrales en $L$\;
           }
-          
+
           insertar $\mathcal{P}(x)$ entre los $x$ e $y$ m\'as centrales en $L$\;
           {\Return L\;}
         }
-        
+
         eliminar $x$ de Q\;
       }
     }
-    
+
     $C \gets$ \code{[X, Y]}\;
   } {\Return $C$\;}
   \caption{OddCycleOrBipartition$(<G,r>;L/C)$} \label{OddCycleOrBipartition}
@@ -315,7 +315,7 @@ realizan en un tiempo constante.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03
 \item[$3$.] Describa un algoritmo basado en BFS para encontrar el ciclo impar m\'as
   corto en una gr\'afica.
-  
+
   \textbf{\textit{Soluci\'on:}} A continuaci\'on se muestra una propuesta para el algoritmo solicitado:
   \end{enumerate}
 \begin{algorithm}[H]
@@ -335,7 +335,7 @@ realizan en un tiempo constante.
     colorear a \code{r} de negro\;
     añadir a \code{r} al final de $Q$\;
     $t(r) \gets i, \mathcal{P}(r) \gets \emptyset, \ell(r) \gets 0$\;
-    
+
     \While{$Q \not=$ \textnormal{\code{[]}}}{
         \uIf{\textnormal{$x$ tiene un vecino $y$ sin colorear}}{
           $i \gets i + 1$\;
@@ -344,12 +344,12 @@ realizan en un tiempo constante.
           añadir $y$ al final de $Q$\;
           $t(r) \gets i, \mathcal{P}(y) \gets x, \ell(y) \gets \ell(x) + 1$\;
         } \Else{
-          
+
           \If{\textnormal{$x$ tiene un vecino $y$ coloreado \small{\&}
               \normalsize$\ell(x) = \ell(y)$}}{
             $L_1 \gets$ \code{[x,y,x]}\;
             \code{temp} $\gets$ \code{[]}\;
-            
+
             \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
               $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
               \code{temp} $\gets$ \code{[$x, y$]}\;
@@ -362,11 +362,11 @@ realizan en un tiempo constante.
               $L_2 \gets L_1$\;
             }
           }
-          
+
           eliminar $x$ de Q\;
         }
     }
-    
+
   } {\Return $L_2$\;}
   \caption{OptimalOddCycle$(<G,r>;L/C)$} \label{OptimalOddCycle}
   \DecMargin{1em}
@@ -431,11 +431,44 @@ realizan en un tiempo constante.
   si $u, v \in V_{B_C (G)}$, entonces $uv \in E_{B_C (G)}$ si y s\'olo si
   $u \in B$, $v \in C$ y $v$ es un v\'ertice de $u$.   Demuestre que
   $B_C (G)$ es un \'arbol.
-  
+
+  \begin{proof}
+    Probaremos que $B_{C}(G)$ es un árbol. \\
+    Para esto, tomaremos los siguientes casos:
+    \begin{itemize}
+      \item Si dos bloques de $G$ son adyacentes.
+
+        Sean $B_{1}, B_{2} \in B$.
+
+        Si $B_{1}$ es adyacente a $B_{2}$, entonces tenemos que existe una arista $e$ tal que:
+        $$e = (u, v)$$
+        , donde $u \in V_{B_{1}}$ y $v \in V_{B_{2}}$.
+
+        Ahora sabemos que por definición de $B_{C}(G)$, existe un vértice $w$ tal que $w \in V_{B_{1}}$ y $w \in V_{B_{2}}$.
+
+        Por lo anterior, tenemos un ciclo entre los vértices $u$, $v$ y $w$. Esto implica que $B_{C}(C)$ no es un árbol, ya que un árbol es conexo y acíclico.
+
+        Por lo tanto, $B_{1}$ y $B_{2}$ no pueden ser adyacentes. \\
+
+      \item Si dos vértices de corte son adyacentes.
+
+        Sea $B_{1} \in B$ y sean $c_{1}$, $c_{2} \in C$ tales que:
+        $$c_{1} \in V_{B_{1}} \text{ y } c_{2} \in V_{B_{1}}$$
+
+        Si $c_{1}$ es adyacente a $c_{2}$, entonces tenemos existe una arista $e$ tal que:
+        $$e = (c_{1}, c_{2})$$
+        Por lo anterior, para cualquier vértice $w \in V_{B_{1}}$ tenemos que existe un ciclo entre $c_{1}$, $c_{2}$ y $w$.
+
+        Esto implica que $B_{C}(C)$ no es un árbol, ya que un árbol es conexo y acíclico.
+
+        Por lo tanto, $c_{1}$ y $c_{2}$ no pueden ser adyacentes.
+    \end{itemize}
+  \end{proof}
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 05
 \item[$5$.] Describa un algoritmo para encontrar un bosque generador en una
   gr\'afica arbitraria (no necesariamente conexa).
-  
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 06
 \item[$6$.] Una {\em gr\'afica de Moore de di\'ametro $d$} es una gr\'afica
   regular de di\'ametro $d$ y cuello $2d+1$.   Demuestre que si $G$ es
@@ -451,13 +484,13 @@ realizan en un tiempo constante.
   trayectoria hamiltoniana (con la ra\'iz en uno de los extremos).   Demuestre
   que $G$ es un ciclo, una gr\'afica completa, o una gr\'afica bipartita completa
   en la que ambas partes tienen el mismo n\'umero de v\'ertices.
-  
+
   %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Extra 02
 \item Modifique BFS para que sea recursivo en lugar de iterativo.
-  
+
   %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Extra 03
 \item Modifique DFS para que sea recursivo en lugar de iterativo.
-  
+
   %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Extra 04
 \item Modifique al algoritmo BFS para que:
   \begin{enumerate}
