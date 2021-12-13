@@ -109,7 +109,8 @@
 \item Modifique el algoritmo BFS para que regrese una bipartici\'on de la
   gr\'afica (si la gr\'afica es bipartita) o un ciclo impar (si la gr\'afica no es bipartita).
   
-  \textbf{\textit{Soluci\'on:}} Para este ejercicio, emplearemos las siguientes estructuras de datos:
+  \textbf{\textit{Soluci\'on:}} Para este ejercicio, emplearemos las siguientes estructuras
+  de datos:
   \begin{itemize}
   \item[$\cdot$)] Colas: Estas fungen de la misma manera que originalmente en \textbf{BFS}.
   \item[$\cdot$)] Listas: Estas nos servir\'an para insertas listas binarias en un tiempo
@@ -140,26 +141,64 @@
         \end{theorem}
     \end{minipage}}
   \end{center}
-  En esta ocasi\'on, empecemos mostrando que el algoritmo termina. Para esto s\'olo nos
-  debemos fijar en el \underline{While} de  la l\'inea $25$\footnote{El an\'alisis del
-    resto del algoritmo se realizo en clase y las modificaciones incluidas no alteran las
-    condiciones iniciales de \textbf{BFS}.}. N\'otese que $x$ e $y$ no son el nodo  ra\'iz,
-  as\'i $x$ e $y$ son descendientes de $r$, por lo que ocasionalmente
-  $\mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(x))) = r = \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(y)))$\footnote{En
-  otro caso, $x$ e $y$ tienen un ancestro comu\'un distinto de $r$ y se cumple la misma condici\'on.},
-  como la cantidad de v\'ertices en $G$ es finita, entonces lo anterior pasa en una cantidad
-  finita de iteraciones, por tanto la instrucci\'on iterativa de la l\'inea $25$ termina.
+  En esta ocasi\'on, empecemos mostrando que el algoritmo termina.
+  Para esto s\'olo nos debemos fijar en el \underline{While} de  la
+  l\'inea $25$\footnote{El an\'alisis del resto del algoritmo se
+    realizo en clase y las modificaciones incluidas no alteran las
+    condiciones iniciales de \textbf{BFS}.}. N\'otese que $x$ e $y$
+  no son el nodo  ra\'iz, as\'i $x$ e $y$ son descendientes de $r$,
+  por lo que ocasionalmente $\mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}
+  (x))) = r = \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(y)))$\footnote{En
+    otro caso, $x$ e $y$ tienen un ancestro comu\'un distinto de $r$
+    y se cumple la misma condici\'on.}, como la cantidad de v\'ertices
+  en $G$ es finita, entonces lo anterior pasa en una cantidad finita
+  de iteraciones, por tanto la instrucci\'on iterativa de la l\'inea
+  $25$ termina.
   
-  Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS} tiene complejidad contenida
-  en $\mathcal{O}(|E| + |V|)$, por tanto el algoritmo \code{OddCycleOrBipartition} tiene complejidad
-  en $\mathcal{O}(|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)$, esto por la anexi\'on de la instrucci\'on
-  iterativa \underline{While} de la l\'inea $25$, pues todas las dem\'as alteraciones a \textbf{BFS} se realizan
-  en un tiempo constante.
+  Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS}
+  tiene complejidad contenida en $\mathcal{O}(|E| + |V|)$, por tanto el
+  algoritmo \code{OddCycleOrBipartition} tiene complejidad en $\mathcal{O}
+  (|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)$, esto por la anexi\'on
+  de la instrucci\'on iterativa \underline{While} de la l\'inea $25$, pues
+  todas las dem\'as alteraciones a \textbf{BFS} se realizan en un tiempo constante.
   
-  \textbf{Prop.}
+  Para terminar de mostrar la correctez del algoritmo sólo falta ver que
+  realmente hace lo que se pide, as\'i propongamos dos invariantes de ciclo:
+  
+  \textbf{Prop. 1:} [Invariante de ciclo, caso bipartita]. El conjunto
+  devuelto por el algoritmo \code{OddCycleOrBipartition}, cuando $G$
+  no contenga ciclos impares, es una bipartici\'on de $V_G$.  
+  
+  \textbf{Dem.}   Para esto veamos que:
+  \begin{itemize}
+  \item[$\cdot$)] $X\cup Y = V_G$. Por la l\'inea $5$, tenemos que el
+    v\'ertice ra\'iz (que es el primero en entrar a la cola) se pinta
+    de negro, por tanto sus hijos tienen un padre coloreado (y en concecuencia,
+    estos ser\'an coloreados de blanco), luego por el \code{IF/ELSE}
+    de la l\'inea $12$, el resto de los v\'ertices se pintan de negro
+    o blanco, como todo el resto de v\'ertices es descendiente de $r$,
+    entonces todos estos tienen un padre coloreado, pues su ancestro
+    inmediato (no necesariamente $r$) est\'a coloreado. Luego, todos
+    los v\'ertices de $G$ son coloreados (esto por la demostraci\'on de
+    \textbf{BFS}) e introducidos en $X$ o $Y$, as\'i $X\cup Y = V_G$.
+    
+  \item[$\cdot$)] $X\cap Y = \emptyset$. Observemos que $r$ es coloreado
+    de negro, as\'i los hijos de $r$ son coloreados de blanco. Luego,
+    para alg\'un v\'ertice $x$ distinto de $r$ se tiene que si $x$ est\'a
+    coloreado de negro, entonces sus hijos ser\'an coloreados de blanco
+    (an\'alogo el caso cuando $x$ es de color blanco). Si suponemos que
+    existe un $z \in V_G : z \in X \land z \in Y$, entonces $z$ debe tener
+    $2$ padres distintos (uno de color negro y otro blanco), pero esto
+    contradice a la funci\'on de parentezco, que como vimos cuando se
+    mostr\'o \textbf{BFS}, a cada v\'ertice le asocia un \'unico padre.
+    Por tanto no existe $z \in V_G : z \in X \land z \in Y$ y concluimos
+    que $X\cap Y = \emptyset$.
+    
+  \end{itemize}
+  \hfill $\dashv$
 \end{enumerate}
 \begin{algorithm}[H]
-  \SetAlgorithmName{}{}%BipartitionOrOddCycle}{}
+  \SetAlgorithmName{}{}%OddCycleOrBipartition}{}
   \DontPrintSemicolon
   \SetKwData{False}{false}\SetKwData{True}{true}
   \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
@@ -217,12 +256,19 @@
     
     $C \gets$ \code{[X, Y]}\;
   } {\Return $C$\;}
-  \caption{OddCycleOrBipartition$(<G,r>;L/C)$} \label{BipartitionOrOddCycle}
+  \caption{OddCycleOrBipartition$(<G,r>;L/C)$} \label{OddCycleOrBipartition}
   \DecMargin{1em}
 \end{algorithm}
+\textbf{Prop. 2:} [Invariante de ciclo, en caso de haber ciclo impar]. La lista
+devuelta por el algoritmo \code{OddCycleOrBipartition}, cuando $G$
+no es bipartita, es un ciclo impar.
+
+\textbf{Dem.}
+\hfill $\dashv$
+
 \hfill $\square$
+\newpage
 \begin{enumerate}
-  \newpage
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03
 \item[$3$.] Describa un algoritmo basado en BFS para encontrar el ciclo impar m\'as
   corto en una gr\'afica.
