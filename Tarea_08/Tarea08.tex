@@ -147,21 +147,18 @@
     realizo en clase y las modificaciones incluidas no alteran las
     condiciones iniciales de \textbf{BFS}.}. N\'otese que $x$ e $y$
   no son el nodo  ra\'iz, as\'i $x$ e $y$ son descendientes de $r$,
-  por lo que ocasionalmente $\mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}
-  (x))) = r = \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(y)))$\footnote{En
-    otro caso, $x$ e $y$ tienen un ancestro comu\'un distinto de $r$
-    y se cumple la misma condici\'on.}, como la cantidad de v\'ertices
+  por lo que ocasionalmente
+  \[
+  \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}
+  (x))) = r = \mathcal{P}(\mathcal{P}(\dotsm\mathcal{P}(y)))\text{
+    \footnote{En otro caso, $x$ e $y$ tienen un ancestro comu\'un
+      distinto de $r$ y se cumple la misma condici\'on.}}
+  \]
+  como la cantidad de v\'ertices
   en $G$ es finita, entonces lo anterior pasa en una cantidad finita
   de iteraciones, por tanto la instrucci\'on iterativa de la l\'inea
   $25$ termina.
-  
-  Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS}
-  tiene complejidad contenida en $\mathcal{O}(|E| + |V|)$, por tanto el
-  algoritmo \code{OddCycleOrBipartition} tiene complejidad en $\mathcal{O}
-  (|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)$, esto por la anexi\'on
-  de la instrucci\'on iterativa \underline{While} de la l\'inea $25$, pues
-  todas las dem\'as alteraciones a \textbf{BFS} se realizan en un tiempo constante.
-  
+    
   Para terminar de mostrar la correctez del algoritmo sólo falta ver que
   realmente hace lo que se pide, as\'i propongamos dos invariantes de ciclo:
   
@@ -187,12 +184,18 @@
     para alg\'un v\'ertice $x$ distinto de $r$ se tiene que si $x$ est\'a
     coloreado de negro, entonces sus hijos ser\'an coloreados de blanco
     (an\'alogo el caso cuando $x$ es de color blanco). Si suponemos que
-    existe un $z \in V_G : z \in X \land z \in Y$, entonces $z$ debe tener
-    $2$ padres distintos (uno de color negro y otro blanco), pero esto
-    contradice a la funci\'on de parentezco, que como vimos cuando se
-    mostr\'o \textbf{BFS}, a cada v\'ertice le asocia un \'unico padre.
-    Por tanto no existe $z \in V_G : z \in X \land z \in Y$ y concluimos
-    que $X\cap Y = \emptyset$.
+    existe
+    \[
+    z \in V_G : z \in X \land z \in Y
+    \]
+    entonces $z$ debe tener $2$ padres distintos (uno de color negro y
+    otro blanco), pero esto contradice a la funci\'on de parentezco,
+    que como vimos cuando se mostr\'o \textbf{BFS}, a cada v\'ertice
+    le asocia un \'unico padre. Por tanto no existe
+    \[
+    z \in V_G : z \in X \land z \in Y
+    \]
+    y concluimos que $X\cap Y = \emptyset$.
     
   \end{itemize}
   \hfill $\dashv$
@@ -290,6 +293,22 @@ con el orden del ciclo, finalmente la l\'inea $30$ inserta al ancestro, de $x$ e
 m\'as lejano de $r$ a la lista $L$. Por tanto, con $L$ se puede construir un ciclo de
 longitud impar.
 \hfill $\dashv$
+
+Finalmente, observemos que por el teorema enunciado con anterioridad (que fue mostrado en clase),
+$G$ contiene un ciclo impar o una bipartici\'on en $V_G$, pero no ambas. As\'i, por la \textbf{Prop. 1}
+tenemos que el algoritmo \code{OddCycleOrBipartition} devuelve una bipartici\'on cuando no contiene
+un ciclo impar, y por \textbf{Prop.2} tenemos que \code{OddCycleOrBipartition} regresa un ciclo
+impar cuando $G$ no es bipartita.
+
+Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS}
+tiene complejidad contenida en $\mathcal{O}(|E| + |V|)$, por tanto el
+algoritmo \code{OddCycleOrBipartition} tiene complejidad en
+\[
+\mathcal{O}(|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)
+\]
+esto por la anexi\'on de la instrucci\'on iterativa \underline{While} de
+la l\'inea $25$, pues todas las dem\'as alteraciones a \textbf{BFS} se
+realizan en un tiempo constante.
 
 \hfill $\square$
 \newpage
