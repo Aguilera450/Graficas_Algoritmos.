@@ -242,14 +242,14 @@
             \normalsize$\ell(x) = \ell(y)$}}{
           $L \gets$ \code{[x,y,x]}\;
           \code{temp} $\gets$ \code{[]}\;
-
+          
           \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
             $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
             \code{temp} $\gets$ \code{[$x, y$]}\;
-            insertar \code{temp} entre la primer $x$ y $y$ en $L$\;
+            insertar \code{temp} entre los $x$ e $y$ m\'as centrales en $L$\;
           }
           
-          insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L$\;
+          insertar $\mathcal{P}(x)$ entre los $x$ e $y$ m\'as centrales en $L$\;
           {\Return L\;}
         }
         
@@ -309,13 +309,14 @@ algoritmo \code{OddCycleOrBipartition} tiene complejidad en
 esto por la anexi\'on de la instrucci\'on iterativa \underline{While} de
 la l\'inea $25$, pues todas las dem\'as alteraciones a \textbf{BFS} se
 realizan en un tiempo constante.
-
 \hfill $\square$
 \newpage
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 03
 \item[$3$.] Describa un algoritmo basado en BFS para encontrar el ciclo impar m\'as
   corto en una gr\'afica.
+  
+  \textbf{\textit{Soluci\'on:}} A continuaci\'on se muestra una propuesta para el algoritmo solicitado:
   \end{enumerate}
 \begin{algorithm}[H]
   \SetAlgorithmName{}{}%OptimalOddCycle}{}
@@ -352,11 +353,9 @@ realizan en un tiempo constante.
             \While{$\mathcal{P}(x) \not= \mathcal{P}(y)$}{
               $x \gets \mathcal{P}(x)$; $y \gets \mathcal{P}(y)$\;
               \code{temp} $\gets$ \code{[$x, y$]}\;
-              insertar \code{temp} entre la primer $x$ y $y$ en $L_1$\;
+              insertar \code{temp} entre los $x$ e $y$ m\'as centrales en $L_1$\;
             }
-            
-            insertar $\mathcal{P}(x)$ entre la primer $x$ y $y$ en $L_1$\;
-            %%{\Return $L_1$\;}
+             insertar $\mathcal{P}(x)$  entre los $x$ e $y$ m\'as centrales en $L_1$\;
             \uIf{\textnormal{$|L_2| =$ \code{[]}}}{
               $L_2 \gets L_1$\;
             } \ElseIf{$|L_1|<|L_2|$}{
@@ -372,6 +371,57 @@ realizan en un tiempo constante.
   \caption{OptimalOddCycle$(<G,r>;L/C)$} \label{OptimalOddCycle}
   \DecMargin{1em}
 \end{algorithm}
+
+Para este ejercicio emplearemos la estructura de datos listas, pues se puede insertar
+en alguna posici\'on de la lista en tiempo constante.
+
+\textbf{Prop.} [Invariante de ciclo]. La lista devuelta por el algoritmo
+\code{OddCycleOrBipartition} es un ciclo impar de longitud m\'as pequeña
+en comparaci\'on con todos los posibles ciclos impares en $G$.
+
+\textbf{Dem.} Por \textbf{Prop. 2} en el ejercicio $2$ (pues se siguen las
+mismas l\'ineas) sabemos que nuestro algoritmo ya devuelve un ciclo de
+longitud impar, falta mostrar que este es de longitud m\'as corta.
+
+As\'i, analicemos el \underline{If} de la l\'inea $24$, podemos notar que
+cuando se itera el algoritmo \code{OptimalOddCycle} y se encuentra por $1$era
+vez un ciclo de longitud impar, tenemos que $L_1 = L_2$, y tanto $L_1$ como
+$L_2$ son la reprecentaci\'on de ciclos de longitud impar.
+
+En iteraciones posteriores a la $1$era, ya no se entrar\'a  la l\'inea $24$,
+en cambio se seguir\'a directamente la instrucci\'on de la l\'inea $26$, luego
+$L_1$ y $L_2$ son la representaci\'on de ciclos de longitud impar, no necesariamente
+distintos, as\'i:
+\begin{itemize}
+\item[$\cdot$)] Si $|L_1|<|L_2|$, entonces $L_2$ no es el ciclo de longitud impar
+  m\'as corto, por la l\'inea $27$, $L_2$ representar\'a un ciclo impar de longitud
+  menor al que anteriormente representaba.
+\item[$\cdot$)] En otro caso, $L_2$ es el m\'as corto, pues $L_1$ es de mayor
+  longitud, o bien, ambos son de la misma longitud y nos quedamos con el que
+  ya teniamos.
+\end{itemize}
+cuando el algoritmo termine $L_2$ contendr\'a la representaci\'on de un ciclo impar
+con menor longitud comparado con los posibles ciclos impares en $G$.
+\hfill $\dashv$
+
+Usando la proposici\'on anterior, tenemos que $L_2$ es el ciclo impar de menor longitud en
+$G$, por tanto el algoritmo \code{OptimalOddCycle} hace lo que se pide.
+
+Para terminar de mostrar la correctez del algoritmo \code{OptimalOddCycle}, veamos que
+este termina. Para esto analicemos el \underline{While} de la l\'inea $18$, que como ya
+vimos en el ejercicio $2$, termina en un tiempo finito de iteraciones, por tanto
+nuestro algoritmo termina, pues las dem\'as instrucciones que alteran a \textbf{BFS}
+son instrucciones no iterativas.
+
+Ahora, analicemos la complejidad del algoritmo. Sabemos que \textbf{BFS}
+tiene complejidad contenida en $\mathcal{O}(|E| + |V|)$, por tanto el
+algoritmo \code{OptimalOddCycle} tiene complejidad en
+\[
+\mathcal{O}(|E|\cdot|V| + |V|^2) \approx \mathcal{O}(|V|^2)
+\]
+esto por la anexi\'on de la instrucci\'on iterativa \underline{While} de
+la l\'inea $18$, pues todas las dem\'as alteraciones a \textbf{BFS} se
+realizan en un tiempo constante.
 \hfill $\square$
 \begin{enumerate}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ejercicio 04
