@@ -47,9 +47,11 @@ la Facultad de Ciencias de la UNAM.
    * Gráficas hamiltonianas.
 5. Algoritmos de busqueda en árboles.
    * Búsqueda en gráficas.
+     * BFS.
+     * DFS.
    * Árboles de peso mínimo.
-   * BFS.
-   * DFS.
+     * Jarnik-Prim.
+     * Borůvka-Kruskal.
 6. Flujos en redes.
    * Apareamientos.
      * Apareamientos en gráficas bipartitas.
