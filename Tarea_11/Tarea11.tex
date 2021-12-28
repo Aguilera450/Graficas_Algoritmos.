@@ -1,0 +1,163 @@
+\documentclass{article}
+
+% Symbols
+\usepackage{amsfonts, amsthm}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{amssymb, latexsym, amsmath}
+
+%Algorithms
+\usepackage[ruled,lined,linesnumbered,commentsnumbered]{algorithm2e}
+
+%% Identación
+\setlength{\parindent}{0cm}
+
+% Código
+\newcommand{\code}[1]{\textcolor{white!25!black}{\texttt{#1}}}
+\usepackage{listings}
+
+%AMS
+\usepackage{amsthm}
+\newtheorem{algo-thm}{Algoritmo}
+
+% Proof
+\renewcommand*{\proofname}{\textbf{Demostraci\'on:}}
+% Theorem
+\newtheorem*{theorem}{Teorema}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{pgf}
+
+% Color a letras.
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Tikz
+\usepackage{tkz-graph}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+%\usetikzlibrary[topaths]
+
+% Def. Dr. César.
+\usetikzlibrary{shapes,calc}
+\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.1pt]
+\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.5pt, blue]
+\tikzstyle{blackV}=[circle, fill=black, minimum size=6pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{blueV}=[circle, fill=blue, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redV}=[circle, fill=red, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redSV}=[semicircle, fill=red, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blueSV}=[semicircle, fill=blue, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blackSV}=[semicircle, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{vertex}=[circle, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+
+% Margins
+\addtolength{\voffset}{-1.5cm}
+\addtolength{\hoffset}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\textheight}{3cm}
+
+%Header-Footer
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{1pt}
+
+\newcommand{\set}[1]{
+  \left\{ #1 \right\}
+}
+
+%\pagenumbering{gobble} -- Este comando
+%                       -- quita el número de página.
+\footskip = 50pt
+\renewcommand{\headrulewidth}{1pt}
+
+\pagestyle{fancyplain}
+
+\begin{document}
+\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+\author{Autores:
+  \\ Fernanda Villaf\'an Flores
+  \\ Fernando Alvarado Palacios
+  \\ Adri\'an Aguilera Moreno}
+\date{}
+\maketitle
+\begin{center}
+  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+  \Large
+  \bf{Gr\'aficas y Juegos}
+  \normalsize
+\end{center}
+\newpage
+\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\LARGE{Tarea 11}}
+\begin{enumerate}
+\item Sea $D$ una digr\'afica con una funci\'on $f\colon A \to \mathbb{R}$.
+  Demuestre que
+  \begin{enumerate}
+  \item $\sum \{ f^+(v) \colon\  v \in V \} = \sum \{ f^-(v) \colon\ v \in V
+    \}$,
+
+  \item si $f$ es un $(x,y)$-flujo, el flujo neto $f^+(x) - f^-(x)$ que sale
+    de $x$ es igual al flujo neto $f^-(y) - f^+(y)$ que entra a $y$.
+  \end{enumerate}
+
+\item \begin{enumerate}
+\item Demuestre que, para cualquier flujo $f$ en una red $N$ y cualquier
+  conjunto $X \subseteq V$, $$\sum_{v \in X} (f^+(v) - f^-(v)) = f^+(X) -
+  f^-(X).$$
+
+\item D\'e un ejemplo de un flujo $f$ en una red tal que $\sum_{v \in X}
+  f^+(v) \ne f^+(X)$ y $\sum_{v \in X} f^-(v) \ne f^-(X)$.
+\end{enumerate}
+
+\item Sea $N(X,Y)$ con conjunto de fuentes $X = \{ x_i \}_{i = 1}^k$ y
+  conjunto de sumideros $Y = \{ y_j \}_{j = 1}^\ell$. Construya una nueva red
+  $N'(x,y)$ de la siguiente forma.
+  \begin{itemize}
+  \item Agregue dos nuevos v\'ertices $x$ y $y$.
+
+  \item Para cada $i \in \{ 1, \dots, k \}$, una a $x$ con $x_i$ con una
+    flecha de capacidad $c^+ (x_i)$.
+
+  \item Para cada $j \in \{ 1, \dots, \ell \}$, una a $y_j$ con $y$ con una
+    flecha de capacidad $c^- (y_j)$.
+  \end{itemize}
+  Para cualquier flujo $f$ en $N$, considere la funci\'on $f'$ definida sobre
+  $N'$ como:
+  \[f'(a) = \left\{
+  \begin{array}{ll}
+    f(a) & \textnormal{si } a \textnormal{ es una flecha de } N \\
+    f^+(v) & \textnormal{si } a = (x,v) \\
+    f^-(v) & \textnormal{si } a = (v,y).
+  \end{array}
+  \right.\]
+  \begin{enumerate}
+  \item Demuestre que $f'$ es un flujo en $N'$ con el mismo valor que $f$.
+
+  \item Demuestre, rec\'iprocamente, que la restricci\'on de un flujo en
+    $N'$ al conjunto de flechas de $N$ es un flujo en $N$ del mismo valor.
+  \end{enumerate}
+
+\item Sea $N(x,y)$ una red que no contenga $xy$-trayectorias dirigidas.
+  Demuestre, sin utilizar el teorema del Flujo M\'aximo-Corte M\'inimo, que el
+  valor de un flujo m\'aximo, y la capacidad de un corte m\'inimo en $N$ son
+  ambos cero.
+
+\item Sea $N$ una red con un flujo $f$.   Demuestre que si $P$ es una
+  trayectoria $f$-incrementable con $\varepsilon (P) = \varepsilon$, entonces
+  la funci\'on dada por \[
+  f'(a) = \left\{
+  \begin{array}{ll}
+    f(a) + \varepsilon & \textnormal{si } a \in A_P \text{ y } \to \\
+    f(a) - \varepsilon & \textnormal{si } a \in A_P \text{ y }
+    \leftarrow \\
+    f(a) & \textnormal{si } a \notin A_P.
+  \end{array}
+  \right.\]
+  es un flujo con valor estrictamente mayor que $f$.
+
+\end{enumerate}
+
+\end{document}

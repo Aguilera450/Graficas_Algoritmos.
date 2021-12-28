@@ -1,0 +1,145 @@
+\documentclass{article}
+
+% Symbols
+\usepackage{amsfonts, amsthm}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{amssymb, latexsym, amsmath}
+
+%Algorithms
+\usepackage[ruled,lined,linesnumbered,commentsnumbered]{algorithm2e}
+
+%% Identación
+\setlength{\parindent}{0cm}
+
+% Código
+\newcommand{\code}[1]{\textcolor{white!25!black}{\texttt{#1}}}
+\usepackage{listings}
+
+%AMS
+\usepackage{amsthm}
+\newtheorem{algo-thm}{Algoritmo}
+
+% Proof
+\renewcommand*{\proofname}{\textbf{Demostraci\'on:}}
+% Theorem
+\newtheorem*{theorem}{Teorema}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{pgf}
+
+% Color a letras.
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Tikz
+\usepackage{tkz-graph}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+%\usetikzlibrary[topaths]
+
+% Def. Dr. César.
+\usetikzlibrary{shapes,calc}
+\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.1pt]
+\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.5pt, blue]
+\tikzstyle{blackV}=[circle, fill=black, minimum size=6pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{blueV}=[circle, fill=blue, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redV}=[circle, fill=red, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redSV}=[semicircle, fill=red, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blueSV}=[semicircle, fill=blue, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blackSV}=[semicircle, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{vertex}=[circle, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+
+% Margins
+\addtolength{\voffset}{-1.5cm}
+\addtolength{\hoffset}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\textheight}{3cm}
+
+%Header-Footer
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{1pt}
+
+\newcommand{\set}[1]{
+  \left\{ #1 \right\}
+}
+
+%\pagenumbering{gobble} -- Este comando
+%                       -- quita el número de página.
+\footskip = 50pt
+\renewcommand{\headrulewidth}{1pt}
+
+\pagestyle{fancyplain}
+
+\begin{document}
+\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+\author{Autores:
+  \\ Fernanda Villaf\'an Flores
+  \\ Fernando Alvarado Palacios
+  \\ Adri\'an Aguilera Moreno}
+\date{}
+\maketitle
+\begin{center}
+  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+  \Large
+  \bf{Gr\'aficas y Juegos}
+  \normalsize
+\end{center}
+\newpage
+\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\LARGE{Tarea 9 y 10}}
+\section*{Puntos Extra}
+\begin{enumerate}
+\item (2 puntos) Sea $G$ una gr\'afica conexa y $e$ una arista de $G$ que
+  no sea un lazo. Exhiba una biyecci\'on entre el conjunto de \'arboles
+  generadores de $G$ que contienen a $e$ y el conjunto de \'arboles
+  generadores de $G / e$.
+
+\item (2 puntos) Sea $T$ un \'arbol de DFS de una gr\'afica conexa no
+  trivial $G$, y sea $v$ la raiz de un bloque $B$ de $G$.   Demuestre
+  que el grado de $v$ en $T \cap B$ es uno.
+
+\item (2 puntos)  Si $f$ es la funci\'on de tiempo de entrada del
+  algoritmo DFS, defina $f^\ast\colon V \to \mathbb{N}$ de la siguiente
+  forma.   Si alg\'un ancestro propio de $v$ puede ser alcanzado desde
+  $v$ mediante una trayectoria dirigida que consista de flechas del
+  \'arbol (posiblemente ninguna) seguida de una flecha que no est\'a en
+  el \'arbol (que va hacia arriba), $f^\ast (v)$ se define como el menor
+  valor de $f$ de un ancestro de este tipo; si no, $f^\ast (v) = f(v)$.
+  Observe que un v\'ertice $v$ es la ra\'iz de un bloque si y s\'olo si
+  tiene un hijo $w$ tal que $f^\ast (w) \ge f(v)$.   Modifique el algoritmo
+  DFS para que regrese los v\'ertices de corte y los bloques de una
+  gr\'afica conexa.
+
+\item (2 puntos) Sea $T$ un \'arbol \'optimo en una gr\'afica conexa
+  ponderada $(G,w)$ (con pesos positivos), y sean $x$ y $y$ v\'ertices
+  adyacentes en $T$. Demuestre que la trayectoria $xTy = xy$ es una
+  $xy$-trayectoria de peso m\'inimo en $G$.
+
+\item (2 puntos) Demuestre que si todos los pesos de una gr\'afica
+  ponderada $G$ son distintos, entonces $G$ tiene un \'unico \'arbol
+  \'optimo.
+
+\item (2 puntos) Modifique el algoritmo de Bor\r uvka-Kruskal para que en cada
+  iteraci\'on v\'ertices en la misma componente del bosque $F$ reciban el
+  mismo color y v\'ertices en componentes distintas reciban colores distintos.
+
+\item (2 puntos) Demuestre que el problema de encontrar un \'arbol generador
+  de peso m\'aximo en una gr\'afica conexa puede resolverse eligiendo
+  iterativamente una arista de peso m\'aximo, con la condici\'on de que la
+  subgr\'afica resultante siga siendo un bosque. (Proponga un algoritmo y
+  demuestre que es correcto.)
+
+\item (2 puntos) Escriba una versi\'on del algoritmo BFS para digr\'aficas.
+  Utilice esta versi\'on de BFS dirigida para describir un algoritmo que
+  encuentre un ciclo dirigido de longitud m\'inima en una digr\'afica.    Su
+  versi\'on dirigida de BFS debe de correr en tiempo $\mathcal{O} (|V| +
+  |E|)$, y el algoritmo para encontrar el ciclo dirigido m\'as corto debe
+  correr en tiempo a lo m\'as $\mathcal{O} (|V|^2 + |V| |E|)$.
+\end{enumerate}
+
+\end{document}
