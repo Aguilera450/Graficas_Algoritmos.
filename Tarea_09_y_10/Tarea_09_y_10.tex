@@ -99,9 +99,47 @@
   generadores de $G$ que contienen a $e$ y el conjunto de \'arboles
   generadores de $G / e$.
 
+
+  \begin{proof} 
+
+    Sea G un conjuntos de arbloes generadores y T$\subset$G tal que e$\in$T y T'$\subset$G tal que T'=G$\setminus$e.
+    
+    Definamos la funcion f: T$\rightarrow$T' tal que si g$\in$T  $\Longrightarrow$ f(g)=g$\setminus$e.
+    
+    
+    Observemos que como g$\in$T (g es un arbol generador) $\Longrightarrow$ f(g) tambien será un arbol generador $\Longrightarrow$ la función f preseva conexidad.
+    
+    Pd) f es inyectiva 
+    
+    Sea $g_1$, $g_2 \Longrightarrow$ si f($g_1$)=f($g_2$) $\Longrightarrow$ el subconjunto A y A' de aristas en G que induce a f($g_1$) y f($g_2$) respectivamente son iguales $\Longrightarrow g_1=A\setminus e=A'\setminus e=g_2 \Longrightarrow g_1=g_2$.
+    
+    Por lo tanto f es inyectiva
+    
+    Pd) f es suprayectiva
+    
+    Sea b$\in$T' $\Longrightarrow$ por definicion b=b$\setminus$e $\Longrightarrow$ sea w un vértice que une a las aristas $a_1$ y $a_2 \Longrightarrow$ "Partimos a w en dos vértices u,v" y en medio de u y v colocamos a e y denostamos a este nuevo árbol como $g_3 \Longrightarrow$ existe $g_3 \in T$ tal que f($g_3$)=b.
+    
+    Por lo tanto f es sobreyectiva.
+    
+    Por lo tanto f es un biyección.
+    
+    \end{proof}
+
 \item (2 puntos) Sea $T$ un \'arbol de DFS de una gr\'afica conexa no
   trivial $G$, y sea $v$ la raiz de un bloque $B$ de $G$.   Demuestre
   que el grado de $v$ en $T \cap B$ es uno.
+
+
+  \begin{proof} 
+    Observemos el caso particualar para $k_2$, este caso siempre se cumple sin importar en que vértice se jecute DFS, nuestro árbol siempre será de tipo $k_2$, donde los dos vértices tendran grado 1.
+    
+    Sea G  una gráfica conexa con al menos 3 vértices y v$\in$V $\Longrightarrow$ ejecutando DFS en v y s.p.g supongamos v es la raiz de algun bloque T de G. $\Longrightarrow$ si w es el primer vecino del mismo bloque de $v$ que visitamos.
+    $A partir de aqui ya no entendi y no se como redactarlo jajajjaja $
+     Como para cualesquiera tres vértices de un bloque de $G$ existe una trayectoria que una a cualesquiera dos de ellos y que no pasa por el tercero, entonces siempre podemos garantizar que el siguiente vértice que visitemos después de $w$ no saldrá de $v$. Además DFS ya no agrega a la pila los vértices previamente visitados. Así, en el árbol DFS de $G$, $G \bigcap T$ sólo tendrá los vértices de $T$ y ahí la raíz tendrá $d(v)=1$ por lo mencionado anteriormente. 
+    
+    
+    \end{proof}
+
 
 \item (2 puntos)  Si $f$ es la funci\'on de tiempo de entrada del
   algoritmo DFS, defina $f^\ast\colon V \to \mathbb{N}$ de la siguiente
@@ -123,6 +161,19 @@
 \item (2 puntos) Demuestre que si todos los pesos de una gr\'afica
   ponderada $G$ son distintos, entonces $G$ tiene un \'unico \'arbol
   \'optimo.
+
+
+  \begin{proof} 
+    (Demostración por reduccion al absurdo)
+    
+    Sea (G,w) una gráfica conexa ponderada, T un árbol optimo y x,y $\in$V(G,W), supongamos que xTy no es una trayectoria optima en (G,w) $\Longrightarrow$ Existe $t_0$ tal que  $t_0$ sea un árbol generador, $t_0$ sea diferente a T $\Longrightarrow$ y la trayectoria optima sea x$t_0$y $\Longrightarrow t_0$ tiene mayor peso que T, ya que la trayectoria xTy es mas pesada    $\Longrightarrow$ que T no es un arbol optimo (Lo que es una contradiccion a nuestra hipotesis).
+    
+    
+    Por lo tanto xTy es una trayectoria optima.
+    
+    
+    \end{proof}
+
 
 \item (2 puntos) Modifique el algoritmo de Bor\r uvka-Kruskal para que en cada
   iteraci\'on v\'ertices en la misma componente del bosque $F$ reciban el
