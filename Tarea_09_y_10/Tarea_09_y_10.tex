@@ -152,7 +152,84 @@
   tiene un hijo $w$ tal que $f^\ast (w) \ge f(v)$.   Modifique el algoritmo
   DFS para que regrese los v\'ertices de corte y los bloques de una
   gr\'afica conexa.
-
+  
+  Primero describiremos un algoritmo que encuentra los vértices de corte de una gráfica.\\
+  
+  \begin{algorithm}[H]
+    \textbf{Input: }Una gráfica $G$, un vértice distinguido $r$ y el tiempo
+    $t$ de entrada de vértice en cuestión. \\
+    \textbf{Output: }Una colección $C$ con los vértices de corte.\\
+    $i \leftarrow t$;\\
+    $i \leftarrow i+1$;\\
+    $C \leftarrow []$;\\
+    $f(r) \leftarrow i$, $f^{*}(r) \leftarrow f(r)$\\
+    \While{$r$ \textnormal{tenga vecinos}}{
+      Sea $v$ un vecino de $r$.\\
+      \If{$v$ \textnormal{no está visitado}}{
+        $p(v) \leftarrow r$\\
+        $C \leftarrow$ DFS-CutVertex($G$, $v$, $i$);\\
+        \If{$r$ \textnormal{no tiene padre, y tiene mas de dos hijos}}{
+          añadir $r$ a la colección $C$;\\
+        }\Else{
+          $f^{*}(r) \leftarrow min(f^*(r), f^*(v));$\\
+          \If{$f^*(v) \geq f(r)$}{
+            añadir $r$ a la colección $C$.\\
+          }
+        }
+      }\ElseIf{$v$ \textnormal{no es el padre de} $r$ y $f(v) \textless f(r)$}{
+        $f^*(r) \leftarrow min(f^*(r), f(v))$\\
+      }
+    }
+    $i \leftarrow i+1$;\\
+    $l(r) \leftarrow i$;\\
+    \Return $C$;
+    \caption{DFS-CutVertex}
+  \end{algorithm}
+  
+  %%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%
+  
+  Nótese que el tiempo $t$ en la primer ejecución es igual a 0, como el código
+  es recursivo, eventualmente nos servirá introducir un nuevo tiempo que corresponda a la entrada del vértice en cuestión a la pila. Una vez teniendo el algoritmo para obtener los vértices de corte de una gráfica, podemos usarlo en un nuevo algoritmo para encontrar tanto los vértices de corte, junto con los bloques en una gráfica $G$ conexa.\\
+  
+  %%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%
+  
+  \begin{algorithm}[H]
+    \textbf{Input:} Una gráfica $G$, un vértice distinguido $r$ y el tiempo
+    $t$ de entrada de vértice en cuestión. \\
+    \textbf{Output:} Una colección $C$ de vértices de corte y un conjunto $B$ de bloques de la gráfica $G$.\\
+    S $\leftarrow$ []; i $\leftarrow t$;\\
+    i $\leftarrow$ i + 1;\\
+    $C \leftarrow []$; $B \leftarrow \emptyset$;\\
+    marcar a $r$ como visitado.\\
+    $f(r) \leftarrow i$, $f^{*}(r) \leftarrow f(r)$;\\
+    
+    \While{$r$ \textnormal{tenga vecinos}}{
+      Sea $v$ un vecino de $r$.\\
+      \If{$v$ \textnormal{no ha sido visitado}}{
+        $p(v) \leftarrow r$;\\
+        metemos a la arista $(r,v)$ a $S$ en el tope;\\
+        $C \leftarrow$ DFS-CutVertex($G$, $v$, $i$);\\
+        $f^*(r) \leftarrow min(f^*(r), f^*(v))$;\\
+        \If{$f^*(v) \geq f(u)$}{
+          Sacamos el tope de la pila y lo insertamos en $S$, tantas veces
+          hasta que saquemos a $(u,v)$ y estás serán las aristas de una 
+          componente $b$ y añadimos $b$ a $B$.\\
+        }
+      }\ElseIf{$v$ \textnormal{no es el padre de} $r$ y $f(v) \textless f(r)$}{
+        Metemos a la arista $(r,v)$ en $S$;\\
+        $f^*(r) \leftarrow min(f^*(r), f(v))$;\\
+      }
+    }
+    $i \leftarrow i+1$;\\
+    $l(r) \leftarrow i$;\\
+    \Return C, B;
+    \caption{DFS-CutVertexBlock.}
+  \end{algorithm}
+  
+  Así obtenemos los vértices de corte y los bloques de una gráfica $G$ conexa.\\
+  
 \item (2 puntos) Sea $T$ un \'arbol \'optimo en una gr\'afica conexa
   ponderada $(G,w)$ (con pesos positivos), y sean $x$ y $y$ v\'ertices
   adyacentes en $T$. Demuestre que la trayectoria $xTy = xy$ es una
@@ -219,7 +296,24 @@
 \item (2 puntos) Modifique el algoritmo de Bor\r uvka-Kruskal para que en cada
   iteraci\'on v\'ertices en la misma componente del bosque $F$ reciban el
   mismo color y v\'ertices en componentes distintas reciban colores distintos.
-
+  
+  A continuación se muestra la modificación del algoritmo de Bor\r uvka-Kruskal:
+  
+  \begin{algorithm}[H]
+    \SetAlgoNoLined
+    \caption{Bor\r uvka-Kruskal-Coloration}
+    \textbf{Input:} $G$ una gráfica ponderada\\
+    \textbf{Output:} Un bosque óptimo $B = (F,V)$ de $G$ donde cada árbol tiene una coloración distinta.\\
+    1. $F \leftarrow \emptyset$, $w(B) \leftarrow \emptyset$, $i \leftarrow 0$;\\
+    2. \For{$v \in V_G$}{
+      3. asignarle $i++$ como color a $v$.
+    } 
+    4. \While{\textnormal{exista una arista} $e \in E-F$ \textnormal{tal que} $F \cup \{e\}$ \textnormal{induce a un bosque}}{5. Elegir $e$ de peso mínimo con dicha característica\\
+      6. \If{\textnormal{los extremos de $e$ tienen colores diferentes}}{7. Asignamos como el color de ambas, al color mas mínimo entre las dos.\\
+        8. F\leftarrow $F \cup \{e\}$, $w(B)\leftarrow w(B)+w(e)$}.}
+    \Return $(F,w(T));$
+  \end{algorithm}
+  
 \item (2 puntos) Demuestre que el problema de encontrar un \'arbol generador
   de peso m\'aximo en una gr\'afica conexa puede resolverse eligiendo
   iterativamente una arista de peso m\'aximo, con la condici\'on de que la
