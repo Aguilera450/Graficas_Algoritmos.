@@ -157,22 +157,63 @@
   ponderada $(G,w)$ (con pesos positivos), y sean $x$ y $y$ v\'ertices
   adyacentes en $T$. Demuestre que la trayectoria $xTy = xy$ es una
   $xy$-trayectoria de peso m\'inimo en $G$.
-
-\item (2 puntos) Demuestre que si todos los pesos de una gr\'afica
-  ponderada $G$ son distintos, entonces $G$ tiene un \'unico \'arbol
-  \'optimo.
-
-
+  
   \begin{proof} 
     (Demostración por reduccion al absurdo)
     
-    Sea (G,w) una gráfica conexa ponderada, T un árbol optimo y x,y $\in$V(G,W), supongamos que xTy no es una trayectoria optima en (G,w) $\Longrightarrow$ Existe $t_0$ tal que  $t_0$ sea un árbol generador, $t_0$ sea diferente a T $\Longrightarrow$ y la trayectoria optima sea x$t_0$y $\Longrightarrow t_0$ tiene mayor peso que T, ya que la trayectoria xTy es mas pesada    $\Longrightarrow$ que T no es un arbol optimo (Lo que es una contradiccion a nuestra hipotesis).
+    Sea (G,w) una gráfica conexa ponderada, T un árbol optimo y x,y $\in$V(G,W),
+    supongamos que xTy no es una trayectoria optima en (G,w) $\Longrightarrow$
+    Existe $t_0$ tal que  $t_0$ sea un árbol generador, $t_0$ sea diferente a
+    T $\Longrightarrow$ y la trayectoria optima sea x$t_0$y $\Longrightarrow t_0$
+    tiene mayor peso que T, ya que la trayectoria xTy es mas pesada
+    $\Longrightarrow$ que T no es un arbol optimo (Lo que es una contradiccion
+    a nuestra hipotesis).
     
     
     Por lo tanto xTy es una trayectoria optima.
     
     
-    \end{proof}
+  \end{proof}
+
+  
+\item (2 puntos) Demuestre que si todos los pesos de una gr\'afica
+  ponderada $G$ son distintos, entonces $G$ tiene un \'unico \'arbol
+  \'optimo.
+
+  \begin{proof}
+    Supongamos a G una gráfica ponderada con el costo de sus aristas
+    distintos entre si, sean $T_1$ y $T_2$ arboles tales que 
+    \[
+    T_1 \neq  T_2 
+    \]
+    y ambos son arboles óptimos en G (P.D., la unicidad de $T_1$),
+    entonces consideremos a $e$ una arista de peso mínimo que está
+    contenida en  $T_1$ o $T_2$ (esto por que las aristas tienen
+    pesos distintos entonces solo habrá una con peso mínimo),
+    llamémosla $e_1$, luego s.p.g. que $e_1$ está contenida en $T_1$.
+    \[
+    \Rightarrow e_1 \notin T_2
+    \]
+    por lo que si unimos  $e_1 + T_2$ es claro que existirá al menos
+    un ciclo C el cual contendrá al menos una arista digamos $e_2$
+    que no está contenida en $T_1$ (Esto por que si lo estuviera,
+    entonces $T_1$ formaría un ciclo con $e_2$, pero  $T_1$ es un árbol).\\
+    Entonces llegamos a que $e_1$ y $e_2$ contenidas en $T_1$ o $T_2$ por
+    construcción de las mismas tenemos que 
+    \[
+    w(e_1) < w(e_2)
+    \]
+    luego podemos notar que se si
+    \[
+    (T_2 \cup e_1) - e_2
+    \]
+    es claro que genera la construcción de $T_1$   por la construcción
+    de  $T_1$  y $T_2$  implica que 
+    \[
+    W(T_1) < W(T_2)!!
+    \]
+    \hspace*{4cm} $\therefore\ \ \  G$ es un árbol óptimo único.
+  \end{proof}
 
 
 \item (2 puntos) Modifique el algoritmo de Bor\r uvka-Kruskal para que en cada
