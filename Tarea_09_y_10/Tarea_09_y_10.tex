@@ -135,10 +135,10 @@
     
     Sea G  una gráfica conexa con al menos 3 vértices y v$\in$V $\Longrightarrow$ ejecutando DFS en v y s.p.g supongamos v es la raiz de algun bloque T de G. $\Longrightarrow$ si w es el primer vecino del mismo bloque de $v$ que visitamos.
     
-    Como para cualesquiera tres vértices de un bloque de $G$ existe una trayectoria que una a cualesquiera dos de ellos y
-    que no pasa por el tercero, entonces siempre podemos garantizar que el siguiente vértice que visitemos después de
-    $w$ no saldrá de $v$. Además DFS ya no agrega a la pila los vértices previamente visitados. Así, en el árbol DFS de
-    $G$, $G \bigcap T$ sólo tendrá los vértices de $T$ y ahí la raíz tendrá $d(v)=1$ por lo mencionado anteriormente. 
+    Sabemos que dado $3$ $x, y, z$ vértices en un bloque, entonces existe una trayectoria $T_{\alpha}$ que une a
+    $x, y$ (S.P.G.) además $T_{\alpha}$ no pasa por $z$, por tanto el siguiente vértice que visitemos
+    después de $w$ no saldrá de $v$. Además DFS ya no agrega a la pila los vértices previamente visitados. Así, en
+    el árbol DFS de $G$, $G \cap T$ sólo tendrá los vértices de $T$ y ahí la raíz tendrá $d(v)=1$.
     
     \end{proof}
 
