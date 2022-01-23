@@ -134,8 +134,11 @@
     Observemos el caso particualar para $k_2$, este caso siempre se cumple sin importar en que vértice se jecute DFS, nuestro árbol siempre será de tipo $k_2$, donde los dos vértices tendran grado 1.
     
     Sea G  una gráfica conexa con al menos 3 vértices y v$\in$V $\Longrightarrow$ ejecutando DFS en v y s.p.g supongamos v es la raiz de algun bloque T de G. $\Longrightarrow$ si w es el primer vecino del mismo bloque de $v$ que visitamos.
-    $A partir de aqui ya no entendi y no se como redactarlo jajajjaja $
-     Como para cualesquiera tres vértices de un bloque de $G$ existe una trayectoria que una a cualesquiera dos de ellos y que no pasa por el tercero, entonces siempre podemos garantizar que el siguiente vértice que visitemos después de $w$ no saldrá de $v$. Además DFS ya no agrega a la pila los vértices previamente visitados. Así, en el árbol DFS de $G$, $G \bigcap T$ sólo tendrá los vértices de $T$ y ahí la raíz tendrá $d(v)=1$ por lo mencionado anteriormente. 
+    
+    Como para cualesquiera tres vértices de un bloque de $G$ existe una trayectoria que una a cualesquiera dos de ellos y
+    que no pasa por el tercero, entonces siempre podemos garantizar que el siguiente vértice que visitemos después de
+    $w$ no saldrá de $v$. Además DFS ya no agrega a la pila los vértices previamente visitados. Así, en el árbol DFS de
+    $G$, $G \bigcap T$ sólo tendrá los vértices de $T$ y ahí la raíz tendrá $d(v)=1$ por lo mencionado anteriormente. 
     
     
     \end{proof}
