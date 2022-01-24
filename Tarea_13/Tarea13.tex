@@ -1,0 +1,207 @@
+\documentclass{article}
+
+% Symbols
+\usepackage{amsfonts, amsthm}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{amssymb, latexsym, amsmath}
+
+%Algorithms
+\usepackage[ruled,lined,linesnumbered,commentsnumbered]{algorithm2e}
+
+%% Identación
+\setlength{\parindent}{0cm}
+
+% Código
+\newcommand{\code}[1]{\textcolor{white!25!black}{\texttt{#1}}}
+\usepackage{listings}
+
+%AMS
+\usepackage{amsthm}
+\newtheorem{algo-thm}{Algoritmo}
+
+% Proof
+\renewcommand*{\proofname}{\textbf{Demostraci\'on:}}
+% Theorem
+\newtheorem*{theorem}{Teorema}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{pgf}
+
+% Color a letras.
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Tikz
+\usepackage{tkz-graph}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+%\usetikzlibrary[topaths]
+
+% Def. Dr. César.
+\usetikzlibrary{shapes,calc}
+\tikzstyle{edge}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.1pt]
+\tikzstyle{blueE}=[shorten <=2pt, shorten >=2pt, >=stealth, line width=1.5pt, blue]
+\tikzstyle{blackV}=[circle, fill=black, minimum size=6pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{blueV}=[circle, fill=blue, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redV}=[circle, fill=red, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+\tikzstyle{redSV}=[semicircle, fill=red, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blueSV}=[semicircle, fill=blue, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{blackSV}=[semicircle, fill=black, minimum size=3pt, inner sep=0pt, outer sep=0pt, rotate=225]
+\tikzstyle{vertex}=[circle, draw, minimum size=6pt, line width=0.75pt, inner sep=0pt, outer sep=0pt]
+
+% Margins
+\addtolength{\voffset}{-1.5cm}
+\addtolength{\hoffset}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\textheight}{3cm}
+
+%Header-Footer
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{1pt}
+
+\newcommand{\set}[1]{
+  \left\{ #1 \right\}
+}
+
+%\pagenumbering{gobble} -- Este comando
+%                       -- quita el número de página.
+\footskip = 50pt
+\renewcommand{\headrulewidth}{1pt}
+
+\pagestyle{fancyplain}
+
+\begin{document}
+\title{UNIVERSIDAD AUT\'ONOMA DE M\'EXICO\\ Facultad de Ciencias}
+\author{Autores:
+  \\ Fernanda Villaf\'an Flores
+  \\ Fernando Alvarado Palacios
+  \\ Adri\'an Aguilera Moreno}
+\date{}
+\maketitle
+\begin{center}
+  \includegraphics[scale=0.20]{../Imagen/Portada.jpg}\\[0.4cm]
+  \Large
+  \bf{Gr\'aficas y Juegos}
+  \normalsize
+\end{center}
+\newpage
+\fancyhead[r]{ Gr\'aficas y Juegos 2022-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\LARGE{Tarea 13}}
+\begin{enumerate}
+  %% EJERCICIO 1
+  \item Considere los v\'ertices $x = (0, \dots, 0)$, y $y = (1, \dots, 1)$
+  $n$-cubo, $Q_n$.   Describa una colecci\'on m\'axima de $xy$-trayectorias
+  ajenas por aristas dos a dos en $Q_n$ y un $xy$-corte m\'inimo por
+  v\'ertices que separe a $x$ de $y$.
+
+  %% EJERCICIO 2
+  \item Demuestre que una gr\'afica $3$-conexa no bipartita contiene al menos
+  cuatro ciclos impares.
+
+  %% EJERCICIO 3
+  \item[3.] Sea $G$ una gr\'afica $k$-conexa con $k \ge 2$.   Demuestre que
+    cualesquiera $k$ v\'ertices de $G$ est\'an contenidos en un ciclo com\'un.
+
+    \begin{proof}
+      Sea $x \in V_{G}$ y sea $C$ un subconjunto de $G$ tal que $V_{C} = V_{G} - \{x\}$.
+
+      Supongamos que $x \notin C$.
+
+      Como $G$ es $k$-conexa, por el \textbf{Lema del Abanico} sabemos que existen $k$-trayectorias internamente ajenas entre $x$ y $C$.
+
+      Sean $v_{1}, v_{2}, \dots, v_{k}$ los vértices de $C$ que alcanzó $x$ por medio de las $k$-trayectorias.
+
+      Ahora, sabemos por la \textbf{Proposición 1.6.1} de las \textit{Notas de Clase} que:
+      $$\text{\textit{Para una gráfica $G$, si $\delta \leq 2$ entonces $G$ tiene al menos un ciclo.}}$$
+
+      Si hacemos a $C$ un ciclo de $G$, entonces $C$ se ve de la siguiente manera:
+      $$C = (v_{1}, \dots, v_{2}, \dots, v_{k}, \dots, v_{1})$$
+      Como $x$ es adyacente a $v_{1}, v_{2}, \dots, v_{k}$ vértice de $C$, tomemos el siguiente ciclo:
+      $$C' = (x, v_{1}, v_{2}, \dots, v_{k}, x)$$
+      Por lo tanto, probamos que cualesquiera $k$ vértices de $G$ están contenidos en un ciclo común.
+    \end{proof}
+
+  %% EJERCICIO 4
+  \item Sea $G$ una gr\'afica $k$-conexa, y sean $X$ y $Y$ subconjuntos de $V$
+  de cardinalidad al menos $k$.   Demuestre que existe una familia de al menos
+  $k$ $(X,Y)$-trayectorias ajenas.
+
+  %% EJERCICIO 5
+  \item Considere el siguiente juego.   Dos jugadores seleccionan alternadamente
+  v\'ertices distintos $v_0, v_1, v_2, \dots$ sobre una gr\'afica $G$, donde
+  para cada $i \ge 0$, $v_{i+1}$ es adyacente a $v_i$.   El \'ultimo jugador
+  que pueda elegir un v\'ertice es el ganador. Demuestre que el primer jugador
+  tiene una estrategia ganadora si y s\'olo si $G$ no tiene un apareamiento
+  perfecto.
+
+  %% EJERCICIO 6
+  \item Demuestre que es imposible, utilizando fichas de domin\'o, cubrir un
+  tablero de ajedrez donde dos esquinas contrarias fueron removidas.
+
+  %% EJERCICIO 7
+  \item Una l\'inea en una matriz es un rengl\'on o una columna de la matriz.
+  Demuestre que el m\'inimo n\'umero de l\'ineas que contienen todas entradas
+  distintas de cero en una matriz es igual al m\'aximo n\'umero de entradas
+  distintas de cero tales que no hay dos en la misma l\'inea.
+
+  %% EJERCICIO 8
+  \item[8.] Demuestre que para cada $k > 0$, toda gr\'afica bipartita y $k$ regular
+  es $1$-factorizable.
+
+    \begin{proof}
+      Procedemos por inducción sobre $k$.
+
+      \begin{itemize}
+        \item \textbf{Caso Base:} $k = 1$.
+
+          Sea $G$ una gráfica $1$-regular.
+
+          Por la definición de $1$-factorizable, tenemos que $G$ es el factor que estábamos buscando.
+
+        \item \textbf{Hipótesis de Inducción.} Supongamos que para cada $k > 0$ se cumple que toda gráfica $k$-regular es $1$-factorizable.
+
+        \item \textbf{Paso Inductivo.}
+
+          Sea $G$ una gráfica ($k + 1$)-regular.
+
+          Dado que $G$ es bipartita, por el \textbf{Teorema 1.7.2} sabemos que $G$ no contiene ciclos impares. Esto implica que cada vértice en $G$ tiene grado par y por tanto, $G$ es par. \\
+          Así, entonces $G$ es euleriana y por el \textbf{Teorema 4.1.1} sabemos que $G$ se puede descomponer en una familia de ciclos $C_{1}, C_{2}, \dots, C_{n}$.
+
+          Notemos que si existe un ciclo $C_{i}$ que pase por todos los vértices, al eliminarlo el grado de todos los vértices disminuiría en $2$. Así, eliminamos a todos los ciclos necesarios para poder disminuir el grado de todos los vértices en $2$. Por lo que obtuvimos una gráfica $G'$ que es $k$-regular, la cual por \textbf{Hipótesis de Inducción} sabemos que es $1$-factorizable.
+
+          Además, notemos que los factores $H_{1}, \dots, H_{n}$ de $G'$ también se van a encontrar en $G$; y la unión de los ciclos $C_{i}, \dots, C_{j}$ que borramos para obtener a $G'$ forman el factor $H_{n + 1}$ tal que $G = H_{1}, \dots, H_{n}, H_{n + 1}$.
+
+          Por lo tanto, probamos que $G$ es $1$-factorizable.
+      \end{itemize}
+    \end{proof}
+\end{enumerate}
+
+\section*{\Large{Puntos Extra}}
+\begin{enumerate}
+  \item Sea $A_1, \dots, A_m$ un conjunto de subconjuntos de $S$. Un sistema
+    de representantes distintos para la familia $(A_1, \dots, A_m)$ es un
+    subconjunto $\{ a_1, \dots, a_m \}$ de $S$ tal que $a_i \in A_i$, $1 \le i
+    \le m$, y $a_i \ne a_j$ para $i \ne j$. Demuestre que $(A_1, \dots, A_m)$
+    tiene un sistema de representantes distintos si y s\'lo si
+    \[
+      \left| \bigcup_{i \in J} A_i \right| \ge |J|
+    \]
+    para cada subconjunto $J$ de $\{ 1, \dots, m \}$.
+
+  \item Demuestre que son equivalentes
+    \begin{enumerate}
+      \item El Teorema del \textsc{Flujo-M\'aximo Corte-M\'inimo}.
+
+      \item El Teorema de Menger.
+
+      \item El Teorema de Hall.
+
+      \item El Lemma de K\"onig.
+    \end{enumerate}
+\end{enumerate}
+\end{document}
